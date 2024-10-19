@@ -1,0 +1,2 @@
+npm run lint
+git diff --name-only --cached --diff-filter=d | xargs git add
