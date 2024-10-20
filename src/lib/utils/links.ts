@@ -7,3 +7,9 @@ export const imageLinks = {
     ]
   }
 };
+
+export const socialMediaLinks = {
+  instagram: 'https://www.lamaisonregina.com/pt',
+  pinterestP: 'https://www.lamaisonregina.com/pt',
+  youtube: 'https://www.lamaisonregina.com/pt'
+};
