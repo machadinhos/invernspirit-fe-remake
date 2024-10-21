@@ -15,7 +15,7 @@
 </script>
 
 <!-- background images carousel -->
-<div class="absolute inset-0 h-full w-full overflow-hidden bg-gray-600 grayscale filter">
+<div class="absolute inset-0 h-full w-full overflow-hidden bg-background grayscale filter">
   {#each imageLinks.index['bg-images'] as image, index}
     <div
       class="fixed h-full w-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"

@@ -12,21 +12,27 @@
   import Textfield from '@smui/textfield';
   import HelperText from '@smui/textfield/helper-text';
   import { TiMail } from 'svelte-icons-pack/ti';
+  import { validateEmail } from '$lib/utils/general';
 
   let surface: MenuSurface;
-  let valueA = '';
+  let emailInput = '';
+  let isValidEmailInput = true;
+
+  function handleInput() {
+    isValidEmailInput = validateEmail(emailInput);
+  }
 </script>
 
 <div class="mx-10 flex w-fit gap-4">
   <div>
     <button
       on:click={() => surface.setOpen(true)}
-      class="cursor-pointer transition-transform duration-300 ease-out hover:scale-150"
+      class="transition-transform duration-300 ease-out hover:scale-150"
     >
       <Icon color="white" src={FaNewspaper} size="20" />
     </button>
     <MenuSurface
-      class="w-80 bg-[#4C4B48] text-white"
+      class="w-80 bg-background text-white"
       bind:this={surface}
       anchorCorner="BOTTOM_LEFT"
     >
@@ -36,9 +42,10 @@
           style="width: 100%"
           input$style="color: white;"
           label$style="color: white;"
-          helperLine$style="color: white;"
-          bind:value={valueA}
+          bind:value={emailInput}
           type="email"
+          invalid={!isValidEmailInput && emailInput !== ''}
+          on:input={handleInput}
         >
           <svelte:fragment slot="label">
             <div class="flex">
@@ -51,11 +58,15 @@
               Email
             </div>
           </svelte:fragment>
-          <HelperText style="color: white; user-select: none" slot="helper"
-            >Ex: example@gmail.com</HelperText
-          >
+          <HelperText style="color: red; user-select: none" slot="helper">
+            {#if !isValidEmailInput && emailInput !== ''}
+              Please enter a valid email address.
+            {/if}
+          </HelperText>
         </Textfield>
-        <button class="mt-2" type="submit">Subscribe</button>
+        <button class="mt-2 w-full bg-secondary px-1 py-2 hover:bg-primary" type="submit"
+          >Subscribe</button
+        >
       </form>
     </MenuSurface>
   </div>
