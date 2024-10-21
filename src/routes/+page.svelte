@@ -14,7 +14,6 @@
   setInterval(rotateImages, 5000);
 </script>
 
-<!-- background images carousel -->
 <div class="absolute inset-0 h-full w-full overflow-hidden bg-background grayscale filter">
   {#each imageLinks.index['bg-images'] as image, index}
     <div
