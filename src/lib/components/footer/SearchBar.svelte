@@ -26,7 +26,7 @@
     </div>
     <input
       bind:value={searchString}
-      class="bg-background text-white focus:border-none focus:outline-none"
+      class="w-full bg-background text-white focus:border-none focus:outline-none"
       placeholder="Search..."
       on:keydown={handleKeyDown}
     />
