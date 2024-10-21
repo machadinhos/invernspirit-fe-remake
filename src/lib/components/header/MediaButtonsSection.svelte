@@ -13,6 +13,7 @@
   import HelperText from '@smui/textfield/helper-text';
   import { TiMail } from 'svelte-icons-pack/ti';
   import { validateEmail } from '$lib/utils/general';
+  import Button from '$lib/components/generic/Button.svelte';
 
   let surface: MenuSurface;
   let emailInput = '';
@@ -20,6 +21,10 @@
 
   function handleInput() {
     isValidEmailInput = validateEmail(emailInput);
+  }
+
+  function subscribeToNewsletter() {
+    alert('todo');
   }
 </script>
 
@@ -64,8 +69,8 @@
             {/if}
           </HelperText>
         </Textfield>
-        <button class="mt-2 w-full bg-secondary px-1 py-2 hover:bg-primary" type="submit"
-          >Subscribe</button
+        <Button className="mt-2 w-full" type="submit" on:click={subscribeToNewsletter}
+          >Subscribe</Button
         >
       </form>
     </MenuSurface>

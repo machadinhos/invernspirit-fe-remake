@@ -17,17 +17,6 @@
   <slot />
 </main>
 
-<footer class="footer sticky bottom-0">
+<footer class="absolute bottom-0 w-full">
   <SearchBar />
 </footer>
-
-<style>
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%; /* Ensure the footer spans the width of the page */
-    background-color: #f1f1f1; /* Optional, for better visibility */
-    padding: 10px; /* Padding to give some space around the content */
-    text-align: center; /* Center-align the search bar */
-  }
-</style>
