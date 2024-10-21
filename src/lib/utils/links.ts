@@ -23,7 +23,7 @@ export const imageLinks = {
 };
 
 export const socialMediaLinks = {
-  instagram: new URL('https://www.lamaisonregina.com/pt'),
-  pinterestP: new URL('https://www.lamaisonregina.com/pt'),
-  youtube: new URL('https://www.lamaisonregina.com/pt')
+  instagram: new URL('https://www.lamaisonregina.com/pt').toString(),
+  pinterestP: new URL('https://www.lamaisonregina.com/pt').toString(),
+  youtube: new URL('https://www.lamaisonregina.com/pt').toString()
 };

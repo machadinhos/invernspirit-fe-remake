@@ -1,25 +1,33 @@
 <script>
   import '../app.css';
-  import {
-    FaNewspaper,
-    FaBrandsInstagram,
-    FaBrandsYoutube,
-    FaBrandsPinterestP
-  } from 'svelte-icons-pack/fa';
-  import MediaButton from '$lib/components/header/MediaButton.svelte';
-  import { socialMediaLinks } from '$lib/utils/links';
+  import MediaButtonsSection from '$lib/components/header/MediaButtonsSection.svelte';
+  import Navbar from '$lib/components/header/Navbar.svelte';
+  import SearchBar from '$lib/components/footer/SearchBar.svelte';
 </script>
 
 <header>
-  <div class="relative z-10 mx-10 my-10 flex w-fit gap-4">
-    <!--    todo: add newsletter popup-->
-    <MediaButton src={FaNewspaper} href={socialMediaLinks.youtube} />
-    <div class="h-5 w-0.5 bg-white" />
-    <MediaButton src={FaBrandsInstagram} href={socialMediaLinks.instagram} />
-    <MediaButton src={FaBrandsPinterestP} href={socialMediaLinks.pinterestP} />
-    <MediaButton src={FaBrandsYoutube} href={socialMediaLinks.youtube} />
+  <div class="relative z-10 my-10 grid" style="grid-template-columns: 1fr auto 1fr;">
+    <MediaButtonsSection />
+    <Navbar />
+    <div></div>
   </div>
-  <navbar></navbar>
 </header>
 
-<slot />
+<main>
+  <slot />
+</main>
+
+<footer class="footer sticky bottom-0">
+  <SearchBar />
+</footer>
+
+<style>
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* Ensure the footer spans the width of the page */
+    background-color: #f1f1f1; /* Optional, for better visibility */
+    padding: 10px; /* Padding to give some space around the content */
+    text-align: center; /* Center-align the search bar */
+  }
+</style>
