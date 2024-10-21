@@ -8,7 +8,7 @@ function generateInternalURL(pathName: string, subDomain?: string) {
 
   const fullPath = pathName.startsWith('/') ? pathName : `/${pathName}`;
 
-  return new URL(`${protocol}${fullDomain}${fullPath}`);
+  return new URL(`${protocol}${fullDomain}${fullPath}`).toString();
 }
 
 export const imageLinks = {
