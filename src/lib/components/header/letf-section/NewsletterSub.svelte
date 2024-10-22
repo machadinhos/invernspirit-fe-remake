@@ -33,8 +33,8 @@
       <h2>Subscribe to our newsletter</h2>
       <Textfield
         style="width: 100%"
-        input$style="color: white;"
-        label$style="color: white;"
+        input$style="color: white"
+        label$style="color: white"
         bind:value={emailInput}
         type="email"
         invalid={!isValidEmailInput && emailInput !== ''}

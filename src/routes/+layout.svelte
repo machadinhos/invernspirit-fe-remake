@@ -1,12 +1,12 @@
 <script>
   import '../app.css';
-  import MediaButtonsSection from '$lib/components/header/MediaButtonsSection.svelte';
-  import Navbar from '$lib/components/header/Navbar.svelte';
+  import MediaButtonsSection from '$lib/components/header/letf-section/MediaButtonsSection.svelte';
+  import Navbar from '$lib/components/header/midle-section/Navbar.svelte';
   import SearchBar from '$lib/components/footer/SearchBar.svelte';
 </script>
 
 <header>
-  <div class="relative z-10 my-10 grid" style="grid-template-columns: 1fr auto 1fr;">
+  <div class="relative z-10 my-10 grid" style="grid-template-columns: 1fr auto 1fr">
     <MediaButtonsSection />
     <Navbar />
     <div></div>

@@ -20,7 +20,7 @@
       class="fixed h-full w-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
       class:opacity-60={index === currentImageIndex}
       class:opacity-0={index !== currentImageIndex}
-      style="background-image: url({image});"
+      style="background-image: url({image})"
     />
   {/each}
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import MediaButton from '$lib/components/header/MediaButton.svelte';
+  import MediaButton from '$lib/components/header/letf-section/MediaButton.svelte';
   import { FaBrandsInstagram, FaBrandsYoutube, FaBrandsPinterestP } from 'svelte-icons-pack/fa';
   import { socialMediaLinks } from '$lib/utils/links';
-  import NewsletterSub from '$lib/components/header/NewsletterSub.svelte';
+  import NewsletterSub from '$lib/components/header/letf-section/NewsletterSub.svelte';
 </script>
 
 <div class="mx-10 flex w-fit gap-4">

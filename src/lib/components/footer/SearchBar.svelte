@@ -8,7 +8,6 @@
 
   function doSearch() {
     alert('todo');
-    console.log(searchString);
   }
 
   function handleKeyDown(event: CustomEvent | KeyboardEvent) {
