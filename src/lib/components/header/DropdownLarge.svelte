@@ -32,14 +32,3 @@
     </ul>
   </div>
 </div>
-
-<!--<div class="absolute bg-white text-black p-2 rounded-md shadow-md">
-	<ul>
-		{#each items as item}
-			<li class="cursor-pointer hover:bg-gray-200 p-2">
-				<a href = {item.link}>{item.name}</a>
-			</li>
-			<div class="grid grid-cols-1 divide-error"></div>
-		{/each}
-	</ul>
-</div>-->
