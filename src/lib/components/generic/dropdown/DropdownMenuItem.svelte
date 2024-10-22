@@ -4,6 +4,7 @@
 
 <div class="overflow-hidden">
   <div
+    class="w-fit"
     transition:fly={{
       duration: 500,
       y: window.innerHeight * 2,
