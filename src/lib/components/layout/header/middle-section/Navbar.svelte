@@ -1,9 +1,9 @@
 <script lang="ts">
-  import DropdownMenu from '$lib/components/generic/dropdown/DropdownMenu.svelte';
-  import NavbarItem from '$lib/components/header/midle-section/NavbarItem.svelte';
-  import DropdownMenuItem from '$lib/components/generic/dropdown/DropdownMenuItem.svelte';
+  import DropdownMenu from '$lib/components/ui/dropdown/DropdownMenu.svelte';
+  import DropdownMenuItem from '$lib/components/ui/dropdown/DropdownMenuItem.svelte';
   import { Icon } from 'svelte-icons-pack';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
+  import NavbarItem from '$lib/components/layout/header/middle-section/NavbarItem.svelte';
 
   let isOpen = false;
   let dropdownTriggerElement: HTMLElement;

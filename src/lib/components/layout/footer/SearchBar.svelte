@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from '$lib/components/generic/Button.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
   import { Icon } from 'svelte-icons-pack';
   import { BsArrowRight } from 'svelte-icons-pack/bs';
   import { SlMagnifier } from 'svelte-icons-pack/sl';

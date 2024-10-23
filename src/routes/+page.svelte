@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { imageLinks } from '$lib/utils/links';
+  import { imageLinks } from '$lib/constants/links';
 
   let currentImageIndex = 0;
   let nextImageIndex = 1;

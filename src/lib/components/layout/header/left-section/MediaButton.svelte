@@ -1,6 +1,6 @@
 <script lang="ts">
   import { type IconType } from 'svelte-icons-pack';
-  import HeaderIcon from '$lib/components/header/HeaderIcon.svelte';
+  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
 
   export let src: IconType;
   export let href: string;

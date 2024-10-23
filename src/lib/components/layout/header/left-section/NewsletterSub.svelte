@@ -3,11 +3,11 @@
   import Textfield from '@smui/textfield';
   import HelperText from '@smui/textfield/helper-text';
   import { TiMail } from 'svelte-icons-pack/ti';
-  import Button from '$lib/components/generic/Button.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
   import MenuSurface from '@smui/menu-surface';
   import { validateEmail } from '$lib/utils/general';
   import { FaNewspaper } from 'svelte-icons-pack/fa';
-  import HeaderIcon from '$lib/components/header/HeaderIcon.svelte';
+  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
 
   let surface: MenuSurface;
   let isValidEmailInput = true;
