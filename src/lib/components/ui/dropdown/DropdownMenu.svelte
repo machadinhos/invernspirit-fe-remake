@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { fade, scale } from 'svelte/transition';
-  import { cubicIn, cubicOut } from 'svelte/easing';
+  import { slide } from 'svelte/transition';
+  import { quartOut } from 'svelte/easing';
 
   export let className: string = '';
   export let isOpen: boolean;
@@ -20,25 +20,12 @@
 {#if isOpen && triggerElement}
   <div
     class="absolute {isFullWidth ? 'start-0 w-full' : ''} bg-background"
-    transition:fade
+    transition:slide={{ duration: 800, easing: quartOut }}
     style={Object.entries(position)
       .map(([key, value]) => `${key}: ${value}px`)
       .join('; ')}
   >
-    <div
-      class={className}
-      in:scale={{
-        duration: 500,
-        easing: cubicIn,
-        start: 0
-      }}
-      out:scale={{
-        duration: 500,
-        delay: 250,
-        easing: cubicOut,
-        start: 0
-      }}
-    >
+    <div class={className}>
       <slot />
     </div>
   </div>
