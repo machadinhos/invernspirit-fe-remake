@@ -15,8 +15,8 @@
   }
 </script>
 
-<nav class="flex items-center justify-center">
-  <ul class="flex gap-20 text-white">
+<nav>
+  <ul class="flex h-full gap-20 text-white">
     <NavbarItem>
       <button
         class="flex items-center gap-1.5"
@@ -32,7 +32,13 @@
     <NavbarItem>
       <a href="/">about</a>
     </NavbarItem>
-    <li>IMAGEM</li>
+    <li>
+      <div class="flex items-center justify-center">
+        <a href="/">
+          <img src="/logo.webp" alt="logo" class="h-10 w-10 object-contain" />
+        </a>
+      </div>
+    </li>
     <NavbarItem>
       <a href="/">contacts</a>
     </NavbarItem>

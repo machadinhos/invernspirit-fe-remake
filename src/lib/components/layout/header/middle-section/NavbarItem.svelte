@@ -1,4 +1,4 @@
-<li class="my-0 w-fit py-0">
+<li class="w-fit py-1.5">
   <div class="list-item-class inline">
     <slot />
   </div>
