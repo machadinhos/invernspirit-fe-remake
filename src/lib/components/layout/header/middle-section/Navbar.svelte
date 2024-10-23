@@ -29,10 +29,16 @@
         </div>
       </button>
     </NavbarItem>
-    <li>
+    <NavbarItem>
       <a href="/">about</a>
-    </li>
+    </NavbarItem>
     <li>IMAGEM</li>
+    <NavbarItem>
+      <a href="/">contacts</a>
+    </NavbarItem>
+    <NavbarItem>
+      <a class="h-full" href="/">faq</a>
+    </NavbarItem>
   </ul>
 </nav>
 
