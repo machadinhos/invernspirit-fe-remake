@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { Icon } from 'svelte-icons-pack';
-  import Textfield from '@smui/textfield';
-  import HelperText from '@smui/textfield/helper-text';
-  import { TiMail } from 'svelte-icons-pack/ti';
-  import Button from '$lib/components/ui/Button.svelte';
-  import MenuSurface from '@smui/menu-surface';
-  import { validateEmail } from '$lib/utils/general';
-  import { FaNewspaper } from 'svelte-icons-pack/fa';
-  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
+  import { Icon } from "svelte-icons-pack";
+  import Textfield from "@smui/textfield";
+  import HelperText from "@smui/textfield/helper-text";
+  import { TiMail } from "svelte-icons-pack/ti";
+  import Button from "$lib/components/ui/Button.svelte";
+  import MenuSurface from "@smui/menu-surface";
+  import { validateEmail } from "$lib/utils/general";
+  import { FaNewspaper } from "svelte-icons-pack/fa";
+  import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
 
-  let surface: MenuSurface;
-  let isValidEmailInput = true;
-  let emailInput = '';
+  let surface: MenuSurface | undefined = $state();
+  let isValidEmailInput = $state(true);
+  let emailInput: string = $state("");
 
   function handleIconClick() {
-    surface.setOpen(true);
+    surface?.setOpen(true);
   }
 
   function handleInput() {
@@ -22,22 +22,26 @@
   }
 
   function subscribeToNewsletter() {
-    alert('todo');
+    alert("todo");
   }
 </script>
 
 <div>
-  <HeaderIcon src={FaNewspaper} on:click={handleIconClick} />
-  <MenuSurface class="w-80 bg-background text-white" bind:this={surface} anchorCorner="BOTTOM_LEFT">
+  <HeaderIcon src={FaNewspaper} onclick={handleIconClick} />
+  <MenuSurface
+    class="w-80 bg-background text-white"
+    bind:this={surface}
+    anchorCorner="BOTTOM_LEFT"
+  >
     <form class="m-5">
       <h2>Subscribe to our newsletter</h2>
       <Textfield
         style="width: 100%"
         input$style="color: white"
         label$style="color: white"
-        bind:value={emailInput}
+        value={emailInput}
         type="email"
-        invalid={!isValidEmailInput && emailInput !== ''}
+        invalid={!isValidEmailInput && emailInput !== ""}
         on:input={handleInput}
       >
         <svelte:fragment slot="label">
@@ -51,14 +55,16 @@
             Email
           </div>
         </svelte:fragment>
-        <HelperText style="color: red; user-select: none" slot="helper">
-          {#if !isValidEmailInput && emailInput !== ''}
+        <HelperText slot="helper" style="color: red; user-select: none">
+          {#if !isValidEmailInput && emailInput !== ""}
             Please enter a valid email address.
           {/if}
         </HelperText>
       </Textfield>
-      <Button className="mt-2 w-full" type="submit" on:click={subscribeToNewsletter}
-        >Subscribe</Button
+      <Button
+        className="mt-2 w-full"
+        type="submit"
+        onclick={subscribeToNewsletter}>Subscribe</Button
       >
     </form>
   </MenuSurface>

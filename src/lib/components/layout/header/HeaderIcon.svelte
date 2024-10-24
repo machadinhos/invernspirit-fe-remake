@@ -1,10 +1,18 @@
 <script lang="ts">
-  import { Icon, type IconType } from 'svelte-icons-pack';
+  import { Icon, type IconType } from "svelte-icons-pack";
 
-  export let src: IconType;
+  interface Props {
+    src: IconType;
+    onclick?: () => void;
+  }
+
+  let { src, onclick = () => {} }: Props = $props();
 </script>
 
-<button class="outerbutton flex h-9 w-9 cursor-pointer items-center justify-center" on:click>
+<button
+  class="outerbutton flex h-9 w-9 cursor-pointer items-center justify-center"
+  {onclick}
+>
   <span class="flex items-center justify-center">
     <Icon color="white" {src} size="20" />
   </span>

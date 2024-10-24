@@ -1,10 +1,20 @@
 <script lang="ts">
-  import type { HTMLButtonAttributes } from 'svelte/elements';
+  import type { HTMLButtonAttributes } from "svelte/elements";
 
-  export let type: HTMLButtonAttributes['type'] = 'button';
-  export let className: HTMLButtonAttributes['class'] = '';
+  interface Props {
+    type?: HTMLButtonAttributes["type"];
+    className?: HTMLButtonAttributes["class"];
+    onclick: () => void;
+    children: import("svelte").Snippet;
+  }
+
+  let { type = "button", className = "", onclick, children }: Props = $props();
 </script>
 
-<button on:click class={`bg-secondary px-1 py-2 hover:bg-primary ${className}`} {type}>
-  <slot />
+<button
+  {onclick}
+  class={`bg-secondary px-1 py-2 hover:bg-primary ${className}`}
+  {type}
+>
+  {@render children()}
 </button>

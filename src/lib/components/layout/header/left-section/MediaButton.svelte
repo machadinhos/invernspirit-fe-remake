@@ -1,9 +1,13 @@
 <script lang="ts">
-  import { type IconType } from 'svelte-icons-pack';
-  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
+  import { type IconType } from "svelte-icons-pack";
+  import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
 
-  export let src: IconType;
-  export let href: string;
+  interface Props {
+    src: IconType;
+    href: string;
+  }
+
+  let { src, href }: Props = $props();
 </script>
 
 <a {href} target="_blank" class="h-fit w-fit">
