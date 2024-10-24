@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
+  import { fly } from "svelte/transition";
+  interface Props {
+    children: import("svelte").Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <div class="overflow-hidden">
@@ -10,9 +15,9 @@
       y: window.innerHeight * 2,
       easing: (t) => {
         return t * t * (3 - 2 * t);
-      }
+      },
     }}
   >
-    <slot />
+    {@render children()}
   </div>
 </div>

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import DropdownMenu from '$lib/components/ui/dropdown/DropdownMenu.svelte';
-  import DropdownMenuItem from '$lib/components/ui/dropdown/DropdownMenuItem.svelte';
-  import { Icon } from 'svelte-icons-pack';
-  import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
-  import NavbarItem from '$lib/components/layout/header/middle-section/NavbarItem.svelte';
+  import DropdownMenu from "$lib/components/ui/dropdown/DropdownMenu.svelte";
+  import DropdownMenuItem from "$lib/components/ui/dropdown/DropdownMenuItem.svelte";
+  import { Icon } from "svelte-icons-pack";
+  import { FaSolidChevronDown } from "svelte-icons-pack/fa";
+  import NavbarItem from "$lib/components/layout/header/middle-section/NavbarItem.svelte";
 
-  let isOpen = false;
-  let dropdownTriggerElement: HTMLElement;
+  let isOpen = $state(false);
+  let dropdownTriggerElement: HTMLElement | undefined = $state();
 
   function toggleDropdown() {
     if (dropdownTriggerElement) {
@@ -20,11 +20,14 @@
     <NavbarItem>
       <button
         class="flex items-center gap-1.5"
-        on:click={toggleDropdown}
+        onclick={toggleDropdown}
         bind:this={dropdownTriggerElement}
       >
         shop
-        <div class="transition-transform duration-300" class:rotate-180={isOpen}>
+        <div
+          class="transition-transform duration-300"
+          class:rotate-180={isOpen}
+        >
           <Icon src={FaSolidChevronDown} size={10} />
         </div>
       </button>
@@ -35,7 +38,11 @@
     <li>
       <div class="flex items-center justify-center">
         <a href="/">
-          <img src="/logo.webp" alt="logo" class="h-10 w-10 object-contain" />
+          <img
+            src="/images/logo.webp"
+            alt="logo"
+            class="h-10 w-10 object-contain"
+          />
         </a>
       </div>
     </li>
@@ -53,7 +60,7 @@
     <DropdownMenuItem>
       <a class="w-full" href="/">by collection</a>
     </DropdownMenuItem>
-    <div class="h-0.5 w-10 bg-white" />
+    <div class="h-0.5 w-10 bg-white"></div>
     <DropdownMenuItem>
       <a href="/">by product</a>
     </DropdownMenuItem>

@@ -1,20 +1,31 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
-  import { quartOut } from 'svelte/easing';
+  import { slide } from "svelte/transition";
+  import { quartOut } from "svelte/easing";
 
-  export let className: string = '';
-  export let isOpen: boolean;
-  export let triggerElement: HTMLElement;
-  export let isFullWidth = false;
-
-  let position = { top: 0, left: 0 };
-
-  $: if (triggerElement) {
-    position = {
-      left: isFullWidth ? 0 : triggerElement.offsetLeft,
-      top: triggerElement.offsetTop + triggerElement.offsetHeight + 10
-    };
+  interface Props {
+    className?: string;
+    isOpen: boolean;
+    triggerElement: HTMLElement;
+    isFullWidth?: boolean;
+    children: import("svelte").Snippet;
   }
+
+  let {
+    className = "",
+    isOpen,
+    triggerElement,
+    isFullWidth = false,
+    children,
+  }: Props = $props();
+
+  let position = $derived(
+    triggerElement
+      ? {
+          left: isFullWidth ? 0 : triggerElement.offsetLeft,
+          top: triggerElement.offsetTop + triggerElement.offsetHeight + 10,
+        }
+      : { top: 0, left: 0 },
+  );
 </script>
 
 {#if isOpen && triggerElement}
@@ -23,10 +34,10 @@
     transition:slide={{ duration: 800, easing: quartOut }}
     style={Object.entries(position)
       .map(([key, value]) => `${key}: ${value}px`)
-      .join('; ')}
+      .join("; ")}
   >
     <div class={className}>
-      <slot />
+      {@render children()}
     </div>
   </div>
 {/if}
