@@ -9,10 +9,10 @@ export default {
         primary: "#c36a2d",
         secondary: "#201f1d",
         background: "#4C4B48",
-        error: "#B71C1CFF",
-      },
-    },
+        error: "#B71C1CFF"
+      }
+    }
   },
 
-  plugins: [],
+  plugins: []
 } as Config;

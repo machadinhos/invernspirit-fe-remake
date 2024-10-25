@@ -15,7 +15,7 @@
       y: window.innerHeight * 2,
       easing: (t) => {
         return t * t * (3 - 2 * t);
-      },
+      }
     }}
   >
     {@render children()}
