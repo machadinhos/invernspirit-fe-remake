@@ -55,7 +55,7 @@
   </ul>
 </nav>
 
-<DropdownMenu {isOpen} triggerElement={dropdownTriggerElement} isFullWidth>
+<DropdownMenu bind:isOpen triggerElement={dropdownTriggerElement} isFullWidth>
   <div class="flex flex-col items-center justify-center gap-4 py-4 text-white">
     <DropdownMenuItem>
       <a class="w-full" href="/">by collection</a>
