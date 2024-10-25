@@ -2,7 +2,7 @@
   import {
     FaBrandsInstagram,
     FaBrandsYoutube,
-    FaBrandsPinterestP,
+    FaBrandsPinterestP
   } from "svelte-icons-pack/fa";
   import { socialMediaLinks } from "$lib/constants/links";
   import MediaButton from "$lib/components/layout/header/left-section/MediaButton.svelte";
