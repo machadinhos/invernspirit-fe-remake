@@ -5,7 +5,7 @@
   interface Props {
     className?: string;
     isOpen: boolean;
-    triggerElement: HTMLElement;
+    triggerElement: HTMLElement | undefined;
     isFullWidth?: boolean;
     closeOnOutsideClick?: boolean;
     children: import("svelte").Snippet;

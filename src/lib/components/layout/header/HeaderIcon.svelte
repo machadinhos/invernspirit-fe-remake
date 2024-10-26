@@ -4,12 +4,14 @@
   interface Props {
     src: IconType;
     onclick?: () => void;
+    ref?: HTMLButtonElement;
   }
 
-  let { src, onclick = () => {} }: Props = $props();
+  let { src, onclick = () => {}, ref = $bindable() }: Props = $props();
 </script>
 
 <button
+  bind:this={ref}
   class="outerbutton flex h-9 w-9 cursor-pointer items-center justify-center"
   {onclick}
 >
