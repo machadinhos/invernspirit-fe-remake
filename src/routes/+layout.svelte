@@ -21,10 +21,10 @@
   </GrainyFilter>
 </div>
 
-<div class="fixed inset-0 z-10">
+<div class="fixed inset-0 z-10 flex flex-col">
   <Header />
 
-  <main>
+  <main class="flex-1 overflow-auto">
     {@render children()}
   </main>
 
