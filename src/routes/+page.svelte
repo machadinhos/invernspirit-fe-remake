@@ -1,5 +1,6 @@
 <script lang="ts">
   import { imageLinks } from "$lib/constants/links";
+  import GrainyFilter from "$lib/components/ui/GrainyFilter.svelte";
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -16,14 +17,19 @@
 </script>
 
 <div
-  class="absolute inset-0 h-full w-full overflow-hidden bg-background grayscale filter"
+  class="fixed inset-0 h-full w-full overflow-hidden bg-background grayscale filter"
 >
+  <GrainyFilter>
+    <div></div>
+  </GrainyFilter>
   {#each imageLinks.index["bg-images"] as image, index}
-    <div
-      class="fixed h-full w-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
-      class:opacity-60={index === currentImageIndex}
-      class:opacity-0={index !== currentImageIndex}
-      style="background-image: url({image})"
-    ></div>
+    <div>
+      <div
+        class="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-500"
+        class:opacity-60={index === currentImageIndex}
+        class:opacity-0={index !== currentImageIndex}
+        style="background-image: url({image})"
+      ></div>
+    </div>
   {/each}
 </div>

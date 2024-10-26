@@ -1,7 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/ui/Button.svelte";
   import { Icon } from "svelte-icons-pack";
-  import { BsArrowRight } from "svelte-icons-pack/bs";
   import { SlMagnifier } from "svelte-icons-pack/sl";
 
   let searchString = $state("");
@@ -26,11 +25,11 @@
     <input
       bind:value={searchString}
       class="w-full bg-background text-white focus:border-none focus:outline-none"
-      placeholder="Search..."
+      placeholder="Search product..."
       onkeydown={handleKeyDown}
     />
   </div>
   <Button onclick={doSearch} className="w-20 flex justify-center">
-    <Icon color="white" src={BsArrowRight} size="20" />
+    Search
   </Button>
 </div>
