@@ -16,7 +16,9 @@
   setInterval(rotateImages, 5000);
 </script>
 
-<div class="h-full w-full overflow-hidden bg-background grayscale filter">
+<div
+  class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden bg-background grayscale filter"
+>
   <GrainyFilter>
     <div></div>
   </GrainyFilter>

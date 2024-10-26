@@ -21,7 +21,7 @@
   </GrainyFilter>
 </div>
 
-<div class="z-10">
+<div class="fixed inset-0 z-10">
   <Header />
 
   <main>
