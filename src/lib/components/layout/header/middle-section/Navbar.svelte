@@ -1,6 +1,6 @@
 <script lang="ts">
-  import DropdownMenu from "$lib/components/ui/dropdown/DropdownMenu.svelte";
-  import DropdownMenuItem from "$lib/components/ui/dropdown/DropdownMenuItem.svelte";
+  import DropdownMenu from "$lib/components/ui/dropdown-menu/DropdownMenu.svelte";
+  import DropdownMenuItem from "$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte";
   import { Icon } from "svelte-icons-pack";
   import { FaSolidChevronDown } from "svelte-icons-pack/fa";
   import NavbarItem from "$lib/components/layout/header/middle-section/NavbarItem.svelte";
