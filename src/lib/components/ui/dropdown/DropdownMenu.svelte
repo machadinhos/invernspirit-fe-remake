@@ -55,7 +55,7 @@
 {#if isOpen && triggerElement}
   <div
     bind:this={dropdownElement}
-    class="absolute {isFullWidth ? 'start-0 w-full' : ''} bg-background"
+    class="absolute {isFullWidth ? 'left-0 w-full' : ''} bg-background"
     transition:slide={{ duration: 800, easing: quartOut }}
     style={Object.entries(position)
       .map(([key, value]) => `${key}: ${value}px`)
