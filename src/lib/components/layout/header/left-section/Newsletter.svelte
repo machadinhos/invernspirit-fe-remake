@@ -7,8 +7,8 @@
   import { validateEmail } from "$lib/utils/general";
   import { FaNewspaper } from "svelte-icons-pack/fa";
   import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
-  import DropdownMenu from "$lib/components/ui/dropdown/DropdownMenu.svelte";
-  import DropdownMenuItem from "$lib/components/ui/dropdown/DropdownMenuItem.svelte";
+  import DropdownMenu from "$lib/components/ui/dropdown-menu/DropdownMenu.svelte";
+  import DropdownMenuItem from "$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte";
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
