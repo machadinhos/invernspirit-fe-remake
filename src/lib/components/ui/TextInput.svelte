@@ -31,7 +31,7 @@
     />
     {#if label}
       <label
-        class="pointer-events-none absolute left-0 select-none text-sm transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
+        class="pointer-events-none absolute left-0 select-none text-lg transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
           ? '-top-3.5'
           : 'top-2 text-base'}"
       >
