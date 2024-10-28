@@ -38,8 +38,6 @@
         {@render label()}
       </label>
     {/if}
-    {#if helperText}
-      {@render helperText()}
-    {/if}
+    {@render helperText?.()}
   </div>
 </div>
