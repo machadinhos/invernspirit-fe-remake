@@ -46,12 +46,12 @@
             bind:value={emailInput}
             type="email"
             invalid={!isValidEmailInput && emailInput !== ""}
+            invalidText="Please enter a valid email address."
           >
             {#snippet label()}
               <div class="flex">
                 <Icon
                   className="pb-1 mr-0.5 flex content-center"
-                  color="white"
                   src={TiMail}
                   size="20"
                 />
@@ -60,14 +60,6 @@
             {/snippet}
           </TextInput>
         </div>
-        <p
-          class="pointer-events-none select-none {!isValidEmailInput &&
-          emailInput !== ''
-            ? 'opacity-100'
-            : 'opacity-0'} text-error"
-        >
-          Please enter a valid email address.
-        </p>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
         <Button

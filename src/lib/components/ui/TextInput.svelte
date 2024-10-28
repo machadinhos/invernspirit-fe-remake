@@ -5,18 +5,18 @@
     value: string;
     type: import("svelte/elements").HTMLInputTypeAttribute;
     label?: Snippet;
-    helperText?: Snippet;
     className?: string;
     invalid?: boolean;
+    invalidText?: string;
   }
 
   let {
     value = $bindable(),
     type,
     label,
-    helperText,
     className = "",
-    invalid = false
+    invalid = false,
+    invalidText
   }: Props = $props();
 </script>
 
@@ -31,13 +31,19 @@
     />
     {#if label}
       <label
-        class="pointer-events-none absolute left-0 select-none text-lg transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
-          ? '-top-3.5'
+        class="pointer-events-none absolute left-0 select-none text-lg text-[#a6a6a6] transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
+          ? '-top-3.5 text-sm'
           : 'top-2 text-base'}"
       >
         {@render label()}
       </label>
     {/if}
-    {@render helperText?.()}
+    <p
+      class="pointer-events-none select-none {invalid
+        ? 'opacity-100'
+        : 'opacity-0'} text-error"
+    >
+      {invalidText}
+    </p>
   </div>
 </div>

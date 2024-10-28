@@ -23,6 +23,7 @@
       <Icon src={SlMagnifier} size="20" color="white" />
     </div>
     <input
+      type="search"
       bind:value={searchString}
       class="w-full bg-background text-white focus:border-none focus:outline-none"
       placeholder="Search product..."
