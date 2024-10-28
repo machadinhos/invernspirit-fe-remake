@@ -11,8 +11,9 @@
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
+
   let emailInput: string = $state("");
-  let isValidEmailInput = $derived(validateEmail(emailInput));
+  let isValidEmailInput = $state(true);
 
   function handleIconClick() {
     if (dropdownTriggerElement) {
@@ -21,7 +22,14 @@
   }
 
   function subscribeToNewsletter() {
+    if (!validateEmail(emailInput)) {
+      isValidEmailInput = false;
+      return;
+    }
     alert("todo");
+    isOpen = false;
+    isValidEmailInput = true;
+    emailInput = "";
   }
 </script>
 
@@ -45,7 +53,7 @@
           <TextInput
             bind:value={emailInput}
             type="email"
-            invalid={!isValidEmailInput && emailInput !== ""}
+            invalid={!isValidEmailInput}
             invalidText="Please enter a valid email address."
           >
             {#snippet label()}
