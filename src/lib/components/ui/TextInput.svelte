@@ -26,7 +26,7 @@
       {type}
       bind:value
       class="peer h-10 w-full border-b-2 border-white bg-transparent text-white focus:border-primary focus:outline-none {invalid
-        ? 'focus:border-error'
+        ? 'border-error'
         : ''} {className}"
     />
     {#if label}
@@ -38,12 +38,14 @@
         {@render label()}
       </label>
     {/if}
-    <p
-      class="pointer-events-none select-none {invalid
-        ? 'opacity-100'
-        : 'opacity-0'} text-error"
-    >
-      {invalidText}
-    </p>
+    {#if invalidText}
+      <p
+        class="pointer-events-none select-none {invalid
+          ? 'opacity-100'
+          : 'opacity-0'} text-error"
+      >
+        {invalidText}
+      </p>
+    {/if}
   </div>
 </div>
