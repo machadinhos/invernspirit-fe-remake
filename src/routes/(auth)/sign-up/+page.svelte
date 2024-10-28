@@ -4,48 +4,55 @@
   import PasswordRequiredChecksSection from "./PasswordRequiredChecksSection.svelte";
   import Button from "$lib/components/ui/Button.svelte";
 
-  // first name
-  let firstNameInput: string = $state("");
-  let isValidFirstNameInput: boolean = $state(true);
+  interface FormFields {
+    [key: string]: {
+      value: string;
+      isValid: boolean;
+      invalidText: string;
+      validate: (value: string) => boolean;
+    };
+  }
 
-  // last name
-  let lastNameInput: string = $state("");
-  let isValidLastNameInput: boolean = $state(true);
-
-  // email
-  let emailInput: string = $state("");
-  let isValidEmailInput = $state(true);
-  $inspect(validateEmail(emailInput));
-
-  // password
-  let passwordInput: string = $state("");
-  let isValidPasswordInput = $state(true);
-
-  // confirm password
-  let confirmPasswordInput: string = $state("");
-  let isValidConfirmPasswordInput = $state(true);
+  const formFields: FormFields = $state({
+    firstName: {
+      value: "",
+      isValid: true,
+      invalidText: "Please enter your first name.",
+      validate: (value) => value !== ""
+    },
+    lastName: {
+      value: "",
+      isValid: true,
+      invalidText: "Please enter your last name.",
+      validate: (value) => value !== ""
+    },
+    email: {
+      value: "",
+      isValid: true,
+      invalidText: "Please enter a valid email address.",
+      validate: validateEmail
+    },
+    password: {
+      value: "",
+      isValid: true,
+      invalidText: "Please enter a valid password.",
+      validate: (value) => !validatePassword(value).hasErrors
+    },
+    confirmPassword: {
+      value: "",
+      isValid: true,
+      invalidText: "Please rewrite your password.",
+      validate: (value) => value === formFields.password.value
+    }
+  });
 
   function submitSignUp() {
     let hasError = false;
-    if (firstNameInput === "") {
-      hasError = true;
-      isValidFirstNameInput = false;
-    }
-    if (lastNameInput === "") {
-      hasError = true;
-      isValidLastNameInput = false;
-    }
-    if (!validateEmail(emailInput)) {
-      hasError = true;
-      isValidEmailInput = false;
-    }
-    if (validatePassword(passwordInput).hasErrors) {
-      hasError = true;
-      isValidPasswordInput = false;
-    }
-    if (confirmPasswordInput !== passwordInput) {
-      hasError = true;
-      isValidConfirmPasswordInput = false;
+
+    for (const [, field] of Object.entries(formFields)) {
+      const isValid = field.validate(field.value);
+      field.isValid = isValid;
+      if (!isValid) hasError = true;
     }
 
     if (hasError) return;
@@ -53,71 +60,44 @@
   }
 </script>
 
-<form class="w-full gap-4">
+<form class="w-full gap-6">
   <div class="flex w-full gap-4">
-    <div class="w-1/2">
+    {#each ["firstName", "lastName"] as fieldName}
+      <div class="w-1/2">
+        <TextInput
+          invalid={!formFields[fieldName].isValid}
+          invalidText={formFields[fieldName].invalidText}
+          bind:value={formFields[fieldName].value}
+          type="text"
+        >
+          {#snippet label()}
+            {fieldName === "firstName" ? "First Name" : "Last Name"}
+          {/snippet}
+        </TextInput>
+      </div>
+    {/each}
+  </div>
+
+  {#each ["email", "password", "confirmPassword"] as fieldName}
+    <div class="w-full">
       <TextInput
-        invalid={!isValidFirstNameInput}
-        invalidText="Please enter your first name."
-        bind:value={firstNameInput}
-        type="text"
+        invalid={!formFields[fieldName].isValid}
+        invalidText={formFields[fieldName].invalidText}
+        bind:value={formFields[fieldName].value}
+        type={fieldName === "email" ? "email" : "password"}
       >
         {#snippet label()}
-          First Name
+          {fieldName.charAt(0).toUpperCase() +
+            fieldName.slice(1).replace(/([A-Z])/g, " $1")}
         {/snippet}
       </TextInput>
+      {#if fieldName === "password"}
+        <PasswordRequiredChecksSection password={formFields.password.value} />
+      {/if}
     </div>
-    <div class="w-1/2">
-      <TextInput
-        invalid={!isValidLastNameInput}
-        invalidText="Please enter your last name."
-        bind:value={lastNameInput}
-        type="text"
-      >
-        {#snippet label()}
-          Last Name
-        {/snippet}
-      </TextInput>
-    </div>
-  </div>
-  <div class="w-full">
-    <TextInput
-      invalid={!isValidEmailInput}
-      invalidText="Please enter a valid email address."
-      bind:value={emailInput}
-      type="email"
-    >
-      {#snippet label()}
-        Email
-      {/snippet}
-    </TextInput>
-  </div>
-  <div class="w-full">
-    <TextInput
-      invalid={!isValidPasswordInput}
-      invalidText="Please enter a valid password."
-      bind:value={passwordInput}
-      type="password"
-    >
-      {#snippet label()}
-        Password
-      {/snippet}
-    </TextInput>
-    <PasswordRequiredChecksSection password={passwordInput} />
-  </div>
-  <div class="mb-10 mt-0.5 w-full">
-    <TextInput
-      invalid={!isValidConfirmPasswordInput}
-      invalidText="Please rewrite your password."
-      bind:value={confirmPasswordInput}
-      type="password"
-    >
-      {#snippet label()}
-        Confirm Password
-      {/snippet}
-    </TextInput>
-  </div>
-  <Button className="w-full" onclick={submitSignUp} type="submit"
-    >Sign up</Button
-  >
+  {/each}
+
+  <Button className="w-full mt-4" onclick={submitSignUp} type="submit">
+    Sign up
+  </Button>
 </form>
