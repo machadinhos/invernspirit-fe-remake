@@ -28,6 +28,10 @@
     }
     alert("todo");
     isOpen = false;
+  }
+
+  function clearState() {
+    isOpen = false;
     isValidEmailInput = true;
     emailInput = "";
   }
@@ -40,6 +44,7 @@
     onclick={handleIconClick}
   />
   <DropdownMenu
+    onClose={clearState}
     className="w-80"
     bind:isOpen
     triggerElement={dropdownTriggerElement}
