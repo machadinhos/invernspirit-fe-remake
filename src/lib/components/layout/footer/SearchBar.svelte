@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="flex w-full">
+<form class="flex w-full">
   <div class="flex w-full items-center bg-background">
     <div class="px-2">
       <Icon src={SlMagnifier} size="20" color="white" />
@@ -30,9 +30,10 @@
       class="w-full bg-background text-white focus:border-none focus:outline-none"
       placeholder="Search product..."
       onkeydown={handleKeyDown}
+      required
     />
   </div>
-  <Button onclick={doSearch} className="w-20 flex justify-center">
+  <Button type="submit" onclick={doSearch} className="w-20 flex justify-center">
     Search
   </Button>
-</div>
+</form>

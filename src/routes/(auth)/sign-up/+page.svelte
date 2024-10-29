@@ -74,6 +74,7 @@
           invalidText={formFields[fieldName].invalidText}
           bind:value={formFields[fieldName].value}
           type="text"
+          required
         >
           {#snippet label()}
             {fieldName === "firstName" ? "First Name" : "Last Name"}
@@ -90,6 +91,7 @@
         invalidText={formFields[fieldName].invalidText}
         bind:value={formFields[fieldName].value}
         type={fieldName === "email" ? "email" : "password"}
+        required
       >
         {#snippet label()}
           {fieldName.charAt(0).toUpperCase() +
