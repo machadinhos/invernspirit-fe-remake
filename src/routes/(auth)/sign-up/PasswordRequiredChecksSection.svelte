@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { validatePassword } from "$lib/utils/general";
+  import { validatePassword } from "$lib/utils/input-validation";
   import PasswordRequiredCheck from "./PasswordRequiredCheck.svelte";
 
   interface Props {

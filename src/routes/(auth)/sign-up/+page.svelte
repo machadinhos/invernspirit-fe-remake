@@ -1,6 +1,10 @@
 <script lang="ts">
   import TextInput from "$lib/components/ui/TextInput.svelte";
-  import { validateEmail, validatePassword } from "$lib/utils/general.js";
+  import {
+    containsXSSPatterns,
+    validateEmail,
+    validatePassword
+  } from "$lib/utils/input-validation.js";
   import PasswordRequiredChecksSection from "./PasswordRequiredChecksSection.svelte";
   import Button from "$lib/components/ui/Button.svelte";
 
@@ -18,13 +22,13 @@
       value: "",
       isValid: true,
       invalidText: "Please enter your first name.",
-      validate: (value) => value !== ""
+      validate: (value) => value !== "" && !containsXSSPatterns(value)
     },
     lastName: {
       value: "",
       isValid: true,
       invalidText: "Please enter your last name.",
-      validate: (value) => value !== ""
+      validate: (value) => value !== "" && !containsXSSPatterns(value)
     },
     email: {
       value: "",
@@ -36,13 +40,14 @@
       value: "",
       isValid: true,
       invalidText: "Please enter a valid password.",
-      validate: (value) => !validatePassword(value).hasErrors
+      validate: (value) => validatePassword(value).isValid
     },
     confirmPassword: {
       value: "",
       isValid: true,
       invalidText: "Please rewrite your password.",
-      validate: (value) => value === formFields.password.value
+      validate: (value) =>
+        value === formFields.password.value && !containsXSSPatterns(value)
     }
   });
 
