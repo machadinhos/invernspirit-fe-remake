@@ -5,6 +5,7 @@
   interface Props {
     className?: string;
     isOpen: boolean;
+    onClose?: () => void;
     triggerElement: HTMLElement | undefined;
     isFullWidth?: boolean;
     closeOnOutsideClick?: boolean;
@@ -14,6 +15,7 @@
   let {
     className = "",
     isOpen = $bindable(),
+    onClose = () => {},
     triggerElement,
     isFullWidth = false,
     closeOnOutsideClick = true,
@@ -48,6 +50,7 @@
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
+      onClose();
     }
   });
 </script>
