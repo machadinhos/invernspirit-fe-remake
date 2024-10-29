@@ -51,6 +51,9 @@
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
           <TextInput
+            onblur={() => {
+              isValidEmailInput = validateEmail(emailInput);
+            }}
             bind:value={emailInput}
             type="email"
             invalid={!isValidEmailInput}
