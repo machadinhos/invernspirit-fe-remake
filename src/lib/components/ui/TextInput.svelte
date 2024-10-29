@@ -8,6 +8,7 @@
     className?: string;
     invalid?: boolean;
     invalidText?: string;
+    required?: boolean;
   }
 
   let {
@@ -16,7 +17,8 @@
     label,
     className = "",
     invalid = false,
-    invalidText
+    invalidText,
+    required = false
   }: Props = $props();
 </script>
 
@@ -28,6 +30,7 @@
       class="peer h-10 w-full border-b-2 border-white bg-transparent text-white focus:border-primary focus:outline-none {invalid
         ? 'border-error'
         : ''} {className}"
+      {required}
     />
     {#if label}
       <label
