@@ -4,11 +4,16 @@
   interface Props {
     type?: HTMLButtonAttributes["type"];
     className?: HTMLButtonAttributes["class"];
-    onclick: () => void;
+    onclick?: () => void;
     children: import("svelte").Snippet;
   }
 
-  let { type = "button", className = "", onclick, children }: Props = $props();
+  let {
+    type = "button",
+    className = "",
+    onclick = () => {},
+    children
+  }: Props = $props();
 </script>
 
 <button

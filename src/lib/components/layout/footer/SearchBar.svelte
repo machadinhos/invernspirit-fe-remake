@@ -10,16 +10,9 @@
     if (containsXSSPatterns(searchString)) return;
     alert("todo");
   }
-
-  function handleKeyDown(event: CustomEvent | KeyboardEvent) {
-    event = event as KeyboardEvent;
-    if (event.key === "Enter") {
-      doSearch();
-    }
-  }
 </script>
 
-<form class="flex w-full">
+<form class="flex w-full" onsubmit={doSearch}>
   <div class="flex w-full items-center bg-background">
     <div class="px-2">
       <Icon src={SlMagnifier} size="20" color="white" />
@@ -29,11 +22,8 @@
       bind:value={searchString}
       class="w-full bg-background text-white focus:border-none focus:outline-none"
       placeholder="Search product..."
-      onkeydown={handleKeyDown}
       required
     />
   </div>
-  <Button type="submit" onclick={doSearch} className="w-20 flex justify-center">
-    Search
-  </Button>
+  <Button type="submit" className="w-20 flex justify-center">Search</Button>
 </form>
