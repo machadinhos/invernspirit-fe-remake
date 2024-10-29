@@ -5,6 +5,7 @@
     value: string;
     type: import("svelte/elements").HTMLInputTypeAttribute;
     label?: Snippet;
+    trailingIcon?: Snippet;
     className?: string;
     invalid?: boolean;
     invalidText?: string;
@@ -16,6 +17,7 @@
     value = $bindable(),
     type,
     label,
+    trailingIcon,
     className = "",
     invalid = false,
     invalidText,
@@ -30,11 +32,15 @@
       {onblur}
       {type}
       bind:value
-      class="peer h-10 w-full border-b-2 border-white bg-transparent text-white focus:border-primary focus:outline-none {invalid
-        ? 'border-error'
-        : ''} {className}"
+      class:pr-6={trailingIcon}
+      class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
       {required}
     />
+    {#if trailingIcon}
+      <div class="absolute right-1 top-1/2 -translate-y-1/2 text-[#a6a6a6]">
+        {@render trailingIcon()}
+      </div>
+    {/if}
     {#if label}
       <label
         class="pointer-events-none absolute left-0 select-none text-lg text-[#a6a6a6] transition-all peer-focus:-top-3.5 peer-focus:text-sm {value

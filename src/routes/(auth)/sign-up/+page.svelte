@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TextInput from "$lib/components/ui/TextInput.svelte";
+  import TextInput from "$lib/components/ui/input/TextInput.svelte";
   import {
     containsXSSPatterns,
     validateEmail,
