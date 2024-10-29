@@ -26,7 +26,7 @@ export interface PasswordErrors {
 export function validatePassword(password: string) {
   const errors: PasswordErrors = {};
 
-  if (password.length < 10) {
+  if (password.length < 10 || password.length > 128) {
     errors.length = true;
   }
   if (!/[A-Z]/.test(password)) {
