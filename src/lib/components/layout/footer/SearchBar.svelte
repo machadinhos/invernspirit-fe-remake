@@ -2,10 +2,12 @@
   import Button from "$lib/components/ui/Button.svelte";
   import { Icon } from "svelte-icons-pack";
   import { SlMagnifier } from "svelte-icons-pack/sl";
+  import { containsXSSPatterns } from "$lib/utils/input-validation";
 
   let searchString = $state("");
 
   function doSearch() {
+    if (containsXSSPatterns(searchString)) return;
     alert("todo");
   }
 
