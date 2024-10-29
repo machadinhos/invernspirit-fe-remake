@@ -43,7 +43,7 @@
     {/if}
     {#if label}
       <label
-        class="pointer-events-none absolute left-0 select-none text-lg text-[#a6a6a6] transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
+        class="pointer-events-none absolute left-0 select-none text-lg text-text-secondary transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
           ? '-top-3.5 text-sm'
           : 'top-2 text-base'}"
       >

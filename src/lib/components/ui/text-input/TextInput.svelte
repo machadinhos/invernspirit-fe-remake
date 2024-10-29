@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import BaseInput from "$lib/components/ui/input/BaseInput.svelte";
-  import PasswordTextInput from "$lib/components/ui/input/PasswordTextInput.svelte";
+  import BaseTextInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
+  import PasswordTextInput from "$lib/components/ui/text-input/PasswordTextInput.svelte";
 
   interface Props {
     value: string;
@@ -39,7 +39,7 @@
     {onblur}
   />
 {:else}
-  <BaseInput
+  <BaseTextInput
     {trailingIcon}
     {type}
     bind:value

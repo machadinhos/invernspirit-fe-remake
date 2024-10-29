@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TextInput from "$lib/components/ui/input/TextInput.svelte";
+  import TextInput from "$lib/components/ui/text-input/TextInput.svelte";
   import {
     containsXSSPatterns,
     validateEmail,
@@ -7,6 +7,7 @@
   } from "$lib/utils/input-validation";
   import PasswordRequiredChecksSection from "./PasswordRequiredChecksSection.svelte";
   import Button from "$lib/components/ui/Button.svelte";
+  import CheckBox from "$lib/components/ui/CheckBox.svelte";
 
   interface FormFields {
     [key: string]: {
@@ -50,6 +51,8 @@
         value === formFields.password.value && !containsXSSPatterns(value)
     }
   });
+
+  let rememberMeInput = $state(false);
 
   function generateOnblurCallback(field: string) {
     return () => {
@@ -114,5 +117,15 @@
     </div>
   {/each}
 
-  <Button className="w-full mt-4" type="submit">Sign up</Button>
+  <CheckBox bind:checked={rememberMeInput} label="Remember me?" />
+
+  <div class="mt-10 flex items-center justify-center">
+    <p>
+      Already have an account? <a class="text-primary underline" href="/sign-in"
+        >Sign in</a
+      >
+    </p>
+  </div>
+
+  <Button className="w-full mt-5" type="submit">Sign up</Button>
 </form>
