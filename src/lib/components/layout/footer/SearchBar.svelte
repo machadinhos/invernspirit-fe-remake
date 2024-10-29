@@ -7,7 +7,7 @@
   let searchString = $state("");
 
   function doSearch() {
-    if (containsXSSPatterns(searchString)) return;
+    if (containsXSSPatterns(searchString) || searchString === "") return;
     alert("todo");
   }
 </script>
@@ -22,7 +22,6 @@
       bind:value={searchString}
       class="w-full bg-background text-white focus:border-none focus:outline-none"
       placeholder="Search product..."
-      required
     />
   </div>
   <Button type="submit" className="w-20 flex justify-center">Search</Button>
