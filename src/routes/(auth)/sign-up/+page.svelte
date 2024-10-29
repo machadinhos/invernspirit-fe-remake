@@ -4,7 +4,7 @@
     containsXSSPatterns,
     validateEmail,
     validatePassword
-  } from "$lib/utils/input-validation.js";
+  } from "$lib/utils/input-validation";
   import PasswordRequiredChecksSection from "./PasswordRequiredChecksSection.svelte";
   import Button from "$lib/components/ui/Button.svelte";
 
@@ -51,6 +51,14 @@
     }
   });
 
+  function generateOnblurCallback(field: string) {
+    return () => {
+      formFields[field].isValid = formFields[field].validate(
+        formFields[field].value
+      );
+    };
+  }
+
   function submitSignUp() {
     let hasError = false;
 
@@ -65,11 +73,12 @@
   }
 </script>
 
-<form class="w-full gap-6">
+<form class="w-full gap-6" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
     {#each ["firstName", "lastName"] as fieldName}
       <div class="w-1/2">
         <TextInput
+          onblur={generateOnblurCallback(fieldName)}
           invalid={!formFields[fieldName].isValid}
           invalidText={formFields[fieldName].invalidText}
           bind:value={formFields[fieldName].value}
@@ -87,6 +96,7 @@
   {#each ["email", "password", "confirmPassword"] as fieldName}
     <div class="w-full">
       <TextInput
+        onblur={generateOnblurCallback(fieldName)}
         invalid={!formFields[fieldName].isValid}
         invalidText={formFields[fieldName].invalidText}
         bind:value={formFields[fieldName].value}
@@ -104,7 +114,5 @@
     </div>
   {/each}
 
-  <Button className="w-full mt-4" onclick={submitSignUp} type="submit">
-    Sign up
-  </Button>
+  <Button className="w-full mt-4" type="submit">Sign up</Button>
 </form>

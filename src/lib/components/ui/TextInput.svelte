@@ -9,6 +9,7 @@
     invalid?: boolean;
     invalidText?: string;
     required?: boolean;
+    onblur?: () => void;
   }
 
   let {
@@ -18,13 +19,15 @@
     className = "",
     invalid = false,
     invalidText,
-    required = false
+    required = false,
+    onblur = () => {}
   }: Props = $props();
 </script>
 
 <div class="pt-2.5">
   <div class="relative">
     <input
+      {onblur}
       {type}
       bind:value
       class="peer h-10 w-full border-b-2 border-white bg-transparent text-white focus:border-primary focus:outline-none {invalid

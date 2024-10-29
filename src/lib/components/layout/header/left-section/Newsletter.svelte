@@ -44,7 +44,7 @@
     bind:isOpen
     triggerElement={dropdownTriggerElement}
   >
-    <form class="m-5">
+    <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
         <h2>Subscribe to our newsletter</h2>
       </DropdownMenuItem>
@@ -70,11 +70,7 @@
         </div>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
-        <Button
-          className="mt-2 w-full"
-          type="submit"
-          onclick={subscribeToNewsletter}>Subscribe</Button
-        >
+        <Button className="mt-2 w-full" type="submit">Subscribe</Button>
       </DropdownMenuItem>
     </form>
   </DropdownMenu>
