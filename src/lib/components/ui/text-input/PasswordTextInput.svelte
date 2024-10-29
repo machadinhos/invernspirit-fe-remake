@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
   import { FaEye, FaEyeSlash } from "svelte-icons-pack/fa";
   import { Icon } from "svelte-icons-pack";
-  import BaseInput from "$lib/components/ui/input/BaseInput.svelte";
+  import BaseInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
 
   interface Props {
     value: string;

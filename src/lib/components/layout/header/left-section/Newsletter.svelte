@@ -7,7 +7,7 @@
   import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
   import DropdownMenu from "$lib/components/ui/dropdown-menu/DropdownMenu.svelte";
   import DropdownMenuItem from "$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte";
-  import TextInput from "$lib/components/ui/input/TextInput.svelte";
+  import TextInput from "$lib/components/ui/text-input/TextInput.svelte";
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
