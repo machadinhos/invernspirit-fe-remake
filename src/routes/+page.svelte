@@ -9,12 +9,10 @@
   function rotateImages() {
     nextImageIndex =
       (currentImageIndex + 1) % imageLinks.index["bg-images"].length;
-    setTimeout(() => {
-      currentImageIndex = nextImageIndex;
-    }, 500);
+    currentImageIndex = nextImageIndex;
   }
 
-  setInterval(rotateImages, 5000);
+  setInterval(rotateImages, 10000);
 </script>
 
 <div
@@ -27,7 +25,7 @@
   {#each imageLinks.index["bg-images"] as image, index}
     <div>
       <div
-        class="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-500"
+        class="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-[2s]"
         class:opacity-60={index === currentImageIndex}
         class:opacity-0={index !== currentImageIndex}
         style="background-image: url({image})"
