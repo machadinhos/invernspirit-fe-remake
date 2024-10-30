@@ -10,14 +10,16 @@
   let selected = $derived($page.url.pathname.slice(1));
 </script>
 
-<div class="flex h-full w-full items-center justify-center">
-  <div class="flex h-[80%] w-[30%] flex-col items-center bg-background">
+<div class="flex h-full w-full justify-center">
+  <div
+    class="mt-10 flex h-fit w-[95%] flex-col items-center bg-background sm:w-[80%] md:w-[65%] lg:w-[50%] xl:w-[30%]"
+  >
     <div class="relative w-full">
-      <ul class="mt-4 flex w-full">
+      <ul class="flex w-full">
         <li class="w-1/2 text-center" style="font-size: 2.5rem">
           <a
             href="/sign-in"
-            class="block w-full transition-colors duration-500 {selected ===
+            class="block w-full pt-4 transition-colors duration-500 {selected ===
             'sign-in'
               ? 'text-primary'
               : ''}"
@@ -28,7 +30,7 @@
         <li class="w-1/2 text-center" style="font-size: 2.5rem">
           <a
             href="/sign-up"
-            class="block w-full transition-colors duration-500 {selected ===
+            class="block w-full pt-4 transition-colors duration-500 {selected ===
             'sign-up'
               ? 'text-primary'
               : ''}"

@@ -35,7 +35,7 @@
   }
 </script>
 
-<form class="w-full gap-6 pt-10" onsubmit={submitSignIn}>
+<form class="mb-8 w-full gap-6 pt-10" onsubmit={submitSignIn}>
   {#each ["email", "password"] as fieldName}
     <div class="w-full">
       <TextInput
