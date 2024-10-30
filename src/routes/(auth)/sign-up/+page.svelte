@@ -127,5 +127,5 @@
     </p>
   </div>
 
-  <Button className="w-full mt-5" type="submit">Sign up</Button>
+  <Button className="mt-5 w-full" type="submit">Sign up</Button>
 </form>

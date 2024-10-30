@@ -67,7 +67,7 @@
             {#snippet label()}
               <div class="flex">
                 <Icon
-                  className="pb-1 mr-0.5 flex content-center"
+                  className="mr-0.5 flex content-center pb-1"
                   src={TiMail}
                   size="20"
                 />

@@ -24,5 +24,5 @@
       placeholder="Search product..."
     />
   </div>
-  <Button type="submit" className="w-20 flex justify-center">Search</Button>
+  <Button type="submit" className="flex w-20 justify-center">Search</Button>
 </form>
