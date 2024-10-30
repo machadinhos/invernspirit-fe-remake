@@ -1,6 +1,7 @@
 <script lang="ts">
   import { imageLinks } from "$lib/constants/links";
   import GrainyFilter from "$lib/components/ui/GrainyFilter.svelte";
+  import { fade } from "svelte/transition";
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -17,6 +18,7 @@
 </script>
 
 <div
+  transition:fade
   class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden bg-background grayscale filter"
 >
   <GrainyFilter>
