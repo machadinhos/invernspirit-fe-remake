@@ -62,7 +62,7 @@
   }
 </script>
 
-<form class="w-full gap-6 pt-10" onsubmit={submitSignUp}>
+<form class="mb-8 w-full gap-6 pt-10" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
     {#each ["firstName", "lastName"] as fieldName}
       <div class="w-1/2">
