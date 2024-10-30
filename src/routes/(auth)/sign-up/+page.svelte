@@ -12,6 +12,7 @@
   interface FormFields {
     [key: string]: {
       value: string;
+      label: string;
       isValid: boolean;
       invalidText: string;
       validate: (value: string) => boolean;
@@ -21,30 +22,35 @@
   const formFields: FormFields = $state({
     firstName: {
       value: "",
+      label: "First Name",
       isValid: true,
       invalidText: "Please enter your first name.",
       validate: (value) => value !== "" && !containsXSSPatterns(value)
     },
     lastName: {
       value: "",
+      label: "Last Name",
       isValid: true,
       invalidText: "Please enter your last name.",
       validate: (value) => value !== "" && !containsXSSPatterns(value)
     },
     email: {
       value: "",
+      label: "Email",
       isValid: true,
       invalidText: "Please enter a valid email address.",
       validate: validateEmail
     },
     password: {
       value: "",
+      label: "Password",
       isValid: true,
       invalidText: "Please enter a valid password.",
       validate: (value) => validatePassword(value).isValid
     },
     confirmPassword: {
       value: "",
+      label: "Confirm Password",
       isValid: true,
       invalidText: "Please rewrite your password.",
       validate: (value) =>
@@ -89,7 +95,7 @@
           required
         >
           {#snippet label()}
-            {fieldName === "firstName" ? "First Name" : "Last Name"}
+            {formFields[fieldName].label}
           {/snippet}
         </TextInput>
       </div>
@@ -107,8 +113,7 @@
         required
       >
         {#snippet label()}
-          {fieldName.charAt(0).toUpperCase() +
-            fieldName.slice(1).replace(/([A-Z])/g, " $1")}
+          {formFields[fieldName].label}
         {/snippet}
       </TextInput>
       {#if fieldName === "password"}
