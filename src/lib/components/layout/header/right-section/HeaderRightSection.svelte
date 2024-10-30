@@ -33,10 +33,14 @@
     >
       <div class="flex flex-col gap-4">
         <DropdownMenuItem>
-          <a class="hover:text-primary" href="/sign-in">Sign In</a>
+          <button onclick={() => (isOpen = false)}>
+            <a class="hover:text-primary" href="/sign-in">Sign In</a>
+          </button>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <a class="hover:text-primary" href="/sign-up">Sign Up</a>
+          <button onclick={() => (isOpen = false)}>
+            <a class="hover:text-primary" href="/sign-up">Sign Up</a>
+          </button>
         </DropdownMenuItem>
       </div>
     </DropdownMenu>
