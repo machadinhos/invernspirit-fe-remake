@@ -5,7 +5,7 @@
 </script>
 
 <header>
-  <div class="z-10 mx-10 mt-8 grid" style="grid-template-columns: 1fr auto 1fr">
+  <div class="z-10 mx-10 grid" style="grid-template-columns: 1fr auto 1fr">
     <HeaderLeftSection />
     <HeaderMiddleSection />
     <HeaderRightSection />

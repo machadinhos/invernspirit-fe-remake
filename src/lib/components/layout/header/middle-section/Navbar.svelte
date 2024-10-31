@@ -15,8 +15,8 @@
   }
 </script>
 
-<nav>
-  <ul class="flex h-full gap-20 text-white">
+<nav class="mt-5">
+  <ul class="flex h-full items-center gap-20 text-white">
     <NavbarItem>
       <button
         class="flex items-center gap-1.5"
@@ -53,12 +53,16 @@
       <a href="/">about</a>
     </NavbarItem>
     <li>
-      <div class="flex items-center justify-center">
-        <a href="/">
+      <div class="flex h-16 w-16 items-center justify-center">
+        <a
+          href="/"
+          class="imageLink flex h-full w-full items-center justify-center"
+        >
           <img
+            fetchpriority="high"
             src="/images/logo.webp"
             alt="logo"
-            class="h-10 w-10 object-contain"
+            class="logoImage h-10 w-10 object-contain"
           />
         </a>
       </div>
@@ -71,3 +75,13 @@
     </NavbarItem>
   </ul>
 </nav>
+
+<style>
+  .logoImage {
+    transition: scale 300ms ease-in-out;
+  }
+
+  .imageLink:hover > .logoImage {
+    scale: 130%;
+  }
+</style>

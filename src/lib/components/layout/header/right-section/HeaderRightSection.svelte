@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="flex items-center justify-end gap-4">
+<div class="mt-8 flex items-center justify-end gap-4">
   <select class="h-fit bg-background text-white">
     <option>pt</option>
     <option>es</option>
