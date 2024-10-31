@@ -2,6 +2,7 @@
   import { imageLinks } from "$lib/constants/links";
   import GrainyFilter from "$lib/components/ui/GrainyFilter.svelte";
   import { fade } from "svelte/transition";
+  import cart from "$lib/state/cart.svelte";
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -33,3 +34,6 @@
     </div>
   {/each}
 </div>
+
+<button onclick={() => cart.addProduct()}>test</button>
+{cart.value.length}
