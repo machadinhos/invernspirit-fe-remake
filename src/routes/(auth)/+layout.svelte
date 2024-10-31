@@ -44,7 +44,7 @@
         style="left: {selected === 'sign-in' ? '7.5%' : '57.5%'}"
       ></div>
     </div>
-    <div class="mt-5 w-[75%]">
+    <div class="mb-10 mt-5 w-[75%]">
       {@render children()}
     </div>
   </div>
