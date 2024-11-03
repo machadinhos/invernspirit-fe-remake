@@ -71,7 +71,7 @@
       <a href="/">contacts</a>
     </NavbarItem>
     <NavbarItem>
-      <a class="h-full" href="/">faq</a>
+      <a class="h-full" href="/faq">faq</a>
     </NavbarItem>
   </ul>
 </nav>
