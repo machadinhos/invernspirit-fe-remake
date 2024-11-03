@@ -7,8 +7,6 @@
   }
 
   let focusedIndex = $state(0);
-  let questionsRef: (HTMLDivElement | undefined)[] = $state([]);
-  let tocItemsRef: (HTMLButtonElement | undefined)[] = $state([]);
 
   const faqData: FAQItem[] = [
     {
@@ -162,22 +160,19 @@
     };
   });
 
-  $effect(() => {
-    const currentQuestion = questionsRef[focusedIndex];
-    if (currentQuestion) {
-      currentQuestion.scrollIntoView({
+  function scrollToElement(prefix: string, index: number) {
+    const element = document.getElementById(`${prefix}-${index}`);
+    if (element) {
+      element.scrollIntoView({
         behavior: "smooth",
         block: "center"
       });
     }
+  }
 
-    const currentTocItem = tocItemsRef[focusedIndex];
-    if (currentTocItem) {
-      currentTocItem.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }
+  $effect(() => {
+    scrollToElement("faq-question", focusedIndex);
+    scrollToElement("faq-toc", focusedIndex);
   });
 
   const handleTocClick = (index: number) => {
@@ -193,7 +188,7 @@
     <div class="flex-1 overflow-y-auto">
       {#each faqData as item, index}
         <button
-          bind:this={tocItemsRef[index]}
+          id="faq-toc-{index}"
           class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex ===
           index
             ? 'bg-primary font-medium'
@@ -210,7 +205,7 @@
     <h1 class="mb-12 text-center text-4xl font-bold">FAQ</h1>
     {#each faqData as item, index}
       <div
-        bind:this={questionsRef[index]}
+        id="faq-question-{index}"
         class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex ===
         index
           ? 'scale-105 bg-background shadow-lg'
