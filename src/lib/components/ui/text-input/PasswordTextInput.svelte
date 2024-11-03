@@ -3,10 +3,13 @@
   import { FaEye, FaEyeSlash } from "svelte-icons-pack/fa";
   import { Icon } from "svelte-icons-pack";
   import BaseInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
+  import type { HTMLInputAttributes } from "svelte/elements";
 
   interface Props {
     value: string;
+    autocomplete: HTMLInputAttributes["autocomplete"];
     label?: Snippet;
+    name: HTMLInputAttributes["name"];
     className?: string;
     invalid?: boolean;
     invalidText?: string;
@@ -17,6 +20,8 @@
   let {
     value = $bindable(),
     label,
+    name,
+    autocomplete,
     className = "",
     invalid = false,
     invalidText,
@@ -30,7 +35,9 @@
 <BaseInput
   type={shown ? "text" : "password"}
   bind:value
+  {autocomplete}
   {label}
+  {name}
   {className}
   {invalid}
   {invalidText}

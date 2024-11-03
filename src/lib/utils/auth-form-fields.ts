@@ -1,17 +1,23 @@
-export interface FormFields {
-  [key: string]: {
-    value: string;
-    label: string;
-    isValid: boolean;
-    invalidText: string;
-    validate: (value: string) => boolean;
-  };
+import type {
+  HTMLInputAttributes,
+  HTMLInputTypeAttribute
+} from "svelte/elements";
+
+export interface FormField {
+  value: string;
+  autocomplete: HTMLInputAttributes["autocomplete"];
+  type: HTMLInputTypeAttribute;
+  name: HTMLInputAttributes["name"];
+  label: string;
+  isValid: boolean;
+  invalidText: string;
+  validate: (value: string) => boolean;
 }
 
-export function validateFormFields(formFields: FormFields) {
+export function validateFormFields(formFields: FormField[]) {
   let hasError = false;
 
-  for (const [, field] of Object.entries(formFields)) {
+  for (const field of formFields) {
     const isValid = field.validate(field.value);
     field.isValid = isValid;
     if (!isValid) hasError = true;
@@ -20,10 +26,8 @@ export function validateFormFields(formFields: FormFields) {
   return !hasError;
 }
 
-export function generateOnblurCallback(formFields: FormFields, field: string) {
+export function generateOnblurCallback(formField: FormField) {
   return () => {
-    formFields[field].isValid = formFields[field].validate(
-      formFields[field].value
-    );
+    formField.isValid = formField.validate(formField.value);
   };
 }

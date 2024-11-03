@@ -2,23 +2,28 @@
   import type { Snippet } from "svelte";
   import BaseTextInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
   import PasswordTextInput from "$lib/components/ui/text-input/PasswordTextInput.svelte";
+  import type { HTMLInputAttributes } from "svelte/elements";
 
   interface Props {
     value: string;
     type: import("svelte/elements").HTMLInputTypeAttribute;
+    autocomplete: HTMLInputAttributes["autocomplete"];
+    name: HTMLInputAttributes["name"];
+    required?: boolean;
     label?: Snippet;
     trailingIcon?: Snippet;
     className?: string;
     invalid?: boolean;
     invalidText?: string;
-    required?: boolean;
     onblur?: () => void;
   }
 
   let {
     value = $bindable(),
     type,
+    autocomplete,
     label,
+    name,
     trailingIcon,
     className = "",
     invalid = false,
@@ -31,7 +36,9 @@
 {#if type === "password"}
   <PasswordTextInput
     bind:value
+    {autocomplete}
     {label}
+    {name}
     {className}
     {invalid}
     {invalidText}
@@ -42,6 +49,8 @@
   <BaseTextInput
     {trailingIcon}
     {type}
+    {name}
+    {autocomplete}
     bind:value
     {label}
     {className}
