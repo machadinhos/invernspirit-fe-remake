@@ -1,10 +1,10 @@
 <script lang="ts">
-  import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
-  import { BiSolidCart } from "svelte-icons-pack/bi";
-  import { FaSolidUser } from "svelte-icons-pack/fa";
-  import DropdownMenu from "$lib/components/ui/dropdown-menu/DropdownMenu.svelte";
-  import DropdownMenuItem from "$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte";
-  import cart from "$lib/state/cart.svelte";
+  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
+  import { BiSolidCart } from 'svelte-icons-pack/bi';
+  import { FaSolidUser } from 'svelte-icons-pack/fa';
+  import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import cart from '$lib/state/cart.svelte';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
@@ -49,7 +49,7 @@
   <a href="/" class="h-fit w-fit">
     <HeaderIcon
       src={BiSolidCart}
-      badge={cart.value.length > 0 ? `${cart.value.length}` : ""}
+      badge={cart.value.length > 0 ? `${cart.value.length}` : ''}
     />
   </a>
 </div>

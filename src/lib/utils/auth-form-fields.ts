@@ -1,13 +1,13 @@
 import type {
   HTMLInputAttributes,
   HTMLInputTypeAttribute
-} from "svelte/elements";
+} from 'svelte/elements';
 
 export interface FormField {
   value: string;
-  autocomplete: HTMLInputAttributes["autocomplete"];
+  autocomplete: HTMLInputAttributes['autocomplete'];
   type: HTMLInputTypeAttribute;
-  name: HTMLInputAttributes["name"];
+  name: HTMLInputAttributes['name'];
   label: string;
   isValid: boolean;
   invalidText: string;

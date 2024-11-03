@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Button from "$lib/components/ui/Button.svelte";
-  import { Icon } from "svelte-icons-pack";
-  import { SlMagnifier } from "svelte-icons-pack/sl";
-  import { containsXSSPatterns } from "$lib/utils/input-validation";
+  import Button from '$lib/components/ui/Button.svelte';
+  import { Icon } from 'svelte-icons-pack';
+  import { SlMagnifier } from 'svelte-icons-pack/sl';
+  import { containsXSSPatterns } from '$lib/utils/input-validation';
 
-  let searchString = $state("");
+  let searchString = $state('');
 
   function doSearch() {
-    if (containsXSSPatterns(searchString) || searchString === "") return;
-    alert("todo");
+    if (containsXSSPatterns(searchString) || searchString === '') return;
+    alert('todo');
   }
 </script>
 

@@ -9,6 +9,7 @@
       }
     }
   ],
+  "singleQuote": true,
   "trailingComma": "none",
   "endOfLine": "crlf"
 }

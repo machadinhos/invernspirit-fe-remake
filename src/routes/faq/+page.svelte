@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   interface FAQItem {
     question: string;
@@ -10,108 +10,108 @@
 
   const faqData: FAQItem[] = [
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     },
     {
-      question: "TEST",
-      answer: "test test test test"
+      question: 'TEST',
+      answer: 'test test test test'
     }
   ];
 
@@ -147,16 +147,16 @@
       }
     };
 
-    document.addEventListener("wheel", handleWheel, { passive: false });
-    document.addEventListener("touchstart", handleTouchStart, {
+    document.addEventListener('wheel', handleWheel, { passive: false });
+    document.addEventListener('touchstart', handleTouchStart, {
       passive: true
     });
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
-      document.removeEventListener("wheel", handleWheel);
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   });
 
@@ -164,15 +164,15 @@
     const element = document.getElementById(`${prefix}-${index}`);
     if (element) {
       element.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+        behavior: 'smooth',
+        block: 'center'
       });
     }
   }
 
   $effect(() => {
-    scrollToElement("faq-question", focusedIndex);
-    scrollToElement("faq-toc", focusedIndex);
+    scrollToElement('faq-question', focusedIndex);
+    scrollToElement('faq-toc', focusedIndex);
   });
 
   const handleTocClick = (index: number) => {

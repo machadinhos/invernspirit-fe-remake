@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Icon, type IconType } from "svelte-icons-pack";
+  import { Icon, type IconType } from 'svelte-icons-pack';
 
   interface Props {
     src: IconType;

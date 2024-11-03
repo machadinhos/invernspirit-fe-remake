@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import BaseTextInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
-  import PasswordTextInput from "$lib/components/ui/text-input/PasswordTextInput.svelte";
-  import type { HTMLInputAttributes } from "svelte/elements";
+  import type { Snippet } from 'svelte';
+  import BaseTextInput from '$lib/components/ui/text-input/BaseTextInput.svelte';
+  import PasswordTextInput from '$lib/components/ui/text-input/PasswordTextInput.svelte';
+  import type { HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     value: string;
-    type: import("svelte/elements").HTMLInputTypeAttribute;
-    autocomplete: HTMLInputAttributes["autocomplete"];
-    name: HTMLInputAttributes["name"];
+    type: import('svelte/elements').HTMLInputTypeAttribute;
+    autocomplete: HTMLInputAttributes['autocomplete'];
+    name: HTMLInputAttributes['name'];
     required?: boolean;
     label?: Snippet;
     trailingIcon?: Snippet;
@@ -25,7 +25,7 @@
     label,
     name,
     trailingIcon,
-    className = "",
+    className = '',
     invalid = false,
     invalidText,
     required = false,
@@ -33,7 +33,7 @@
   }: Props = $props();
 </script>
 
-{#if type === "password"}
+{#if type === 'password'}
   <PasswordTextInput
     bind:value
     {autocomplete}

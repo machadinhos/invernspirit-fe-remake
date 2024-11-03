@@ -1,33 +1,33 @@
 <script lang="ts">
-  import { validateEmail, validatePassword } from "$lib/utils/input-validation";
+  import { validateEmail, validatePassword } from '$lib/utils/input-validation';
   import {
     type FormField,
     generateOnblurCallback,
     validateFormFields
-  } from "$lib/utils/auth-form-fields";
-  import TextInput from "$lib/components/ui/text-input/TextInput.svelte";
-  import CheckBox from "$lib/components/ui/CheckBox.svelte";
-  import Button from "$lib/components/ui/Button.svelte";
+  } from '$lib/utils/auth-form-fields';
+  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
+  import CheckBox from '$lib/components/ui/CheckBox.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
 
   let formFields: FormField[] = $state([
     {
-      value: "",
-      type: "email",
-      name: "email",
-      autocomplete: "username",
-      label: "Email",
+      value: '',
+      type: 'email',
+      name: 'email',
+      autocomplete: 'username',
+      label: 'Email',
       isValid: true,
-      invalidText: "Please enter a valid email address.",
+      invalidText: 'Please enter a valid email address.',
       validate: validateEmail
     },
     {
-      value: "",
-      name: "password",
-      type: "password",
-      autocomplete: "current-password",
-      label: "Password",
+      value: '',
+      name: 'password',
+      type: 'password',
+      autocomplete: 'current-password',
+      label: 'Password',
       isValid: true,
-      invalidText: "Please enter a valid password.",
+      invalidText: 'Please enter a valid password.',
       validate: (value) => validatePassword(value).isValid
     }
   ]);
@@ -37,7 +37,7 @@
   function submitSignIn() {
     if (!validateFormFields(formFields)) return;
 
-    alert("todo");
+    alert('todo');
   }
 </script>
 

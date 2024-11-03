@@ -1,6 +1,6 @@
 <script>
-  import MediaButtonsSection from "$lib/components/layout/header/left-section/MediaButtonsSection.svelte";
-  import NewsletterSub from "$lib/components/layout/header/left-section/Newsletter.svelte";
+  import MediaButtonsSection from '$lib/components/layout/header/left-section/MediaButtonsSection.svelte';
+  import NewsletterSub from '$lib/components/layout/header/left-section/Newsletter.svelte';
 </script>
 
 <div class="mt-8 flex gap-4">
