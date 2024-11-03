@@ -1,11 +1,11 @@
 <script lang="ts">
-  import "../app.css";
-  import Header from "$lib/components/layout/header/Header.svelte";
-  import Footer from "$lib/components/layout/footer/Footer.svelte";
-  import GrainyFilter from "$lib/components/ui/GrainyFilter.svelte";
+  import '../app.css';
+  import Header from '$lib/components/layout/header/Header.svelte';
+  import Footer from '$lib/components/layout/footer/Footer.svelte';
+  import GrainyFilter from '$lib/components/ui/GrainyFilter.svelte';
 
   interface Props {
-    children: import("svelte").Snippet;
+    children: import('svelte').Snippet;
   }
 
   let { children }: Props = $props();

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { validatePassword } from "$lib/utils/input-validation";
-  import PasswordRequiredCheck from "./PasswordRequiredCheck.svelte";
+  import { validatePassword } from '$lib/utils/input-validation';
+  import PasswordRequiredCheck from './PasswordRequiredCheck.svelte';
 
   interface Props {
     password: string;
@@ -12,14 +12,14 @@
 </script>
 
 <PasswordRequiredCheck
-  text={"Between 10 and 128 characters."}
+  text={'Between 10 and 128 characters.'}
   error={errors.length}
 />
 <PasswordRequiredCheck
-  text={"At least 1 uppercase letter."}
+  text={'At least 1 uppercase letter.'}
   error={errors.uppercaseLetter}
 />
 <PasswordRequiredCheck
-  text={"At least 1 special character."}
+  text={'At least 1 special character.'}
   error={errors.specialCharacters}
 />

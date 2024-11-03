@@ -14,7 +14,7 @@ export function containsXSSPatterns(input: string): boolean {
 export function validateEmail(email: string) {
   if (containsXSSPatterns(email)) return false;
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return email !== "" ? regex.test(email) : false;
+  return email !== '' ? regex.test(email) : false;
 }
 
 export interface PasswordErrors {

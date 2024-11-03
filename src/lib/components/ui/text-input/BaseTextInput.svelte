@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import type { HTMLInputAttributes } from "svelte/elements";
+  import type { Snippet } from 'svelte';
+  import type { HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     value: string;
-    type: import("svelte/elements").HTMLInputTypeAttribute;
-    autocomplete: HTMLInputAttributes["autocomplete"];
+    type: import('svelte/elements').HTMLInputTypeAttribute;
+    autocomplete: HTMLInputAttributes['autocomplete'];
     label?: Snippet;
-    name: HTMLInputAttributes["name"];
+    name: HTMLInputAttributes['name'];
     trailingIcon?: Snippet;
     className?: string;
     invalid?: boolean;
@@ -23,7 +23,7 @@
     label,
     name,
     trailingIcon,
-    className = "",
+    className = '',
     invalid = false,
     invalidText,
     required = false,

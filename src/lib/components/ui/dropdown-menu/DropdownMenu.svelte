@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { slide } from "svelte/transition";
-  import { quartOut } from "svelte/easing";
+  import { slide } from 'svelte/transition';
+  import { quartOut } from 'svelte/easing';
 
   interface Props {
     className?: string;
@@ -9,11 +9,11 @@
     triggerElement: HTMLElement | undefined;
     isFullWidth?: boolean;
     closeOnOutsideClick?: boolean;
-    children: import("svelte").Snippet;
+    children: import('svelte').Snippet;
   }
 
   let {
-    className = "",
+    className = '',
     isOpen = $bindable(),
     onClose = () => {},
     triggerElement,
@@ -47,9 +47,9 @@
 
   $effect(() => {
     if (isOpen) {
-      document.addEventListener("click", handleClickOutside);
+      document.addEventListener('click', handleClickOutside);
     } else {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
       onClose();
     }
   });
@@ -64,7 +64,7 @@
     transition:slide={{ duration: 800, easing: quartOut }}
     style={isFullWidth
       ? `top: ${position.top}px; left: ${position.left}px`
-      : ""}
+      : ''}
   >
     <div class={className}>
       {@render children()}

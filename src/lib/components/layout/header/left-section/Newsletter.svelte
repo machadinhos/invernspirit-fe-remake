@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { Icon } from "svelte-icons-pack";
-  import { TiMail } from "svelte-icons-pack/ti";
-  import Button from "$lib/components/ui/Button.svelte";
-  import { validateEmail } from "$lib/utils/input-validation";
-  import { FaNewspaper } from "svelte-icons-pack/fa";
-  import HeaderIcon from "$lib/components/layout/header/HeaderIcon.svelte";
-  import DropdownMenu from "$lib/components/ui/dropdown-menu/DropdownMenu.svelte";
-  import DropdownMenuItem from "$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte";
-  import TextInput from "$lib/components/ui/text-input/TextInput.svelte";
+  import { Icon } from 'svelte-icons-pack';
+  import { TiMail } from 'svelte-icons-pack/ti';
+  import Button from '$lib/components/ui/Button.svelte';
+  import { validateEmail } from '$lib/utils/input-validation';
+  import { FaNewspaper } from 'svelte-icons-pack/fa';
+  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
+  import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
 
-  let emailInput: string = $state("");
+  let emailInput: string = $state('');
   let isValidEmailInput = $state(true);
 
   function handleIconClick() {
@@ -26,14 +26,14 @@
       isValidEmailInput = false;
       return;
     }
-    alert("todo");
+    alert('todo');
     isOpen = false;
   }
 
   function clearState() {
     isOpen = false;
     isValidEmailInput = true;
-    emailInput = "";
+    emailInput = '';
   }
 </script>
 

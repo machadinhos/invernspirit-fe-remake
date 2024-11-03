@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import { FaEye, FaEyeSlash } from "svelte-icons-pack/fa";
-  import { Icon } from "svelte-icons-pack";
-  import BaseInput from "$lib/components/ui/text-input/BaseTextInput.svelte";
-  import type { HTMLInputAttributes } from "svelte/elements";
+  import type { Snippet } from 'svelte';
+  import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
+  import { Icon } from 'svelte-icons-pack';
+  import BaseInput from '$lib/components/ui/text-input/BaseTextInput.svelte';
+  import type { HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     value: string;
-    autocomplete: HTMLInputAttributes["autocomplete"];
+    autocomplete: HTMLInputAttributes['autocomplete'];
     label?: Snippet;
-    name: HTMLInputAttributes["name"];
+    name: HTMLInputAttributes['name'];
     className?: string;
     invalid?: boolean;
     invalidText?: string;
@@ -22,7 +22,7 @@
     label,
     name,
     autocomplete,
-    className = "",
+    className = '',
     invalid = false,
     invalidText,
     required = false,
@@ -33,7 +33,7 @@
 </script>
 
 <BaseInput
-  type={shown ? "text" : "password"}
+  type={shown ? 'text' : 'password'}
   bind:value
   {autocomplete}
   {label}

@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { HTMLButtonAttributes } from "svelte/elements";
+  import type { HTMLButtonAttributes } from 'svelte/elements';
 
   interface Props {
-    type?: HTMLButtonAttributes["type"];
-    className?: HTMLButtonAttributes["class"];
+    type?: HTMLButtonAttributes['type'];
+    className?: HTMLButtonAttributes['class'];
     onclick?: () => void;
-    children: import("svelte").Snippet;
+    children: import('svelte').Snippet;
   }
 
   let {
-    type = "button",
-    className = "",
+    type = 'button',
+    className = '',
     onclick = () => {},
     children
   }: Props = $props();
