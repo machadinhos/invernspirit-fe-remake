@@ -9,14 +9,17 @@
   import Button from "$lib/components/ui/Button.svelte";
   import CheckBox from "$lib/components/ui/CheckBox.svelte";
   import {
-    type FormFields,
+    type FormField,
     generateOnblurCallback,
     validateFormFields
   } from "$lib/utils/auth-form-fields";
 
-  const formFields: FormFields = $state({
+  const formFields: { [key: string]: FormField } = $state({
     firstName: {
       value: "",
+      name: "firstName",
+      autocomplete: "given-name",
+      type: "text",
       label: "First Name",
       isValid: true,
       invalidText: "Please enter your first name.",
@@ -24,6 +27,9 @@
     },
     lastName: {
       value: "",
+      name: "lastName",
+      autocomplete: "family-name",
+      type: "text",
       label: "Last Name",
       isValid: true,
       invalidText: "Please enter your last name.",
@@ -31,6 +37,9 @@
     },
     email: {
       value: "",
+      name: "email",
+      autocomplete: "username",
+      type: "email",
       label: "Email",
       isValid: true,
       invalidText: "Please enter a valid email address.",
@@ -38,6 +47,9 @@
     },
     password: {
       value: "",
+      name: "password",
+      autocomplete: "new-password",
+      type: "password",
       label: "Password",
       isValid: true,
       invalidText: "Please enter a valid password.",
@@ -45,6 +57,9 @@
     },
     confirmPassword: {
       value: "",
+      autocomplete: "new-password",
+      type: "password",
+      name: "confirmPassword",
       label: "Confirm Password",
       isValid: true,
       invalidText: "Please rewrite your password.",
@@ -56,7 +71,7 @@
   let rememberMeInput = $state(false);
 
   function submitSignUp() {
-    if (!validateFormFields(formFields)) return;
+    if (!validateFormFields(Object.values(formFields))) return;
 
     alert("todo");
   }
@@ -64,39 +79,43 @@
 
 <form class="w-full gap-6 pt-10" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
-    {#each ["firstName", "lastName"] as fieldName}
+    {#each [formFields["firstName"], formFields["lastName"]] as field}
       <div class="w-1/2">
         <TextInput
-          onblur={generateOnblurCallback(formFields, fieldName)}
-          invalid={!formFields[fieldName].isValid}
-          invalidText={formFields[fieldName].invalidText}
-          bind:value={formFields[fieldName].value}
-          type="text"
+          name={field.name}
+          autocomplete={field.autocomplete}
+          onblur={generateOnblurCallback(field)}
+          invalid={!field.isValid}
+          invalidText={field.invalidText}
+          bind:value={field.value}
+          type={field.type}
           required
         >
           {#snippet label()}
-            {formFields[fieldName].label}
+            {field.label}
           {/snippet}
         </TextInput>
       </div>
     {/each}
   </div>
 
-  {#each ["email", "password", "confirmPassword"] as fieldName}
+  {#each [formFields["email"], formFields["password"], formFields["confirmPassword"]] as field}
     <div class="w-full">
       <TextInput
-        onblur={generateOnblurCallback(formFields, fieldName)}
-        invalid={!formFields[fieldName].isValid}
-        invalidText={formFields[fieldName].invalidText}
-        bind:value={formFields[fieldName].value}
-        type={fieldName === "email" ? "email" : "password"}
+        name={field.name}
+        autocomplete={field.autocomplete}
+        onblur={generateOnblurCallback(field)}
+        invalid={!field.isValid}
+        invalidText={field.invalidText}
+        bind:value={field.value}
+        type={field.type}
         required
       >
         {#snippet label()}
-          {formFields[fieldName].label}
+          {field.label}
         {/snippet}
       </TextInput>
-      {#if fieldName === "password"}
+      {#if field.label === "Password"}
         <PasswordRequiredChecksSection password={formFields.password.value} />
       {/if}
     </div>
