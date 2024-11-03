@@ -9,9 +9,10 @@ export default {
         primary: "#c36a2d",
         secondary: "#201f1d",
         background: "#4C4B48",
+        "secondary-background": "#7e7e78",
         error: "#FF6F61",
         success: "#00fa3c",
-        ["text-secondary"]: "#a6a6a6"
+        "text-secondary": "#a6a6a6"
       }
     }
   },
