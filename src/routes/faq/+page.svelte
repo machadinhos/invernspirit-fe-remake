@@ -149,11 +149,30 @@
       }
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.code) {
+        case 'Space':
+        case 'ArrowDown':
+          if (focusedIndex < faqData.length - 1) {
+            e.preventDefault();
+            focusedIndex++;
+          }
+          break;
+        case 'ArrowUp':
+          if (focusedIndex > 0) {
+            e.preventDefault();
+            focusedIndex--;
+          }
+          break;
+      }
+    };
+
     document.addEventListener('wheel', handleWheel, { passive: false });
     document.addEventListener('touchstart', handleTouchStart, {
       passive: true
     });
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('keydown', handleKeyDown, { passive: false });
 
     return () => {
       document.removeEventListener('wheel', handleWheel);
