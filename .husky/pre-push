@@ -1,2 +1,13 @@
+git stash push --keep-index --include-untracked
+
 npm run check
+CHECK_RESULT=$?
+
 npm run build
+BUILD_RESULT=$?
+
+git stash pop
+
+if [ $CHECK_RESULT -ne 0 ] || [ $BUILD_RESULT -ne 0 ]; then
+    exit 1
+fi
