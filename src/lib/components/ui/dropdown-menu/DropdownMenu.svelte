@@ -1,6 +1,7 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quartOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
 
   interface Props {
     className?: string;
@@ -45,13 +46,12 @@
     }
   }
 
-  $effect(() => {
-    if (isOpen) {
-      document.addEventListener('click', handleClickOutside);
-    } else {
+  onMount(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
       document.removeEventListener('click', handleClickOutside);
       onClose();
-    }
+    };
   });
 </script>
 
