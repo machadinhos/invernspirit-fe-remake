@@ -1,2 +1,11 @@
+git stash push --keep-index --include-untracked
+
 npm run lint
+LINT_RESULT=$?
 git diff --name-only --cached --diff-filter=d | xargs git add
+
+git stash pop
+
+if [ $LINT_RESULT -ne 0 ]; then
+    exit 1
+fi
