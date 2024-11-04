@@ -121,10 +121,12 @@
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
 
-      if (e.deltaY > 0 && focusedIndex < faqData.length - 1) {
-        focusedIndex++;
-      } else if (e.deltaY < 0 && focusedIndex > 0) {
-        focusedIndex--;
+      if (Math.abs(e.deltaY) > 50) {
+        if (e.deltaY > 0 && focusedIndex < faqData.length - 1) {
+          focusedIndex++;
+        } else if (e.deltaY < 0 && focusedIndex > 0) {
+          focusedIndex--;
+        }
       }
     };
 
