@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
   interface FAQItem {
     question: string;
     answer: string;
@@ -115,72 +113,6 @@
     }
   ];
 
-  onMount(() => {
-    let touchStartY = 0;
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-
-      if (Math.abs(e.deltaY) > 50) {
-        if (e.deltaY > 0 && focusedIndex < faqData.length - 1) {
-          focusedIndex++;
-        } else if (e.deltaY < 0 && focusedIndex > 0) {
-          focusedIndex--;
-        }
-      }
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      const touchEndY = e.touches[0].clientY;
-      const deltaY = touchStartY - touchEndY;
-
-      if (Math.abs(deltaY) > 50) {
-        if (deltaY > 0 && focusedIndex < faqData.length - 1) {
-          focusedIndex++;
-        } else if (deltaY < 0 && focusedIndex > 0) {
-          focusedIndex--;
-        }
-        touchStartY = touchEndY;
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.code) {
-        case 'Space':
-        case 'ArrowDown':
-          if (focusedIndex < faqData.length - 1) {
-            e.preventDefault();
-            focusedIndex++;
-          }
-          break;
-        case 'ArrowUp':
-          if (focusedIndex > 0) {
-            e.preventDefault();
-            focusedIndex--;
-          }
-          break;
-      }
-    };
-
-    document.addEventListener('wheel', handleWheel, { passive: false });
-    document.addEventListener('touchstart', handleTouchStart, {
-      passive: true
-    });
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    document.addEventListener('keydown', handleKeyDown, { passive: false });
-
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-    };
-  });
-
   function scrollToElement(prefix: string, index: number) {
     const element = document.getElementById(`${prefix}-${index}`);
     if (element) {
@@ -195,10 +127,6 @@
     scrollToElement('faq-question', focusedIndex);
     scrollToElement('faq-toc', focusedIndex);
   });
-
-  const handleTocClick = (index: number) => {
-    focusedIndex = index;
-  };
 </script>
 
 <div class="flex h-full flex-col">
@@ -219,7 +147,7 @@
             index
               ? 'bg-primary font-medium'
               : 'hover:bg-secondary-background'}"
-            onclick={() => handleTocClick(index)}
+            onclick={() => (focusedIndex = index)}
           >
             {item.question}
           </button>
@@ -230,11 +158,19 @@
     <div class="flex h-full flex-1 flex-col items-center overflow-y-auto pb-3">
       {#each faqData as item, index}
         <div
+          tabindex={index}
+          role="button"
+          onkeydown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              focusedIndex = index;
+            }
+          }}
+          onclick={() => (focusedIndex = index)}
           id="faq-question-{index}"
           class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex ===
           index
-            ? 'scale-105 bg-background shadow-lg'
-            : 'opacity-50'}"
+            ? 'scale-105 cursor-auto bg-background shadow-lg'
+            : 'cursor-pointer opacity-50'}"
         >
           <h2 class="mb-2 text-xl font-semibold">{item.question}</h2>
           <p>{item.answer}</p>
