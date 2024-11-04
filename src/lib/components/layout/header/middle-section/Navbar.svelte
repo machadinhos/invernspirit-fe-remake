@@ -40,11 +40,19 @@
           class="flex flex-col items-center justify-center gap-4 py-4 text-white"
         >
           <DropdownMenuItem>
-            <a class="hover:text-primary" href="/">by collection</a>
+            <a
+              onclick={() => (isOpen = false)}
+              class="hover:text-primary"
+              href="/">by collection</a
+            >
           </DropdownMenuItem>
           <div class="h-0.5 w-10 bg-white"></div>
           <DropdownMenuItem>
-            <a class="hover:text-primary" href="/">by product</a>
+            <a
+              onclick={() => (isOpen = false)}
+              class="hover:text-primary"
+              href="/">by product</a
+            >
           </DropdownMenuItem>
         </div>
       </DropdownMenu>
