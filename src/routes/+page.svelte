@@ -35,5 +35,5 @@
   {/each}
 </div>
 
-<button onclick={() => cart.addProduct()}>test</button>
+<button onclick={() => cart.addProduct()}>{'test'}</button>
 {cart.value.length}

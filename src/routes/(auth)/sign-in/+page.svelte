@@ -8,6 +8,7 @@
   import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
   import CheckBox from '$lib/components/ui/CheckBox.svelte';
   import Button from '$lib/components/ui/Button.svelte';
+  import { content } from '$lib/content/content';
 
   let formFields: FormField[] = $state([
     {
@@ -15,9 +16,9 @@
       type: 'email',
       name: 'email',
       autocomplete: 'username',
-      label: 'Email',
+      label: content.auth.signIn.formFields.email.label,
       isValid: true,
-      invalidText: 'Please enter a valid email address.',
+      invalidText: content.auth.signIn.formFields.email.invalidText,
       validate: validateEmail
     },
     {
@@ -25,9 +26,9 @@
       name: 'password',
       type: 'password',
       autocomplete: 'current-password',
-      label: 'Password',
+      label: content.auth.signIn.formFields.password.label,
       isValid: true,
-      invalidText: 'Please enter a valid password.',
+      invalidText: content.auth.signIn.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid
     }
   ]);
@@ -65,11 +66,14 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      Don't have an account?? <a class="text-primary underline" href="/sign-up"
-        >Sign un</a
+      {content.auth.signIn.signUpMessage}<a
+        class="text-primary underline"
+        href="/sign-up">{content.auth['signUp'].title}</a
       >
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit">Sign In</Button>
+  <Button className="mt-5 w-full" type="submit"
+    >{content.auth.signIn.submitButton}</Button
+  >
 </form>

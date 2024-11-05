@@ -8,6 +8,7 @@
   import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
   import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
+  import { content } from '$lib/content/content';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
@@ -51,7 +52,7 @@
   >
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
-        <h2>Subscribe to our newsletter</h2>
+        <h2>{content.common.header.leftSection.newsletterTitle}</h2>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
@@ -73,14 +74,16 @@
                   src={TiMail}
                   size="20"
                 />
-                Email
+                {content.common.header.leftSection.email}
               </div>
             {/snippet}
           </TextInput>
         </div>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
-        <Button className="mt-2 w-full" type="submit">Subscribe</Button>
+        <Button className="mt-2 w-full" type="submit"
+          >{content.common.header.leftSection.subscribe}</Button
+        >
       </DropdownMenuItem>
     </form>
   </DropdownMenu>

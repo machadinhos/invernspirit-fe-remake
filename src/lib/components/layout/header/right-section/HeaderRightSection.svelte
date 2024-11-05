@@ -5,6 +5,8 @@
   import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
   import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import cart from '$lib/state/cart.svelte';
+  import { content } from '$lib/content/content';
+  import { countries } from '$lib/constants/countries';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
@@ -18,8 +20,9 @@
 
 <div class="mt-8 flex items-center justify-end gap-4">
   <select class="h-fit bg-background text-white">
-    <option>pt</option>
-    <option>es</option>
+    {#each countries as country}
+      <option>{country}</option>
+    {/each}
   </select>
   <div>
     <HeaderIcon
@@ -37,14 +40,14 @@
           <a
             onclick={() => (isOpen = false)}
             class="hover:text-primary"
-            href="/sign-in">Sign In</a
+            href="/sign-in">{content.auth.signIn.title}</a
           >
         </DropdownMenuItem>
         <DropdownMenuItem>
           <a
             onclick={() => (isOpen = false)}
             class="hover:text-primary"
-            href="/sign-up">Sign Up</a
+            href="/sign-up">{content.auth.signUp.title}</a
           >
         </DropdownMenuItem>
       </div>

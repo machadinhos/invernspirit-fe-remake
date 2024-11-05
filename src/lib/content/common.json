@@ -1,0 +1,23 @@
+{
+  "header": {
+    "leftSection": {
+      "newsletterTitle": "Subscribe to our newsletter",
+      "email": "Email",
+      "subscribe": "Subscribe"
+    },
+    "middleSection": {
+      "shop": {
+        "title": "shop",
+        "byCollection": "by collection",
+        "byProduct": "by product"
+      },
+      "about": "about",
+      "contactUs": "contact us",
+      "faq": "faq"
+    }
+  },
+  "footer": {
+    "searchBarPlaceholder": "Search",
+    "searchButton": "Search"
+  }
+}

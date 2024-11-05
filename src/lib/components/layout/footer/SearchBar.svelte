@@ -3,6 +3,7 @@
   import { Icon } from 'svelte-icons-pack';
   import { SlMagnifier } from 'svelte-icons-pack/sl';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
+  import { content } from '$lib/content/content';
 
   let searchString = $state('');
 
@@ -23,8 +24,10 @@
       type="search"
       bind:value={searchString}
       class="w-full bg-background text-white focus:border-none focus:outline-none"
-      placeholder="Search product..."
+      placeholder={content.common.footer.searchBarPlaceholder}
     />
   </div>
-  <Button type="submit" className="flex w-20 justify-center">Search</Button>
+  <Button type="submit" className="flex w-20 justify-center"
+    >{content.common.footer.searchButton}</Button
+  >
 </form>

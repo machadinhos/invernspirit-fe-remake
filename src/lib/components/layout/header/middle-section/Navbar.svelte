@@ -4,6 +4,7 @@
   import { Icon } from 'svelte-icons-pack';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
   import NavbarItem from '$lib/components/layout/header/middle-section/NavbarItem.svelte';
+  import { content } from '$lib/content/content';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLElement | undefined = $state();
@@ -23,7 +24,7 @@
         onclick={toggleDropdown}
         bind:this={dropdownTriggerElement}
       >
-        shop
+        {content.common.header.middleSection.shop.title}
         <div
           class="transition-transform duration-300"
           class:rotate-180={isOpen}
@@ -43,7 +44,8 @@
             <a
               onclick={() => (isOpen = false)}
               class="hover:text-primary"
-              href="/">by collection</a
+              href="/"
+              >{content.common.header.middleSection.shop.byCollection}</a
             >
           </DropdownMenuItem>
           <div class="h-0.5 w-10 bg-white"></div>
@@ -51,14 +53,14 @@
             <a
               onclick={() => (isOpen = false)}
               class="hover:text-primary"
-              href="/">by product</a
+              href="/">{content.common.header.middleSection.shop.byProduct}</a
             >
           </DropdownMenuItem>
         </div>
       </DropdownMenu>
     </NavbarItem>
     <NavbarItem>
-      <a href="/">about</a>
+      <a href="/">{content.common.header.middleSection.about}</a>
     </NavbarItem>
     <li>
       <div class="flex h-16 w-16 items-center justify-center">
@@ -76,10 +78,11 @@
       </div>
     </li>
     <NavbarItem>
-      <a href="/">contacts</a>
+      <a href="/">{content.common.header.middleSection.contactUs}</a>
     </NavbarItem>
     <NavbarItem>
-      <a class="h-full" href="/faq">faq</a>
+      <a class="h-full" href="/faq">{content.common.header.middleSection.faq}</a
+      >
     </NavbarItem>
   </ul>
 </nav>

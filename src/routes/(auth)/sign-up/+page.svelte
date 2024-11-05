@@ -13,6 +13,7 @@
     generateOnblurCallback,
     validateFormFields
   } from '$lib/utils/auth-form-fields';
+  import { content } from '$lib/content/content';
 
   const formFields: { [key: string]: FormField } = $state({
     firstName: {
@@ -20,9 +21,9 @@
       name: 'firstName',
       autocomplete: 'given-name',
       type: 'text',
-      label: 'First Name',
+      label: content.auth.signUp.formFields.firstName.label,
       isValid: true,
-      invalidText: 'Please enter your first name.',
+      invalidText: content.auth.signUp.formFields.firstName.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
     },
     lastName: {
@@ -30,9 +31,9 @@
       name: 'lastName',
       autocomplete: 'family-name',
       type: 'text',
-      label: 'Last Name',
+      label: content.auth.signUp.formFields.lastName.label,
       isValid: true,
-      invalidText: 'Please enter your last name.',
+      invalidText: content.auth.signUp.formFields.lastName.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
     },
     email: {
@@ -40,9 +41,9 @@
       name: 'email',
       autocomplete: 'username',
       type: 'email',
-      label: 'Email',
+      label: content.auth.signUp.formFields.email.label,
       isValid: true,
-      invalidText: 'Please enter a valid email address.',
+      invalidText: content.auth.signUp.formFields.email.invalidText,
       validate: validateEmail
     },
     password: {
@@ -50,9 +51,9 @@
       name: 'password',
       autocomplete: 'new-password',
       type: 'password',
-      label: 'Password',
+      label: content.auth.signUp.formFields.password.label,
       isValid: true,
-      invalidText: 'Please enter a valid password.',
+      invalidText: content.auth.signUp.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid
     },
     confirmPassword: {
@@ -60,9 +61,9 @@
       autocomplete: 'new-password',
       type: 'password',
       name: 'confirmPassword',
-      label: 'Confirm Password',
+      label: content.auth.signUp.formFields.confirmPassword.label,
       isValid: true,
-      invalidText: 'Please rewrite your password.',
+      invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
       validate: (value) =>
         value === formFields.password.value && !containsXSSPatterns(value)
     }
@@ -125,11 +126,14 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      Already have an account? <a class="text-primary underline" href="/sign-in"
-        >Sign in</a
+      {content.auth.signUp.signInMessage}
+      <a class="text-primary underline" href="/sign-in"
+        >{content.auth.signIn.title}</a
       >
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit">Sign up</Button>
+  <Button className="mt-5 w-full" type="submit"
+    >{content.auth.signUp.submitButton}</Button
+  >
 </form>
