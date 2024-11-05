@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { content } from '$lib/content/content';
+
   interface FAQItem {
     question: string;
     answer: string;
@@ -131,13 +133,13 @@
 
 <div class="flex h-full flex-col">
   <h1 class="py-6 text-center text-4xl font-bold">
-    Frequently Asked Questions
+    {content.faq.pageTitle}
   </h1>
 
   <div class="flex h-[calc(100%-theme(spacing.24))] flex-1">
     <div class="flex h-full w-1/5 flex-col bg-background">
       <div class="p-4">
-        <h2 class="text-lg font-semibold">Contents</h2>
+        <h2 class="text-lg font-semibold">{content.faq.tocTitle}</h2>
       </div>
       <div class="flex-1 overflow-y-auto">
         {#each faqData as item, index}

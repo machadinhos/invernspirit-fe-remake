@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { content } from '$lib/content/content';
 
   interface Props {
     children: import('svelte').Snippet;
@@ -24,7 +25,7 @@
               ? 'text-primary'
               : ''}"
           >
-            Sign In
+            {content.auth.signIn.title}
           </a>
         </li>
         <li class="w-1/2 text-center" style="font-size: 2.5rem">
@@ -35,7 +36,7 @@
               ? 'text-primary'
               : ''}"
           >
-            Sign Up
+            {content.auth.signUp.title}
           </a>
         </li>
       </ul>
