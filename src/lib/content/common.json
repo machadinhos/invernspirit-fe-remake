@@ -17,7 +17,7 @@
     }
   },
   "footer": {
-    "searchBarPlaceholder": "Search",
+    "searchBarPlaceholder": "Search product...",
     "searchButton": "Search"
   }
 }
