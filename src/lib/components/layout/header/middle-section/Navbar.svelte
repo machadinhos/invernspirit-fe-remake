@@ -78,7 +78,7 @@
       </div>
     </li>
     <NavbarItem>
-      <a href="/">{content.common.header.middleSection.contactUs}</a>
+      <a href="/contact-us">{content.common.header.middleSection.contactUs}</a>
     </NavbarItem>
     <NavbarItem>
       <a class="h-full" href="/faq">{content.common.header.middleSection.faq}</a

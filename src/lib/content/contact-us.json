@@ -1,0 +1,22 @@
+{
+  "title": "Contact Us",
+  "submitButton": "Submit",
+  "formFields": {
+    "name": {
+      "label": "Email",
+      "invalidText": "Please enter your first and last name."
+    },
+    "email": {
+      "label": "Email",
+      "invalidText": "Please enter your email."
+    },
+    "subject": {
+      "label": "Subject",
+      "invalidText": "Please enter a subject."
+    },
+    "message": {
+      "label": "Message",
+      "invalidText": "Please enter a message."
+    }
+  }
+}

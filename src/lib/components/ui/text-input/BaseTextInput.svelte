@@ -4,8 +4,8 @@
 
   interface Props {
     value: string;
-    type: import('svelte/elements').HTMLInputTypeAttribute;
-    autocomplete: HTMLInputAttributes['autocomplete'];
+    type: import('svelte/elements').HTMLInputTypeAttribute | 'textarea';
+    autocomplete?: HTMLInputAttributes['autocomplete'];
     label?: Snippet;
     name: HTMLInputAttributes['name'];
     trailingIcon?: Snippet;
@@ -33,16 +33,27 @@
 
 <div class="pt-2.5">
   <div class="relative">
-    <input
-      {name}
-      {onblur}
-      {type}
-      {autocomplete}
-      bind:value
-      class:pr-6={trailingIcon}
-      class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
-      {required}
-    />
+    {#if type !== 'textarea'}
+      <input
+        {name}
+        {onblur}
+        {type}
+        {autocomplete}
+        bind:value
+        class:pr-6={trailingIcon}
+        class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        {required}
+      />
+    {:else}
+      <textarea
+        autocomplete="off"
+        {onblur}
+        {name}
+        class="peer min-h-24 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        {required}
+        bind:value
+      ></textarea>
+    {/if}
     {#if trailingIcon}
       <div class="absolute right-1 top-1/2 -translate-y-1/2 text-[#a6a6a6]">
         {@render trailingIcon()}

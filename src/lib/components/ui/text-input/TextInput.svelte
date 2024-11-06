@@ -6,7 +6,7 @@
 
   interface Props {
     value: string;
-    type: import('svelte/elements').HTMLInputTypeAttribute;
+    type: import('svelte/elements').HTMLInputTypeAttribute | 'textarea';
     autocomplete: HTMLInputAttributes['autocomplete'];
     name: HTMLInputAttributes['name'];
     required?: boolean;
