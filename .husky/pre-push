@@ -1,4 +1,9 @@
-git stash push --keep-index --include-untracked
+if ! git diff --quiet HEAD || git ls-files --others --exclude-standard | grep -q .; then
+    git stash push --keep-index --include-untracked
+    STASHED=1
+else
+    STASHED=0
+fi
 
 npm run check
 CHECK_RESULT=$?
@@ -6,7 +11,9 @@ CHECK_RESULT=$?
 npm run build
 BUILD_RESULT=$?
 
-git stash pop
+if [ "$STASHED" = "1" ]; then
+    git stash pop
+fi
 
 if [ $CHECK_RESULT -ne 0 ] || [ $BUILD_RESULT -ne 0 ]; then
     exit 1
