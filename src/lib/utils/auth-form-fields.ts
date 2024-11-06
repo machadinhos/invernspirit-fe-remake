@@ -6,7 +6,7 @@ import type {
 export interface FormField {
   value: string;
   autocomplete: HTMLInputAttributes['autocomplete'];
-  type: HTMLInputTypeAttribute;
+  type: HTMLInputTypeAttribute | 'textarea';
   name: HTMLInputAttributes['name'];
   label: string;
   isValid: boolean;
