@@ -70,9 +70,7 @@
       <h1 class="text-center" style="font-size: 2.5rem">
         {content.contactUs.title}
       </h1>
-      <div
-        class="pointer-events-none h-0.5 w-[35%] select-none bg-white"
-      ></div>
+      <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
     <div class="mb-10 mt-5 w-[75%]">
       <form onsubmit={submitMessage}>
