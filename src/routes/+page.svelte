@@ -32,12 +32,12 @@
   {/each}
 </div>
 
-<div class="flex h-full w-full flex-col items-center justify-center">
+<div class="flex h-full w-full flex-col items-center justify-center px-5">
   <div>
     <div class="mb-4 select-none">
       <div>
         <div class="flex gap-4 font-thin">
-          <h1 class="text-8xl">INVERN</h1>
+          <h1 class="text-6xl md:text-8xl">INVERN</h1>
           <div class="flex flex-col justify-center">
             <p>SPIRIT</p>
             <p>OF THE WINTER</p>
@@ -45,11 +45,9 @@
         </div>
         <div class="h-0.5 w-full bg-white"></div>
       </div>
-      <h2 class="text-3xl">EACH PIECE, UNIQUELY YOURS.</h2>
+      <h2 class="text-2xl md:text-3xl">EACH PIECE, UNIQUELY YOURS.</h2>
     </div>
-    <Button className="px-3">
-      <a href="/"> Explore our collection </a>
-    </Button>
+    <Button className="px-3">Explore our collection</Button>
   </div>
   <button onclick={() => cart.addProduct()}>{'test'}</button>
   {cart.value.length}
