@@ -1,13 +1,13 @@
 <script lang="ts">
   interface Props {
-    children: import('svelte').Snippet;
+    children?: import('svelte').Snippet;
   }
 
   let { children }: Props = $props();
 </script>
 
 <div>
-  {@render children()}
+  {@render children?.()}
   <div
     class="absolute inset-0"
     style="

@@ -20,9 +20,7 @@
   transition:fade
   class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden grayscale filter"
 >
-  <GrainyFilter>
-    <div></div>
-  </GrainyFilter>
+  <GrainyFilter />
   {#each imageLinks.index['bg-images'] as image, index}
     <div>
       <div
