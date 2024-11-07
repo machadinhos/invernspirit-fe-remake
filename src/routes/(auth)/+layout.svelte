@@ -20,10 +20,10 @@
         <li class="w-1/2 text-center" style="font-size: 2.5rem">
           <a
             href="/sign-in"
-            class="block w-full pt-4 transition-colors duration-500 {selected ===
+            class="block w-full pt-4 transition-opacity duration-500 {selected ===
             'sign-in'
-              ? 'text-primary'
-              : ''}"
+              ? 'opacity-100'
+              : 'opacity-50'}"
           >
             {content.auth.signIn.title}
           </a>
@@ -31,17 +31,17 @@
         <li class="w-1/2 text-center" style="font-size: 2.5rem">
           <a
             href="/sign-up"
-            class="block w-full pt-4 transition-colors duration-500 {selected ===
+            class="block w-full pt-4 transition-opacity duration-500 {selected ===
             'sign-up'
-              ? 'text-primary'
-              : ''}"
+              ? 'opacity-100'
+              : 'opacity-50'}"
           >
             {content.auth.signUp.title}
           </a>
         </li>
       </ul>
       <div
-        class="pointer-events-none absolute bottom-0.5 h-0.5 w-[35%] select-none bg-primary transition-all duration-500"
+        class="pointer-events-none absolute bottom-0.5 h-0.5 w-[35%] select-none bg-white transition-all duration-500"
         style="left: {selected === 'sign-in' ? '7.5%' : '57.5%'}"
       ></div>
     </div>
