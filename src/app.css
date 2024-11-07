@@ -10,3 +10,8 @@ body {
 input[type='search']::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
+
+::selection {
+  background-color: theme('colors.primary');
+  color: #ffffff;
+}
