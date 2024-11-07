@@ -1,19 +1,2 @@
-if ! git diff --quiet HEAD || git ls-files --others --exclude-standard | grep -q .; then
-    git stash push --keep-index --include-untracked
-    STASHED=1
-else
-    STASHED=0
-fi
-
-npm run lint || echo "Lint failed with code $?"
-LINT_RESULT=$?
-
+npm run lint
 git diff --name-only --cached --diff-filter=d | xargs git add
-
-if [ "$STASHED" = "1" ]; then
-    git stash pop
-fi
-
-if [ $LINT_RESULT -ne 0 ]; then
-    exit 1
-fi
