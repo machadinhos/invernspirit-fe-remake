@@ -117,7 +117,7 @@
 
   let focusedIndex = $state(0);
   let searchString = $state('');
-  let visibleItems = $derived(getVisibleItems(faqData, searchString));
+  let visibleItemsIndex = $derived(getVisibleItems(faqData, searchString));
 
   function getVisibleItems(
     faqItems: FAQItem[],
@@ -152,6 +152,12 @@
     scrollToElement('faq-question', focusedIndex);
     scrollToElement('faq-toc', focusedIndex);
   });
+
+  $effect(() => {
+    if (!visibleItemsIndex.includes(focusedIndex)) {
+      focusedIndex = visibleItemsIndex[0];
+    }
+  });
 </script>
 
 <div class="flex h-full flex-col">
@@ -181,7 +187,7 @@
         {#each faqData as item, index}
           <button
             id="faq-toc-{index}"
-            class:hidden={!visibleItems.includes(index)}
+            class:hidden={!visibleItemsIndex.includes(index)}
             class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex ===
             index
               ? 'bg-primary font-medium'
@@ -197,7 +203,7 @@
     <div class="flex h-full flex-1 flex-col items-center overflow-y-auto pb-3">
       {#each faqData as item, index}
         <div
-          class:hidden={!visibleItems.includes(index)}
+          class:hidden={!visibleItemsIndex.includes(index)}
           tabindex={index}
           role="button"
           onkeydown={(e) => {
