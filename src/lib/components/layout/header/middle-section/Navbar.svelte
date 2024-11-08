@@ -1,10 +1,10 @@
 <script lang="ts">
-  import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
-  import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import { Icon } from 'svelte-icons-pack';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
-  import NavbarItem from '$lib/components/layout/header/middle-section/NavbarItem.svelte';
-  import { content } from '$lib/content/content';
+  import NavbarItem from '$components/layout/header/middle-section/NavbarItem.svelte';
+  import { content } from '$content';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLElement | undefined = $state();

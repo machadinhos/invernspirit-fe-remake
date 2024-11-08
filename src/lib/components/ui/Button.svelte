@@ -6,20 +6,25 @@
     className?: HTMLButtonAttributes['class'];
     onclick?: () => void;
     children: import('svelte').Snippet;
+    disabled?: boolean;
   }
 
   let {
     type = 'button',
     className = '',
     onclick = () => {},
-    children
+    children,
+    disabled = false
   }: Props = $props();
 </script>
 
 <button
   {onclick}
-  class={`bg-secondary px-1 py-2 hover:bg-primary ${className}`}
+  class="px-1 py-2 {disabled
+    ? 'cursor-not-allowed bg-transparent'
+    : 'bg-secondary hover:bg-primary'} {className}"
   {type}
+  {disabled}
 >
   {@render children()}
 </button>

@@ -1,8 +1,8 @@
 <script>
   import { SlMagnifier } from 'svelte-icons-pack/sl';
-  import { content } from '$lib/content/content';
+  import { content } from '$content';
   import { Icon } from 'svelte-icons-pack';
-  import Button from '$lib/components/ui/Button.svelte';
+  import Button from '$components/ui/Button.svelte';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
 
   let searchString = $state('');

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { content } from '$lib/content/content';
+  import { content } from '$content';
   import { SlMagnifier } from 'svelte-icons-pack/sl';
   import { Icon } from 'svelte-icons-pack';
 

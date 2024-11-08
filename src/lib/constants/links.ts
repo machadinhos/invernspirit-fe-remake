@@ -12,8 +12,8 @@ function generateInternalURL(pathName: string, subDomain?: string) {
 }
 
 export const imageLinks = {
-  index: {
-    'bg-images': [
+  home: {
+    bgImages: [
       generateInternalURL('/products/ceramics-product-1-1.jpeg', 'images.'),
       generateInternalURL('/products/ceramics-product-2-1.jpeg', 'images.'),
       generateInternalURL('/products/ceramics-product-3-1.jpeg', 'images.'),
