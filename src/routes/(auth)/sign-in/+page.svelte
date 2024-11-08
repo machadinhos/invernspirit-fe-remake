@@ -5,10 +5,10 @@
     generateOnblurCallback,
     validateFormFields
   } from '$lib/utils/auth-form-fields';
-  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
-  import CheckBox from '$lib/components/ui/CheckBox.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
-  import { content } from '$lib/content/content';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import CheckBox from '$components/ui/CheckBox.svelte';
+  import Button from '$components/ui/Button.svelte';
+  import { content } from '$content';
 
   let formFields: FormField[] = $state([
     {

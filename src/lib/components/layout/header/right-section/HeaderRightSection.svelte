@@ -1,11 +1,11 @@
 <script lang="ts">
-  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
+  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
   import { BiSolidCart } from 'svelte-icons-pack/bi';
   import { FaSolidUser } from 'svelte-icons-pack/fa';
-  import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
-  import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import cart from '$lib/state/cart.svelte';
-  import { content } from '$lib/content/content';
+  import { content } from '$content';
   import { countries } from '$lib/constants/countries';
 
   let isOpen = $state(false);

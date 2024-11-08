@@ -1,14 +1,14 @@
 <script lang="ts">
   import { Icon } from 'svelte-icons-pack';
   import { TiMail } from 'svelte-icons-pack/ti';
-  import Button from '$lib/components/ui/Button.svelte';
+  import Button from '$components/ui/Button.svelte';
   import { validateEmail } from '$lib/utils/input-validation';
   import { FaNewspaper } from 'svelte-icons-pack/fa';
-  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
-  import DropdownMenu from '$lib/components/ui/dropdown-menu/DropdownMenu.svelte';
-  import DropdownMenuItem from '$lib/components/ui/dropdown-menu/DropdownMenuItem.svelte';
-  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
-  import { content } from '$lib/content/content';
+  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import { content } from '$content';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();

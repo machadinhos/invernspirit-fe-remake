@@ -1,19 +1,19 @@
 <script lang="ts">
-  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
   import {
     containsXSSPatterns,
     validateEmail,
     validatePassword
   } from '$lib/utils/input-validation';
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
-  import CheckBox from '$lib/components/ui/CheckBox.svelte';
+  import Button from '$components/ui/Button.svelte';
+  import CheckBox from '$components/ui/CheckBox.svelte';
   import {
     type FormField,
     generateOnblurCallback,
     validateFormFields
   } from '$lib/utils/auth-form-fields';
-  import { content } from '$lib/content/content';
+  import { content } from '$content';
 
   const formFields: { [key: string]: FormField } = $state({
     firstName: {

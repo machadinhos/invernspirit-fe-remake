@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { content } from '$lib/content/content';
+  import { content } from '$content';
   import {
     type FormField,
     generateOnblurCallback,
@@ -9,8 +9,8 @@
     containsXSSPatterns,
     validateEmail
   } from '$lib/utils/input-validation';
-  import TextInput from '$lib/components/ui/text-input/TextInput.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import Button from '$components/ui/Button.svelte';
 
   const formFields: { [key: string]: FormField } = $state({
     name: {
