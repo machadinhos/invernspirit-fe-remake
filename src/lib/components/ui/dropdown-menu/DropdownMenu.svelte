@@ -58,13 +58,9 @@
 {#if isOpen && triggerElement}
   <div
     bind:this={dropdownElement}
-    class="fixed z-20 {isFullWidth
-      ? 'left-0 w-full'
-      : ''} bg-background shadow-2xl"
+    class="fixed z-20 {isFullWidth ? 'left-0 w-full' : ''} bg-background shadow-2xl"
     transition:slide={{ duration: 800, easing: quartOut }}
-    style={isFullWidth
-      ? `top: ${position.top}px; left: ${position.left}px`
-      : ''}
+    style={isFullWidth ? `top: ${position.top}px; left: ${position.left}px` : ''}
   >
     <div class={className}>
       {@render children()}

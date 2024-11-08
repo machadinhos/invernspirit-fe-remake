@@ -1,14 +1,7 @@
 <script lang="ts">
   import { content } from '$content';
-  import {
-    type FormField,
-    generateOnblurCallback,
-    validateFormFields
-  } from '$lib/utils/auth-form-fields';
-  import {
-    containsXSSPatterns,
-    validateEmail
-  } from '$lib/utils/input-validation';
+  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
+  import { containsXSSPatterns, validateEmail } from '$lib/utils/input-validation';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import Button from '$components/ui/Button.svelte';
 
@@ -92,9 +85,7 @@
             </TextInput>
           </div>
         {/each}
-        <Button className="mt-5 w-full" type="submit"
-          >{content.contactUs.submitButton}</Button
-        >
+        <Button className="mt-5 w-full" type="submit">{content.contactUs.submitButton}</Button>
       </form>
     </div>
   </div>

@@ -1,18 +1,10 @@
 <script lang="ts">
   import TextInput from '$components/ui/text-input/TextInput.svelte';
-  import {
-    containsXSSPatterns,
-    validateEmail,
-    validatePassword
-  } from '$lib/utils/input-validation';
+  import { containsXSSPatterns, validateEmail, validatePassword } from '$lib/utils/input-validation';
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
-  import {
-    type FormField,
-    generateOnblurCallback,
-    validateFormFields
-  } from '$lib/utils/auth-form-fields';
+  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
   import { content } from '$content';
 
   const formFields: { [key: string]: FormField } = $state({
@@ -64,8 +56,7 @@
       label: content.auth.signUp.formFields.confirmPassword.label,
       isValid: true,
       invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
-      validate: (value) =>
-        value === formFields.password.value && !containsXSSPatterns(value)
+      validate: (value) => value === formFields.password.value && !containsXSSPatterns(value)
     }
   });
 
@@ -127,13 +118,9 @@
   <div class="mt-10 flex items-center justify-center">
     <p>
       {content.auth.signUp.signInMessage}
-      <a class="text-primary underline" href="/sign-in"
-        >{content.auth.signIn.title}</a
-      >
+      <a class="text-primary underline" href="/sign-in">{content.auth.signIn.title}</a>
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit"
-    >{content.auth.signUp.submitButton}</Button
-  >
+  <Button className="mt-5 w-full" type="submit">{content.auth.signUp.submitButton}</Button>
 </form>

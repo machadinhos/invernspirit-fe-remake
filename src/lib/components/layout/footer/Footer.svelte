@@ -28,8 +28,6 @@
         placeholder={content.common.footer.searchBarPlaceholder}
       />
     </div>
-    <Button type="submit" className="flex w-20 justify-center"
-      >{content.common.footer.searchButton}</Button
-    >
+    <Button type="submit" className="flex w-20 justify-center">{content.common.footer.searchButton}</Button>
   </form>
 </footer>

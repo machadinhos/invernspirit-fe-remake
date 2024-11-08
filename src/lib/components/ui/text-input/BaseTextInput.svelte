@@ -69,11 +69,7 @@
       </label>
     {/if}
     {#if invalidText}
-      <p
-        class="pointer-events-none select-none {invalid
-          ? 'opacity-100'
-          : 'opacity-0'} text-error"
-      >
+      <p class="pointer-events-none select-none {invalid ? 'opacity-100' : 'opacity-0'} text-error">
         {invalidText}
       </p>
     {/if}
