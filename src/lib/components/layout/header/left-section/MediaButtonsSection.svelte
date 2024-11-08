@@ -1,9 +1,16 @@
 <script lang="ts">
   import { FaBrandsInstagram, FaBrandsYoutube, FaBrandsPinterestP } from 'svelte-icons-pack/fa';
   import { socialMediaLinks } from '$lib/constants/links';
-  import MediaButton from '$components/layout/header/left-section/MediaButton.svelte';
+  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import type { IconType } from 'svelte-icons-pack';
 </script>
 
-<MediaButton src={FaBrandsInstagram} href={socialMediaLinks.instagram} />
-<MediaButton src={FaBrandsPinterestP} href={socialMediaLinks.pinterestP} />
-<MediaButton src={FaBrandsYoutube} href={socialMediaLinks.youtube} />
+{#snippet mediaButton(src: IconType, href: string)}
+  <a {href} target="_blank" class="h-fit w-fit">
+    <HeaderIcon {src} />
+  </a>
+{/snippet}
+
+{@render mediaButton(FaBrandsInstagram, socialMediaLinks.instagram)}
+{@render mediaButton(FaBrandsPinterestP, socialMediaLinks.pinterestP)}
+{@render mediaButton(FaBrandsYoutube, socialMediaLinks.youtube)}
