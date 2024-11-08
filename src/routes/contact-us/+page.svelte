@@ -11,7 +11,7 @@
       name: 'name',
       type: 'text',
       autocomplete: 'name',
-      label: 'Name',
+      label: content.contactUs.formFields.name.label,
       isValid: true,
       invalidText: content.contactUs.formFields.name.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
