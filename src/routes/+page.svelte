@@ -16,9 +16,7 @@
   setInterval(rotateImages, 10000);
 </script>
 
-<div
-  class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden grayscale filter"
->
+<div class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden grayscale filter">
   <GrainyFilter />
   {#each imageLinks.home.bgImages as image, index}
     <div>

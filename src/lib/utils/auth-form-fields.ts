@@ -1,7 +1,4 @@
-import type {
-  HTMLInputAttributes,
-  HTMLInputTypeAttribute
-} from 'svelte/elements';
+import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
 
 export interface FormField {
   value: string;

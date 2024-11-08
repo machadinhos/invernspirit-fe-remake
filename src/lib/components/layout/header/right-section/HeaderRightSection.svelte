@@ -25,38 +25,19 @@
     {/each}
   </select>
   <div>
-    <HeaderIcon
-      bind:ref={dropdownTriggerElement}
-      src={FaSolidUser}
-      onclick={handleIconClick}
-    />
-    <DropdownMenu
-      className="p-5"
-      bind:isOpen
-      triggerElement={dropdownTriggerElement}
-    >
+    <HeaderIcon bind:ref={dropdownTriggerElement} src={FaSolidUser} onclick={handleIconClick} />
+    <DropdownMenu className="p-5" bind:isOpen triggerElement={dropdownTriggerElement}>
       <div class="flex flex-col gap-4">
         <DropdownMenuItem>
-          <a
-            onclick={() => (isOpen = false)}
-            class="hover:text-primary"
-            href="/sign-in">{content.auth.signIn.title}</a
-          >
+          <a onclick={() => (isOpen = false)} class="hover:text-primary" href="/sign-in">{content.auth.signIn.title}</a>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <a
-            onclick={() => (isOpen = false)}
-            class="hover:text-primary"
-            href="/sign-up">{content.auth.signUp.title}</a
-          >
+          <a onclick={() => (isOpen = false)} class="hover:text-primary" href="/sign-up">{content.auth.signUp.title}</a>
         </DropdownMenuItem>
       </div>
     </DropdownMenu>
   </div>
   <a href="/" class="h-fit w-fit">
-    <HeaderIcon
-      src={BiSolidCart}
-      badge={cart.value.length > 0 ? `${cart.value.length}` : ''}
-    />
+    <HeaderIcon src={BiSolidCart} badge={cart.value.length > 0 ? `${cart.value.length}` : ''} />
   </a>
 </div>

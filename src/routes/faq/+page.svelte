@@ -119,16 +119,12 @@
   let searchString = $state('');
   let visibleItemsIndex = $derived(getVisibleItems(faqData, searchString));
 
-  function getVisibleItems(
-    faqItems: FAQItem[],
-    searchString: string
-  ): number[] {
+  function getVisibleItems(faqItems: FAQItem[], searchString: string): number[] {
     const searchLower = searchString.toLowerCase();
 
     return faqItems.reduce<number[]>((matches, item, index) => {
       const hasMatch =
-        item.question.toLowerCase().includes(searchLower) ||
-        item.answer.toLowerCase().includes(searchLower);
+        item.question.toLowerCase().includes(searchLower) || item.answer.toLowerCase().includes(searchLower);
 
       if (hasMatch) {
         matches.push(index);
@@ -188,8 +184,7 @@
           <button
             id="faq-toc-{index}"
             class:hidden={!visibleItemsIndex.includes(index)}
-            class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex ===
-            index
+            class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex === index
               ? 'bg-primary font-medium'
               : 'hover:bg-secondary-background'}"
             onclick={() => (focusedIndex = index)}
@@ -213,8 +208,7 @@
           }}
           onclick={() => (focusedIndex = index)}
           id="faq-question-{index}"
-          class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex ===
-          index
+          class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex === index
             ? 'scale-105 cursor-auto bg-background shadow-lg'
             : 'cursor-pointer opacity-50'}"
         >

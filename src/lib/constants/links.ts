@@ -2,9 +2,7 @@ const ROOTDOMAIN = 'invernspirit.com';
 const PROTOCOL = 'https://';
 
 function generateInternalURL(pathName: string, subDomain?: string) {
-  const fullDomain = subDomain
-    ? `${subDomain}${subDomain.endsWith('.') ? '' : '.'}${ROOTDOMAIN}`
-    : ROOTDOMAIN;
+  const fullDomain = subDomain ? `${subDomain}${subDomain.endsWith('.') ? '' : '.'}${ROOTDOMAIN}` : ROOTDOMAIN;
 
   const fullPath = pathName.startsWith('/') ? pathName : `/${pathName}`;
 

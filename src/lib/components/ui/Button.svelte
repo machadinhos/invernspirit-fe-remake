@@ -9,20 +9,12 @@
     disabled?: boolean;
   }
 
-  let {
-    type = 'button',
-    className = '',
-    onclick = () => {},
-    children,
-    disabled = false
-  }: Props = $props();
+  let { type = 'button', className = '', onclick = () => {}, children, disabled = false }: Props = $props();
 </script>
 
 <button
   {onclick}
-  class="px-1 py-2 {disabled
-    ? 'cursor-not-allowed bg-transparent'
-    : 'bg-secondary hover:bg-primary'} {className}"
+  class="px-1 py-2 {disabled ? 'cursor-not-allowed bg-transparent' : 'bg-secondary hover:bg-primary'} {className}"
   {type}
   {disabled}
 >

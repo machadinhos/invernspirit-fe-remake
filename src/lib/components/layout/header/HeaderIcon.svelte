@@ -11,11 +11,7 @@
   let { src, onclick = () => {}, ref = $bindable(), badge }: Props = $props();
 </script>
 
-<button
-  bind:this={ref}
-  class="outerbutton relative flex h-9 w-9 cursor-pointer items-center justify-center"
-  {onclick}
->
+<button bind:this={ref} class="outerbutton relative flex h-9 w-9 cursor-pointer items-center justify-center" {onclick}>
   <div class="relative">
     <span class="flex items-center justify-center">
       <Icon color="white" {src} size="20" />

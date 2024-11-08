@@ -39,17 +39,8 @@
 </script>
 
 <div>
-  <HeaderIcon
-    bind:ref={dropdownTriggerElement}
-    src={FaNewspaper}
-    onclick={handleIconClick}
-  />
-  <DropdownMenu
-    onClose={clearState}
-    className="w-80"
-    bind:isOpen
-    triggerElement={dropdownTriggerElement}
-  >
+  <HeaderIcon bind:ref={dropdownTriggerElement} src={FaNewspaper} onclick={handleIconClick} />
+  <DropdownMenu onClose={clearState} className="w-80" bind:isOpen triggerElement={dropdownTriggerElement}>
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
         <h2>{content.common.header.leftSection.newsletterTitle}</h2>
@@ -69,11 +60,7 @@
           >
             {#snippet label()}
               <div class="flex">
-                <Icon
-                  className="mr-0.5 flex content-center pb-1"
-                  src={TiMail}
-                  size="20"
-                />
+                <Icon className="mr-0.5 flex content-center pb-1" src={TiMail} size="20" />
                 {content.common.header.leftSection.email}
               </div>
             {/snippet}
@@ -81,9 +68,7 @@
         </div>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
-        <Button className="mt-2 w-full" type="submit"
-          >{content.common.header.leftSection.subscribe}</Button
-        >
+        <Button className="mt-2 w-full" type="submit">{content.common.header.leftSection.subscribe}</Button>
       </DropdownMenuItem>
     </form>
   </DropdownMenu>

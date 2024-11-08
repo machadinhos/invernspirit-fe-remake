@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    FaBrandsInstagram,
-    FaBrandsYoutube,
-    FaBrandsPinterestP
-  } from 'svelte-icons-pack/fa';
+  import { FaBrandsInstagram, FaBrandsYoutube, FaBrandsPinterestP } from 'svelte-icons-pack/fa';
   import { socialMediaLinks } from '$lib/constants/links';
   import MediaButton from '$components/layout/header/left-section/MediaButton.svelte';
 </script>

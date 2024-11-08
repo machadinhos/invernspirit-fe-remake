@@ -1,10 +1,6 @@
 <script lang="ts">
   import { validateEmail, validatePassword } from '$lib/utils/input-validation';
-  import {
-    type FormField,
-    generateOnblurCallback,
-    validateFormFields
-  } from '$lib/utils/auth-form-fields';
+  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
   import Button from '$components/ui/Button.svelte';
@@ -66,14 +62,11 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      {content.auth.signIn.signUpMessage}<a
-        class="text-primary underline"
-        href="/sign-up">{content.auth['signUp'].title}</a
+      {content.auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up"
+        >{content.auth['signUp'].title}</a
       >
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit"
-    >{content.auth.signIn.submitButton}</Button
-  >
+  <Button className="mt-5 w-full" type="submit">{content.auth.signIn.submitButton}</Button>
 </form>

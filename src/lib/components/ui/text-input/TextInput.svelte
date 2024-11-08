@@ -34,17 +34,7 @@
 </script>
 
 {#if type === 'password'}
-  <PasswordTextInput
-    bind:value
-    {autocomplete}
-    {label}
-    {name}
-    {className}
-    {invalid}
-    {invalidText}
-    {required}
-    {onblur}
-  />
+  <PasswordTextInput bind:value {autocomplete} {label} {name} {className} {invalid} {invalidText} {required} {onblur} />
 {:else}
   <BaseTextInput
     {trailingIcon}
