@@ -1,14 +1,7 @@
-export function containsXSSPatterns(input: string): boolean {
-  const xssPatterns = [
-    /<[^>]*>/g, // HTML tags
-    /&lt;|&gt;|&quot;|&#x27;|&#x2F;|&#\d+;|&#x[A-Fa-f0-9]+;/g, // HTML entities
-    /javascript:/gi, // JavaScript protocol
-    /data:/gi, // Data protocol
-    /vbscript:/gi, // VBScript protocol
-    /on\w+\s*=/gi // Event handlers
-  ];
+import DOMPurify from 'dompurify';
 
-  return xssPatterns.some((pattern) => pattern.test(input));
+export function containsXSSPatterns(input: string): boolean {
+  return input !== DOMPurify.sanitize(input);
 }
 
 export function validateEmail(email: string) {

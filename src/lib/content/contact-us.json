@@ -3,7 +3,7 @@
   "submitButton": "Submit",
   "formFields": {
     "name": {
-      "label": "Email",
+      "label": "Name",
       "invalidText": "Please enter your first and last name."
     },
     "email": {
