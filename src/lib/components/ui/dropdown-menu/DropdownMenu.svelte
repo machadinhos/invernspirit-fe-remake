@@ -2,9 +2,10 @@
   import { slide } from 'svelte/transition';
   import { quartOut } from 'svelte/easing';
   import { onMount } from 'svelte';
+  import type { HTMLAttributes } from 'svelte/elements';
 
   interface Props {
-    className?: string;
+    className?: HTMLAttributes<HTMLElement>['class'];
     isOpen: boolean;
     onClose?: () => void;
     triggerElement: HTMLElement | undefined;
@@ -23,6 +24,10 @@
     children
   }: Props = $props();
 
+  $effect(() => {
+    if (!isOpen) onClose();
+  });
+
   let position = $derived(
     triggerElement
       ? {
@@ -35,7 +40,7 @@
   let dropdownElement: HTMLDivElement | undefined = $state();
 
   function handleClickOutside(event: MouseEvent) {
-    if (!isOpen || !closeOnOutsideClick) return;
+    if (!isOpen) return;
 
     const target = event.target as Node;
     const isClickInsideDropdown = dropdownElement?.contains(target);
@@ -47,11 +52,12 @@
   }
 
   onMount(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      onClose();
-    };
+    if (closeOnOutsideClick) {
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
   });
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import type { HTMLInputAttributes } from 'svelte/elements';
+  import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     value: string;
@@ -9,7 +9,7 @@
     label?: Snippet;
     name: HTMLInputAttributes['name'];
     trailingIcon?: Snippet;
-    className?: string;
+    className?: HTMLAttributes<HTMLElement>['class'];
     invalid?: boolean;
     invalidText?: string;
     required?: boolean;
