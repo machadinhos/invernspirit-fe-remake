@@ -1,0 +1,57 @@
+<script lang="ts">
+  import { fly, fade } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
+  import type { HTMLAttributes } from 'svelte/elements';
+  import { Icon } from 'svelte-icons-pack';
+  import { FaSolidX } from 'svelte-icons-pack/fa';
+
+  interface Props {
+    isOpen: boolean;
+    children: import('svelte').Snippet;
+    className?: HTMLAttributes<HTMLElement>['class'];
+    side?: 'left' | 'right';
+    fullWidth?: boolean;
+  }
+
+  let { isOpen = $bindable(), children, side = 'left', fullWidth = true, className = '' }: Props = $props();
+
+  let windowWidth = $state(0);
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && isOpen) isOpen = false;
+  }
+
+  const handleResize = () => (windowWidth = window.innerWidth);
+
+  onMount(() => {
+    windowWidth = window.innerWidth;
+  });
+</script>
+
+<svelte:window onkeydown={handleKeydown} onresize={handleResize} />
+
+{#if isOpen}
+  <div class="fixed inset-0 z-40 h-full w-full bg-black bg-opacity-50" transition:fade={{ duration: 500 }}></div>
+  <div
+    class="fixed top-0 z-50 h-full bg-background shadow-lg {fullWidth ? 'w-full' : 'w-auto'} {side === 'left'
+      ? 'left-0'
+      : 'right-0'} {className}"
+    transition:fly={{
+      duration: 500,
+      easing: quintOut,
+      x: side === 'left' ? -windowWidth : windowWidth,
+      opacity: 1
+    }}
+  >
+    <div class="h-full overflow-y-auto p-4">
+      <button
+        class="absolute top-4 {side === 'left' ? 'right-4' : 'left-4'} text-gray-500 hover:text-gray-700"
+        onclick={() => (isOpen = false)}
+      >
+        <Icon src={FaSolidX} />
+      </button>
+      {@render children()}
+    </div>
+  </div>
+{/if}
