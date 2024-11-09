@@ -1,33 +1,29 @@
 <script lang="ts">
   import { validateEmail, validatePassword } from '$lib/utils/input-validation';
-  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
+  import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
   import Button from '$components/ui/Button.svelte';
   import { content } from '$content';
 
-  let formFields: FormField[] = $state([
-    {
-      value: '',
+  let formFields: FormField[] = [
+    new FormField({
       type: 'email',
       name: 'email',
       autocomplete: 'username',
       label: content.auth.signIn.formFields.email.label,
-      isValid: true,
       invalidText: content.auth.signIn.formFields.email.invalidText,
       validate: validateEmail
-    },
-    {
-      value: '',
+    }),
+    new FormField({
       name: 'password',
       type: 'password',
       autocomplete: 'current-password',
       label: content.auth.signIn.formFields.password.label,
-      isValid: true,
       invalidText: content.auth.signIn.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid
-    }
-  ]);
+    })
+  ];
 
   let rememberMeInput = $state(false);
 

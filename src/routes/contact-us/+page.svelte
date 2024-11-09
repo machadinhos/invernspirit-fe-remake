@@ -1,52 +1,44 @@
 <script lang="ts">
   import { content } from '$content';
-  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
+  import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { containsXSSPatterns, validateEmail } from '$lib/utils/input-validation';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import Button from '$components/ui/Button.svelte';
 
-  const formFields: { [key: string]: FormField } = $state({
-    name: {
-      value: '',
+  const formFields: FormField[] = [
+    new FormField({
       name: 'name',
       type: 'text',
       autocomplete: 'name',
       label: content.contactUs.formFields.name.label,
-      isValid: true,
       invalidText: content.contactUs.formFields.name.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
-    },
-    email: {
-      value: '',
+    }),
+    new FormField({
       name: 'email',
       autocomplete: 'email',
       type: 'email',
       label: content.contactUs.formFields.email.label,
-      isValid: true,
       invalidText: content.contactUs.formFields.email.invalidText,
       validate: validateEmail
-    },
-    subject: {
-      value: '',
+    }),
+    new FormField({
       name: 'subject',
       autocomplete: 'off',
       type: 'text',
       label: content.contactUs.formFields.subject.label,
-      isValid: true,
       invalidText: content.contactUs.formFields.subject.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
-    },
-    message: {
-      value: '',
+    }),
+    new FormField({
       name: 'message',
       autocomplete: 'off',
       type: 'textarea',
       label: content.contactUs.formFields.message.label,
-      isValid: true,
       invalidText: content.contactUs.formFields.message.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
-    }
-  });
+    })
+  ];
 
   function submitMessage() {
     if (!validateFormFields(Object.values(formFields))) return;
@@ -67,7 +59,7 @@
     </div>
     <div class="mb-10 mt-5 w-[75%]">
       <form onsubmit={submitMessage}>
-        {#each Object.values(formFields) as field}
+        {#each formFields as field}
           <div class="w-full">
             <TextInput
               name={field.name}
