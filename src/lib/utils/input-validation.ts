@@ -11,22 +11,22 @@ export function validateEmail(email: string) {
 }
 
 export interface PasswordErrors {
-  length?: boolean;
-  uppercaseLetter?: boolean;
-  specialCharacters?: boolean;
+  missingRequiredLengthError?: boolean;
+  missingUppercaseLetterError?: boolean;
+  missingSpecialCharactersError?: boolean;
 }
 
 export function validatePassword(password: string) {
   const errors: PasswordErrors = {};
 
   if (password.length < 10 || password.length > 128) {
-    errors.length = true;
+    errors.missingRequiredLengthError = true;
   }
   if (!/[A-Z]/.test(password)) {
-    errors.uppercaseLetter = true;
+    errors.missingUppercaseLetterError = true;
   }
   if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,./?]+/.test(password)) {
-    errors.specialCharacters = true;
+    errors.missingSpecialCharactersError = true;
   }
 
   return {

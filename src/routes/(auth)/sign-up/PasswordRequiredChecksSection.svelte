@@ -11,6 +11,6 @@
   let { errors } = $derived(validatePassword(password));
 </script>
 
-<PasswordRequiredCheck text={'Between 10 and 128 characters.'} error={errors.length} />
-<PasswordRequiredCheck text={'At least 1 uppercase letter.'} error={errors.uppercaseLetter} />
-<PasswordRequiredCheck text={'At least 1 special character.'} error={errors.specialCharacters} />
+<PasswordRequiredCheck text={'Between 10 and 128 characters.'} error={errors.missingRequiredLengthError} />
+<PasswordRequiredCheck text={'At least 1 uppercase letter.'} error={errors.missingUppercaseLetterError} />
+<PasswordRequiredCheck text={'At least 1 special character.'} error={errors.missingSpecialCharactersError} />

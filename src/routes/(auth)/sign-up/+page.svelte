@@ -4,61 +4,51 @@
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
-  import { type FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/auth-form-fields';
+  import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { content } from '$content';
 
-  const formFields: { [key: string]: FormField } = $state({
-    firstName: {
-      value: '',
+  const formFields: { [key: string]: FormField } = {
+    firstName: new FormField({
       name: 'firstName',
       autocomplete: 'given-name',
       type: 'text',
       label: content.auth.signUp.formFields.firstName.label,
-      isValid: true,
       invalidText: content.auth.signUp.formFields.firstName.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
-    },
-    lastName: {
-      value: '',
+    }),
+    lastName: new FormField({
       name: 'lastName',
       autocomplete: 'family-name',
       type: 'text',
       label: content.auth.signUp.formFields.lastName.label,
-      isValid: true,
       invalidText: content.auth.signUp.formFields.lastName.invalidText,
       validate: (value) => value !== '' && !containsXSSPatterns(value)
-    },
-    email: {
-      value: '',
+    }),
+    email: new FormField({
       name: 'email',
       autocomplete: 'username',
       type: 'email',
       label: content.auth.signUp.formFields.email.label,
-      isValid: true,
       invalidText: content.auth.signUp.formFields.email.invalidText,
       validate: validateEmail
-    },
-    password: {
-      value: '',
+    }),
+    password: new FormField({
       name: 'password',
       autocomplete: 'new-password',
       type: 'password',
       label: content.auth.signUp.formFields.password.label,
-      isValid: true,
       invalidText: content.auth.signUp.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid
-    },
-    confirmPassword: {
-      value: '',
+    }),
+    confirmPassword: new FormField({
       autocomplete: 'new-password',
       type: 'password',
       name: 'confirmPassword',
       label: content.auth.signUp.formFields.confirmPassword.label,
-      isValid: true,
       invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
       validate: (value) => value === formFields.password.value && !containsXSSPatterns(value)
-    }
-  });
+    })
+  };
 
   let rememberMeInput = $state(false);
 
