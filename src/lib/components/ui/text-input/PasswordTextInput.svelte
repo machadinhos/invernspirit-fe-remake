@@ -3,14 +3,14 @@
   import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
   import { Icon } from 'svelte-icons-pack';
   import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
-  import type { HTMLInputAttributes } from 'svelte/elements';
+  import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     value: string;
     autocomplete: HTMLInputAttributes['autocomplete'];
     label?: Snippet;
     name: HTMLInputAttributes['name'];
-    className?: string;
+    className?: HTMLAttributes<HTMLElement>['class'];
     invalid?: boolean;
     invalidText?: string;
     required?: boolean;
