@@ -1,6 +1,11 @@
 <script lang="ts">
   import TextInput from '$components/ui/text-input/TextInput.svelte';
-  import { containsXSSPatterns, validateEmail, validatePassword } from '$lib/utils/input-validation';
+  import {
+    containsXSSPatterns,
+    validateEmail,
+    validatePassword,
+    validateRequiredInput
+  } from '$lib/utils/input-validation';
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
@@ -14,7 +19,7 @@
       type: 'text',
       label: content.auth.signUp.formFields.firstName.label,
       invalidText: content.auth.signUp.formFields.firstName.invalidText,
-      validate: (value) => value !== '' && !containsXSSPatterns(value)
+      validate: validateRequiredInput
     }),
     lastName: new FormField({
       name: 'lastName',
@@ -22,7 +27,7 @@
       type: 'text',
       label: content.auth.signUp.formFields.lastName.label,
       invalidText: content.auth.signUp.formFields.lastName.invalidText,
-      validate: (value) => value !== '' && !containsXSSPatterns(value)
+      validate: validateRequiredInput
     }),
     email: new FormField({
       name: 'email',
