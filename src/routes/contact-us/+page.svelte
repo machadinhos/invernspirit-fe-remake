@@ -1,7 +1,7 @@
 <script lang="ts">
   import { content } from '$content';
   import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
-  import { containsXSSPatterns, validateEmail } from '$lib/utils/input-validation';
+  import { validateEmail, validateRequiredInput } from '$lib/utils/input-validation';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import Button from '$components/ui/Button.svelte';
 
@@ -12,7 +12,7 @@
       autocomplete: 'name',
       label: content.contactUs.formFields.name.label,
       invalidText: content.contactUs.formFields.name.invalidText,
-      validate: (value) => value !== '' && !containsXSSPatterns(value)
+      validate: validateRequiredInput
     }),
     new FormField({
       name: 'email',
@@ -28,7 +28,7 @@
       type: 'text',
       label: content.contactUs.formFields.subject.label,
       invalidText: content.contactUs.formFields.subject.invalidText,
-      validate: (value) => value !== '' && !containsXSSPatterns(value)
+      validate: validateRequiredInput
     }),
     new FormField({
       name: 'message',
@@ -36,7 +36,7 @@
       type: 'textarea',
       label: content.contactUs.formFields.message.label,
       invalidText: content.contactUs.formFields.message.invalidText,
-      validate: (value) => value !== '' && !containsXSSPatterns(value)
+      validate: validateRequiredInput
     })
   ];
 

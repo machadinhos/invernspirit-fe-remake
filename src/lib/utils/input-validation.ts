@@ -4,8 +4,12 @@ export function containsXSSPatterns(input: string): boolean {
   return input !== DOMPurify.sanitize(input);
 }
 
+export function validateRequiredInput(value: string) {
+  return value !== '' && !containsXSSPatterns(value);
+}
+
 export function validateEmail(email: string) {
-  if (containsXSSPatterns(email)) return false;
+  if (!validateRequiredInput(email)) return false;
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return email !== '' ? regex.test(email) : false;
 }
