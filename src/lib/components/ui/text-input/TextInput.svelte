@@ -5,6 +5,7 @@
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
+    id: HTMLInputAttributes['id'];
     value: string;
     type: import('svelte/elements').HTMLInputTypeAttribute | 'textarea';
     autocomplete: HTMLInputAttributes['autocomplete'];
@@ -19,6 +20,7 @@
   }
 
   let {
+    id,
     value = $bindable(),
     type,
     autocomplete,
@@ -34,9 +36,21 @@
 </script>
 
 {#if type === 'password'}
-  <PasswordTextInput bind:value {autocomplete} {label} {name} {className} {invalid} {invalidText} {required} {onblur} />
+  <PasswordTextInput
+    {id}
+    bind:value
+    {autocomplete}
+    {label}
+    {name}
+    {className}
+    {invalid}
+    {invalidText}
+    {required}
+    {onblur}
+  />
 {:else}
   <BaseTextInput
+    {id}
     {trailingIcon}
     {type}
     {name}

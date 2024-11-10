@@ -48,8 +48,9 @@
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
           <TextInput
+            id="newsletter-email"
             name="email"
-            autocomplete="username"
+            autocomplete="email"
             onblur={() => {
               isValidEmailInput = validateEmail(emailInput);
             }}

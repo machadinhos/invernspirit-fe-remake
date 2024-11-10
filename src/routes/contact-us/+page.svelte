@@ -7,6 +7,7 @@
 
   const formFields: FormField[] = [
     new FormField({
+      id: 'contact-us-name',
       name: 'name',
       type: 'text',
       autocomplete: 'name',
@@ -15,6 +16,7 @@
       validate: validateRequiredInput
     }),
     new FormField({
+      id: 'contact-us-email',
       name: 'email',
       autocomplete: 'email',
       type: 'email',
@@ -23,6 +25,7 @@
       validate: validateEmail
     }),
     new FormField({
+      id: 'contact-us-subject',
       name: 'subject',
       autocomplete: 'off',
       type: 'text',
@@ -31,6 +34,7 @@
       validate: validateRequiredInput
     }),
     new FormField({
+      id: 'contact-us-message',
       name: 'message',
       autocomplete: 'off',
       type: 'textarea',
@@ -62,6 +66,7 @@
         {#each formFields as field}
           <div class="w-full">
             <TextInput
+              id={field.id}
               name={field.name}
               autocomplete={field.autocomplete}
               onblur={generateOnblurCallback(field)}

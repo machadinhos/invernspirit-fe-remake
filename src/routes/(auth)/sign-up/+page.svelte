@@ -14,6 +14,7 @@
 
   const formFields: { [key: string]: FormField } = {
     firstName: new FormField({
+      id: 'sign-up-first-name',
       name: 'firstName',
       autocomplete: 'given-name',
       type: 'text',
@@ -22,6 +23,7 @@
       validate: validateRequiredInput
     }),
     lastName: new FormField({
+      id: 'sign-up-last-name',
       name: 'lastName',
       autocomplete: 'family-name',
       type: 'text',
@@ -30,6 +32,7 @@
       validate: validateRequiredInput
     }),
     email: new FormField({
+      id: 'sign-up-email',
       name: 'email',
       autocomplete: 'username',
       type: 'email',
@@ -38,6 +41,7 @@
       validate: validateEmail
     }),
     password: new FormField({
+      id: 'sign-up-password',
       name: 'password',
       autocomplete: 'new-password',
       type: 'password',
@@ -46,6 +50,7 @@
       validate: (value) => validatePassword(value).isValid
     }),
     confirmPassword: new FormField({
+      id: 'sign-up-confirm-password',
       autocomplete: 'new-password',
       type: 'password',
       name: 'confirmPassword',
@@ -69,6 +74,7 @@
     {#each [formFields['firstName'], formFields['lastName']] as field}
       <div class="w-1/2">
         <TextInput
+          id={field.id}
           name={field.name}
           autocomplete={field.autocomplete}
           onblur={generateOnblurCallback(field)}
@@ -89,6 +95,7 @@
   {#each [formFields['email'], formFields['password'], formFields['confirmPassword']] as field}
     <div class="w-full">
       <TextInput
+        id={field.id}
         name={field.name}
         autocomplete={field.autocomplete}
         onblur={generateOnblurCallback(field)}

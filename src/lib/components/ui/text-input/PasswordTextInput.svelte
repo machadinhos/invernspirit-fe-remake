@@ -6,6 +6,7 @@
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
+    id: HTMLInputAttributes['id'];
     value: string;
     autocomplete: HTMLInputAttributes['autocomplete'];
     label?: Snippet;
@@ -18,6 +19,7 @@
   }
 
   let {
+    id,
     value = $bindable(),
     label,
     name,
@@ -33,6 +35,7 @@
 </script>
 
 <BaseInput
+  {id}
   type={shown ? 'text' : 'password'}
   bind:value
   {autocomplete}

@@ -20,6 +20,7 @@
         <Icon src={SlMagnifier} size="20" color="white" />
       </div>
       <input
+        aria-label={content.common.footer.searchBarPlaceholder}
         name="searchString"
         autocomplete="off"
         type="search"
