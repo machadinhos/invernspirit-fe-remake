@@ -19,5 +19,11 @@
   "footer": {
     "searchBarPlaceholder": "Search product...",
     "searchButton": "Search"
+  },
+  "errorPage": {
+    "messageAlternative": "Page not found",
+    "404Message": "The page you're looking for doesn't exist.",
+    "otherErrorMessage": "Something went wrong while loading this page.",
+    "button": "Return to homepage"
   }
 }
