@@ -3,6 +3,7 @@
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
+    id: HTMLInputAttributes['id'];
     value: string;
     type: import('svelte/elements').HTMLInputTypeAttribute | 'textarea';
     autocomplete?: HTMLInputAttributes['autocomplete'];
@@ -17,6 +18,7 @@
   }
 
   let {
+    id,
     value = $bindable(),
     type,
     autocomplete,
@@ -35,6 +37,7 @@
   <div class="relative">
     {#if type !== 'textarea'}
       <input
+        {id}
         {name}
         {onblur}
         {type}
@@ -46,6 +49,7 @@
       />
     {:else}
       <textarea
+        {id}
         autocomplete="off"
         {onblur}
         {name}
@@ -61,6 +65,7 @@
     {/if}
     {#if label}
       <label
+        for={id}
         class="pointer-events-none absolute left-0 select-none text-lg text-text-secondary transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
           ? '-top-3.5 text-sm'
           : 'top-2 text-base'}"

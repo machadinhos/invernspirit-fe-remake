@@ -8,6 +8,7 @@
 
   let formFields: FormField[] = [
     new FormField({
+      id: 'sign-in-email',
       type: 'email',
       name: 'email',
       autocomplete: 'username',
@@ -16,6 +17,7 @@
       validate: validateEmail
     }),
     new FormField({
+      id: 'sign-in-password',
       name: 'password',
       type: 'password',
       autocomplete: 'current-password',
@@ -38,6 +40,7 @@
   {#each formFields as field}
     <div class="w-full">
       <TextInput
+        id={field.id}
         name={field.name}
         autocomplete={field.autocomplete}
         onblur={generateOnblurCallback(field)}

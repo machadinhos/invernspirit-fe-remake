@@ -1,6 +1,7 @@
 import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
 
 export interface FormFieldConfig {
+  id: HTMLInputAttributes['id'];
   autocomplete: HTMLInputAttributes['autocomplete'];
   type: HTMLInputTypeAttribute | 'textarea';
   name: HTMLInputAttributes['name'];
@@ -13,6 +14,7 @@ export class FormField {
   value = $state('');
   isValid = $state(true);
 
+  declare id: HTMLInputAttributes['id'];
   declare autocomplete: HTMLInputAttributes['autocomplete'];
   declare type: HTMLInputTypeAttribute | 'textarea';
   declare name: HTMLInputAttributes['name'];
