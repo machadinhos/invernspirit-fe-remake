@@ -17,7 +17,11 @@
       href={`/${page}`}
       class="block w-full pt-4 transition-opacity duration-500 {selected === page ? 'opacity-100' : 'opacity-50'}"
     >
-      {content.auth.signIn.title}
+      {#if page === 'sign-in'}
+        {content.auth.signIn.title}
+      {:else}
+        {content.auth.signUp.title}
+      {/if}
     </a>
   </li>
 {/snippet}

@@ -1,17 +1,20 @@
 <script lang="ts">
   import { Icon, type IconType } from 'svelte-icons-pack';
+  import type { HTMLButtonAttributes } from 'svelte/elements';
 
   interface Props {
     src: IconType;
+    type?: 'button' | 'div';
     onclick?: () => void;
     ref?: HTMLButtonElement;
     badge?: string;
+    'aria-label'?: HTMLButtonAttributes['aria-label'];
   }
 
-  let { src, onclick = () => {}, ref = $bindable(), badge }: Props = $props();
+  let { src, onclick = () => {}, type = 'button', ref = $bindable(), badge, 'aria-label': ariaLabel }: Props = $props();
 </script>
 
-<button bind:this={ref} class="outerbutton relative flex h-9 w-9 cursor-pointer items-center justify-center" {onclick}>
+{#snippet innerElements()}
   <div class="relative">
     <span class="flex items-center justify-center">
       <Icon color="white" {src} size="20" />
@@ -22,14 +25,29 @@
       </span>
     {/if}
   </div>
-</button>
+{/snippet}
+
+{#if type === 'button'}
+  <button
+    aria-label={ariaLabel}
+    bind:this={ref}
+    class="outer-element relative flex h-9 w-9 cursor-pointer items-center justify-center"
+    {onclick}
+  >
+    {@render innerElements()}
+  </button>
+{:else}
+  <div class="outer-element relative flex h-9 w-9 cursor-pointer items-center justify-center">
+    {@render innerElements()}
+  </div>
+{/if}
 
 <style>
-  .outerbutton > div {
+  .outer-element > div {
     transition: all 300ms ease-in-out;
   }
 
-  .outerbutton:hover > div {
+  .outer-element:hover > div {
     transform: scale(1.75);
     transform-origin: center;
   }

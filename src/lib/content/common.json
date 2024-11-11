@@ -3,7 +3,13 @@
     "leftSection": {
       "newsletterTitle": "Subscribe to our newsletter",
       "email": "Email",
-      "subscribe": "Subscribe"
+      "subscribe": "Subscribe",
+      "areaLabels": {
+        "instagram": "instagram link",
+        "pinterest": "pinterest link",
+        "youtube": "youtube link",
+        "newsletter": "newsletter menu"
+      }
     },
     "middleSection": {
       "shop": {
@@ -14,6 +20,13 @@
       "about": "about",
       "contactUs": "contact us",
       "faq": "faq"
+    },
+    "rightSection": {
+      "areaLabels": {
+        "countrySelect": "select country",
+        "user": "user menu",
+        "cart": "cart link"
+      }
     }
   },
   "footer": {
@@ -25,5 +38,6 @@
     "404Message": "The page you're looking for doesn't exist.",
     "otherErrorMessage": "Something went wrong while loading this page.",
     "button": "Return to homepage"
-  }
+  },
+  "hidePasswordButtonAriaLabel": "hide/un-hide password"
 }

@@ -19,13 +19,21 @@
 </script>
 
 <div class="mt-8 flex items-center justify-end gap-4">
-  <select class="h-fit bg-background text-white">
+  <select
+    aria-label={content.common.header.rightSection.areaLabels.countrySelect}
+    class="h-fit bg-background text-white"
+  >
     {#each countries as country}
       <option>{country}</option>
     {/each}
   </select>
   <div>
-    <HeaderIcon bind:ref={dropdownTriggerElement} src={FaSolidUser} onclick={handleIconClick} />
+    <HeaderIcon
+      aria-label={content.common.header.rightSection.areaLabels.user}
+      bind:ref={dropdownTriggerElement}
+      src={FaSolidUser}
+      onclick={handleIconClick}
+    />
     <DropdownMenu className="p-5" bind:isOpen triggerElement={dropdownTriggerElement}>
       <div class="flex flex-col gap-4">
         <DropdownMenuItem>
@@ -37,7 +45,7 @@
       </div>
     </DropdownMenu>
   </div>
-  <a href="/" class="h-fit w-fit">
-    <HeaderIcon src={BiSolidCart} badge={cart.value.length > 0 ? `${cart.value.length}` : ''} />
+  <a aria-label={content.common.header.rightSection.areaLabels.cart} href="/" class="h-fit w-fit">
+    <HeaderIcon type="div" src={BiSolidCart} badge={cart.value.length > 0 ? `${cart.value.length}` : ''} />
   </a>
 </div>
