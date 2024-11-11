@@ -4,6 +4,7 @@
   import { Icon } from 'svelte-icons-pack';
   import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
+  import { content } from '$content';
 
   interface Props {
     id: HTMLInputAttributes['id'];
@@ -48,7 +49,7 @@
   {onblur}
 >
   {#snippet trailingIcon()}
-    <button type="button" onclick={() => (shown = !shown)}>
+    <button aria-label={content.common.hidePasswordButtonAriaLabel} type="button" onclick={() => (shown = !shown)}>
       <Icon src={shown ? FaEye : FaEyeSlash} />
     </button>
   {/snippet}

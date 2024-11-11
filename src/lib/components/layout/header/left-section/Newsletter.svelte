@@ -39,7 +39,12 @@
 </script>
 
 <div>
-  <HeaderIcon bind:ref={dropdownTriggerElement} src={FaNewspaper} onclick={handleIconClick} />
+  <HeaderIcon
+    aria-label={content.common.header.leftSection.areaLabels.newsletter}
+    bind:ref={dropdownTriggerElement}
+    src={FaNewspaper}
+    onclick={handleIconClick}
+  />
   <DropdownMenu onClose={clearState} className="w-80" bind:isOpen triggerElement={dropdownTriggerElement}>
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
