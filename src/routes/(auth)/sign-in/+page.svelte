@@ -1,6 +1,6 @@
 <script lang="ts">
   import { validateEmail, validatePassword } from '$lib/utils/input-validation';
-  import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
+  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
   import Button from '$components/ui/Button.svelte';
@@ -43,7 +43,7 @@
         id={field.id}
         name={field.name}
         autocomplete={field.autocomplete}
-        onblur={generateOnblurCallback(field)}
+        onblur={generateFormFieldOnblurCallback(field)}
         invalid={!field.isValid}
         invalidText={field.invalidText}
         bind:value={field.value}
