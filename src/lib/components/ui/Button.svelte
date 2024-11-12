@@ -14,7 +14,7 @@
 
 <button
   {onclick}
-  class="px-2 py-2 {disabled ? 'cursor-not-allowed bg-[#3c3b38]' : 'bg-secondary hover:bg-primary'} {className}"
+  class="px-2 py-2 enabled:bg-secondary enabled:hover:bg-primary disabled:bg-[#3c3b38] {className}"
   {type}
   {disabled}
 >
