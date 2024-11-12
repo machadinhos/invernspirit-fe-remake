@@ -1,11 +1,6 @@
 <script lang="ts">
   import TextInput from '$components/ui/text-input/TextInput.svelte';
-  import {
-    containsXSSPatterns,
-    validateEmail,
-    validatePassword,
-    validateRequiredInput
-  } from '$lib/utils/input-validation';
+  import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
@@ -56,7 +51,7 @@
       name: 'confirmPassword',
       label: content.auth.signUp.formFields.confirmPassword.label,
       invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
-      validate: (value) => value === formFields.password.value && !containsXSSPatterns(value)
+      validate: (value) => value === formFields.password.value && validatePassword(value).isValid
     })
   };
 
