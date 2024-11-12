@@ -39,7 +39,7 @@ export function validateFormFields(formFields: FormField[]) {
   return !hasError;
 }
 
-export function generateOnblurCallback(formField: FormField) {
+export function generateFormFieldOnblurCallback(formField: FormField) {
   return () => {
     formField.isValid = formField.validate(formField.value);
   };

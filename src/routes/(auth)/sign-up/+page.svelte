@@ -9,7 +9,7 @@
   import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
-  import { FormField, generateOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
+  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { content } from '$content';
 
   const formFields: { [key: string]: FormField } = {
@@ -77,7 +77,7 @@
           id={field.id}
           name={field.name}
           autocomplete={field.autocomplete}
-          onblur={generateOnblurCallback(field)}
+          onblur={generateFormFieldOnblurCallback(field)}
           invalid={!field.isValid}
           invalidText={field.invalidText}
           bind:value={field.value}
@@ -98,7 +98,7 @@
         id={field.id}
         name={field.name}
         autocomplete={field.autocomplete}
-        onblur={generateOnblurCallback(field)}
+        onblur={generateFormFieldOnblurCallback(field)}
         invalid={!field.isValid}
         invalidText={field.invalidText}
         bind:value={field.value}
