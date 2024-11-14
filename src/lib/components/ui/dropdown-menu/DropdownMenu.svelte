@@ -1,6 +1,6 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
-  import { quartOut } from 'svelte/easing';
+  import { backInOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -65,7 +65,7 @@
   <div
     bind:this={dropdownElement}
     class="fixed z-20 {isFullWidth ? 'left-0 w-full' : ''} bg-background shadow-2xl"
-    transition:slide={{ duration: 800, easing: quartOut }}
+    transition:slide={{ duration: 800, easing: backInOut }}
     style={isFullWidth ? `top: ${position.top}px; left: ${position.left}px` : ''}
   >
     <div class={className}>
