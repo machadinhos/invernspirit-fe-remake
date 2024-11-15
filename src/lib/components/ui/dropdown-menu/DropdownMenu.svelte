@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
-  import { backInOut } from 'svelte/easing';
-  import { onMount } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
+
+  import { onMount } from 'svelte';
+  import { backInOut } from 'svelte/easing';
+  import { slide } from 'svelte/transition';
 
   interface Props {
     className?: HTMLAttributes<HTMLElement>['class'];
@@ -65,8 +66,8 @@
   <div
     bind:this={dropdownElement}
     class="fixed z-20 {isFullWidth ? 'left-0 w-full' : ''} bg-background shadow-2xl"
-    transition:slide={{ duration: 800, easing: backInOut }}
     style={isFullWidth ? `top: ${position.top}px; left: ${position.left}px` : ''}
+    transition:slide={{ duration: 800, easing: backInOut }}
   >
     <div class={className}>
       {@render children()}

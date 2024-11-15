@@ -1,7 +1,7 @@
 <script lang="ts">
   import { content } from '$content';
-  import { SlMagnifier } from 'svelte-icons-pack/sl';
   import { Icon } from 'svelte-icons-pack';
+  import { SlMagnifier } from 'svelte-icons-pack/sl';
 
   interface FAQItem {
     question: string;
@@ -168,25 +168,25 @@
       </div>
       <div class="mb-2 flex w-full items-center">
         <div class="px-2">
-          <Icon src={SlMagnifier} size="20" color="white" />
+          <Icon color="white" size="20" src={SlMagnifier} />
         </div>
         <input
-          name="searchString"
           autocomplete="off"
-          type="search"
           bind:value={searchString}
           class="w-full bg-transparent text-white focus:border-none focus:outline-none"
+          name="searchString"
           placeholder={content.faq.searchPlaceholder}
+          type="search"
         />
       </div>
       <div class="flex-1 overflow-y-auto">
         {#each faqData as item, index}
           <button
-            id="faq-toc-{index}"
-            class:hidden={!visibleItemsIndex.includes(index)}
             class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex === index
               ? 'bg-primary font-medium'
               : 'hover:bg-secondary-background'}"
+            class:hidden={!visibleItemsIndex.includes(index)}
+            id="faq-toc-{index}"
             onclick={() => (focusedIndex = index)}
           >
             {item.question}
@@ -198,19 +198,19 @@
     <div class="flex h-full flex-1 flex-col items-center overflow-y-auto pb-3">
       {#each faqData as item, index}
         <div
+          class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex === index
+            ? 'scale-105 cursor-auto bg-background shadow-lg'
+            : 'cursor-pointer opacity-50'}"
           class:hidden={!visibleItemsIndex.includes(index)}
-          tabindex={index}
-          role="button"
+          id="faq-question-{index}"
+          onclick={() => (focusedIndex = index)}
           onkeydown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               focusedIndex = index;
             }
           }}
-          onclick={() => (focusedIndex = index)}
-          id="faq-question-{index}"
-          class="w-[90%] transform rounded-lg p-6 transition-all duration-300 {focusedIndex === index
-            ? 'scale-105 cursor-auto bg-background shadow-lg'
-            : 'cursor-pointer opacity-50'}"
+          role="button"
+          tabindex={index}
         >
           <h2 class="mb-2 text-xl font-semibold">{item.question}</h2>
           <p>{item.answer}</p>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { FaSolidCheck, FaSolidX } from 'svelte-icons-pack/fa';
   import { Icon } from 'svelte-icons-pack';
+  import { FaSolidCheck, FaSolidX } from 'svelte-icons-pack/fa';
 
   interface Props {
     text: string;

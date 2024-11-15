@@ -1,10 +1,10 @@
 <script lang="ts">
+  import NavbarItem from '$components/layout/header/middle-section/NavbarItem.svelte';
   import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
   import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import { content } from '$content';
   import { Icon } from 'svelte-icons-pack';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
-  import NavbarItem from '$components/layout/header/middle-section/NavbarItem.svelte';
-  import { content } from '$content';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLElement | undefined = $state();
@@ -19,22 +19,22 @@
 <nav class="mt-5">
   <ul class="flex h-full items-center gap-20 text-white">
     <NavbarItem>
-      <button class="flex items-center gap-1.5" onclick={toggleDropdown} bind:this={dropdownTriggerElement}>
+      <button bind:this={dropdownTriggerElement} class="flex items-center gap-1.5" onclick={toggleDropdown}>
         {content.common.header.middleSection.shop.title}
         <div class="transition-transform duration-300" class:rotate-180={isOpen}>
-          <Icon src={FaSolidChevronDown} size={10} />
+          <Icon size={10} src={FaSolidChevronDown} />
         </div>
       </button>
-      <DropdownMenu bind:isOpen triggerElement={dropdownTriggerElement} isFullWidth>
+      <DropdownMenu bind:isOpen isFullWidth triggerElement={dropdownTriggerElement}>
         <div class="flex flex-col items-center justify-center gap-4 py-4 text-white">
           <DropdownMenuItem>
-            <a onclick={() => (isOpen = false)} class="hover:text-primary" href="/shop/collections"
+            <a class="hover:text-primary" href="/shop/collections" onclick={() => (isOpen = false)}
               >{content.common.header.middleSection.shop.byCollection}</a
             >
           </DropdownMenuItem>
           <div class="h-0.5 w-10 bg-white"></div>
           <DropdownMenuItem>
-            <a onclick={() => (isOpen = false)} class="hover:text-primary" href="/shop/products"
+            <a class="hover:text-primary" href="/shop/products" onclick={() => (isOpen = false)}
               >{content.common.header.middleSection.shop.byProduct}</a
             >
           </DropdownMenuItem>
@@ -46,8 +46,8 @@
     </NavbarItem>
     <li>
       <div class="flex h-16 w-16 items-center justify-center">
-        <a href="/" class="imageLink flex h-full w-full items-center justify-center">
-          <img fetchpriority="high" src="/images/logo.webp" alt="logo" class="logoImage h-10 w-10 object-contain" />
+        <a class="imageLink flex h-full w-full items-center justify-center" href="/">
+          <img alt="logo" class="logoImage h-10 w-10 object-contain" fetchpriority="high" src="/images/logo.webp" />
         </a>
       </div>
     </li>

@@ -1,9 +1,9 @@
 <script>
-  import { SlMagnifier } from 'svelte-icons-pack/sl';
-  import { content } from '$content';
-  import { Icon } from 'svelte-icons-pack';
   import Button from '$components/ui/Button.svelte';
+  import { content } from '$content';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
+  import { Icon } from 'svelte-icons-pack';
+  import { SlMagnifier } from 'svelte-icons-pack/sl';
 
   let searchString = $state('');
 
@@ -17,18 +17,18 @@
   <form class="flex w-full" onsubmit={doSearch}>
     <div class="flex w-full items-center bg-background">
       <div class="px-2">
-        <Icon src={SlMagnifier} size="20" color="white" />
+        <Icon color="white" size="20" src={SlMagnifier} />
       </div>
       <input
         aria-label={content.common.footer.searchBarPlaceholder}
-        name="searchString"
         autocomplete="off"
-        type="search"
         bind:value={searchString}
         class="w-full bg-background text-white focus:border-none focus:outline-none"
+        name="searchString"
         placeholder={content.common.footer.searchBarPlaceholder}
+        type="search"
       />
     </div>
-    <Button type="submit" className="flex w-20 justify-center">{content.common.footer.searchButton}</Button>
+    <Button className="flex w-20 justify-center" type="submit">{content.common.footer.searchButton}</Button>
   </form>
 </footer>

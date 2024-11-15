@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { Icon, type IconType } from 'svelte-icons-pack';
   import type { HTMLButtonAttributes } from 'svelte/elements';
+
+  import { Icon, type IconType } from 'svelte-icons-pack';
 
   interface Props {
     src: IconType;
@@ -17,7 +18,7 @@
 {#snippet innerElements()}
   <div class="relative">
     <span class="flex items-center justify-center">
-      <Icon color="white" {src} size="20" />
+      <Icon color="white" size="20" {src} />
     </span>
     {#if badge}
       <span class="absolute -right-2 -top-4 text-lg font-bold text-white">

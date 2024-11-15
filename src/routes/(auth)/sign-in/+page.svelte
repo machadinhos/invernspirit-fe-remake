@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { validateEmail, validatePassword } from '$lib/utils/input-validation';
-  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
-  import CheckBox from '$components/ui/CheckBox.svelte';
   import Button from '$components/ui/Button.svelte';
+  import CheckBox from '$components/ui/CheckBox.svelte';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
   import { content } from '$content';
+  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
+  import { validateEmail, validatePassword } from '$lib/utils/input-validation';
 
   let formFields: FormField[] = [
     new FormField({
@@ -40,15 +40,15 @@
   {#each formFields as field}
     <div class="w-full">
       <TextInput
-        id={field.id}
-        name={field.name}
         autocomplete={field.autocomplete}
-        onblur={generateFormFieldOnblurCallback(field)}
+        bind:value={field.value}
+        id={field.id}
         invalid={!field.isValid}
         invalidText={field.invalidText}
-        bind:value={field.value}
-        type={field.type}
+        name={field.name}
+        onblur={generateFormFieldOnblurCallback(field)}
         required
+        type={field.type}
       >
         {#snippet label()}
           {field.label}

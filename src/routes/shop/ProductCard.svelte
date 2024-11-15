@@ -27,16 +27,17 @@
 
 {#snippet quantityButton(type: 'increment' | 'decrement')}
   <Button
+    className="flex h-6 w-6 items-center justify-center px-0 py-0"
     disabled={type === 'increment' ? !canIncrementSelectedQuantity : !canDecrementSelectedQuantity}
     onclick={type === 'increment' ? incrementSelectedQuantity : decrementSelectedQuantity}
-    className="flex h-6 w-6 items-center justify-center px-0 py-0">{type === 'increment' ? '+' : '-'}</Button
+    >{type === 'increment' ? '+' : '-'}</Button
   >
 {/snippet}
 
 <div class="h-fit w-64 bg-background shadow-2xl transition-all duration-300 hover:scale-110">
   <div class="h-64">
     <a href="/shop/products/{id}">
-      <img src={imageSrc} alt={imageAlt} />
+      <img alt={imageAlt} src={imageSrc} />
     </a>
   </div>
   <div class="px-4 pb-3">

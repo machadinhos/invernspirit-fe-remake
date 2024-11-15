@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { Icon } from 'svelte-icons-pack';
-  import { TiMail } from 'svelte-icons-pack/ti';
-  import Button from '$components/ui/Button.svelte';
-  import { validateEmail } from '$lib/utils/input-validation';
-  import { FaNewspaper } from 'svelte-icons-pack/fa';
   import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import Button from '$components/ui/Button.svelte';
   import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
   import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import TextInput from '$components/ui/text-input/TextInput.svelte';
   import { content } from '$content';
+  import { validateEmail } from '$lib/utils/input-validation';
+  import { Icon } from 'svelte-icons-pack';
+  import { FaNewspaper } from 'svelte-icons-pack/fa';
+  import { TiMail } from 'svelte-icons-pack/ti';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();
@@ -42,10 +42,10 @@
   <HeaderIcon
     aria-label={content.common.header.leftSection.areaLabels.newsletter}
     bind:ref={dropdownTriggerElement}
-    src={FaNewspaper}
     onclick={handleIconClick}
+    src={FaNewspaper}
   />
-  <DropdownMenu onClose={clearState} className="w-80" bind:isOpen triggerElement={dropdownTriggerElement}>
+  <DropdownMenu bind:isOpen className="w-80" onClose={clearState} triggerElement={dropdownTriggerElement}>
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
         <h2>{content.common.header.leftSection.newsletterTitle}</h2>
@@ -53,20 +53,20 @@
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
           <TextInput
-            id="newsletter-email"
-            name="email"
             autocomplete="email"
+            bind:value={emailInput}
+            id="newsletter-email"
+            invalid={!isValidEmailInput}
+            invalidText="Please enter a valid email address."
+            name="email"
             onblur={() => {
               isValidEmailInput = validateEmail(emailInput);
             }}
-            bind:value={emailInput}
             type="email"
-            invalid={!isValidEmailInput}
-            invalidText="Please enter a valid email address."
           >
             {#snippet label()}
               <div class="flex">
-                <Icon className="mr-0.5 flex content-center pb-1" src={TiMail} size="20" />
+                <Icon className="mr-0.5 flex content-center pb-1" size="20" src={TiMail} />
                 {content.common.header.leftSection.email}
               </div>
             {/snippet}

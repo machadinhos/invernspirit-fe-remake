@@ -14,8 +14,8 @@
 {#snippet pageListItem(page: 'sign-in' | 'sign-up')}
   <li class="w-1/2 text-center" style="font-size: 2.5rem">
     <a
-      href={`/${page}`}
       class="block w-full pt-4 transition-opacity duration-500 {selected === page ? 'opacity-100' : 'opacity-50'}"
+      href={`/${page}`}
     >
       {#if page === 'sign-in'}
         {content.auth.signIn.title}
