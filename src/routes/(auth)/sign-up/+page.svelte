@@ -1,11 +1,12 @@
 <script lang="ts">
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
-  import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
-  import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
   import Button from '$components/ui/Button.svelte';
   import CheckBox from '$components/ui/CheckBox.svelte';
-  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
+  import TextInput from '$components/ui/text-input/TextInput.svelte';
   import { content } from '$content';
+  import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
+  import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
+
+  import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
 
   const formFields: { [key: string]: FormField } = {
     firstName: new FormField({
@@ -69,15 +70,15 @@
     {#each [formFields['firstName'], formFields['lastName']] as field}
       <div class="w-1/2">
         <TextInput
-          id={field.id}
-          name={field.name}
           autocomplete={field.autocomplete}
-          onblur={generateFormFieldOnblurCallback(field)}
+          bind:value={field.value}
+          id={field.id}
           invalid={!field.isValid}
           invalidText={field.invalidText}
-          bind:value={field.value}
-          type={field.type}
+          name={field.name}
+          onblur={generateFormFieldOnblurCallback(field)}
           required
+          type={field.type}
         >
           {#snippet label()}
             {field.label}
@@ -90,15 +91,15 @@
   {#each [formFields['email'], formFields['password'], formFields['confirmPassword']] as field}
     <div class="w-full">
       <TextInput
-        id={field.id}
-        name={field.name}
         autocomplete={field.autocomplete}
-        onblur={generateFormFieldOnblurCallback(field)}
+        bind:value={field.value}
+        id={field.id}
         invalid={!field.isValid}
         invalidText={field.invalidText}
-        bind:value={field.value}
-        type={field.type}
+        name={field.name}
+        onblur={generateFormFieldOnblurCallback(field)}
         required
+        type={field.type}
       >
         {#snippet label()}
           {field.label}

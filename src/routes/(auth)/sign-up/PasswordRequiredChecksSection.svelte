@@ -1,5 +1,6 @@
 <script lang="ts">
   import { validatePassword } from '$lib/utils/input-validation';
+
   import PasswordRequiredCheck from './PasswordRequiredCheck.svelte';
 
   interface Props {
@@ -11,6 +12,6 @@
   let { errors } = $derived(validatePassword(password));
 </script>
 
-<PasswordRequiredCheck text={'Between 10 and 128 characters.'} error={errors.missingRequiredLengthError} />
-<PasswordRequiredCheck text={'At least 1 uppercase letter.'} error={errors.missingUppercaseLetterError} />
-<PasswordRequiredCheck text={'At least 1 special character.'} error={errors.missingSpecialCharactersError} />
+<PasswordRequiredCheck error={errors.missingRequiredLengthError} text={'Between 10 and 128 characters.'} />
+<PasswordRequiredCheck error={errors.missingUppercaseLetterError} text={'At least 1 uppercase letter.'} />
+<PasswordRequiredCheck error={errors.missingSpecialCharactersError} text={'At least 1 special character.'} />

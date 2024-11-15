@@ -37,25 +37,25 @@
   <div class="relative">
     {#if type !== 'textarea'}
       <input
+        {autocomplete}
+        bind:value
+        class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        class:pr-6={trailingIcon}
         {id}
         {name}
         {onblur}
-        {type}
-        {autocomplete}
-        bind:value
-        class:pr-6={trailingIcon}
-        class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
         {required}
+        {type}
       />
     {:else}
       <textarea
-        {id}
         autocomplete="off"
-        {onblur}
-        {name}
-        class="peer min-h-24 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
-        {required}
         bind:value
+        class="peer min-h-24 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        {id}
+        {name}
+        {onblur}
+        {required}
       ></textarea>
     {/if}
     {#if trailingIcon}
@@ -65,10 +65,10 @@
     {/if}
     {#if label}
       <label
-        for={id}
         class="pointer-events-none absolute left-0 select-none text-lg text-text-secondary transition-all peer-focus:-top-3.5 peer-focus:text-sm {value
           ? '-top-3.5 text-sm'
           : 'top-2 text-base'}"
+        for={id}
       >
         {@render label()}
       </label>

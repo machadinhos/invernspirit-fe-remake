@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { imageLinks } from '$lib/constants/links';
-  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
-  import cart from '$lib/state/cart.svelte';
   import Button from '$components/ui/Button.svelte';
+  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
   import { content } from '$content';
+  import { imageLinks } from '$lib/constants/links';
+  import cart from '$lib/state/cart.svelte';
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -22,8 +22,8 @@
     <div>
       <div
         class="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-[2s]"
-        class:opacity-60={index === currentImageIndex}
         class:opacity-0={index !== currentImageIndex}
+        class:opacity-60={index === currentImageIndex}
         style="background-image: url({image})"
       ></div>
     </div>

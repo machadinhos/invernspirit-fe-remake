@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
+
   import BaseTextInput from '$components/ui/text-input/BaseTextInput.svelte';
   import PasswordTextInput from '$components/ui/text-input/PasswordTextInput.svelte';
-  import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
   interface Props {
     id: HTMLInputAttributes['id'];
@@ -37,30 +38,30 @@
 
 {#if type === 'password'}
   <PasswordTextInput
-    {id}
-    bind:value
     {autocomplete}
-    {label}
-    {name}
+    bind:value
     {className}
+    {id}
     {invalid}
     {invalidText}
-    {required}
+    {label}
+    {name}
     {onblur}
+    {required}
   />
 {:else}
   <BaseTextInput
-    {id}
-    {trailingIcon}
-    {type}
-    {name}
     {autocomplete}
     bind:value
-    {label}
     {className}
+    {id}
     {invalid}
     {invalidText}
-    {required}
+    {label}
+    {name}
     {onblur}
+    {required}
+    {trailingIcon}
+    {type}
   />
 {/if}

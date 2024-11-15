@@ -1,10 +1,11 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
-  import { Icon } from 'svelte-icons-pack';
-  import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
+
+  import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
   import { content } from '$content';
+  import { Icon } from 'svelte-icons-pack';
+  import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
 
   interface Props {
     id: HTMLInputAttributes['id'];
@@ -36,20 +37,20 @@
 </script>
 
 <BaseInput
-  {id}
-  type={shown ? 'text' : 'password'}
-  bind:value
   {autocomplete}
-  {label}
-  {name}
+  bind:value
   {className}
+  {id}
   {invalid}
   {invalidText}
-  {required}
+  {label}
+  {name}
   {onblur}
+  {required}
+  type={shown ? 'text' : 'password'}
 >
   {#snippet trailingIcon()}
-    <button aria-label={content.common.hidePasswordButtonAriaLabel} type="button" onclick={() => (shown = !shown)}>
+    <button aria-label={content.common.hidePasswordButtonAriaLabel} onclick={() => (shown = !shown)} type="button">
       <Icon src={shown ? FaEye : FaEyeSlash} />
     </button>
   {/snippet}
