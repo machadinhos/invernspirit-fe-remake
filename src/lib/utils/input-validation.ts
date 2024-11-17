@@ -14,27 +14,40 @@ export function validateEmail(email: string) {
   return email !== '' ? regex.test(email) : false;
 }
 
-export interface PasswordErrors {
-  missingRequiredLengthError?: boolean;
-  missingUppercaseLetterError?: boolean;
-  missingSpecialCharactersError?: boolean;
+export class PasswordErrors {
+  missingRequiredLengthError: boolean = false;
+  missingUppercaseLetterError: boolean = false;
+  missingSpecialCharactersError: boolean = false;
+
+  constructor(allInvalid?: boolean) {
+    if (allInvalid) {
+      this.missingRequiredLengthError = true;
+      this.missingUppercaseLetterError = true;
+      this.missingSpecialCharactersError = true;
+    }
+  }
 }
 
-export function validatePassword(password: string) {
-  const errors: PasswordErrors = {};
+export function validatePassword(password: string): { isValid: boolean; errors: PasswordErrors } {
+  if (!password) return { isValid: false, errors: new PasswordErrors(true) };
+  const errors = new PasswordErrors();
+  let hasErrors = containsXSSPatterns(password);
 
   if (password.length < 10 || password.length > 128) {
     errors.missingRequiredLengthError = true;
+    hasErrors = true;
   }
   if (!/[A-Z]/.test(password)) {
     errors.missingUppercaseLetterError = true;
+    hasErrors = true;
   }
   if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,./?]+/.test(password)) {
     errors.missingSpecialCharactersError = true;
+    hasErrors = true;
   }
 
   return {
-    isValid: Object.keys(errors).length === 0 && !containsXSSPatterns(password),
+    isValid: !hasErrors,
     errors
   };
 }

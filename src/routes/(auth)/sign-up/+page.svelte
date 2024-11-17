@@ -6,7 +6,7 @@
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
 
-  import PasswordRequiredChecksSection from './PasswordRequiredChecksSection.svelte';
+  import PasswordChecks from './PasswordChecks.svelte';
 
   const formFields: { [key: string]: FormField } = {
     firstName: new FormField({
@@ -106,7 +106,7 @@
         {/snippet}
       </TextInput>
       {#if field.label === 'Password'}
-        <PasswordRequiredChecksSection password={formFields.password.value} />
+        <PasswordChecks password={formFields.password.value} />
       {/if}
     </div>
   {/each}
