@@ -47,6 +47,6 @@
     </div>
     <Button className="px-3">{content.home.button}</Button>
   </div>
-  <button onclick={() => cart.addProduct()}>{'test'}</button>
+  <button onclick={cart.addProduct}>{'test'}</button>
   {cart.value.length}
 </div>
