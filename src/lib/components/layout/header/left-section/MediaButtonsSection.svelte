@@ -16,11 +16,11 @@
 {@render mediaButton(
   FaBrandsInstagram,
   socialMediaLinks.instagram,
-  content.common.header.leftSection.areaLabels.instagram
+  content.common.header.leftSection.areaLabels.instagram,
 )}
 {@render mediaButton(
   FaBrandsPinterestP,
   socialMediaLinks.pinterestP,
-  content.common.header.leftSection.areaLabels.pinterest
+  content.common.header.leftSection.areaLabels.pinterest,
 )}
 {@render mediaButton(FaBrandsYoutube, socialMediaLinks.youtube, content.common.header.leftSection.areaLabels.youtube)}

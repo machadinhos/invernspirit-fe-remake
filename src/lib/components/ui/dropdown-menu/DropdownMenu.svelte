@@ -22,7 +22,7 @@
     triggerElement,
     isFullWidth = false,
     closeOnOutsideClick = true,
-    children
+    children,
   }: Props = $props();
 
   $effect(() => {
@@ -33,9 +33,9 @@
     triggerElement
       ? {
           left: isFullWidth ? 0 : triggerElement.offsetLeft,
-          top: triggerElement.offsetTop + triggerElement.offsetHeight + 10
+          top: triggerElement.offsetTop + triggerElement.offsetHeight + 10,
         }
-      : { top: 0, left: 0 }
+      : { top: 0, left: 0 },
   );
 
   let dropdownElement: HTMLDivElement | undefined = $state();

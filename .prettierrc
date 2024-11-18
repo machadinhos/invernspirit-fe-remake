@@ -10,7 +10,7 @@
     }
   ],
   "singleQuote": true,
-  "trailingComma": "none",
+  "trailingComma": "all",
   "endOfLine": "crlf",
   "printWidth": 120
 }

@@ -30,7 +30,7 @@
     invalid = false,
     invalidText,
     required = false,
-    onblur = () => {}
+    onblur = () => {},
   }: Props = $props();
 
   let shown = $state(false);

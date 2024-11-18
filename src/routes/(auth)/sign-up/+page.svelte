@@ -16,7 +16,7 @@
       type: 'text',
       label: content.auth.signUp.formFields.firstName.label,
       invalidText: content.auth.signUp.formFields.firstName.invalidText,
-      validate: validateRequiredInput
+      validate: validateRequiredInput,
     }),
     lastName: new FormField({
       id: 'sign-up-last-name',
@@ -25,7 +25,7 @@
       type: 'text',
       label: content.auth.signUp.formFields.lastName.label,
       invalidText: content.auth.signUp.formFields.lastName.invalidText,
-      validate: validateRequiredInput
+      validate: validateRequiredInput,
     }),
     email: new FormField({
       id: 'sign-up-email',
@@ -34,7 +34,7 @@
       type: 'email',
       label: content.auth.signUp.formFields.email.label,
       invalidText: content.auth.signUp.formFields.email.invalidText,
-      validate: validateEmail
+      validate: validateEmail,
     }),
     password: new FormField({
       id: 'sign-up-password',
@@ -43,7 +43,7 @@
       type: 'password',
       label: content.auth.signUp.formFields.password.label,
       invalidText: content.auth.signUp.formFields.password.invalidText,
-      validate: (value) => validatePassword(value).isValid
+      validate: (value) => validatePassword(value).isValid,
     }),
     confirmPassword: new FormField({
       id: 'sign-up-confirm-password',
@@ -52,8 +52,8 @@
       name: 'confirmPassword',
       label: content.auth.signUp.formFields.confirmPassword.label,
       invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
-      validate: (value) => value === formFields.password.value && validatePassword(value).isValid
-    })
+      validate: (value) => value === formFields.password.value && validatePassword(value).isValid,
+    }),
   };
 
   let rememberMeInput = $state(false);

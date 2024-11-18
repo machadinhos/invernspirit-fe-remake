@@ -9,5 +9,5 @@ export const content = {
   faq: faq,
   auth: auth,
   contactUs: contactUs,
-  home: home
+  home: home,
 };

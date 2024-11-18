@@ -12,9 +12,9 @@ const config = {
 
     alias: {
       '$components/*': 'src/lib/components/*',
-      $content: 'src/lib/content/content.ts'
-    }
-  }
+      $content: 'src/lib/content/content.ts',
+    },
+  },
 };
 
 export default config;

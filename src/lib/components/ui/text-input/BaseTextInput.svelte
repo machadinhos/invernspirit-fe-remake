@@ -29,7 +29,7 @@
     invalid = false,
     invalidText,
     required = false,
-    onblur = () => {}
+    onblur = () => {},
   }: Props = $props();
 </script>
 
