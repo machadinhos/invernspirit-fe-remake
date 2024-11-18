@@ -15,30 +15,30 @@ export default ts.config(
   ...svelte.configs['flat/prettier'],
   {
     plugins: {
-      perfectionist: perfectionist
+      perfectionist: perfectionist,
     },
     rules: {
       'perfectionist/sort-imports': 'error',
-      'perfectionist/sort-svelte-attributes': 'error'
-    }
+      'perfectionist/sort-svelte-attributes': 'error',
+    },
   },
   {
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node
-      }
-    }
+        ...globals.node,
+      },
+    },
   },
   {
     files: ['**/*.svelte'],
     languageOptions: {
       parserOptions: {
-        parser: ts.parser
-      }
-    }
+        parser: ts.parser,
+      },
+    },
   },
   {
-    ignores: ['build/', '.svelte-kit/', 'dist/']
-  }
+    ignores: ['build/', '.svelte-kit/', 'dist/'],
+  },
 );

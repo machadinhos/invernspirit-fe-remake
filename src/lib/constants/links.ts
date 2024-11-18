@@ -15,13 +15,13 @@ export const imageLinks = {
       generateInternalURL('/products/ceramics-product-1-1.jpeg', 'images.'),
       generateInternalURL('/products/ceramics-product-2-1.jpeg', 'images.'),
       generateInternalURL('/products/ceramics-product-3-1.jpeg', 'images.'),
-      generateInternalURL('/products/ceramics-product-4-1.jpeg', 'images.')
-    ]
-  }
+      generateInternalURL('/products/ceramics-product-4-1.jpeg', 'images.'),
+    ],
+  },
 };
 
 export const socialMediaLinks = {
   instagram: new URL('https://www.lamaisonregina.com/pt').toString(),
   pinterestP: new URL('https://www.lamaisonregina.com/pt').toString(),
-  youtube: new URL('https://www.lamaisonregina.com/pt').toString()
+  youtube: new URL('https://www.lamaisonregina.com/pt').toString(),
 };

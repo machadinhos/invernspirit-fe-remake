@@ -12,10 +12,10 @@ export default {
         'secondary-background': '#7e7e78',
         error: '#FF6F61',
         success: '#00fa3c',
-        'text-secondary': '#a6a6a6'
-      }
-    }
+        'text-secondary': '#a6a6a6',
+      },
+    },
   },
 
-  plugins: []
+  plugins: [],
 } as Config;

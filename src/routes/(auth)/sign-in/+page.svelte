@@ -14,7 +14,7 @@
       autocomplete: 'username',
       label: content.auth.signIn.formFields.email.label,
       invalidText: content.auth.signIn.formFields.email.invalidText,
-      validate: validateEmail
+      validate: validateEmail,
     }),
     new FormField({
       id: 'sign-in-password',
@@ -23,8 +23,8 @@
       autocomplete: 'current-password',
       label: content.auth.signIn.formFields.password.label,
       invalidText: content.auth.signIn.formFields.password.invalidText,
-      validate: (value) => validatePassword(value).isValid
-    })
+      validate: (value) => validatePassword(value).isValid,
+    }),
   ];
 
   let rememberMeInput = $state(false);

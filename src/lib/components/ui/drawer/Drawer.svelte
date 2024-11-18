@@ -33,7 +33,7 @@
       duration: 500,
       easing: quintOut,
       x: side === 'left' ? -window.innerWidth : window.innerWidth,
-      opacity: 1
+      opacity: 1,
     }}
   >
     <div class="h-full overflow-y-auto p-4">

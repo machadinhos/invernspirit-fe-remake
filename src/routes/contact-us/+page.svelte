@@ -13,7 +13,7 @@
       autocomplete: 'name',
       label: content.contactUs.formFields.name.label,
       invalidText: content.contactUs.formFields.name.invalidText,
-      validate: validateRequiredInput
+      validate: validateRequiredInput,
     }),
     new FormField({
       id: 'contact-us-email',
@@ -22,7 +22,7 @@
       type: 'email',
       label: content.contactUs.formFields.email.label,
       invalidText: content.contactUs.formFields.email.invalidText,
-      validate: validateEmail
+      validate: validateEmail,
     }),
     new FormField({
       id: 'contact-us-subject',
@@ -31,7 +31,7 @@
       type: 'text',
       label: content.contactUs.formFields.subject.label,
       invalidText: content.contactUs.formFields.subject.invalidText,
-      validate: validateRequiredInput
+      validate: validateRequiredInput,
     }),
     new FormField({
       id: 'contact-us-message',
@@ -40,8 +40,8 @@
       type: 'textarea',
       label: content.contactUs.formFields.message.label,
       invalidText: content.contactUs.formFields.message.invalidText,
-      validate: validateRequiredInput
-    })
+      validate: validateRequiredInput,
+    }),
   ];
 
   function submitMessage() {

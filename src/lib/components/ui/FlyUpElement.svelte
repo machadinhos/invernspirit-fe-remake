@@ -17,7 +17,7 @@
     transition:fly={{
       duration: duration,
       y: window.innerHeight,
-      easing: quintInOut
+      easing: quintInOut,
     }}
   >
     {@render children()}
