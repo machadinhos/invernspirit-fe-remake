@@ -37,17 +37,17 @@
 </script>
 
 <BaseInput
-  {autocomplete}
-  bind:value
-  {className}
   {id}
+  {name}
+  {autocomplete}
+  {className}
   {invalid}
   {invalidText}
   {label}
-  {name}
   {onblur}
   {required}
   type={shown ? 'text' : 'password'}
+  bind:value
 >
   {#snippet trailingIcon()}
     <button aria-label={content.common.hidePasswordButtonAriaLabel} onclick={() => (shown = !shown)} type="button">

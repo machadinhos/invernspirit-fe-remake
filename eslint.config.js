@@ -1,6 +1,5 @@
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
-import perfectionist from 'eslint-plugin-perfectionist';
 import security from 'eslint-plugin-security';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
@@ -14,12 +13,8 @@ export default ts.config(
   prettier,
   ...svelte.configs['flat/prettier'],
   {
-    plugins: {
-      perfectionist: perfectionist,
-    },
     rules: {
-      'perfectionist/sort-imports': 'error',
-      'perfectionist/sort-svelte-attributes': 'error',
+      'svelte/sort-attributes': 'error',
     },
   },
   {

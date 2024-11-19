@@ -37,25 +37,25 @@
   <div class="relative">
     {#if type !== 'textarea'}
       <input
-        {autocomplete}
-        bind:value
-        class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
-        class:pr-6={trailingIcon}
         {id}
         {name}
+        class="peer h-10 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        class:pr-6={trailingIcon}
+        {autocomplete}
         {onblur}
         {required}
         {type}
+        bind:value
       />
     {:else}
       <textarea
-        autocomplete="off"
-        bind:value
-        class="peer min-h-24 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
         {id}
         {name}
+        class="peer min-h-24 w-full border-b-2 border-white bg-transparent focus:border-primary focus:outline-none {className}"
+        autocomplete="off"
         {onblur}
         {required}
+        bind:value
       ></textarea>
     {/if}
     {#if trailingIcon}

@@ -38,30 +38,30 @@
 
 {#if type === 'password'}
   <PasswordTextInput
-    {autocomplete}
-    bind:value
-    {className}
     {id}
+    {name}
+    {autocomplete}
+    {className}
     {invalid}
     {invalidText}
     {label}
-    {name}
     {onblur}
     {required}
+    bind:value
   />
 {:else}
   <BaseTextInput
-    {autocomplete}
-    bind:value
-    {className}
     {id}
+    {name}
+    {autocomplete}
+    {className}
     {invalid}
     {invalidText}
     {label}
-    {name}
     {onblur}
     {required}
     {trailingIcon}
     {type}
+    bind:value
   />
 {/if}

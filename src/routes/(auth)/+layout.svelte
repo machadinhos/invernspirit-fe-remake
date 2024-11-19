@@ -12,7 +12,7 @@
 </script>
 
 {#snippet pageListItem(page: 'sign-in' | 'sign-up')}
-  <li class="w-1/2 text-center" style="font-size: 2.5rem">
+  <li style="font-size: 2.5rem" class="w-1/2 text-center">
     <a
       class="block w-full pt-4 transition-opacity duration-500 {selected === page ? 'opacity-100' : 'opacity-50'}"
       href={`/${page}`}
@@ -36,8 +36,8 @@
         {@render pageListItem('sign-up')}
       </ul>
       <div
-        class="pointer-events-none absolute bottom-0.5 h-0.5 w-[35%] select-none bg-white transition-all duration-500"
         style="left: {selected === 'sign-in' ? '7.5%' : '57.5%'}"
+        class="pointer-events-none absolute bottom-0.5 h-0.5 w-[35%] select-none bg-white transition-all duration-500"
       ></div>
     </div>
     <div class="mb-10 mt-5 w-[75%]">

@@ -70,15 +70,15 @@
     {#each [formFields['firstName'], formFields['lastName']] as field}
       <div class="w-1/2">
         <TextInput
-          autocomplete={field.autocomplete}
-          bind:value={field.value}
           id={field.id}
+          name={field.name}
+          autocomplete={field.autocomplete}
           invalid={!field.isValid}
           invalidText={field.invalidText}
-          name={field.name}
           onblur={generateFormFieldOnblurCallback(field)}
           required
           type={field.type}
+          bind:value={field.value}
         >
           {#snippet label()}
             {field.label}
@@ -91,15 +91,15 @@
   {#each [formFields['email'], formFields['password'], formFields['confirmPassword']] as field}
     <div class="w-full">
       <TextInput
-        autocomplete={field.autocomplete}
-        bind:value={field.value}
         id={field.id}
+        name={field.name}
+        autocomplete={field.autocomplete}
         invalid={!field.isValid}
         invalidText={field.invalidText}
-        name={field.name}
         onblur={generateFormFieldOnblurCallback(field)}
         required
         type={field.type}
+        bind:value={field.value}
       >
         {#snippet label()}
           {field.label}
@@ -111,7 +111,7 @@
     </div>
   {/each}
 
-  <CheckBox bind:checked={rememberMeInput} label="Keep me logged in?" />
+  <CheckBox label="Keep me logged in?" bind:checked={rememberMeInput} />
 
   <div class="mt-10 flex items-center justify-center">
     <p>

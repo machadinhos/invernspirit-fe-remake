@@ -41,11 +41,11 @@
 <div>
   <HeaderIcon
     aria-label={content.common.header.leftSection.areaLabels.newsletter}
-    bind:ref={dropdownTriggerElement}
     onclick={handleIconClick}
     src={FaNewspaper}
+    bind:ref={dropdownTriggerElement}
   />
-  <DropdownMenu bind:isOpen className="w-80" onClose={clearState} triggerElement={dropdownTriggerElement}>
+  <DropdownMenu className="w-80" onClose={clearState} triggerElement={dropdownTriggerElement} bind:isOpen>
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
         <h2>{content.common.header.leftSection.newsletterTitle}</h2>
@@ -53,16 +53,16 @@
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
           <TextInput
-            autocomplete="email"
-            bind:value={emailInput}
             id="newsletter-email"
+            name="email"
+            autocomplete="email"
             invalid={!isValidEmailInput}
             invalidText="Please enter a valid email address."
-            name="email"
             onblur={() => {
               isValidEmailInput = validateEmail(emailInput);
             }}
             type="email"
+            bind:value={emailInput}
           >
             {#snippet label()}
               <div class="flex">

@@ -20,8 +20,8 @@
 
 <div class="mt-8 flex items-center justify-end gap-4">
   <select
-    aria-label={content.common.header.rightSection.areaLabels.countrySelect}
     class="h-fit bg-background text-white"
+    aria-label={content.common.header.rightSection.areaLabels.countrySelect}
   >
     {#each countries as country}
       <option>{country}</option>
@@ -30,11 +30,11 @@
   <div>
     <HeaderIcon
       aria-label={content.common.header.rightSection.areaLabels.user}
-      bind:ref={dropdownTriggerElement}
       onclick={handleIconClick}
       src={FaSolidUser}
+      bind:ref={dropdownTriggerElement}
     />
-    <DropdownMenu bind:isOpen className="p-5" triggerElement={dropdownTriggerElement}>
+    <DropdownMenu className="p-5" triggerElement={dropdownTriggerElement} bind:isOpen>
       <div class="flex flex-col gap-4">
         <DropdownMenuItem>
           <a class="hover:text-primary" href="/sign-in" onclick={() => (isOpen = false)}>{content.auth.signIn.title}</a>
@@ -45,7 +45,7 @@
       </div>
     </DropdownMenu>
   </div>
-  <a aria-label={content.common.header.rightSection.areaLabels.cart} class="h-fit w-fit" href="/">
+  <a class="h-fit w-fit" aria-label={content.common.header.rightSection.areaLabels.cart} href="/">
     <HeaderIcon badge={cart.value.length > 0 ? `${cart.value.length}` : ''} src={BiSolidCart} type="div" />
   </a>
 </div>

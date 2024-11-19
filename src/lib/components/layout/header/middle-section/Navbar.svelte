@@ -25,7 +25,7 @@
           <Icon size={10} src={FaSolidChevronDown} />
         </div>
       </button>
-      <DropdownMenu bind:isOpen isFullWidth triggerElement={dropdownTriggerElement}>
+      <DropdownMenu isFullWidth triggerElement={dropdownTriggerElement} bind:isOpen>
         <div class="flex flex-col items-center justify-center gap-4 py-4 text-white">
           <DropdownMenuItem>
             <a class="hover:text-primary" href="/shop/collections" onclick={() => (isOpen = false)}
@@ -47,7 +47,7 @@
     <li>
       <div class="flex h-16 w-16 items-center justify-center">
         <a class="imageLink flex h-full w-full items-center justify-center" href="/">
-          <img alt="logo" class="logoImage h-10 w-10 object-contain" fetchpriority="high" src="/images/logo.webp" />
+          <img class="logoImage h-10 w-10 object-contain" alt="logo" fetchpriority="high" src="/images/logo.webp" />
         </a>
       </div>
     </li>

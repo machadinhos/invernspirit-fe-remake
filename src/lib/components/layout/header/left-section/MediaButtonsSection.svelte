@@ -8,7 +8,7 @@
 </script>
 
 {#snippet mediaButton(src: IconType, href: HTMLAnchorElement['href'], ariaLabel: HTMLAnchorElement['ariaLabel'])}
-  <a aria-label={ariaLabel} class="h-fit w-fit" {href} target="_blank">
+  <a class="h-fit w-fit" aria-label={ariaLabel} {href} target="_blank">
     <HeaderIcon {src} type="div" />
   </a>
 {/snippet}
