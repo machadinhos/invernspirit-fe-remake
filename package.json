@@ -2,6 +2,7 @@
   "name": "invernspirit-fe",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@9.13.2",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
