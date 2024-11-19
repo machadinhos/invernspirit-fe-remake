@@ -26,7 +26,6 @@
     "vite": "^5.4.11"
   },
   "devDependencies": {
-    "@types/dompurify": "^3.0.5",
     "@types/eslint": "^9.6.1",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
