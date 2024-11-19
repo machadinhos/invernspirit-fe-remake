@@ -1,38 +1,35 @@
-# create-svelte
+# invernspirit-fe
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+The frontend for the [invernspirit](https://www.invernspirit.com/) ecommerce website, built with SvelteKit.
 
-## Creating a project
+## Prerequisites
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Node.js
+- pnpm or npm
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Setup
 
-# create a new project in my-app
-npx sv create my-app
-```
+We recommend using [pnpm](https://pnpm.io/) as the package manager for this project.
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To install pnpm globally:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm install -g pnpm
 ```
 
-## Building
+## Development
 
-To create a production version of your app:
+Install dependencies:
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+### Main Commands
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- `pnpm run dev` - Start development server with hot reload
+- `pnpm run build` - Build the application for production
+- `pnpm run preview` - Preview the built application locally
+- `pnpm run build:preview` - Build and preview
+- `pnpm run check` - Run Svelte compiler checks and TypeScript validations
+- `pnpm run lint` - Run Prettier to format the code and ESLint to check code style
