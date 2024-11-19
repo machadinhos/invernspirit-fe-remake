@@ -56,7 +56,7 @@
     class="mt-10 flex h-fit w-[95%] flex-col items-center bg-background shadow-2xl sm:w-[80%] md:w-[65%] lg:w-[50%] xl:w-[30%]"
   >
     <div class="mt-4 flex w-full flex-col items-center">
-      <h1 class="text-center" style="font-size: 2.5rem">
+      <h1 style="font-size: 2.5rem" class="text-center">
         {content.contactUs.title}
       </h1>
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
@@ -66,15 +66,15 @@
         {#each formFields as field}
           <div class="w-full">
             <TextInput
-              autocomplete={field.autocomplete}
-              bind:value={field.value}
               id={field.id}
+              name={field.name}
+              autocomplete={field.autocomplete}
               invalid={!field.isValid}
               invalidText={field.invalidText}
-              name={field.name}
               onblur={generateFormFieldOnblurCallback(field)}
               required
               type={field.type}
+              bind:value={field.value}
             >
               {#snippet label()}
                 {field.label}

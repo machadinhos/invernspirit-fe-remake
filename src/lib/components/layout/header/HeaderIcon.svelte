@@ -30,9 +30,9 @@
 
 {#if type === 'button'}
   <button
-    aria-label={ariaLabel}
     bind:this={ref}
     class="outer-element relative flex h-9 w-9 cursor-pointer items-center justify-center"
+    aria-label={ariaLabel}
     {onclick}
   >
     {@render innerElements()}

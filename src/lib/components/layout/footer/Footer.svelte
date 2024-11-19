@@ -20,13 +20,13 @@
         <Icon color="white" size="20" src={SlMagnifier} />
       </div>
       <input
+        name="searchString"
+        class="w-full bg-background text-white focus:border-none focus:outline-none"
         aria-label={content.common.footer.searchBarPlaceholder}
         autocomplete="off"
-        bind:value={searchString}
-        class="w-full bg-background text-white focus:border-none focus:outline-none"
-        name="searchString"
         placeholder={content.common.footer.searchBarPlaceholder}
         type="search"
+        bind:value={searchString}
       />
     </div>
     <Button className="flex w-20 justify-center" type="submit">{content.common.footer.searchButton}</Button>
