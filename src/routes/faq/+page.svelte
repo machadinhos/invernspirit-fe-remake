@@ -164,7 +164,7 @@
   <div class="flex h-[calc(100%-theme(spacing.24))] flex-1">
     <div class="flex h-full w-1/5 flex-col bg-background">
       <div class="p-4">
-        <h2 class="text-lg font-semibold">{content.faq.tocTitle}</h2>
+        <h2 class="text-lg font-bold">{content.faq.tocTitle}</h2>
       </div>
       <div class="mb-2 flex w-full items-center">
         <div class="px-2">
@@ -183,7 +183,7 @@
         {#each faqData as item, index}
           <button
             class="w-full rounded-xl px-4 py-2 transition-all duration-300 {focusedIndex === index
-              ? 'bg-primary font-medium'
+              ? 'bg-primary'
               : 'hover:bg-secondary-background'}"
             class:hidden={!visibleItemsIndex.includes(index)}
             id="faq-toc-{index}"
@@ -212,7 +212,7 @@
           role="button"
           tabindex={index}
         >
-          <h2 class="mb-2 text-xl font-semibold">{item.question}</h2>
+          <h2 class="mb-2 text-xl font-bold">{item.question}</h2>
           <p>{item.answer}</p>
         </div>
       {/each}
