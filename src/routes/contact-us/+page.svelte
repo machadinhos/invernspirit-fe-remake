@@ -51,6 +51,8 @@
   }
 </script>
 
+<svelte:head><title>{content.contactUs.headTitle}</title></svelte:head>
+
 <div class="flex h-full w-full justify-center">
   <div
     class="mt-10 flex h-fit w-[95%] flex-col items-center bg-background shadow-2xl sm:w-[80%] md:w-[65%] lg:w-[50%] xl:w-[30%]"

@@ -16,6 +16,8 @@
   setInterval(rotateImages, 10000);
 </script>
 
+<svelte:head><title>{content.home.headTitle}</title></svelte:head>
+
 <div class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden grayscale filter">
   <GrainyFilter />
   {#each imageLinks.home.bgImages as image, index}

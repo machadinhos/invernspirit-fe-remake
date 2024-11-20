@@ -36,6 +36,8 @@
   }
 </script>
 
+<svelte:head><title>{content.auth.signIn.headTitle}</title></svelte:head>
+
 <form class="w-full gap-6 pt-10" onsubmit={submitSignIn}>
   {#each formFields as field}
     <div class="w-full">
