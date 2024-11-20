@@ -65,6 +65,8 @@
   }
 </script>
 
+<svelte:head><title>{content.auth.signUp.headTitle}</title></svelte:head>
+
 <form class="w-full gap-6 pt-10" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
     {#each [formFields['firstName'], formFields['lastName']] as field}

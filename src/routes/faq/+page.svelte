@@ -156,6 +156,8 @@
   });
 </script>
 
+<svelte:head><title>{content.faq.headTitle}</title></svelte:head>
+
 <div class="flex h-full flex-col">
   <h1 class="py-6 text-center text-4xl font-bold">
     {content.faq.pageTitle}
