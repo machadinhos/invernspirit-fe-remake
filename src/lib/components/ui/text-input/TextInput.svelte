@@ -1,9 +1,8 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
-
   import BaseTextInput from '$components/ui/text-input/BaseTextInput.svelte';
   import PasswordTextInput from '$components/ui/text-input/PasswordTextInput.svelte';
+  import type { Snippet } from 'svelte';
 
   interface Props {
     id: HTMLInputAttributes['id'];

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { IconType } from 'svelte-icons-pack';
-
-  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import { FaBrandsInstagram, FaBrandsPinterestP, FaBrandsYoutube } from 'svelte-icons-pack/fa';
   import { content } from '$content';
+  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import type { IconType } from 'svelte-icons-pack';
   import { socialMediaLinks } from '$lib/constants/links';
-  import { FaBrandsInstagram, FaBrandsYoutube, FaBrandsPinterestP } from 'svelte-icons-pack/fa';
 </script>
 
 {#snippet mediaButton(src: IconType, href: HTMLAnchorElement['href'], ariaLabel: HTMLAnchorElement['ariaLabel'])}

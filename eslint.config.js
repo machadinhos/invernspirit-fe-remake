@@ -1,8 +1,8 @@
+import globals from 'globals';
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import security from 'eslint-plugin-security';
 import svelte from 'eslint-plugin-svelte';
-import globals from 'globals';
 import ts from 'typescript-eslint';
 
 export default ts.config(
@@ -15,6 +15,12 @@ export default ts.config(
   {
     rules: {
       'svelte/sort-attributes': 'error',
+      'sort-imports': [
+        'error',
+        {
+          ignoreCase: true,
+        },
+      ],
     },
   },
   {

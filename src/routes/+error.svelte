@@ -1,7 +1,7 @@
 <script>
-  import { page } from '$app/stores';
   import Button from '$components/ui/Button.svelte';
   import { content } from '$content';
+  import { page } from '$app/stores';
 </script>
 
 <div class="flex h-full flex-col items-center justify-center">

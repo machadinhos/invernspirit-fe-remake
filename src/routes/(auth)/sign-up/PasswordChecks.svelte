@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { validatePassword } from '$lib/utils/input-validation';
-  import { Icon } from 'svelte-icons-pack';
   import { FaSolidCheck, FaSolidX } from 'svelte-icons-pack/fa';
+  import { Icon } from 'svelte-icons-pack';
+  import { validatePassword } from '$lib/utils/input-validation';
 
   interface Props {
     password: string;

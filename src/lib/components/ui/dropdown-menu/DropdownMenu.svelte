@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { HTMLAttributes } from 'svelte/elements';
-
-  import { onMount } from 'svelte';
   import { backInOut } from 'svelte/easing';
+  import type { HTMLAttributes } from 'svelte/elements';
+  import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
 
   interface Props {

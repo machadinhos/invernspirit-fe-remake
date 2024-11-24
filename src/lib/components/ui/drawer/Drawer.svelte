@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { HTMLAttributes } from 'svelte/elements';
-
-  import { Icon } from 'svelte-icons-pack';
+  import { fade, fly } from 'svelte/transition';
   import { FaSolidX } from 'svelte-icons-pack/fa';
+  import type { HTMLAttributes } from 'svelte/elements';
+  import { Icon } from 'svelte-icons-pack';
   import { quintOut } from 'svelte/easing';
-  import { fly, fade } from 'svelte/transition';
 
   interface Props {
     isOpen: boolean;

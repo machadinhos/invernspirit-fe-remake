@@ -1,7 +1,7 @@
 <script>
   import Button from '$components/ui/Button.svelte';
-  import { content } from '$content';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
+  import { content } from '$content';
   import { Icon } from 'svelte-icons-pack';
   import { SlMagnifier } from 'svelte-icons-pack/sl';
 

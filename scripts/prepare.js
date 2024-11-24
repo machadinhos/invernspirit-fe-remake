@@ -1,5 +1,5 @@
-import { existsSync } from 'fs';
 import { execSync } from 'child_process';
+import { existsSync } from 'fs';
 
 function prepareDevelopmentEnvironment() {
   if (existsSync('node_modules/husky')) {
