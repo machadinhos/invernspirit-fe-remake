@@ -1,9 +1,9 @@
 <script lang="ts">
   import Button from '$components/ui/Button.svelte';
-  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
-  import { content } from '$content';
-  import { imageLinks } from '$lib/constants/links';
   import cart from '$lib/state/cart.svelte';
+  import { content } from '$content';
+  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
+  import { imageLinks } from '$lib/constants/links';
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;

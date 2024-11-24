@@ -1,12 +1,12 @@
 <script lang="ts">
-  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
-  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
-  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import { BiSolidCart } from 'svelte-icons-pack/bi';
+  import cart from '$lib/state/cart.svelte';
   import { content } from '$content';
   import { countries } from '$lib/constants/countries';
-  import cart from '$lib/state/cart.svelte';
-  import { BiSolidCart } from 'svelte-icons-pack/bi';
+  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
+  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
   import { FaSolidUser } from 'svelte-icons-pack/fa';
+  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
 
   let isOpen = $state(false);
   let dropdownTriggerElement: HTMLButtonElement | undefined = $state();

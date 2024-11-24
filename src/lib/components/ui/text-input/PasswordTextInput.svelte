@@ -1,11 +1,10 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
-
   import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
   import { content } from '$content';
   import { Icon } from 'svelte-icons-pack';
-  import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
+  import type { Snippet } from 'svelte';
 
   interface Props {
     id: HTMLInputAttributes['id'];

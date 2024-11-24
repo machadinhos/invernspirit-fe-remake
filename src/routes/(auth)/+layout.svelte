@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/stores';
   import { content } from '$content';
+  import { page } from '$app/stores';
 
   interface Props {
     children: import('svelte').Snippet;

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { quintInOut } from 'svelte/easing';
   import { fly, type FlyParams } from 'svelte/transition';
+  import { quintInOut } from 'svelte/easing';
 
   interface Props {
     children: import('svelte').Snippet;
