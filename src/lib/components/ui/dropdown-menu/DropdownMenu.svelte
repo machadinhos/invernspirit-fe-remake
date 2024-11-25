@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { backInOut } from 'svelte/easing';
+  import { backIn, backOut } from 'svelte/easing';
   import type { HTMLAttributes } from 'svelte/elements';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
@@ -66,7 +66,7 @@
     bind:this={dropdownElement}
     style={isFullWidth ? `top: ${position.top}px; left: ${position.left}px` : ''}
     class="fixed z-20 {isFullWidth ? 'left-0 w-full' : ''} bg-background shadow-2xl"
-    transition:slide={{ duration: 800, easing: backInOut }}
+    transition:slide={{ duration: 800, easing: isOpen ? backOut : backIn }}
   >
     <div class={className}>
       {@render children()}
