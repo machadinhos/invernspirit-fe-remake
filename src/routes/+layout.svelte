@@ -3,6 +3,7 @@
   import Footer from '$components/layout/footer/Footer.svelte';
   import GrainyFilter from '$components/ui/GrainyFilter.svelte';
   import Header from '$components/layout/header/Header.svelte';
+  import { page } from '$app/stores';
 
   interface Props {
     children: import('svelte').Snippet;
@@ -10,6 +11,15 @@
 
   let { children }: Props = $props();
 </script>
+
+<svelte:head>
+  <!-- Prevent search engine indexing by setting `noCrawl: true` in page/layout load functions (e.g., +page.js, +page.server.js, +layout.js, +layout.server.js) -->
+  {#if !$page.data.noCrawl}
+    <meta name="robots" content="index,follow" />
+  {:else}
+    <meta name="robots" content="noindex, nofollow" />
+  {/if}
+</svelte:head>
 
 <div class="pointer-events-none fixed inset-0 -z-10 select-none">
   <GrainyFilter>
