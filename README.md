@@ -4,32 +4,23 @@ The frontend for the [invernspirit](https://www.invernspirit.com/) ecommerce web
 
 ## Prerequisites
 
-- Node.js
-- pnpm or npm
-
-## Setup
-
-We recommend using [pnpm](https://pnpm.io/) as the package manager for this project.
-
-To install pnpm globally:
-
-```bash
-npm install -g pnpm
-```
+- [Bun](https://bun.sh/) (version 1.1.0 or higher)
 
 ## Development
 
-Install dependencies:
+### Install dependencies
+
+Run the following command to install dependencies:
 
 ```bash
-pnpm install
+bun install
 ```
 
 ### Main Commands
 
-- `pnpm run dev` - Start development server with hot reload
-- `pnpm run build` - Build the application for production
-- `pnpm run preview` - Preview the built application locally
-- `pnpm run build:preview` - Build and preview
-- `pnpm run check` - Run Svelte compiler checks and TypeScript validations
-- `pnpm run lint` - Run Prettier to format the code and ESLint to check code style
+- `bun run dev` - Start development server with hot reload.
+- `bun run build` - Build the application for production.
+- `bun run preview` - Preview the built application locally.
+- `bun run build:preview` - Build and preview the application.
+- `bun run check` - Run Svelte compiler checks and TypeScript validations.
+- `bun run lint` - Format code with Prettier and lint with ESLint.
