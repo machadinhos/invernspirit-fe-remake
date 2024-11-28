@@ -1,5 +1,5 @@
 <script>
-  import Navbar from '$components/layout/header/middle-section/Navbar.svelte';
+  import Navbar from './Navbar.svelte';
 </script>
 
 <Navbar />

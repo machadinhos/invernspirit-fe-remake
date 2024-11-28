@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Button from '$components/ui/Button.svelte';
-  import cart from '$lib/state/cart.svelte';
-  import { content } from '$content';
-  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
+  import { Button } from '$components';
+  import { cart } from '$state';
+  import { GrainyFilter } from '$components';
+  import { home } from '$content';
   import { imageLinks } from '$lib/constants/links';
 
   let currentImageIndex = $state(0);
@@ -16,7 +16,7 @@
   setInterval(rotateImages, 10000);
 </script>
 
-<svelte:head><title>{content.home.headTitle}</title></svelte:head>
+<svelte:head><title>{home.headTitle}</title></svelte:head>
 
 <div class="pointer-events-none fixed inset-0 -z-10 h-full w-full select-none overflow-hidden grayscale filter">
   <GrainyFilter />
@@ -37,17 +37,17 @@
     <div class="mb-4 select-none">
       <div>
         <div class="flex gap-4 font-thin">
-          <h1 class="text-6xl md:text-8xl">{content.home.title}</h1>
+          <h1 class="text-6xl md:text-8xl">{home.title}</h1>
           <div class="flex flex-col justify-center">
-            <p>{content.home.subTitle.firstLine}</p>
-            <p>{content.home.subTitle.secondLine}</p>
+            <p>{home.subTitle.firstLine}</p>
+            <p>{home.subTitle.secondLine}</p>
           </div>
         </div>
         <div class="h-0.5 w-full bg-white"></div>
       </div>
-      <h2 class="text-2xl md:text-3xl">{content.home.description}</h2>
+      <h2 class="text-2xl md:text-3xl">{home.description}</h2>
     </div>
-    <Button className="px-3">{content.home.button}</Button>
+    <Button className="px-3">{home.button}</Button>
   </div>
   <button onclick={cart.addProduct}>{'test'}</button>
   {cart.value.length}

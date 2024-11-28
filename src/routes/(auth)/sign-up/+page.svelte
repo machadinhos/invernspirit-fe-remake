@@ -1,11 +1,11 @@
 <script lang="ts">
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
-  import Button from '$components/ui/Button.svelte';
-  import CheckBox from '$components/ui/CheckBox.svelte';
-  import { content } from '$content';
+  import { auth } from '$content';
+  import { Button } from '$components';
+  import { CheckBox } from '$components';
   import PasswordChecks from './PasswordChecks.svelte';
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import { TextInput } from '$components';
 
   const formFields: { [key: string]: FormField } = {
     firstName: new FormField({
@@ -13,8 +13,8 @@
       name: 'firstName',
       autocomplete: 'given-name',
       type: 'text',
-      label: content.auth.signUp.formFields.firstName.label,
-      invalidText: content.auth.signUp.formFields.firstName.invalidText,
+      label: auth.signUp.formFields.firstName.label,
+      invalidText: auth.signUp.formFields.firstName.invalidText,
       validate: validateRequiredInput,
     }),
     lastName: new FormField({
@@ -22,8 +22,8 @@
       name: 'lastName',
       autocomplete: 'family-name',
       type: 'text',
-      label: content.auth.signUp.formFields.lastName.label,
-      invalidText: content.auth.signUp.formFields.lastName.invalidText,
+      label: auth.signUp.formFields.lastName.label,
+      invalidText: auth.signUp.formFields.lastName.invalidText,
       validate: validateRequiredInput,
     }),
     email: new FormField({
@@ -31,8 +31,8 @@
       name: 'email',
       autocomplete: 'username',
       type: 'email',
-      label: content.auth.signUp.formFields.email.label,
-      invalidText: content.auth.signUp.formFields.email.invalidText,
+      label: auth.signUp.formFields.email.label,
+      invalidText: auth.signUp.formFields.email.invalidText,
       validate: validateEmail,
     }),
     password: new FormField({
@@ -40,8 +40,8 @@
       name: 'password',
       autocomplete: 'new-password',
       type: 'password',
-      label: content.auth.signUp.formFields.password.label,
-      invalidText: content.auth.signUp.formFields.password.invalidText,
+      label: auth.signUp.formFields.password.label,
+      invalidText: auth.signUp.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid,
     }),
     confirmPassword: new FormField({
@@ -49,8 +49,8 @@
       autocomplete: 'new-password',
       type: 'password',
       name: 'confirmPassword',
-      label: content.auth.signUp.formFields.confirmPassword.label,
-      invalidText: content.auth.signUp.formFields.confirmPassword.invalidText,
+      label: auth.signUp.formFields.confirmPassword.label,
+      invalidText: auth.signUp.formFields.confirmPassword.invalidText,
       validate: (value) => value === formFields.password.value && validatePassword(value).isValid,
     }),
   };
@@ -64,7 +64,7 @@
   }
 </script>
 
-<svelte:head><title>{content.auth.signUp.headTitle}</title></svelte:head>
+<svelte:head><title>{auth.signUp.headTitle}</title></svelte:head>
 
 <form class="w-full gap-6 pt-10" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
@@ -116,10 +116,10 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      {content.auth.signUp.signInMessage}
-      <a class="text-primary underline" href="/sign-in">{content.auth.signIn.title}</a>
+      {auth.signUp.signInMessage}
+      <a class="text-primary underline" href="/sign-in">{auth.signIn.title}</a>
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit">{content.auth.signUp.submitButton}</Button>
+  <Button className="mt-5 w-full" type="submit">{auth.signUp.submitButton}</Button>
 </form>

@@ -1,17 +1,17 @@
 <script>
-  import Button from '$components/ui/Button.svelte';
-  import { content } from '$content';
+  import { Button } from '$components';
+  import { common } from '$content';
   import { page } from '$app/stores';
 </script>
 
 <div class="flex h-full flex-col items-center justify-center">
-  <h1>{$page.status}: {$page.error?.message || content.common.errorPage.messageAlternative}</h1>
+  <h1>{$page.status}: {$page.error?.message || common.errorPage.messageAlternative}</h1>
 
   {#if $page.status === 404}
-    <p>{content.common.errorPage['404Message']}</p>
+    <p>{common.errorPage['404Message']}</p>
   {:else}
-    <p>{content.common.errorPage.otherErrorMessage}</p>
+    <p>{common.errorPage.otherErrorMessage}</p>
   {/if}
 
-  <a href="/"><Button>{content.common.errorPage.button}</Button></a>
+  <a href="/"><Button>{common.errorPage.button}</Button></a>
 </div>

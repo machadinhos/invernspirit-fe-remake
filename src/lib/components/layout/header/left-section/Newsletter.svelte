@@ -1,12 +1,12 @@
 <script lang="ts">
-  import Button from '$components/ui/Button.svelte';
-  import { content } from '$content';
-  import DropdownMenu from '$components/ui/dropdown-menu/DropdownMenu.svelte';
-  import DropdownMenuItem from '$components/ui/dropdown-menu/DropdownMenuItem.svelte';
+  import { Button } from '$components';
+  import { common } from '$content';
+  import { DropdownMenu } from '$components';
+  import { DropdownMenuItem } from '$components';
   import { FaNewspaper } from 'svelte-icons-pack/fa';
-  import HeaderIcon from '$components/layout/header/HeaderIcon.svelte';
+  import HeaderIcon from '../HeaderIcon.svelte';
   import { Icon } from 'svelte-icons-pack';
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import { TextInput } from '$components';
   import { TiMail } from 'svelte-icons-pack/ti';
   import { validateEmail } from '$lib/utils/input-validation';
 
@@ -40,7 +40,7 @@
 
 <div>
   <HeaderIcon
-    aria-label={content.common.header.leftSection.areaLabels.newsletter}
+    aria-label={common.header.leftSection.areaLabels.newsletter}
     onclick={handleIconClick}
     src={FaNewspaper}
     bind:ref={dropdownTriggerElement}
@@ -48,7 +48,7 @@
   <DropdownMenu className="w-80" onClose={clearState} triggerElement={dropdownTriggerElement} bind:isOpen>
     <form class="m-5" onsubmit={subscribeToNewsletter}>
       <DropdownMenuItem>
-        <h2>{content.common.header.leftSection.newsletterTitle}</h2>
+        <h2>{common.header.leftSection.newsletterTitle}</h2>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
         <div class="mt-2 w-full">
@@ -67,14 +67,14 @@
             {#snippet label()}
               <div class="flex">
                 <Icon className="mr-0.5 flex content-center pb-1" size="20" src={TiMail} />
-                {content.common.header.leftSection.email}
+                {common.header.leftSection.email}
               </div>
             {/snippet}
           </TextInput>
         </div>
       </DropdownMenuItem>
       <DropdownMenuItem classNames="w-full">
-        <Button className="mt-2 w-full" type="submit">{content.common.header.leftSection.subscribe}</Button>
+        <Button className="mt-2 w-full" type="submit">{common.header.leftSection.subscribe}</Button>
       </DropdownMenuItem>
     </form>
   </DropdownMenu>

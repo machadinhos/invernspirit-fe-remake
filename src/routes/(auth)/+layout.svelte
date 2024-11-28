@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { content } from '$content';
+  import { auth } from '$content';
   import { page } from '$app/stores';
 
   interface Props {
@@ -18,9 +18,9 @@
       href={`/${page}`}
     >
       {#if page === 'sign-in'}
-        {content.auth.signIn.title}
+        {auth.signIn.title}
       {:else}
-        {content.auth.signUp.title}
+        {auth.signUp.title}
       {/if}
     </a>
   </li>

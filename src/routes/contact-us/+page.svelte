@@ -1,9 +1,9 @@
 <script lang="ts">
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validateRequiredInput } from '$lib/utils/input-validation';
-  import Button from '$components/ui/Button.svelte';
-  import { content } from '$content';
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import { Button } from '$components';
+  import { contactUs } from '$content';
+  import { TextInput } from '$components';
 
   const formFields: FormField[] = [
     new FormField({
@@ -11,8 +11,8 @@
       name: 'name',
       type: 'text',
       autocomplete: 'name',
-      label: content.contactUs.formFields.name.label,
-      invalidText: content.contactUs.formFields.name.invalidText,
+      label: contactUs.formFields.name.label,
+      invalidText: contactUs.formFields.name.invalidText,
       validate: validateRequiredInput,
     }),
     new FormField({
@@ -20,8 +20,8 @@
       name: 'email',
       autocomplete: 'email',
       type: 'email',
-      label: content.contactUs.formFields.email.label,
-      invalidText: content.contactUs.formFields.email.invalidText,
+      label: contactUs.formFields.email.label,
+      invalidText: contactUs.formFields.email.invalidText,
       validate: validateEmail,
     }),
     new FormField({
@@ -29,8 +29,8 @@
       name: 'subject',
       autocomplete: 'off',
       type: 'text',
-      label: content.contactUs.formFields.subject.label,
-      invalidText: content.contactUs.formFields.subject.invalidText,
+      label: contactUs.formFields.subject.label,
+      invalidText: contactUs.formFields.subject.invalidText,
       validate: validateRequiredInput,
     }),
     new FormField({
@@ -38,8 +38,8 @@
       name: 'message',
       autocomplete: 'off',
       type: 'textarea',
-      label: content.contactUs.formFields.message.label,
-      invalidText: content.contactUs.formFields.message.invalidText,
+      label: contactUs.formFields.message.label,
+      invalidText: contactUs.formFields.message.invalidText,
       validate: validateRequiredInput,
     }),
   ];
@@ -51,7 +51,7 @@
   }
 </script>
 
-<svelte:head><title>{content.contactUs.headTitle}</title></svelte:head>
+<svelte:head><title>{contactUs.headTitle}</title></svelte:head>
 
 <div class="flex h-full w-full justify-center">
   <div
@@ -59,7 +59,7 @@
   >
     <div class="mt-4 flex w-full flex-col items-center">
       <h1 style="font-size: 2.5rem" class="text-center">
-        {content.contactUs.title}
+        {contactUs.title}
       </h1>
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
@@ -84,7 +84,7 @@
             </TextInput>
           </div>
         {/each}
-        <Button className="mt-5 w-full" type="submit">{content.contactUs.submitButton}</Button>
+        <Button className="mt-5 w-full" type="submit">{contactUs.submitButton}</Button>
       </form>
     </div>
   </div>
