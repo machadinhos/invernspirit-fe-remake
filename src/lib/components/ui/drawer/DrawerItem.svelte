@@ -1,5 +1,5 @@
 <script lang="ts">
-  import FlyUpElement from '$components/ui/FlyUpElement.svelte';
+  import FlyUpElement from '../FlyUpElement.svelte';
 
   interface Props {
     children: import('svelte').Snippet;

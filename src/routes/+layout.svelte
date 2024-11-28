@@ -1,8 +1,8 @@
 <script lang="ts">
   import '../app.css';
-  import Footer from '$components/layout/footer/Footer.svelte';
-  import GrainyFilter from '$components/ui/GrainyFilter.svelte';
-  import Header from '$components/layout/header/Header.svelte';
+  import Footer from '$lib/components/layout/footer/Footer.svelte';
+  import { GrainyFilter } from '$components';
+  import Header from '$lib/components/layout/header/Header.svelte';
   import { page } from '$app/stores';
 
   interface Props {

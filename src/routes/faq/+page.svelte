@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { content } from '$content';
+  import { faq } from '$content';
   import { Icon } from 'svelte-icons-pack';
   import { SlMagnifier } from 'svelte-icons-pack/sl';
 
@@ -156,17 +156,17 @@
   });
 </script>
 
-<svelte:head><title>{content.faq.headTitle}</title></svelte:head>
+<svelte:head><title>{faq.headTitle}</title></svelte:head>
 
 <div class="flex h-full flex-col">
   <h1 class="py-6 text-center text-4xl font-bold">
-    {content.faq.pageTitle}
+    {faq.pageTitle}
   </h1>
 
   <div class="flex h-[calc(100%-theme(spacing.24))] flex-1">
     <div class="flex h-full w-1/5 flex-col bg-background">
       <div class="p-4">
-        <h2 class="text-lg font-bold">{content.faq.tocTitle}</h2>
+        <h2 class="text-lg font-bold">{faq.tocTitle}</h2>
       </div>
       <div class="mb-2 flex w-full items-center">
         <div class="px-2">
@@ -176,7 +176,7 @@
           name="searchString"
           class="w-full bg-transparent text-white focus:border-none focus:outline-none"
           autocomplete="off"
-          placeholder={content.faq.searchPlaceholder}
+          placeholder={faq.searchPlaceholder}
           type="search"
           bind:value={searchString}
         />

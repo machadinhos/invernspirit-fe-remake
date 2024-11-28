@@ -1,10 +1,10 @@
 <script lang="ts">
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword } from '$lib/utils/input-validation';
-  import Button from '$components/ui/Button.svelte';
-  import CheckBox from '$components/ui/CheckBox.svelte';
-  import { content } from '$content';
-  import TextInput from '$components/ui/text-input/TextInput.svelte';
+  import { auth } from '$content';
+  import { Button } from '$components';
+  import { CheckBox } from '$components';
+  import { TextInput } from '$components';
 
   let formFields: FormField[] = [
     new FormField({
@@ -12,8 +12,8 @@
       type: 'email',
       name: 'email',
       autocomplete: 'username',
-      label: content.auth.signIn.formFields.email.label,
-      invalidText: content.auth.signIn.formFields.email.invalidText,
+      label: auth.signIn.formFields.email.label,
+      invalidText: auth.signIn.formFields.email.invalidText,
       validate: validateEmail,
     }),
     new FormField({
@@ -21,8 +21,8 @@
       name: 'password',
       type: 'password',
       autocomplete: 'current-password',
-      label: content.auth.signIn.formFields.password.label,
-      invalidText: content.auth.signIn.formFields.password.invalidText,
+      label: auth.signIn.formFields.password.label,
+      invalidText: auth.signIn.formFields.password.invalidText,
       validate: (value) => validatePassword(value).isValid,
     }),
   ];
@@ -36,7 +36,7 @@
   }
 </script>
 
-<svelte:head><title>{content.auth.signIn.headTitle}</title></svelte:head>
+<svelte:head><title>{auth.signIn.headTitle}</title></svelte:head>
 
 <form class="w-full gap-6 pt-10" onsubmit={submitSignIn}>
   {#each formFields as field}
@@ -63,11 +63,9 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      {content.auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up"
-        >{content.auth['signUp'].title}</a
-      >
+      {auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up">{auth['signUp'].title}</a>
     </p>
   </div>
 
-  <Button className="mt-5 w-full" type="submit">{content.auth.signIn.submitButton}</Button>
+  <Button className="mt-5 w-full" type="submit">{auth.signIn.submitButton}</Button>
 </form>

@@ -10,5 +10,4 @@ class Cart {
   };
 }
 
-const cart = new Cart();
-export default cart;
+export default new Cart();

@@ -1,7 +1,7 @@
 <script>
-  import Button from '$components/ui/Button.svelte';
+  import { Button } from '$components';
+  import { common } from '$content';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
-  import { content } from '$content';
   import { Icon } from 'svelte-icons-pack';
   import { SlMagnifier } from 'svelte-icons-pack/sl';
 
@@ -22,13 +22,13 @@
       <input
         name="searchString"
         class="w-full bg-background text-white focus:border-none focus:outline-none"
-        aria-label={content.common.footer.searchBarPlaceholder}
+        aria-label={common.footer.searchBarPlaceholder}
         autocomplete="off"
-        placeholder={content.common.footer.searchBarPlaceholder}
+        placeholder={common.footer.searchBarPlaceholder}
         type="search"
         bind:value={searchString}
       />
     </div>
-    <Button className="flex w-20 justify-center" type="submit">{content.common.footer.searchButton}</Button>
+    <Button className="flex w-20 justify-center" type="submit">{common.footer.searchButton}</Button>
   </form>
 </footer>

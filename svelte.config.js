@@ -11,8 +11,9 @@ const config = {
     adapter: adapter({ fallback: '404.html' }),
 
     alias: {
-      '$components/*': 'src/lib/components/*',
-      $content: 'src/lib/content/content.ts',
+      $components: 'src/lib/components/ui/',
+      $content: 'src/lib/content/',
+      $state: 'src/lib/state/',
     },
   },
 };

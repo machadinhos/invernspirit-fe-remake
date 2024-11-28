@@ -1,7 +1,7 @@
 <script>
-  import HeaderLeftSection from '$components/layout/header/left-section/HeaderLeftSection.svelte';
-  import HeaderMiddleSection from '$components/layout/header/middle-section/HeaderMiddleSection.svelte';
-  import HeaderRightSection from '$components/layout/header/right-section/HeaderRightSection.svelte';
+  import HeaderLeftSection from './left-section/HeaderLeftSection.svelte';
+  import HeaderMiddleSection from './middle-section/HeaderMiddleSection.svelte';
+  import HeaderRightSection from './right-section/HeaderRightSection.svelte';
 </script>
 
 <header>

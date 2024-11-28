@@ -1,8 +1,8 @@
 <script lang="ts">
   import { FaEye, FaEyeSlash } from 'svelte-icons-pack/fa';
   import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
-  import BaseInput from '$components/ui/text-input/BaseTextInput.svelte';
-  import { content } from '$content';
+  import BaseInput from './BaseTextInput.svelte';
+  import { common } from '$content';
   import { Icon } from 'svelte-icons-pack';
   import type { Snippet } from 'svelte';
 
@@ -49,7 +49,7 @@
   bind:value
 >
   {#snippet trailingIcon()}
-    <button aria-label={content.common.hidePasswordButtonAriaLabel} onclick={() => (shown = !shown)} type="button">
+    <button aria-label={common.hidePasswordButtonAriaLabel} onclick={() => (shown = !shown)} type="button">
       <Icon src={shown ? FaEye : FaEyeSlash} />
     </button>
   {/snippet}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from '$components/ui/Button.svelte';
+  import { Button } from '$components';
 
   interface Props {
     imageSrc: string;
