@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Button } from '$components';
+  import { Button, GrainyFilter } from '$components';
   import { cart } from '$state';
-  import { GrainyFilter } from '$components';
+
   import { home } from '$content';
   import { imageLinks } from '$lib/constants/links';
 

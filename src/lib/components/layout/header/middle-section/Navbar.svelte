@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { DropdownMenu, DropdownMenuItem } from '$components';
   import { common } from '$content';
-  import { DropdownMenu } from '$components';
-  import { DropdownMenuItem } from '$components';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
   import { Icon } from 'svelte-icons-pack';
   import NavbarItem from './NavbarItem.svelte';

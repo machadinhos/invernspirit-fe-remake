@@ -1,11 +1,10 @@
 <script lang="ts">
+  import { Button, CheckBox, TextInput } from '$components';
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
   import { auth } from '$content';
-  import { Button } from '$components';
-  import { CheckBox } from '$components';
+
   import PasswordChecks from './PasswordChecks.svelte';
-  import { TextInput } from '$components';
 
   const formFields: { [key: string]: FormField } = {
     firstName: new FormField({

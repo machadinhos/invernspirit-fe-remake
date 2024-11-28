@@ -1,11 +1,9 @@
 <script lang="ts">
-  import { auth } from '$content';
+  import { auth, common } from '$content';
+  import { DropdownMenu, DropdownMenuItem } from '$components';
   import { BiSolidCart } from 'svelte-icons-pack/bi';
   import { cart } from '$state';
-  import { common } from '$content';
   import { countries } from '$lib/constants/countries';
-  import { DropdownMenu } from '$components';
-  import { DropdownMenuItem } from '$components';
   import { FaSolidUser } from 'svelte-icons-pack/fa';
   import HeaderIcon from '../HeaderIcon.svelte';
 
