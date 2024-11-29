@@ -3,7 +3,6 @@
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword, validateRequiredInput } from '$lib/utils/input-validation';
   import { auth } from '$content';
-
   import PasswordChecks from './PasswordChecks.svelte';
 
   const formFields: { [key: string]: FormField } = {
