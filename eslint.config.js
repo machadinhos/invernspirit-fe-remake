@@ -9,10 +9,12 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
   ...svelte.configs['flat/recommended'],
-  imports.flatConfigs.recommended,
   prettier,
   ...svelte.configs['flat/prettier'],
   {
+    plugins: {
+      import: imports,
+    },
     rules: {
       'svelte/sort-attributes': 'error',
       'sort-imports': [
@@ -21,7 +23,8 @@ export default ts.config(
           ignoreCase: true,
         },
       ],
-      'import/no-unresolved': 'off',
+      'import/newline-after-import': 'error',
+      'import/no-duplicates': 'error',
     },
   },
   {
