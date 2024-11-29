@@ -61,7 +61,7 @@
 
   <div class="mt-10 flex items-center justify-center">
     <p>
-      {auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up">{auth['signUp'].title}</a>
+      {auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up">{auth.signUp.title}</a>
     </p>
   </div>
 

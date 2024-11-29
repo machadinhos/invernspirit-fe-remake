@@ -18,7 +18,12 @@
 <nav class="mt-5">
   <ul class="flex h-full items-center gap-20 text-white">
     <NavbarItem>
-      <button bind:this={dropdownTriggerElement} class="flex items-center gap-1.5" onclick={toggleDropdown}>
+      <button
+        bind:this={dropdownTriggerElement}
+        class="flex items-center gap-1.5"
+        onclick={toggleDropdown}
+        type="button"
+      >
         {common.header.middleSection.shop.title}
         <div class="transition-transform duration-300" class:rotate-180={isOpen}>
           <Icon size={10} src={FaSolidChevronDown} />

@@ -190,6 +190,7 @@
               : 'hover:bg-secondary-background'}"
             class:hidden={!visibleItemsIndex.includes(index)}
             onclick={() => (focusedIndex = index)}
+            type="button"
           >
             {item.question}
           </button>

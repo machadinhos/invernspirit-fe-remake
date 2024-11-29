@@ -48,6 +48,6 @@
     </div>
     <Button className="px-3">{home.button}</Button>
   </div>
-  <button onclick={cart.addProduct}>{'test'}</button>
+  <button onclick={cart.addProduct} type="button">test</button>
   {cart.value.length}
 </div>
