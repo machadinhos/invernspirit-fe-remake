@@ -1,11 +1,9 @@
 <script lang="ts">
   import { Button, DropdownMenu, DropdownMenuItem, TextInput } from '$components';
   import { common } from '$content';
-
   import { FaNewspaper } from 'svelte-icons-pack/fa';
   import HeaderIcon from '../HeaderIcon.svelte';
   import { Icon } from 'svelte-icons-pack';
-
   import { TiMail } from 'svelte-icons-pack/ti';
   import { validateEmail } from '$lib/utils/input-validation';
 
