@@ -66,7 +66,7 @@
 
 <form class="w-full gap-6 pt-10" onsubmit={submitSignUp}>
   <div class="flex w-full gap-4">
-    {#each [formFields['firstName'], formFields['lastName']] as field}
+    {#each [formFields.firstName, formFields.lastName] as field}
       <div class="w-1/2">
         <TextInput
           id={field.id}
@@ -87,7 +87,7 @@
     {/each}
   </div>
 
-  {#each [formFields['email'], formFields['password'], formFields['confirmPassword']] as field}
+  {#each [formFields.email, formFields.password, formFields.confirmPassword] as field}
     <div class="w-full">
       <TextInput
         id={field.id}

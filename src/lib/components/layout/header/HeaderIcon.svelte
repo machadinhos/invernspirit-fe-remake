@@ -33,6 +33,7 @@
     class="outer-element relative flex h-9 w-9 cursor-pointer items-center justify-center"
     aria-label={ariaLabel}
     {onclick}
+    type="button"
   >
     {@render innerElements()}
   </button>
