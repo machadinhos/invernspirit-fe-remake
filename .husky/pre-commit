@@ -1,2 +1,4 @@
+#!/bin/sh
+
 git diff --name-only --cached --diff-filter=d | xargs bun run lint:file
 git diff --name-only --cached --diff-filter=d | xargs git add
