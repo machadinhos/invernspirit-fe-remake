@@ -11,6 +11,6 @@
   ],
   "singleQuote": true,
   "trailingComma": "all",
-  "endOfLine": "crlf",
+  "endOfLine": "lf",
   "printWidth": 120
 }
