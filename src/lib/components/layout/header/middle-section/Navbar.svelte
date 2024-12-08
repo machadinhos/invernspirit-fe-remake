@@ -46,7 +46,7 @@
       </DropdownMenu>
     </NavbarItem>
     <NavbarItem>
-      <a href="/">{common.header.middleSection.about}</a>
+      <a href="/about">{common.header.middleSection.about}</a>
     </NavbarItem>
     <li>
       <div class="flex h-16 w-16 items-center justify-center">
