@@ -11,9 +11,10 @@ const config = {
     adapter: adapter({ fallback: 'plaintext' }),
 
     alias: {
-      $components: 'src/lib/components/ui/',
-      $content: 'src/lib/content/',
-      $state: 'src/lib/state/',
+      $components: 'src/lib/components/ui/index.ts',
+      $content: 'src/lib/content/index.ts',
+      $state: 'src/lib/state/index.ts',
+      $service: 'src/lib/service/index.ts',
     },
   },
 };
