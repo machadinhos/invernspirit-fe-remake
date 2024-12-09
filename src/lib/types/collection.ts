@@ -8,7 +8,7 @@ interface BaseCollection {
 }
 
 export interface Collection extends BaseCollection {
-  images: Image;
+  image: Image;
 }
 
 export interface CollectionDetails extends BaseCollection {
