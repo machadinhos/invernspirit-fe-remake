@@ -15,6 +15,7 @@ const config = {
       $content: 'src/lib/content/index.ts',
       $state: 'src/lib/state/index.ts',
       $service: 'src/lib/service/index.ts',
+      $types: 'src/lib/types/index.ts',
     },
   },
 };

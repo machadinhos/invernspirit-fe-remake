@@ -15,15 +15,22 @@ interface RequestContext extends RequestBaseContext {
   body?: Record<string, unknown>;
 }
 
-export class Client {
-  private context: RequestContext;
+export class Client<T> {
+  private readonly context: RequestContext;
 
   constructor(context: RequestBaseContext) {
     this.context = context;
   }
 
   private buildUrl() {
-    return `${this.context.host}${this.context.endpoint}${this.context.pathParams && `/${this.context.pathParams.join('/')}`}${this.context.queryParams && `?${this.context.queryParams}`}`;
+    const { host, endpoint, pathParams, queryParams } = this.context;
+    const path = pathParams ? `/${pathParams.join('/')}` : '';
+    const query = queryParams
+      ? `?${Object.entries(queryParams)
+          .map(([key, value]) => `${key}=${value}`)
+          .join('&')}`
+      : '';
+    return `${host}${endpoint}${path}${query}`;
   }
 
   withHeaders(headers: RequestContext['headers']) {
@@ -41,11 +48,16 @@ export class Client {
     return this;
   }
 
-  async call() {
-    return await fetch(this.buildUrl(), {
+  async call(): Promise<T> {
+    const response = await fetch(this.buildUrl(), {
       headers: this.context.headers,
       method: this.context.method,
       ...(this.context.body && { body: JSON.stringify(this.context.body) }),
     });
+
+    if (response.status === 200 || response.status === 201) {
+      return (await response.json()).data;
+    }
+    throw new Error(`Client error: ${await response.text()}`);
   }
 }

@@ -1,27 +1,28 @@
 import { Client, type RequestHostContext } from '../client';
+import type { Product } from '$types';
 
 const ENDPOINT = '/products';
 
 export function prepareGetAllProducts(context: RequestHostContext) {
   const method = 'GET';
-  return async () => {
-    const client = new Client({ ...context, endpoint: ENDPOINT, method });
-    return await client.call();
+  return async (): Promise<{ products: Product[] }> => {
+    const client = new Client<Product[]>({ ...context, endpoint: ENDPOINT, method });
+    return { products: await client.call() };
   };
 }
 
 export function prepareGetProductById(context: RequestHostContext) {
   const method = 'GET';
-  return async (id: string) => {
-    const client = new Client({ ...context, endpoint: ENDPOINT, method });
-    return await client.withPathParams([id]).call();
+  return async (id: string): Promise<{ product: Product }> => {
+    const client = new Client<Product>({ ...context, endpoint: ENDPOINT, method });
+    return { product: await client.withPathParams([id]).call() };
   };
 }
 
 export function prepareGetProductsBySearch(context: RequestHostContext) {
   const method = 'GET';
-  return async (search: string) => {
-    const client = new Client({ ...context, endpoint: ENDPOINT, method });
-    return await client.withQueryParams({ search }).call();
+  return async (search: string): Promise<{ products: Product[] }> => {
+    const client = new Client<Product[]>({ ...context, endpoint: ENDPOINT, method });
+    return { products: await client.withQueryParams({ search }).call() };
   };
 }
