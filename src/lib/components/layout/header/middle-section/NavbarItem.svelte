@@ -6,11 +6,13 @@
   let { children }: Props = $props();
 </script>
 
-<li class="w-fit py-1.5">
-  <div class="list-item-class inline">
+<li>
+  <span class="list-item-class">
     {@render children()}
+  </span>
+  <div class="flex justify-center">
+    <div class="underline-class h-0.5 w-0 bg-white"></div>
   </div>
-  <div class="underline-class h-0.5 w-0 bg-white"></div>
 </li>
 
 <style>
@@ -18,7 +20,7 @@
     transition: width 300ms ease-in-out;
   }
 
-  .list-item-class:hover ~ .underline-class {
+  .list-item-class:hover ~ div > .underline-class {
     width: 100%;
   }
 </style>
