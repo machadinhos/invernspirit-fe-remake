@@ -1,15 +1,31 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import { shop } from '$content';
 
-  let { data }: { data: PageData } = $props();
+  interface Props {
+    data: PageData
+  }
+
+  let { data }: Props = $props();
 </script>
 
-<div class="flex h-full justify-center">
-  {#each data.collections as collection}
-    <a href={`/shop/collections/${collection.collectionId}`}>
-      <div class="h-full w-[200px]">
-        <img class="h-full object-cover object-center" alt={collection.image.alt} src={collection.image.url} />
-      </div>
-    </a>
-  {/each}
+<div class="h-full">
+  <h1 class="mb-5 text-center text-6xl">{shop.collections.title}</h1>
+
+  <div class="flex h-[90%] justify-center">
+    {#each data.collections as { collectionId, image, collectionName }}
+      <a href={`/shop/collections/${collectionId}`}>
+        <div class="relative h-full w-[200px]">
+          <img
+            class="h-full object-cover object-center brightness-[30%] grayscale transition-all hover:scale-y-95 hover:brightness-100"
+            alt={image.alt}
+            src={image.url}
+          />
+          <div class="pointer-events-none absolute inset-0 flex items-center justify-center text-4xl">
+            {collectionName}
+          </div>
+        </div>
+      </a>
+    {/each}
+  </div>
 </div>

@@ -6,14 +6,14 @@
     imageAlt: string;
     price: number;
     name: string;
-    quantity: number;
+    stock: number;
     id: string;
   }
 
-  let { imageSrc, imageAlt, id, price, name, quantity }: Props = $props();
+  let { imageSrc, imageAlt, id, price, name, stock }: Props = $props();
 
   let selectedQuantity = $state(1);
-  let canIncrementSelectedQuantity = $derived(selectedQuantity < quantity);
+  let canIncrementSelectedQuantity = $derived(selectedQuantity < stock);
   let canDecrementSelectedQuantity = $derived(selectedQuantity > 1);
 
   function incrementSelectedQuantity() {
@@ -42,7 +42,7 @@
   </div>
   <div class="px-4 pb-3">
     <div class="flex items-end justify-between">
-      <span class="text-3xl">{name}</span>
+      <span class="overflow-hidden truncate whitespace-nowrap text-3xl">{name}</span>
       <div class="flex">
         {@render quantityButton('decrement')}
         <div class="flex w-4 justify-center">
