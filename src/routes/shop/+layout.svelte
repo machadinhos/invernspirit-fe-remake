@@ -6,6 +6,6 @@
   const { children }: Props = $props();
 </script>
 
-<div class="h-full w-full px-8 py-14">
+<div class="h-full min-h-fit w-full px-8 py-14">
   {@render children()}
 </div>
