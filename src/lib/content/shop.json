@@ -1,5 +1,8 @@
 {
   "collections": {
     "title": "Collections"
+  },
+  "products": {
+    "title": "Products"
   }
 }

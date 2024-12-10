@@ -9,7 +9,7 @@
   let { products }: Props = $props();
 </script>
 
-<div class="grid grid-cols-5">
+<div class="grid grid-cols-5 justify-center justify-items-center">
   {#each products as { productId, productName, priceInCents, images }}
     <ProductCard
       id={productId}
