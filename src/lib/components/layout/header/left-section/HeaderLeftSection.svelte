@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MediaButtonsSection from './MediaButtonsSection.svelte';
   import Newsletter from './Newsletter.svelte';
 </script>

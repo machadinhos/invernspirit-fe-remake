@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Button } from '$components';
   import { common } from '$content';
   import { containsXSSPatterns } from '$lib/utils/input-validation';
