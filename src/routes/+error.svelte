@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Button } from '$components';
   import { common } from '$content';
   import { page } from '$app/stores';

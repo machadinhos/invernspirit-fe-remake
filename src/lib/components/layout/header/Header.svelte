@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import HeaderLeftSection from './left-section/HeaderLeftSection.svelte';
   import HeaderMiddleSection from './middle-section/HeaderMiddleSection.svelte';
   import HeaderRightSection from './right-section/HeaderRightSection.svelte';
