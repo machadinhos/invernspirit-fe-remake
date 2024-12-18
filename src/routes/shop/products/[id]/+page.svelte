@@ -20,9 +20,7 @@
 
 <div class="flex gap-5">
   <div class="flex w-1/2 justify-center">
-    <div class="w-[65%]">
-      <ThumbnailCarousel className="w-" images={data.product.images} />
-    </div>
+    <ThumbnailCarousel images={data.product.images} />
   </div>
   <div class="w-1/2">
     <h1 class="text-8xl">{data.product.productName}</h1>

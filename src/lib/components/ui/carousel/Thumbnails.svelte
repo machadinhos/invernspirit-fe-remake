@@ -12,46 +12,56 @@
 
   let { images, emblaApi, thumbsApi = $bindable(), selectedSlide }: Props = $props();
 
-  const options: EmblaOptionsType = {};
+  const options: EmblaOptionsType = { containScroll: 'keepSnaps', dragFree: true, axis: 'y' };
 
   function onInit(event: CustomEvent) {
     thumbsApi = event.detail;
   }
 
   function generateOnclickCallback(index: number) {
-    return () => {
-      thumbsApi?.scrollTo(index);
-      emblaApi?.scrollTo(index);
-    };
+    return () => emblaApi?.scrollTo(index);
   }
 </script>
 
-<div class="embla select-none" onemblaInit={onInit} use:emblaCarouselSvelte={{ plugins: [], options }}>
-  <div class="embla__container">
-    {#each images as { url, alt }, index}
-      <button
-        class="embla__slide transition-all"
-        class:brightness-50={index !== selectedSlide}
-        onclick={generateOnclickCallback(index)}
-        type="button"
-      >
-        <img {alt} height="495" src={url} width="495" />
-      </button>
-    {/each}
+<div class="embla select-none">
+  <div class="embla__viewport" onemblaInit={onInit} use:emblaCarouselSvelte={{ plugins: [], options }}>
+    <div class="embla__container">
+      {#each images as { url, alt }, index}
+        <button
+          class="embla__slide transition-all"
+          class:brightness-50={index !== selectedSlide}
+          onclick={generateOnclickCallback(index)}
+          type="button"
+        >
+          <img class="h-full w-full object-cover" {alt} src={url} />
+        </button>
+      {/each}
+    </div>
   </div>
 </div>
 
 <style>
   .embla {
+    margin: auto;
+    --slide-height: 25%;
+    --slide-size: 25%;
+  }
+
+  .embla__viewport {
     overflow: hidden;
   }
 
   .embla__container {
     display: flex;
+    touch-action: pan-x pinch-zoom;
+    height: 35vw;
+    flex-direction: column;
   }
 
   .embla__slide {
-    flex: 0 0 20%;
-    min-width: 0;
+    transform: translate3d(0, 0, 0);
+    flex: 0 0 var(--slide-size);
+    min-height: 0;
+    aspect-ratio: 1/1;
   }
 </style>

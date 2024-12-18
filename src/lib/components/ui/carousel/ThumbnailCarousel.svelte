@@ -8,7 +8,6 @@
 
   interface Props {
     images: Image[];
-    className?: HTMLDivElement['className'];
   }
 
   let { images }: Props = $props();
@@ -17,25 +16,20 @@
   let thumbsApi: EmblaCarouselType | undefined = $state();
   let selectedSlide = $state(0);
 
-  const options: EmblaOptionsType = {};
+  const options: EmblaOptionsType = { loop: true };
 
   let prevButton: HTMLElement;
   let nextButton: HTMLElement;
 
-  function synchronizeCarousels(sourceApi: EmblaCarouselType, targetApi: EmblaCarouselType) {
-    sourceApi.on('select', (eventApi) => {
-      const selectedIndex = eventApi.selectedScrollSnap();
-      if (selectedIndex !== undefined && targetApi !== undefined) {
-        targetApi.scrollTo(selectedIndex);
-        selectedSlide = selectedIndex;
-      }
-    });
-  }
-
   $effect(() => {
     if (emblaApi !== undefined && thumbsApi !== undefined) {
-      synchronizeCarousels(emblaApi, thumbsApi);
-      synchronizeCarousels(thumbsApi, emblaApi);
+      emblaApi.on('select', (eventApi) => {
+        const selectedIndex = eventApi.selectedScrollSnap();
+        if (selectedIndex !== undefined && thumbsApi !== undefined) {
+          thumbsApi.scrollTo(selectedIndex);
+          selectedSlide = selectedIndex;
+        }
+      });
     }
   });
 
@@ -56,8 +50,12 @@
   }
 </script>
 
-<div class="select-none">
-  <div class="main-carousel">
+<div class="flex select-none">
+  <div class="h-[35vw] w-[8.75vw]">
+    <Thumbnails {emblaApi} {images} {selectedSlide} bind:thumbsApi />
+  </div>
+
+  <div class="relative h-[35vw] w-[35vw]">
     <button bind:this={prevButton} class="prev-button" aria-label="prev slide" type="button">
       <Icon size="30" src={BiChevronLeftCircle} />
     </button>
@@ -66,7 +64,7 @@
       <div class="embla__container">
         {#each images as { url, alt }}
           <div class="embla__slide">
-            <img class="object-cover" {alt} src={url} />
+            <img class="h-[35vw] object-cover" {alt} src={url} />
           </div>
         {/each}
       </div>
@@ -76,18 +74,13 @@
       <Icon size="30" src={BiChevronRightCircle} />
     </button>
   </div>
-  <Thumbnails {emblaApi} {images} {selectedSlide} bind:thumbsApi />
 </div>
 
 <style>
-  .main-carousel {
-    position: relative;
-  }
-
   .prev-button,
   .next-button {
     position: absolute;
-    top: 50%;
+    top: 45%;
     z-index: 20;
     cursor: pointer;
     margin: 10px;
