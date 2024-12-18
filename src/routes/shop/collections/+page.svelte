@@ -3,7 +3,7 @@
   import { shop } from '$content';
 
   interface Props {
-    data: PageData
+    data: PageData;
   }
 
   let { data }: Props = $props();

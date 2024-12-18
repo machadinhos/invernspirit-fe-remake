@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import ProductGrid from "../ProductGrid.svelte";
-  import {shop} from "$content";
+  import ProductGrid from '../ProductGrid.svelte';
+  import { shop } from '$content';
 
   interface Props {
-    data: PageData
+    data: PageData;
   }
 
   let { data }: Props = $props();

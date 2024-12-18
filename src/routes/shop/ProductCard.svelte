@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Button } from '$components';
+  import ProductQuantityControl from './ProductQuantityControl.svelte';
 
   interface Props {
     imageSrc: string;
@@ -13,26 +14,7 @@
   let { imageSrc, imageAlt, id, price, name, stock }: Props = $props();
 
   let selectedQuantity = $state(1);
-  let canIncrementSelectedQuantity = $derived(selectedQuantity < stock);
-  let canDecrementSelectedQuantity = $derived(selectedQuantity > 1);
-
-  function incrementSelectedQuantity() {
-    selectedQuantity++;
-  }
-
-  function decrementSelectedQuantity() {
-    selectedQuantity--;
-  }
 </script>
-
-{#snippet quantityButton(type: 'increment' | 'decrement')}
-  <Button
-    className="flex h-6 w-6 items-center justify-center px-0 py-0"
-    disabled={type === 'increment' ? !canIncrementSelectedQuantity : !canDecrementSelectedQuantity}
-    onclick={type === 'increment' ? incrementSelectedQuantity : decrementSelectedQuantity}
-    >{type === 'increment' ? '+' : '-'}</Button
-  >
-{/snippet}
 
 <div class="h-fit w-64 bg-background shadow-2xl transition-all duration-300 hover:scale-110">
   <div class="h-64">
@@ -43,13 +25,7 @@
   <div class="px-4 pb-3">
     <div class="flex items-end justify-between">
       <span class="overflow-hidden truncate whitespace-nowrap text-3xl">{name}</span>
-      <div class="flex">
-        {@render quantityButton('decrement')}
-        <div class="flex w-4 justify-center">
-          <span>{selectedQuantity}</span>
-        </div>
-        {@render quantityButton('increment')}
-      </div>
+      <ProductQuantityControl {stock} bind:selectedQuantity />
     </div>
     <div class="flex items-end justify-between">
       <span class="text-4xl">{price}$</span>

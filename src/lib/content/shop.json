@@ -3,6 +3,12 @@
     "title": "Collections"
   },
   "products": {
-    "title": "Products"
+    "title": "Products",
+    "id": {
+      "belongsToCollectionStart": "This product belongs to the ",
+      "belongsToCollectionEnd": " collection.",
+      "available": "Available",
+      "addToCart": "Add to cart"
+    }
   }
 }
