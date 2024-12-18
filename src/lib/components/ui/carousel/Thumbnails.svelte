@@ -12,7 +12,7 @@
 
   let { images, emblaApi, thumbsApi = $bindable(), selectedSlide }: Props = $props();
 
-  const options: EmblaOptionsType = {};
+  const options: EmblaOptionsType = { containScroll: 'keepSnaps', dragFree: true };
 
   function onInit(event: CustomEvent) {
     thumbsApi = event.detail;

@@ -17,25 +17,20 @@
   let thumbsApi: EmblaCarouselType | undefined = $state();
   let selectedSlide = $state(0);
 
-  const options: EmblaOptionsType = {};
+  const options: EmblaOptionsType = { loop: true };
 
   let prevButton: HTMLElement;
   let nextButton: HTMLElement;
 
-  function synchronizeCarousels(sourceApi: EmblaCarouselType, targetApi: EmblaCarouselType) {
-    sourceApi.on('select', (eventApi) => {
-      const selectedIndex = eventApi.selectedScrollSnap();
-      if (selectedIndex !== undefined && targetApi !== undefined) {
-        targetApi.scrollTo(selectedIndex);
-        selectedSlide = selectedIndex;
-      }
-    });
-  }
-
   $effect(() => {
     if (emblaApi !== undefined && thumbsApi !== undefined) {
-      synchronizeCarousels(emblaApi, thumbsApi);
-      synchronizeCarousels(thumbsApi, emblaApi);
+      emblaApi.on('select', (eventApi) => {
+        const selectedIndex = eventApi.selectedScrollSnap();
+        if (selectedIndex !== undefined && thumbsApi !== undefined) {
+          thumbsApi.scrollTo(selectedIndex);
+          selectedSlide = selectedIndex;
+        }
+      });
     }
   });
 
