@@ -2,9 +2,13 @@
   import { BsArrowReturnLeft } from 'svelte-icons-pack/bs';
   import { Icon } from 'svelte-icons-pack';
   import type { PageData } from './$types';
-  import ProductGrid from "../../ProductGrid.svelte";
+  import ProductGrid from '../../ProductGrid.svelte';
 
-  let { data }: { data: PageData } = $props();
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <div class="flex h-full items-center">
