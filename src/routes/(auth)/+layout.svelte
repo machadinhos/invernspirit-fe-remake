@@ -1,6 +1,6 @@
 <script lang="ts">
   import { auth } from '$content';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   interface Props {
     children: import('svelte').Snippet;
@@ -8,7 +8,7 @@
 
   let { children }: Props = $props();
 
-  let selected = $derived($page.url.pathname.slice(1));
+  let selected = $derived(page.url.pathname.slice(1));
 </script>
 
 {#snippet pageListItem(page: 'sign-in' | 'sign-up')}
