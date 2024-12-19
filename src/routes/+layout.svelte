@@ -3,7 +3,7 @@
   import Footer from '$lib/components/layout/footer/Footer.svelte';
   import { GrainyFilter } from '$components';
   import Header from '$lib/components/layout/header/Header.svelte';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   interface Props {
     children: import('svelte').Snippet;
@@ -14,7 +14,7 @@
 
 <svelte:head>
   <!-- Prevent search engine indexing by setting `noCrawl: true` in page/layout load functions (e.g., +page.js, +page.server.js, +layout.js, +layout.server.js) -->
-  {#if !$page.data.noCrawl}
+  {#if !page.data.noCrawl}
     <meta name="robots" content="index,follow" />
   {:else}
     <meta name="robots" content="noindex, nofollow" />
