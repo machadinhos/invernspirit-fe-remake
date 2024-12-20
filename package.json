@@ -10,9 +10,9 @@
     "preview": "vite preview --port 5173",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --write --list-different . && eslint . --fix",
-    "lint:file": "eslint --fix",
-    "format": "prettier --write .",
+    "lint": "eslint --fix",
+    "format": "prettier --write --list-different",
+    "format:lint": "prettier --write --list-different . && eslint . --fix",
     "prepare": "node scripts/prepare.js"
   },
   "dependencies": {

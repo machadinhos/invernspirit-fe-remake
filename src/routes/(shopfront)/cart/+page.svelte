@@ -2,6 +2,7 @@
   import { Button } from '$components';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
+  import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
 
   let cartProducts: LineItem[] = $state([]);
@@ -35,7 +36,7 @@
           <div class="h-0.5 bg-white"></div>
           <div class="flex place-content-between text-3xl">
             <span>{cart.total}</span>
-            <span>{totalPrice / 100}$</span>
+            <span>{formatPrice(totalPrice)}$</span>
           </div>
           <div class="h-0.5 bg-white"></div>
         </div>

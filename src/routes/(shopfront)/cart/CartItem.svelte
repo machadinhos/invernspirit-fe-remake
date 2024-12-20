@@ -1,6 +1,7 @@
 <script lang="ts">
   import { BiTrash } from 'svelte-icons-pack/bi';
   import { cart } from '$content';
+  import { formatPrice } from '$lib/utils/general';
   import { Icon } from 'svelte-icons-pack';
   import type { LineItem } from '$types';
   import ProductQuantityControl from '../ProductQuantityControl.svelte';
@@ -31,7 +32,7 @@
     </a>
     <div>
       <h3 class="text-3xl">{product.name}</h3>
-      <h4 class="text-lg">{cart.priceLabel}: {product.priceInCents / 100}$</h4>
+      <h4 class="text-lg">{cart.priceLabel}: {formatPrice(product.priceInCents)}$</h4>
       <div class="flex gap-1">
         <h4 class="text-lg">{cart.quantityLabel}:</h4>
         <ProductQuantityControl stock={product.stock} bind:selectedQuantity />
