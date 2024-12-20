@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Button } from '$components';
   import { cart } from '$state';
+  import { formatPrice } from '$lib/utils/general';
   import type { Product } from '$types';
   import ProductQuantityControl from '../ProductQuantityControl.svelte';
   import { shop } from '$content';
@@ -31,7 +32,7 @@
       <ProductQuantityControl stock={product.stock} bind:selectedQuantity />
     </div>
     <div class="flex items-center justify-between">
-      <span class="text-4xl">{product.priceInCents / 100}$</span>
+      <span class="text-4xl">{formatPrice(product.priceInCents)}$</span>
       <Button onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button>
     </div>
   </div>

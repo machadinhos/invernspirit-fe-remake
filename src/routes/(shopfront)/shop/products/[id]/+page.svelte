@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Button, ThumbnailCarousel } from '$components';
   import { cart } from '$state';
+  import { formatPrice } from '$lib/utils/general';
   import type { PageData } from './$types';
   import ProductQuantityControl from '../../../ProductQuantityControl.svelte';
   import { shop } from '$content';
@@ -30,7 +31,7 @@
   </div>
   <div class="w-1/2">
     <h1 class="text-8xl">{data.product.name}</h1>
-    <p class="text-6xl">{data.product.priceInCents / 100}$</p>
+    <p class="text-6xl">{formatPrice(data.product.priceInCents)}$</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p class="min-h-24">{data.product.description}</p>
     <div class="my-5 h-px w-full bg-white"></div>
