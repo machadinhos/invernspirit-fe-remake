@@ -41,7 +41,7 @@
       >
       {shop.products.id.belongsToCollectionEnd}
     </p>
-    <div class="my-4 flex">
+    <div class="my-4 flex gap-3">
       <ProductQuantityControl stock={5} bind:selectedQuantity />
       <p>{shop.products.id.available}: {5}</p>
     </div>

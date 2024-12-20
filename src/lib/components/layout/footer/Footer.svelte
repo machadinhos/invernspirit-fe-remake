@@ -29,6 +29,6 @@
         bind:value={searchString}
       />
     </div>
-    <Button className="flex w-20 justify-center" type="submit">{common.footer.searchButton}</Button>
+    <Button className="w-20" type="submit">{common.footer.searchButton}</Button>
   </form>
 </footer>
