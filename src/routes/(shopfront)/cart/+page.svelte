@@ -4,71 +4,8 @@
   import CartItem from './CartItem.svelte';
   import type { LineItem } from '$types';
 
-  const dummyProduct: LineItem = {
-    id: 'tFwLGaZsoU9QMGPiEFLKuV',
-    name: 'Raku Fire',
-    description: "Watershed' hand formed, raku fired ceramic",
-    stock: 10,
-    collectionId: 'xvUp7CsLTSbvBUdrptvJE1',
-    priceInCents: 500,
-    images: [
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-1.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-2.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-3.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-4.jpeg',
-        alt: 'Raku Fire',
-      },
-    ],
-    quantity: 2,
-  };
-
-  const dummyProduct2: LineItem = {
-    id: 'tFwLGaZsoU9QMGPiEFLKuV',
-    name: 'Raku Fire',
-    description: "Watershed' hand formed, raku fired ceramic",
-    stock: 5,
-    collectionId: 'xvUp7CsLTSbvBUdrptvJE1',
-    priceInCents: 500,
-    images: [
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-1.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-2.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-3.jpeg',
-        alt: 'Raku Fire',
-      },
-      {
-        url: 'https://images.invernspirit.com/products/ceramics-product-2-4.jpeg',
-        alt: 'Raku Fire',
-      },
-    ],
-    quantity: 1,
-  };
-
   let cartProducts: LineItem[] = $state([]);
   let totalPrice = $derived(cartProducts.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
-
-  const test = () => {
-    cartProducts.push(dummyProduct);
-    cartProducts.push(dummyProduct2);
-  };
-
-  test();
 </script>
 
 <div class="flex h-full w-full justify-center">
