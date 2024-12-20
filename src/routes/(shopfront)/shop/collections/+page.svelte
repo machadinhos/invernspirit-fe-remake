@@ -9,10 +9,12 @@
   let { data }: Props = $props();
 </script>
 
-<div class="h-full">
-  <h1 class="mb-5 text-center text-6xl">{shop.collections.title}</h1>
+<div class="relative h-full">
+  <div class="pointer-events-none absolute inset-0 z-20 mt-5">
+    <h1 class="text-center text-6xl">{shop.collections.title}</h1>
+  </div>
 
-  <div class="flex h-[90%] justify-center">
+  <div class="flex h-full justify-center gap-2">
     {#each data.collections as { id, name, image }}
       <a href={`/shop/collections/${id}`}>
         <div class="relative h-full w-[200px]">
