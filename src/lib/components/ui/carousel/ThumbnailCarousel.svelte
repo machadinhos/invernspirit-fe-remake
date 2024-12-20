@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BiChevronLeftCircle, BiChevronRightCircle } from 'svelte-icons-pack/bi';
+  import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from 'svelte-icons-pack/bi';
   import type { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
   import emblaCarouselSvelte from 'embla-carousel-svelte';
   import { Icon } from 'svelte-icons-pack';
@@ -57,7 +57,7 @@
 
   <div class="relative h-[35vw] w-[35vw]">
     <button bind:this={prevButton} class="prev-button" aria-label="prev slide" type="button">
-      <Icon size="30" src={BiChevronLeftCircle} />
+      <Icon size="25" src={BiSolidChevronLeftCircle} />
     </button>
 
     <div class="embla" onemblaInit={onInit} use:emblaCarouselSvelte={{ plugins: [], options }}>
@@ -71,7 +71,7 @@
     </div>
 
     <button bind:this={nextButton} class="next-button" aria-label="next slide" type="button">
-      <Icon size="30" src={BiChevronRightCircle} />
+      <Icon size="25" src={BiSolidChevronRightCircle} />
     </button>
   </div>
 </div>
