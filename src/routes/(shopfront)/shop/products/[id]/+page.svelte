@@ -1,7 +1,8 @@
 <script lang="ts">
   import { Button, ThumbnailCarousel } from '$components';
+  import { cart } from '$state';
   import type { PageData } from './$types';
-  import ProductQuantityControl from '../../ProductQuantityControl.svelte';
+  import ProductQuantityControl from '../../../ProductQuantityControl.svelte';
   import { shop } from '$content';
 
   interface Props {
@@ -13,8 +14,13 @@
   let selectedQuantity = $state(1);
 
   function getCollectionName(collectionId: string) {
-    const collection = data.collections.find((collection) => collection.collectionId === collectionId);
-    return collection?.collectionName;
+    const collection = data.collections.find((collection) => collection.id === collectionId);
+    return collection?.name;
+  }
+
+  function onAddToCartClick() {
+    cart.insertProduct(data.product, selectedQuantity);
+    selectedQuantity = 1;
   }
 </script>
 
@@ -23,7 +29,7 @@
     <ThumbnailCarousel images={data.product.images} />
   </div>
   <div class="w-1/2">
-    <h1 class="text-8xl">{data.product.productName}</h1>
+    <h1 class="text-8xl">{data.product.name}</h1>
     <p class="text-6xl">{data.product.priceInCents / 100}$</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p class="min-h-24">{data.product.description}</p>
@@ -39,6 +45,6 @@
       <ProductQuantityControl stock={5} bind:selectedQuantity />
       <p>{shop.products.id.available}: {5}</p>
     </div>
-    <Button className="w-full">{shop.products.id.addToCart}</Button>
+    <Button className="w-full" onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button>
   </div>
 </div>

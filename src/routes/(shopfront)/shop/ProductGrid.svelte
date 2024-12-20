@@ -10,14 +10,7 @@
 </script>
 
 <div class="grid grid-cols-[repeat(auto-fit,minmax(256px,1fr))] justify-center justify-items-center gap-12">
-  {#each products as { productId, productName, priceInCents, images }}
-    <ProductCard
-      id={productId}
-      name={productName}
-      imageAlt={images[0].alt}
-      imageSrc={images[0].url}
-      price={priceInCents / 100}
-      stock={5}
-    />
+  {#each products as product}
+    <ProductCard {product} />
   {/each}
 </div>

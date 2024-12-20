@@ -41,7 +41,7 @@
       </div>
     </DropdownMenu>
   </div>
-  <a class="h-fit w-fit" aria-label={common.header.rightSection.areaLabels.cart} href="/">
-    <HeaderIcon badge={cart.value.length > 0 ? `${cart.value.length}` : ''} src={BiSolidCart} type="div" />
+  <a class="h-fit w-fit" aria-label={common.header.rightSection.areaLabels.cart} href="/cart">
+    <HeaderIcon badge={cart.size > 0 ? `${cart.size}` : ''} src={BiSolidCart} type="div" />
   </a>
 </div>

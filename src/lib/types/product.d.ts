@@ -1,8 +1,8 @@
-import type { Image } from '$lib/types/image';
+import type { Image } from '$types';
 
 export interface Product {
-  productId: string;
-  productName: string;
+  id: string;
+  name: string;
   description: string;
   stock: number;
   collectionId: string;

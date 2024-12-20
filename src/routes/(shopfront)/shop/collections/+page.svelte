@@ -13,8 +13,8 @@
   <h1 class="mb-5 text-center text-6xl">{shop.collections.title}</h1>
 
   <div class="flex h-[90%] justify-center">
-    {#each data.collections as { collectionId, image, collectionName }}
-      <a href={`/shop/collections/${collectionId}`}>
+    {#each data.collections as { id, name, image }}
+      <a href={`/shop/collections/${id}`}>
         <div class="relative h-full w-[200px]">
           <img
             class="h-full object-cover object-center brightness-[30%] grayscale transition-all hover:scale-y-95 hover:brightness-100"
@@ -22,7 +22,7 @@
             src={image.url}
           />
           <div class="pointer-events-none absolute inset-0 flex items-center justify-center text-4xl">
-            {collectionName}
+            {name}
           </div>
         </div>
       </a>

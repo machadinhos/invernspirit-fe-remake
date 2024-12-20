@@ -13,7 +13,7 @@
 </script>
 
 <button
-  class="px-2 py-2 enabled:bg-secondary enabled:hover:bg-primary disabled:bg-[#3c3b38] {className}"
+  class="h-8 px-2 py-2 enabled:bg-secondary enabled:hover:bg-primary disabled:bg-[#3c3b38] {className}"
   {disabled}
   {onclick}
   {type}
