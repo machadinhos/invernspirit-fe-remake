@@ -45,7 +45,7 @@
       </div>
       <h2 class="text-2xl md:text-3xl">{home.description}</h2>
     </div>
-    <a href="shop/products">
+    <a class="inline-flex" href="shop/products">
       <Button className="px-3">{home.button}</Button>
     </a>
   </div>
