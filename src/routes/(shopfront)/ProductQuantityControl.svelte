@@ -22,7 +22,7 @@
 
 {#snippet quantityButton(type: 'increment' | 'decrement')}
   <Button
-    className="flex h-6 w-6 items-center justify-center px-0 py-0"
+    className="h-7 w-7 px-0 py-0"
     disabled={type === 'increment' ? !canIncrementSelectedQuantity : !canDecrementSelectedQuantity}
     onclick={type === 'increment' ? incrementSelectedQuantity : decrementSelectedQuantity}
     >{type === 'increment' ? '+' : '-'}</Button
@@ -31,7 +31,7 @@
 
 <div class="flex">
   {@render quantityButton('decrement')}
-  <div class="flex w-4 justify-center">
+  <div class="flex h-full w-4 items-center justify-center">
     <span>{selectedQuantity}</span>
   </div>
   {@render quantityButton('increment')}

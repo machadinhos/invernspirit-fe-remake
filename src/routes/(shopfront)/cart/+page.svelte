@@ -102,9 +102,7 @@
           </div>
           <div class="h-0.5 bg-white"></div>
         </div>
-        <Button className="flex w-full items-center justify-center" disabled={cartProducts.length < 1}
-          ><span>{cart.checkoutButtonLabel}</span></Button
-        >
+        <Button className="w-full" disabled={cartProducts.length < 1}>{cart.checkoutButtonLabel}</Button>
       </div>
     </div>
   </div>
