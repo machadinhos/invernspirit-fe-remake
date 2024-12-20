@@ -13,7 +13,7 @@
 
 <div class="flex h-full items-center">
   <div class="w-1/2 pl-40">
-    <h1 class="text-6xl">{data.collection.collectionName}</h1>
+    <h1 class="text-6xl">{data.collection.name}</h1>
     <div class="mt-5 w-fit">
       <a href="/shop/collections">
         <Icon size="40" src={BsArrowReturnLeft} />

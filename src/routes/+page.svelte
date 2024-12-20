@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Button, GrainyFilter } from '$components';
-  import { cart } from '$state';
   import { home } from '$content';
   import { imageLinks } from '$lib/constants/links';
 
@@ -46,8 +45,8 @@
       </div>
       <h2 class="text-2xl md:text-3xl">{home.description}</h2>
     </div>
-    <Button className="px-3">{home.button}</Button>
+    <a href="shop/products">
+      <Button className="px-3">{home.button}</Button>
+    </a>
   </div>
-  <button onclick={cart.addProduct} type="button">test</button>
-  {cart.value.length}
 </div>

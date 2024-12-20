@@ -1,4 +1,5 @@
 {
+  "addToCartButtonLabel": "add to cart",
   "collections": {
     "title": "Collections"
   },
@@ -7,8 +8,7 @@
     "id": {
       "belongsToCollectionStart": "This product belongs to the ",
       "belongsToCollectionEnd": " collection.",
-      "available": "Available",
-      "addToCart": "Add to cart"
+      "available": "Available"
     }
   }
 }

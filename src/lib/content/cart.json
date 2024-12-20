@@ -1,0 +1,9 @@
+{
+  "title": "Shopping cart",
+  "priceLabel": "Price",
+  "quantityLabel": "Quantity",
+  "emptyCartMessage": "Your cart is currently empty.",
+  "fillUpCTA": "Let's fill it up!",
+  "checkoutButtonLabel": "checkout",
+  "total": "Total:"
+}

@@ -1,9 +1,8 @@
-import type { Image } from '$lib/types/image';
-import type { Product } from '$lib/types/product';
+import type { Image, Product } from '$types';
 
 interface BaseCollection {
-  collectionId: string;
-  collectionName: string;
+  id: string;
+  name: string;
   description: string;
 }
 
