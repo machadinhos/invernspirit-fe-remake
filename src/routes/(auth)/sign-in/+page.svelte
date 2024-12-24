@@ -3,6 +3,8 @@
   import { FormField, generateFormFieldOnblurCallback, validateFormFields } from '$lib/utils/form-fields.svelte';
   import { validateEmail, validatePassword } from '$lib/utils/input-validation';
   import { auth } from '$content';
+  import AuthSwitchMessage from '../AuthSwitchMessage.svelte';
+  import OAuthSection from '../OAuthSection.svelte';
 
   let formFields: FormField[] = [
     new FormField({
@@ -57,13 +59,14 @@
     </div>
   {/each}
 
-  <CheckBox label="Keep me logged in?" bind:checked={rememberMeInput} />
-
-  <div class="mt-10 flex items-center justify-center">
-    <p>
-      {auth.signIn.signUpMessage}<a class="text-primary underline" href="/sign-up">{auth.signUp.title}</a>
-    </p>
+  <div class="flex justify-between">
+    <CheckBox label={auth.rememberMeLabel} bind:checked={rememberMeInput} />
+    <a class="text-primary underline" href="/sign-in">Forgot your password?</a>
   </div>
 
   <Button className="mt-5 w-full" type="submit">{auth.signIn.submitButton}</Button>
 </form>
+
+<OAuthSection />
+
+<AuthSwitchMessage authPage={auth.signUp.title} href="/sign-up" question={auth.signIn.signUpMessage} />
