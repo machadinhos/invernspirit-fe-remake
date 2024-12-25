@@ -1,5 +1,4 @@
 node_modules
-package-lock.json
 
 # Output
 .output
@@ -23,3 +22,6 @@ vite.config.ts.timestamp-*
 
 # IDE
 .idea
+
+# wrangler
+.wrangler
