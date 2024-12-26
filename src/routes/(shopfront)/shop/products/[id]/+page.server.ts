@@ -1,6 +1,6 @@
-import { beClient } from '$service';
+import { beClient } from '$service-server';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
-  return await beClient.getProductById(params.id);
+export const load: PageServerLoad = ({ params }) => {
+  return beClient.getProductById(params.id);
 };

@@ -1,10 +1,13 @@
-import { BFF_HOST } from '$env/static/private';
-import { prepareGetProductsBySearch } from './client/endpoints/products';
+import { prepareConfig, prepareGetCart, prepareGetProductsBySearch } from '$lib/service/client/endpoints';
+import { PUBLIC_BFF_HOST } from '$env/static/public';
+import type { RequestHostContext } from '$lib/service/client/client';
 
-const context = {
-  host: BFF_HOST,
+const context: RequestHostContext = {
+  host: PUBLIC_BFF_HOST,
 };
 
 export const bffClient = {
+  config: prepareConfig(context),
+  getCart: prepareGetCart(context),
   getProductsBySearch: prepareGetProductsBySearch(context),
 };

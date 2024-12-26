@@ -1,22 +1,27 @@
+import { browser } from '$app/environment';
+
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export interface RequestHostContext {
   host: string;
   headers?: Record<string, string>;
 }
+
 export interface RequestBaseContext extends RequestHostContext {
   endpoint: string;
   method: HttpMethod;
 }
 
-interface RequestContext extends RequestBaseContext {
+interface RequestContext<T = void> extends RequestBaseContext {
   pathParams?: string[];
   queryParams?: Record<string, string>;
-  body?: Record<string, unknown>;
+  body?: T;
 }
 
-export class Client<T> {
-  private readonly context: RequestContext;
+let accessToken = '';
+
+export class Client<T, K = void> {
+  private readonly context: RequestContext<K>;
 
   constructor(context: RequestBaseContext) {
     this.context = context;
@@ -31,6 +36,11 @@ export class Client<T> {
           .join('&')}`
       : '';
     return `${host}${endpoint}${path}${query}`;
+  }
+
+  withBody(body: K) {
+    this.context.body = body;
+    return this;
   }
 
   withHeaders(headers: RequestContext['headers']) {
@@ -49,15 +59,26 @@ export class Client<T> {
   }
 
   async call(): Promise<T> {
+    const headers = {
+      ...this.context.headers,
+      ...(accessToken && { authorization: `Bearer ${accessToken}` }),
+      ...(this.context.body && { 'Content-Type': 'application/json' }),
+    };
+
     const response = await fetch(this.buildUrl(), {
-      headers: this.context.headers,
+      headers,
       method: this.context.method,
       ...(this.context.body && { body: JSON.stringify(this.context.body) }),
     });
 
-    if (response.status === 200 || response.status === 201) {
-      return (await response.json()).data;
+    if ([200, 201].includes(response.status)) {
+      const { data } = await response.json();
+      if (browser && data.accessToken) {
+        accessToken = data.accessToken;
+      }
+      return data;
     }
+
     throw new Error(`Client error: ${await response.text()}`);
   }
 }

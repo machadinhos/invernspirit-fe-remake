@@ -1,11 +1,12 @@
-import type { Product } from '$types';
+import type { LineItem, Product, ProductIdAndQuantity } from '$types';
+import { browser } from '$app/environment';
 
 class Cart {
   private value: Map<string, number> = new Map();
   size = $state(0);
 
   constructor() {
-    if (typeof window !== 'undefined') {
+    if (browser) {
       this.loadFromLocalStorage();
     }
   }
@@ -43,6 +44,15 @@ class Cart {
     this.update();
     return success;
   };
+
+  setCartFromLineItemArray = (cart: LineItem[]) => {
+    this.value = new Map(cart.map((item) => [item.id, item.quantity]));
+    this.update();
+  };
+
+  getCartArray = (): ProductIdAndQuantity[] => {
+    return Array.from(this.value, ([id, quantity]) => ({ id, quantity }));
+  };
 }
 
-export default new Cart();
+export const cart = new Cart();

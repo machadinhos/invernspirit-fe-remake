@@ -1,8 +1,11 @@
 <script lang="ts">
   import '../app.css';
+  import { bffClient } from '$service';
+  import { config } from '$state';
   import Footer from '$lib/components/layout/footer/Footer.svelte';
   import { GrainyFilter } from '$components';
   import Header from '$lib/components/layout/header/Header.svelte';
+  import { onMount } from 'svelte';
   import { page } from '$app/state';
 
   interface Props {
@@ -10,6 +13,11 @@
   }
 
   let { children }: Props = $props();
+
+  onMount(async () => {
+    await bffClient.config({});
+    config.done = true;
+  });
 </script>
 
 <svelte:head>
