@@ -1,12 +1,26 @@
 <script lang="ts">
+  import { cart as cartState, config } from '$state';
+  import { bffClient } from '$service';
   import { Button } from '$components';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
   import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
 
-  let cartProducts: LineItem[] = $state([]);
-  let totalPrice = $derived(cartProducts.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
+  let cartProducts: LineItem[] | undefined = $state();
+  let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
+
+  $effect(() => {
+    if (cartState.size === 0) cartProducts = [];
+    if (!config.done) return;
+    bffClient.getCart(cartState.getCartArray()).then((data) => {
+      cartProducts = data.cart.cart.products;
+    });
+  });
+
+  $effect(() => {
+    if (cartProducts !== undefined) cartState.setCartFromLineItemArray(cartProducts);
+  });
 </script>
 
 <div class="flex h-full w-full justify-center">
@@ -20,27 +34,40 @@
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
     <div class="mb-10 mt-5 flex min-h-[60vh] w-[75%] flex-col place-content-between">
-      {#if cartProducts.length > 0}
-        <div class="flex flex-col gap-3">
-          {#each cartProducts as product}
-            <CartItem {product} bind:cartProducts />
-          {/each}
-        </div>
+      {#if cartProducts !== undefined}
+        {#if cartProducts.length > 0}
+          <div class="flex flex-col gap-3">
+            {#each cartProducts as product}
+              <CartItem {product} bind:cartProducts />
+            {/each}
+          </div>
+        {:else}
+          <p class="text-center">
+            {cart.emptyCartMessage} <a class="text-primary underline" href="shop/products">{cart.fillUpCTA}</a>
+          </p>
+        {/if}
       {:else}
-        <p class="text-center">
-          {cart.emptyCartMessage} <a class="text-primary underline" href="shop/products">{cart.fillUpCTA}</a>
-        </p>
+        <div></div>
       {/if}
-      <div class="w-full">
+      <div class="mt-2 w-full">
         <div class="mb-3 flex flex-col gap-0.5">
           <div class="h-0.5 bg-white"></div>
           <div class="flex place-content-between text-3xl">
             <span>{cart.total}</span>
-            <span>{formatPrice(totalPrice)}$</span>
+            <span>
+              {#if totalPrice !== undefined}
+                {formatPrice(totalPrice)}
+              {:else}
+                --.--
+              {/if}
+              $
+            </span>
           </div>
           <div class="h-0.5 bg-white"></div>
         </div>
-        <Button className="w-full" disabled={cartProducts.length < 1}>{cart.checkoutButtonLabel}</Button>
+        <Button className="w-full" disabled={cartProducts !== undefined ? cartProducts.length < 1 : true}
+          >{cart.checkoutButtonLabel}</Button
+        >
       </div>
     </div>
   </div>
