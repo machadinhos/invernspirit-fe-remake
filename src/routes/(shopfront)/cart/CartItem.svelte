@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="text-primary">
-    <button aria-label="remove-from-cart" onclick={removeFromCart} type="button">
+    <button class="h-7 w-7" aria-label="remove-from-cart" onclick={removeFromCart} type="button">
       <Icon size="20" src={BiTrash} />
     </button>
   </div>

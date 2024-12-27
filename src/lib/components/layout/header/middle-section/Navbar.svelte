@@ -16,7 +16,7 @@
 </script>
 
 <nav class="mt-5">
-  <ul class="flex h-full items-center gap-20 text-white">
+  <ul class="flex h-full items-center gap-32 text-2xl">
     <NavbarItem>
       <button
         bind:this={dropdownTriggerElement}
