@@ -4,17 +4,24 @@
   import { Button } from '$components';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
+  import { flip } from 'svelte/animate';
   import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
+  import { untrack } from 'svelte';
 
   let cartProducts: LineItem[] | undefined = $state();
   let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
 
   $effect(() => {
-    if (cartState.size === 0) cartProducts = [];
+    if (untrack(() => cartState.size) === 0) {
+      cartProducts = [];
+      return;
+    }
     if (!config.done) return;
-    bffClient.getCart(cartState.getCartArray()).then((data) => {
-      cartProducts = data.cart.cart.products;
+    untrack(() => {
+      bffClient.getCart(cartState.getCartArray()).then((data) => {
+        cartProducts = data.cart.cart.products;
+      });
     });
   });
 
@@ -37,8 +44,10 @@
       {#if cartProducts !== undefined}
         {#if cartProducts.length > 0}
           <div class="flex flex-col gap-3">
-            {#each cartProducts as product}
-              <CartItem {product} bind:cartProducts />
+            {#each cartProducts as product (product.id)}
+              <div animate:flip={{ duration: 150 }}>
+                <CartItem {product} bind:cartProducts />
+              </div>
             {/each}
           </div>
         {:else}
