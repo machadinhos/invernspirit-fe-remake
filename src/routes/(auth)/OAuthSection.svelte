@@ -4,8 +4,8 @@
   import { FaBrandsGoogle } from 'svelte-icons-pack/fa';
 </script>
 
-{#snippet oAuthButton(src: IconType)}
-  <button class="oauth-button flex h-[25px] w-[25px] items-center justify-center" type="button">
+{#snippet oAuthButton(src: IconType, label: string)}
+  <button class="oauth-button flex h-[25px] w-[25px] items-center justify-center" aria-label={label} type="button">
     <div class="transition-all"><Icon size="20" {src}></Icon></div>
   </button>
 {/snippet}
@@ -17,7 +17,7 @@
     <div class="h-0.5 w-full bg-white"></div>
   </div>
   <div class="flex justify-center gap-3">
-    {@render oAuthButton(FaBrandsGoogle)}
+    {@render oAuthButton(FaBrandsGoogle, auth.googleAriaLabel)}
   </div>
 </div>
 
