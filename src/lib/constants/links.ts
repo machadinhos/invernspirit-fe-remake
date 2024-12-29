@@ -1,27 +1,16 @@
-const ROOTDOMAIN = 'invernspirit.com';
-const PROTOCOL = 'https://';
-
-function generateInternalURL(pathName: string, subDomain?: string) {
-  const fullDomain = subDomain ? `${subDomain}${subDomain.endsWith('.') ? '' : '.'}${ROOTDOMAIN}` : ROOTDOMAIN;
-
-  const fullPath = pathName.startsWith('/') ? pathName : `/${pathName}`;
-
-  return new URL(`${PROTOCOL}${fullDomain}${fullPath}`).toString();
-}
-
 export const imageLinks = {
   home: {
     bgImages: [
-      generateInternalURL('/products/ceramics-product-1-1.jpeg', 'images.'),
-      generateInternalURL('/products/ceramics-product-2-1.jpeg', 'images.'),
-      generateInternalURL('/products/ceramics-product-3-1.jpeg', 'images.'),
-      generateInternalURL('/products/ceramics-product-4-1.jpeg', 'images.'),
+      'https://images.invernspirit.com/products/ceramics-product-1-1.jpeg',
+      'https://images.invernspirit.com/products/ceramics-product-2-1.jpeg',
+      'https://images.invernspirit.com/products/ceramics-product-3-1.jpeg',
+      'https://images.invernspirit.com/products/ceramics-product-4-1.jpeg',
     ],
   },
 };
 
 export const socialMediaLinks = {
-  instagram: new URL('https://www.lamaisonregina.com/pt').toString(),
-  pinterestP: new URL('https://www.lamaisonregina.com/pt').toString(),
-  youtube: new URL('https://www.lamaisonregina.com/pt').toString(),
+  instagram: 'https://www.lamaisonregina.com/pt',
+  pinterestP: 'https://www.lamaisonregina.com/pt',
+  youtube: 'https://www.lamaisonregina.com/pt',
 };
