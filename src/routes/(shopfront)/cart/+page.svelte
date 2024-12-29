@@ -68,8 +68,7 @@
                 {formatPrice(totalPrice)}
               {:else}
                 --.--
-              {/if}
-              $
+              {/if}$
             </span>
           </div>
           <div class="h-0.5 bg-white"></div>
