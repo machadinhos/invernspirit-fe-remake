@@ -2,13 +2,16 @@ import type { LineItem, Product, ProductIdAndQuantity } from '$types';
 import { browser } from '$app/environment';
 
 class Cart {
-  private value: Map<string, number> = new Map();
-  size = $state(0);
+  private value: Map<string, number>;
+  size = $state() as number;
 
   constructor() {
     if (browser) {
-      this.loadFromLocalStorage();
+      this.value = this.getCartFromLocalStorage();
+    } else {
+      this.value = new Map();
     }
+    this.size = this.calculateSize();
   }
 
   private saveToLocalStorage = (): void => {
@@ -16,33 +19,32 @@ class Cart {
     localStorage.setItem('cart', JSON.stringify(cartArray));
   };
 
-  private loadFromLocalStorage = (): void => {
+  private getCartFromLocalStorage = (): Map<string, number> => {
     const cartString = localStorage.getItem('cart');
     if (cartString) {
       try {
         const cartArray: [string, number][] = JSON.parse(cartString);
-        this.value = new Map(cartArray);
-        this.size = this.value.values().reduce((sum, quantity) => sum + quantity, 0);
+        return new Map(cartArray);
       } catch (error) {
         console.error('Failed to parse cart from local storage:', error);
+        return new Map();
       }
     }
+    return new Map();
+  };
+
+  private calculateSize = () => {
+    return this.value.values().reduce((sum, quantity) => sum + quantity, 0);
   };
 
   private update = () => {
-    this.size = this.value.values().reduce((sum, quantity) => sum + quantity, 0);
+    this.size = this.calculateSize();
     this.saveToLocalStorage();
   };
 
   insertProduct = (product: Product, quantity: number = 1): void => {
     this.value.set(product.id, quantity);
     this.update();
-  };
-
-  removeProduct = (product: Product): boolean => {
-    const success = this.value.delete(product.id);
-    this.update();
-    return success;
   };
 
   setCartFromLineItemArray = (cart: LineItem[]) => {

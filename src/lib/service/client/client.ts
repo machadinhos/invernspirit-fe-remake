@@ -18,7 +18,15 @@ interface RequestContext<T = void> extends RequestBaseContext {
   body?: T;
 }
 
-let accessToken = '';
+let globalAccessToken = '';
+
+export function setAccessToken(accessToken: string): void {
+  globalAccessToken = accessToken;
+}
+
+export function getAccessToken(): string {
+  return globalAccessToken;
+}
 
 export class Client<T, K = void> {
   private readonly context: RequestContext<K>;
@@ -61,7 +69,7 @@ export class Client<T, K = void> {
   async call(): Promise<T> {
     const headers = {
       ...this.context.headers,
-      ...(accessToken && { authorization: `Bearer ${accessToken}` }),
+      ...(globalAccessToken && { authorization: `Bearer ${globalAccessToken}` }),
       ...(this.context.body && { 'Content-Type': 'application/json' }),
     };
 
@@ -74,7 +82,7 @@ export class Client<T, K = void> {
     if ([200, 201].includes(response.status)) {
       const { data } = await response.json();
       if (browser && data.accessToken) {
-        accessToken = data.accessToken;
+        globalAccessToken = data.accessToken;
       }
       return data;
     }

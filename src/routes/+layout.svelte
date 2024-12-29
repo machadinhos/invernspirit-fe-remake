@@ -1,6 +1,5 @@
 <script lang="ts">
   import '../app.css';
-  import { bffClient } from '$service';
   import { config } from '$state';
   import Footer from '$lib/components/layout/footer/Footer.svelte';
   import { GrainyFilter } from '$components';
@@ -14,9 +13,8 @@
 
   let { children }: Props = $props();
 
-  onMount(async () => {
-    await bffClient.config({});
-    config.done = true;
+  onMount(() => {
+    config.init();
   });
 </script>
 
