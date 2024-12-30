@@ -10,7 +10,7 @@
 </script>
 
 <div class="relative h-full">
-  <div class="pointer-events-none absolute inset-0 z-20 mt-5">
+  <div class="pointer-events-none absolute inset-0 z-10 mt-5">
     <h1 class="text-center text-6xl">{shop.collections.title}</h1>
   </div>
 
