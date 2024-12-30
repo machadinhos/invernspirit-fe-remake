@@ -174,7 +174,7 @@
         </div>
         <input
           name="searchString"
-          class="w-full bg-transparent text-white focus:border-none focus:outline-none"
+          class="w-full bg-transparent focus:border-none focus:outline-none"
           autocomplete="off"
           placeholder={faq.searchPlaceholder}
           type="search"

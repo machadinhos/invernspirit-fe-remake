@@ -16,7 +16,7 @@
 </script>
 
 <nav class="mt-5">
-  <ul class="flex h-full items-center gap-32 text-2xl">
+  <ul class="flex h-full items-center gap-32 text-xl">
     <NavbarItem>
       <button
         bind:this={dropdownTriggerElement}
@@ -30,7 +30,7 @@
         </div>
       </button>
       <DropdownMenu isFullWidth triggerElement={dropdownTriggerElement} bind:isOpen>
-        <div class="flex flex-col items-center justify-center gap-4 py-4 text-white">
+        <div class="flex flex-col items-center justify-center gap-4 py-4 text-2xl">
           <DropdownMenuItem>
             <a class="hover:text-primary" href="/shop/collections" onclick={() => (isOpen = false)}
               >{common.header.middleSection.shop.byCollection}</a

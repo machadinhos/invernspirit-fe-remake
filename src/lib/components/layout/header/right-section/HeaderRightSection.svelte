@@ -18,7 +18,7 @@
 </script>
 
 <div class="mt-8 flex items-center justify-end gap-4">
-  <select class="h-fit bg-background text-white" aria-label={common.header.rightSection.areaLabels.countrySelect}>
+  <select class="h-fit bg-background" aria-label={common.header.rightSection.areaLabels.countrySelect}>
     {#each countries as country}
       <option>{country}</option>
     {/each}

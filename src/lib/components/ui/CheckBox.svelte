@@ -14,7 +14,7 @@
   <div class="flex h-5 w-5 items-center justify-center border-2 border-text-secondary">
     <div class="h-full w-full">
       {#if checked}
-        <svg class="bg-primary text-white" class:checked viewBox="0 0 24 24" transition:scale>
+        <svg class="bg-primary" class:checked viewBox="0 0 24 24" transition:scale>
           <path
             d="M4 12l5 5L20 7"
             fill="none"
