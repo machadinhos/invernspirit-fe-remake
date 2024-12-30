@@ -20,7 +20,7 @@
       <Icon color="white" size="20" {src} />
     </span>
     {#if badge}
-      <span class="absolute -right-2 -top-4 text-lg font-bold text-white">
+      <span class="absolute -right-2 -top-4 text-lg font-bold">
         {badge}
       </span>
     {/if}

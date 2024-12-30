@@ -21,7 +21,7 @@
       </div>
       <input
         name="searchString"
-        class="w-full bg-background text-white focus:border-none focus:outline-none"
+        class="w-full bg-background focus:border-none focus:outline-none"
         aria-label={common.footer.searchBarPlaceholder}
         autocomplete="off"
         placeholder={common.footer.searchBarPlaceholder}
