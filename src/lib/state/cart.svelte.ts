@@ -34,7 +34,7 @@ class Cart {
   };
 
   private calculateSize = () => {
-    return this.value.values().reduce((sum, quantity) => sum + quantity, 0);
+    return Array.from(this.value.values()).reduce((sum, quantity) => sum + quantity, 0);
   };
 
   private update = () => {
