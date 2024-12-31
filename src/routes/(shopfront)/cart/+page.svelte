@@ -40,10 +40,10 @@
       </h1>
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
-    <div class="mb-10 mt-5 flex min-h-[60vh] w-[75%] flex-col place-content-between">
+    <div class="mb-10 mt-5 flex h-[60vh] w-[75%] flex-col place-content-between overflow-hidden">
       {#if cartProducts !== undefined}
         {#if cartProducts.length > 0}
-          <div class="flex flex-col gap-3">
+          <div class="flex h-full flex-col gap-3 overflow-y-auto">
             {#each cartProducts as product (product.id)}
               <div animate:flip={{ duration: 150 }}>
                 <CartItem {product} bind:cartProducts />

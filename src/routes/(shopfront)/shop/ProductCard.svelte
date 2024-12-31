@@ -3,7 +3,7 @@
   import { cart } from '$state';
   import { formatPrice } from '$lib/utils/general';
   import type { Product } from '$types';
-  import ProductQuantityControl from '../ProductQuantityControl.svelte';
+  import ProductQuantitySelector from '../ProductQuantitySelector.svelte';
   import { shop } from '$content';
 
   interface Props {
@@ -29,7 +29,7 @@
   <div class="px-4 pb-3">
     <div class="my-2 flex justify-between">
       <span class="truncate whitespace-nowrap text-2xl">{product.name}</span>
-      <ProductQuantityControl stock={product.stock} bind:selectedQuantity />
+      <ProductQuantitySelector stock={product.stock} bind:selectedQuantity />
     </div>
     <div class="flex items-center justify-between">
       <span class="text-4xl">{formatPrice(product.priceInCents)}$</span>

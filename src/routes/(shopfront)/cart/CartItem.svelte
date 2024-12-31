@@ -4,7 +4,7 @@
   import { formatPrice } from '$lib/utils/general';
   import { Icon } from 'svelte-icons-pack';
   import type { LineItem } from '$types';
-  import ProductQuantityControl from '../ProductQuantityControl.svelte';
+  import ProductQuantitySelector from '../ProductQuantitySelector.svelte';
 
   interface Props {
     product: LineItem;
@@ -35,7 +35,7 @@
       <h4 class="text-lg">{cart.priceLabel}: {formatPrice(product.priceInCents)}$</h4>
       <div class="flex gap-1">
         <h4 class="text-lg">{cart.quantityLabel}:</h4>
-        <ProductQuantityControl stock={product.stock} bind:selectedQuantity />
+        <ProductQuantitySelector stock={product.stock} bind:selectedQuantity />
       </div>
     </div>
   </div>
