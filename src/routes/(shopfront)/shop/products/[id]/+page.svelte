@@ -3,7 +3,7 @@
   import { cart } from '$state';
   import { formatPrice } from '$lib/utils/general';
   import type { PageData } from './$types';
-  import ProductQuantityControl from '../../../ProductQuantityControl.svelte';
+  import ProductQuantitySelector from '../../../ProductQuantitySelector.svelte';
   import { shop } from '$content';
 
   interface Props {
@@ -43,7 +43,7 @@
       {shop.products.id.belongsToCollectionEnd}
     </p>
     <div class="my-4 flex gap-3">
-      <ProductQuantityControl stock={data.product.stock} bind:selectedQuantity />
+      <ProductQuantitySelector stock={data.product.stock} bind:selectedQuantity />
       <p>{shop.products.id.available}: {data.product.stock}</p>
     </div>
     <Button className="w-full" onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button>
