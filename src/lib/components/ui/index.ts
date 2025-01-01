@@ -8,3 +8,4 @@ export { default as DropdownMenuItem } from './dropdown-menu/DropdownMenuItem.sv
 export { default as TextInput } from './text-input/TextInput.svelte';
 export { default as ThumbnailCarousel } from './carousel/ThumbnailCarousel.svelte';
 export { default as ShrinkOnClickWrapper } from './ShrinkOnClickWrapper.svelte';
+export { default as LoadingBox } from './LoadingBox.svelte';
