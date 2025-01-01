@@ -7,6 +7,7 @@
   import { flip } from 'svelte/animate';
   import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
+  import LoadingCartItem from './LoadingCartItem.svelte';
   import { untrack } from 'svelte';
 
   let cartProducts: LineItem[] | undefined = $state();
@@ -41,23 +42,25 @@
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
     <div class="mb-10 mt-5 flex h-[60vh] w-[75%] flex-col place-content-between overflow-hidden">
-      {#if cartProducts !== undefined}
-        {#if cartProducts.length > 0}
-          <div class="flex h-full flex-col gap-3 overflow-y-auto">
+      <div class="flex h-full flex-col gap-3 overflow-y-auto">
+        {#if cartProducts !== undefined}
+          {#if cartProducts.length > 0}
             {#each cartProducts as product (product.id)}
               <div animate:flip={{ duration: 150 }}>
                 <CartItem {product} bind:cartProducts />
               </div>
             {/each}
-          </div>
+          {:else}
+            <p class="text-center">
+              {cart.emptyCartMessage} <a class="text-primary underline" href="shop/products">{cart.fillUpCTA}</a>
+            </p>
+          {/if}
         {:else}
-          <p class="text-center">
-            {cart.emptyCartMessage} <a class="text-primary underline" href="shop/products">{cart.fillUpCTA}</a>
-          </p>
+          {#each cartState.getCartArray()}
+            <LoadingCartItem />
+          {/each}
         {/if}
-      {:else}
-        <div></div>
-      {/if}
+      </div>
       <div class="mt-2 w-full">
         <div class="mb-3 flex flex-col gap-0.5">
           <div class="h-0.5 bg-white"></div>
