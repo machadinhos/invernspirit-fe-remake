@@ -15,6 +15,7 @@
       right/calc(200% + 80px) calc(200% + 80px) transparent;
     animation: l8 1s infinite;
   }
+
   @keyframes l8 {
     100% {
       background-position: top left;

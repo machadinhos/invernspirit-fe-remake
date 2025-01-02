@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DropdownMenu, DropdownMenuItem } from '$components';
+  import { DropdownMenu, DropdownMenuItem, ShrinkOnClickWrapper } from '$components';
   import { common } from '$content';
   import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
   import { Icon } from 'svelte-icons-pack';
@@ -49,11 +49,13 @@
       <a href="/about">{common.header.middleSection.about}</a>
     </NavbarItem>
     <li>
-      <div class="flex h-16 w-16 items-center justify-center">
-        <a class="imageLink flex h-full w-full items-center justify-center" href="/">
-          <img class="logoImage h-10 w-10 object-contain" alt="logo" fetchpriority="high" src="/images/logo.webp" />
-        </a>
-      </div>
+      <ShrinkOnClickWrapper>
+        <div class="flex h-16 w-16 items-center justify-center">
+          <a class="imageLink flex h-full w-full items-center justify-center" href="/">
+            <img class="logoImage h-10 w-10 object-contain" alt="logo" fetchpriority="high" src="/images/logo.webp" />
+          </a>
+        </div>
+      </ShrinkOnClickWrapper>
     </li>
     <NavbarItem>
       <a href="/contact-us">{common.header.middleSection.contactUs}</a>
