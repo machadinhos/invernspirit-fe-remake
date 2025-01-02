@@ -3,7 +3,7 @@ import { bffClient, getAccessToken, setAccessToken } from '$service';
 class Config {
   done = $state(false);
 
-  init = async () => {
+  init = async (): Promise<void> => {
     const accessToken = sessionStorage.getItem('access-token');
     if (accessToken) {
       setAccessToken(accessToken);

@@ -33,11 +33,11 @@ class Cart {
     return new Map();
   };
 
-  private calculateSize = () => {
+  private calculateSize = (): number => {
     return Array.from(this.value.values()).reduce((sum, quantity) => sum + quantity, 0);
   };
 
-  private update = () => {
+  private update = (): void => {
     this.size = this.calculateSize();
     this.saveToLocalStorage();
   };
@@ -47,7 +47,7 @@ class Cart {
     this.update();
   };
 
-  setCartFromLineItemArray = (cart: LineItem[]) => {
+  setCartFromLineItemArray = (cart: LineItem[]): void => {
     this.value = new Map(cart.map((item) => [item.id, item.quantity]));
     this.update();
   };

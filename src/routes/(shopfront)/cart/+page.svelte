@@ -1,13 +1,12 @@
 <script lang="ts">
+  import { Button, PulsatingLogo } from '$components';
   import { cart as cartState, config } from '$state';
   import { bffClient } from '$service';
-  import { Button } from '$components';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
   import { flip } from 'svelte/animate';
   import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
-  import LoadingCartItem from './LoadingCartItem.svelte';
   import { untrack } from 'svelte';
 
   let cartProducts: LineItem[] | undefined = $state();
@@ -56,9 +55,9 @@
             </p>
           {/if}
         {:else}
-          {#each cartState.getCartArray()}
-            <LoadingCartItem />
-          {/each}
+          <div class="flex h-full w-full items-center justify-center">
+            <PulsatingLogo />
+          </div>
         {/if}
       </div>
       <div class="mt-2 w-full">
