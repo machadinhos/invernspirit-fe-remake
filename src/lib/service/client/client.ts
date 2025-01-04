@@ -1,6 +1,5 @@
+import { getAccessToken, setAccessToken } from './access-token';
 import { browser } from '$app/environment';
-
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export interface RequestHostContext {
   host: string;
@@ -9,23 +8,13 @@ export interface RequestHostContext {
 
 export interface RequestBaseContext extends RequestHostContext {
   endpoint: string;
-  method: HttpMethod;
+  method: RequestInit['method'];
 }
 
 interface RequestContext<T = void> extends RequestBaseContext {
   pathParams?: string[];
   queryParams?: Record<string, string>;
   body?: T;
-}
-
-let globalAccessToken = '';
-
-export function setAccessToken(accessToken: string): void {
-  globalAccessToken = accessToken;
-}
-
-export function getAccessToken(): string {
-  return globalAccessToken;
 }
 
 export class Client<T, K = void> {
@@ -69,7 +58,7 @@ export class Client<T, K = void> {
   async call(): Promise<T> {
     const headers = {
       ...this.context.headers,
-      ...(globalAccessToken && { authorization: `Bearer ${globalAccessToken}` }),
+      ...(getAccessToken() && { authorization: `Bearer ${getAccessToken()}` }),
       ...(this.context.body && { 'Content-Type': 'application/json' }),
     };
 
@@ -82,7 +71,7 @@ export class Client<T, K = void> {
     if ([200, 201].includes(response.status)) {
       const { data } = await response.json();
       if (browser && data.accessToken) {
-        globalAccessToken = data.accessToken;
+        setAccessToken(data.accessToken);
       }
       return data;
     }

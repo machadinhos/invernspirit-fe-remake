@@ -1,4 +1,4 @@
-import { Client, type RequestHostContext } from '../client';
+import { Client, type RequestHostContext } from '$lib/service/client';
 import type { Collection, CollectionDetails } from '$types';
 
 const ENDPOINT = '/collections';
