@@ -1,17 +1,24 @@
 import type { LineItem, Product, ProductIdAndQuantity } from '$types';
 import { browser } from '$app/environment';
+import { SvelteMap } from 'svelte/reactivity';
 
 class Cart {
-  private value: Map<string, number>;
+  private value = $state() as SvelteMap<string, number>;
   size = $state() as number;
 
   constructor() {
     if (browser) {
-      this.value = this.getCartFromLocalStorage();
+      this.value = this.getFromLocalStorage();
     } else {
-      this.value = new Map();
+      this.value = new SvelteMap();
     }
-    this.size = this.calculateSize();
+
+    $effect.root(() => {
+      $effect(() => {
+        this.size = this.calculateSize();
+        this.saveToLocalStorage();
+      });
+    });
   }
 
   private saveToLocalStorage = (): void => {
@@ -19,37 +26,25 @@ class Cart {
     localStorage.setItem('cart', JSON.stringify(cartArray));
   };
 
-  private getCartFromLocalStorage = (): Map<string, number> => {
+  private getFromLocalStorage = (): SvelteMap<string, number> => {
     const cartString = localStorage.getItem('cart');
     if (cartString) {
-      try {
-        const cartArray: [string, number][] = JSON.parse(cartString);
-        return new Map(cartArray);
-      } catch (error) {
-        console.error('Failed to parse cart from local storage:', error);
-        return new Map();
-      }
+      const cartArray: [string, number][] = JSON.parse(cartString);
+      return new SvelteMap(cartArray);
     }
-    return new Map();
+    return new SvelteMap();
   };
 
   private calculateSize = (): number => {
     return Array.from(this.value.values()).reduce((sum, quantity) => sum + quantity, 0);
   };
 
-  private update = (): void => {
-    this.size = this.calculateSize();
-    this.saveToLocalStorage();
-  };
-
   insertProduct = (product: Product, quantity: number = 1): void => {
     this.value.set(product.id, quantity);
-    this.update();
   };
 
   setCartFromLineItemArray = (cart: LineItem[]): void => {
-    this.value = new Map(cart.map((item) => [item.id, item.quantity]));
-    this.update();
+    this.value = new SvelteMap(cart.map((item) => [item.id, item.quantity]));
   };
 
   getCartArray = (): ProductIdAndQuantity[] => {
