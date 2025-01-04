@@ -1,4 +1,4 @@
-import { Client, type RequestHostContext } from '$lib/service/client/client';
+import { Client, type RequestHostContext } from '$lib/service/client';
 
 const ENDPOINT = '/config';
 

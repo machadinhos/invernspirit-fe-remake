@@ -6,7 +6,7 @@ import {
   prepareGetCart,
   prepareGetCollectionById,
   prepareGetProductById,
-} from '$lib/service/client/endpoints';
+} from '$lib/service/endpoints';
 import type { RequestHostContext } from '$lib/service/client/client';
 
 const headers = {
