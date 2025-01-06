@@ -40,7 +40,8 @@ class Cart {
   };
 
   insertProduct = (product: Product, quantity: number = 1): void => {
-    this.value.set(product.id, quantity);
+    const currentProductQuantity = this.value.get(product.id) || 0;
+    this.value.set(product.id, quantity + currentProductQuantity);
   };
 
   setCartFromLineItemArray = (cart: LineItem[]): void => {
