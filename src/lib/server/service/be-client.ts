@@ -43,7 +43,7 @@ export async function beClientProxy(
   const backendUrl = BE_HOST + bePathname + url.search;
 
   const requestHeaders = new Headers(request.headers);
-  const requiredHeaders = { country: requiredHeaderData.platform.cf.country };
+  const requiredHeaders = { country: requiredHeaderData.platform.cf.country, ...headers };
   Object.entries({ ...requiredHeaders, ...additionalHeaders }).forEach(([key, value]) => {
     requestHeaders.set(key, value);
   });
