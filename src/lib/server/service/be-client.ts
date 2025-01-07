@@ -49,8 +49,10 @@ export async function beClientProxy(
   });
   deleteUnwantedHeaders(requestHeaders, ['content-length']);
 
+  const hasBody = request.method !== 'GET' && request.method !== 'DELETE';
+
   const beRequest: RequestInit = {
-    body: JSON.stringify(await request.json()),
+    ...(hasBody && { body: JSON.stringify(await request.json()) }),
     headers: requestHeaders,
     method: request.method,
   };

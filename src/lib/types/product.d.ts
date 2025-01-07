@@ -9,3 +9,7 @@ export interface Product {
   priceInCents: number;
   images: Image[];
 }
+
+export interface StockBucket {
+  data: number;
+}

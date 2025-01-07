@@ -9,6 +9,11 @@
       "belongsToCollectionStart": "This product belongs to the ",
       "belongsToCollectionEnd": " collection.",
       "available": "Available"
+    },
+    "cardBanner": {
+      "allItemsInCart": "All items in cart",
+      "someItemsInCart": "In cart",
+      "outOfStock": "Out of stock"
     }
   }
 }

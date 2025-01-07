@@ -1,16 +1,10 @@
-import { bffClient, getAccessToken, setAccessToken } from '$service';
+import { bffClient } from '$service';
 
 class Config {
   done = $state(false);
 
   init = async (): Promise<void> => {
-    const accessToken = sessionStorage.getItem('access-token');
-    if (accessToken) {
-      setAccessToken(accessToken);
-    } else {
-      await bffClient.config({});
-      sessionStorage.setItem('access-token', getAccessToken());
-    }
+    await bffClient.config({});
     this.done = true;
   };
 }

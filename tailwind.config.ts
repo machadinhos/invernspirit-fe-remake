@@ -8,9 +8,10 @@ export default {
       colors: {
         primary: '#c36a2d',
         secondary: '#201f1d',
-        background: '#4C4B48',
+        background: '#4c4b48',
         'secondary-background': '#7e7e78',
-        error: '#FF6F61',
+        error: '#ff6f61',
+        warning: '#c36a2d',
         success: '#00fa3c',
         'text-secondary': '#a6a6a6',
       },

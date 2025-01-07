@@ -4,12 +4,13 @@
   interface Props {
     stock: number;
     selectedQuantity: number;
+    disabled?: boolean;
   }
 
-  let { stock, selectedQuantity = $bindable() }: Props = $props();
+  let { stock, selectedQuantity = $bindable(), disabled }: Props = $props();
 
-  let canIncrementSelectedQuantity = $derived(selectedQuantity < stock);
-  let canDecrementSelectedQuantity = $derived(selectedQuantity > 1);
+  let canIncrementSelectedQuantity = $derived(!disabled && selectedQuantity < stock);
+  let canDecrementSelectedQuantity = $derived(!disabled && selectedQuantity > 1);
 
   function incrementSelectedQuantity() {
     selectedQuantity++;

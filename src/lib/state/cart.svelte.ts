@@ -44,6 +44,10 @@ class Cart {
     this.value.set(product.id, quantity + currentProductQuantity);
   };
 
+  getProductQuantity = (productId: string): number => {
+    return this.value.get(productId) || 0;
+  };
+
   setCartFromLineItemArray = (cart: LineItem[]): void => {
     this.value = new SvelteMap(cart.map((item) => [item.id, item.quantity]));
   };

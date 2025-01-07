@@ -1,9 +1,11 @@
 <script lang="ts">
   import { Button, ThumbnailCarousel } from '$components';
+  import { formatPrice, getStockFromBucket } from '$lib/utils/general';
   import { cart } from '$state';
-  import { formatPrice } from '$lib/utils/general';
+  import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import ProductQuantitySelector from '../../../ProductQuantitySelector.svelte';
+  import ProductStatusBanner from '../../ProductStatusBanner.svelte';
   import { shop } from '$content';
 
   interface Props {
@@ -13,6 +15,13 @@
   let { data }: Props = $props();
 
   let selectedQuantity = $state(1);
+  let bucketStock: number | undefined = $state();
+  let inCartQuantity = $state(cart.getProductQuantity(data.product.id));
+  let availableStock = $derived(bucketStock ? bucketStock - inCartQuantity : 0);
+
+  onMount(async () => {
+    bucketStock = (await getStockFromBucket(data.product.id)).data;
+  });
 
   function getCollectionName(collectionId: string) {
     const collection = data.collections.find((collection) => collection.id === collectionId);
@@ -21,6 +30,7 @@
 
   function onAddToCartClick() {
     cart.insertProduct(data.product, selectedQuantity);
+    inCartQuantity += selectedQuantity;
     selectedQuantity = 1;
   }
 </script>
@@ -43,9 +53,12 @@
       {shop.products.id.belongsToCollectionEnd}
     </p>
     <div class="my-4 flex gap-3">
-      <ProductQuantitySelector stock={data.product.stock} bind:selectedQuantity />
+      <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
       <p>{shop.products.id.available}: {data.product.stock}</p>
+      <ProductStatusBanner {bucketStock} {inCartQuantity} />
     </div>
-    <Button className="w-full" onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button>
+    <Button className="w-full" disabled={bucketStock === undefined || availableStock <= 0} onclick={onAddToCartClick}
+      >{shop.addToCartButtonLabel}</Button
+    >
   </div>
 </div>
