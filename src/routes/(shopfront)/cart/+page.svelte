@@ -20,7 +20,7 @@
     if (!config.done) return;
     untrack(() => {
       bffClient.getCart(cartState.getCartArray()).then((data) => {
-        cartProducts = data.cart.cart.products;
+        cartProducts = data.cart.products;
       });
     });
   });

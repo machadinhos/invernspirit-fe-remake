@@ -1,7 +1,7 @@
 import type { LineItem } from '$lib/types/line-item';
 
 export interface Cart {
-  cart: { products: LineItem[] };
+  products: LineItem[];
 }
 
 export interface ProductIdAndQuantity {
