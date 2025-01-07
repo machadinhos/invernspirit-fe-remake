@@ -7,6 +7,26 @@ body {
   font-family: 'Playfair', serif;
 }
 
+h1 {
+  font-family: 'Cormorant SC', serif;
+}
+
+h2 {
+  font-family: 'Cormorant SC', serif;
+}
+
+h3 {
+  font-family: 'Cormorant SC', serif;
+}
+
+h4 {
+  font-family: 'Cormorant SC', serif;
+}
+
+h5 {
+  font-family: 'Cormorant SC', serif;
+}
+
 input[type='search']::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }

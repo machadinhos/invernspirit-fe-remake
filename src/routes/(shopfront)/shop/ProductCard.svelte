@@ -41,7 +41,7 @@
   </div>
   <div class="px-4 pb-3">
     <div class="my-2 flex justify-between">
-      <span class="truncate whitespace-nowrap text-2xl">{product.name}</span>
+      <h3 class="truncate whitespace-nowrap text-2xl">{product.name}</h3>
       <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
     </div>
     <div class="flex items-center justify-between">

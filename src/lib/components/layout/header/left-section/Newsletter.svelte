@@ -62,8 +62,8 @@
             bind:value={emailInput}
           >
             {#snippet label()}
-              <div class="flex">
-                <Icon className="mr-0.5 flex content-center pb-1" size="20" src={TiMail} />
+              <div class="flex items-center gap-0.5">
+                <Icon size="20" src={TiMail} />
                 {common.header.leftSection.email}
               </div>
             {/snippet}

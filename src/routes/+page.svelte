@@ -37,8 +37,8 @@
         <div class="flex gap-4 font-thin">
           <h1 class="text-6xl md:text-8xl">{home.title}</h1>
           <div class="flex flex-col justify-center">
-            <p>{home.subTitle.firstLine}</p>
-            <p>{home.subTitle.secondLine}</p>
+            <h3>{home.subTitle.firstLine}</h3>
+            <h3>{home.subTitle.secondLine}</h3>
           </div>
         </div>
         <div class="h-0.5 w-full bg-white"></div>
