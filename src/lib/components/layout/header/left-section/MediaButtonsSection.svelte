@@ -3,7 +3,7 @@
   import { common } from '$content';
   import HeaderIcon from '../HeaderIcon.svelte';
   import type { IconType } from 'svelte-icons-pack';
-  import { socialMediaLinks } from '$lib/constants/links';
+  import { socialMediaLinks } from '$constants';
 </script>
 
 {#snippet mediaButton(src: IconType, href: HTMLAnchorElement['href'], ariaLabel: HTMLAnchorElement['ariaLabel'])}

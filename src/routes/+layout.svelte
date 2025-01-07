@@ -1,8 +1,8 @@
 <script lang="ts">
   import '../app.css';
-  import { config } from '$state';
+  import { config, loading } from '$state';
+  import { GrainyFilter, LoadingScreen } from '$components';
   import Footer from '$lib/components/layout/footer/Footer.svelte';
-  import { GrainyFilter } from '$components';
   import Header from '$lib/components/layout/header/Header.svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
@@ -26,6 +26,10 @@
     <meta name="robots" content="noindex, nofollow" />
   {/if}
 </svelte:head>
+
+{#if loading.value}
+  <LoadingScreen />
+{/if}
 
 <div class="pointer-events-none fixed inset-0 -z-10 select-none">
   <GrainyFilter>

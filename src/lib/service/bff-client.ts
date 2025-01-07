@@ -1,4 +1,4 @@
-import { prepareConfig, prepareGetCart, prepareGetProductsBySearch } from '$lib/service/endpoints';
+import { prepareCheckout, prepareConfig, prepareGetCart, prepareGetProductsBySearch } from '$lib/service/endpoints';
 import { PUBLIC_BFF_HOST } from '$env/static/public';
 import type { RequestHostContext } from '$lib/service/client/client';
 
@@ -10,4 +10,5 @@ export const bffClient = {
   config: prepareConfig(context),
   getCart: prepareGetCart(context),
   getProductsBySearch: prepareGetProductsBySearch(context),
+  checkout: prepareCheckout(context),
 };

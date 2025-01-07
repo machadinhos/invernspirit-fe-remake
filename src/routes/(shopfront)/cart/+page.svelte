@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, PulsatingLogo } from '$components';
-  import { cart as cartState, config } from '$state';
+  import { cart as cartState, config, country, loading } from '$state';
   import { bffClient } from '$service';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
@@ -28,6 +28,12 @@
   $effect(() => {
     if (cartProducts !== undefined) cartState.setCartFromLineItemArray(cartProducts);
   });
+
+  async function onCheckout() {
+    loading.value = true;
+    const data = await bffClient.checkout({ products: cartState.getCartArray(), countryCode: country.value });
+    window.location.assign(data.checkout.url);
+  }
 </script>
 
 <div class="flex h-full w-full justify-center">
@@ -75,8 +81,10 @@
           </div>
           <div class="h-0.5 bg-white"></div>
         </div>
-        <Button className="w-full" disabled={cartProducts !== undefined ? cartProducts.length < 1 : true}
-          >{cart.checkoutButtonLabel}</Button
+        <Button
+          className="w-full"
+          disabled={cartProducts !== undefined ? cartProducts.length < 1 : true}
+          onclick={onCheckout}>{cart.checkoutButtonLabel}</Button
         >
       </div>
     </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Button, GrainyFilter } from '$components';
   import { home } from '$content';
-  import { imageLinks } from '$lib/constants/links';
+  import { imageLinks } from '$constants';
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;

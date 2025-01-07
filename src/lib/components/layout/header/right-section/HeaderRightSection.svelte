@@ -1,9 +1,9 @@
 <script lang="ts">
   import { auth, common } from '$content';
+  import { cart, country } from '$state';
   import { DropdownMenu, DropdownMenuItem } from '$components';
   import { BiSolidCart } from 'svelte-icons-pack/bi';
-  import { cart } from '$state';
-  import { countries } from '$lib/constants/countries';
+  import { countries } from '$constants';
   import { FaSolidUser } from 'svelte-icons-pack/fa';
   import HeaderIcon from '../HeaderIcon.svelte';
 
@@ -18,7 +18,11 @@
 </script>
 
 <div class="mt-8 flex items-center justify-end gap-4">
-  <select class="h-fit bg-background" aria-label={common.header.rightSection.areaLabels.countrySelect}>
+  <select
+    class="h-fit bg-background"
+    aria-label={common.header.rightSection.areaLabels.countrySelect}
+    bind:value={country.value}
+  >
     {#each countries as country}
       <option>{country}</option>
     {/each}

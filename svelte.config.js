@@ -12,6 +12,7 @@ const config = {
 
     alias: {
       $components: 'src/lib/components/ui/index.ts',
+      $constants: 'src/lib/constants/index.ts',
       $content: 'src/lib/content/index.ts',
       $state: 'src/lib/state/index.ts',
       $service: 'src/lib/service/index.ts',

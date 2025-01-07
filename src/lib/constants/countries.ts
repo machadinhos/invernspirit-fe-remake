@@ -1,1 +1,1 @@
-export const countries = ['pt', 'es'];
+export const countries = ['PT', 'EN'] as const;
