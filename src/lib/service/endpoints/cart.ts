@@ -1,7 +1,7 @@
 import type { Cart, ProductIdAndQuantity } from '$types';
 import { Client, type RequestHostContext } from '$lib/service/client';
 
-const ENDPOINT = 'carts';
+const ENDPOINT = 'cart';
 
 export function prepareGetCart(context: RequestHostContext) {
   const method = 'POST';

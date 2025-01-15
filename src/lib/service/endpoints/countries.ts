@@ -3,10 +3,15 @@ import type { Country } from '$types';
 
 const ENDPOINT = '';
 
+let cachedCountries: Country[];
+
 export function prepareGetCountries(context: RequestHostContext) {
   const method = 'GET';
   return async (): Promise<{ countries: Country[] }> => {
-    const client = new Client<Country[]>({ ...context, endpoint: `/${ENDPOINT}`, method });
-    return { countries: await client.call() };
+    if (!cachedCountries) {
+      const client = new Client<Country[]>({ ...context, endpoint: `/${ENDPOINT}`, method });
+      cachedCountries = await client.call();
+    }
+    return { countries: cachedCountries };
   };
 }

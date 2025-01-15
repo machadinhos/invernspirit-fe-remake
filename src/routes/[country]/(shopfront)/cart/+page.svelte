@@ -18,7 +18,7 @@
   let { data }: Props = $props();
 
   let cartProducts: LineItem[] | undefined = $state();
-  let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
+  let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.grossPrice * item.quantity, 0));
 
   onMount(() => {
     config.afterInitialization(async () => {

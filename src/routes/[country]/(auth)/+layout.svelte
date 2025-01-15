@@ -8,7 +8,7 @@
 
   let { children }: Props = $props();
 
-  let selected = $derived(page.url.pathname.slice(1));
+  let selected = $derived(page.url.pathname.split('/')[2]);
 </script>
 
 {#snippet pageListItem(href: 'sign-in' | 'sign-up')}
