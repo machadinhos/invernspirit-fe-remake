@@ -5,6 +5,7 @@
   import { auth } from '$content';
   import AuthSwitchMessage from '../AuthSwitchMessage.svelte';
   import OAuthSection from '../OAuthSection.svelte';
+  import { page } from '$app/state';
   import PasswordChecks from './PasswordChecks.svelte';
 
   const formFields: { [key: string]: FormField } = {
@@ -119,4 +120,8 @@
 
 <OAuthSection />
 
-<AuthSwitchMessage authPage={auth.signIn.title} href="/sign-in" question={auth.signUp.signInMessage} />
+<AuthSwitchMessage
+  authPage={auth.signIn.title}
+  href="/{page.params.country}/sign-in"
+  question={auth.signUp.signInMessage}
+/>

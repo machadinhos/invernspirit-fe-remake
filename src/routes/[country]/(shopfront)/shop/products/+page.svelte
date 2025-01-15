@@ -12,4 +12,4 @@
 
 <h1 class="mb-9 text-center text-6xl">{shop.products.title}</h1>
 
-<ProductGrid products={data.products} />
+<ProductGrid currencySymbol={data.country.currencies[0].symbol} products={data.products} />

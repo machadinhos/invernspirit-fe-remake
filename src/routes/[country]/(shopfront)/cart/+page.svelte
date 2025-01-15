@@ -1,27 +1,32 @@
 <script lang="ts">
   import { Button, PulsatingLogo } from '$components';
-  import { cart as cartState, config, country, loading } from '$state';
+  import { cart as cartState, config, loading } from '$state';
   import { bffClient } from '$service';
   import { cart } from '$content';
   import CartItem from './CartItem.svelte';
   import { flip } from 'svelte/animate';
   import { formatPrice } from '$lib/utils/general';
   import type { LineItem } from '$types';
-  import { untrack } from 'svelte';
+  import { onMount } from 'svelte';
+  import { page } from '$app/state';
+  import type { PageData } from './$types';
+
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   let cartProducts: LineItem[] | undefined = $state();
   let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
 
-  $effect(() => {
-    if (untrack(() => cartState.size) === 0) {
-      cartProducts = [];
-      return;
-    }
-    if (!config.done) return;
-    untrack(() => {
-      bffClient.getCart(cartState.getCartArray()).then((data) => {
-        cartProducts = data.cart.products;
-      });
+  onMount(() => {
+    config.afterInitialization(async () => {
+      if (cartState.size === 0) {
+        cartProducts = [];
+        return;
+      }
+      cartProducts = (await bffClient.getCart(cartState.getCartArray(), page.params.country)).cart.products;
     });
   });
 
@@ -31,7 +36,10 @@
 
   async function onCheckout() {
     loading.value = true;
-    const data = await bffClient.checkout({ products: cartState.getCartArray(), countryCode: country.value });
+    const data = await bffClient.checkout(
+      { products: cartState.getCartArray(), countryCode: page.params.country },
+      page.params.country,
+    );
     window.location.assign(data.checkout.url);
   }
 </script>
@@ -57,7 +65,8 @@
             {/each}
           {:else}
             <p class="text-center">
-              {cart.emptyCartMessage} <a class="text-primary underline" href="shop/products">{cart.fillUpCTA}</a>
+              {cart.emptyCartMessage}
+              <a class="text-primary underline" href="/{page.params.country}/shop/products">{cart.fillUpCTA}</a>
             </p>
           {/if}
         {:else}
@@ -76,7 +85,7 @@
                 {formatPrice(totalPrice)}
               {:else}
                 --.--
-              {/if}$
+              {/if}{data.country.currencies[0].symbol}
             </span>
           </div>
           <div class="h-0.5 bg-white"></div>

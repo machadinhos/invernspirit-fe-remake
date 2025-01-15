@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/state';
   import type { PageData } from './$types';
   import { shop } from '$content';
 
@@ -16,7 +17,7 @@
 
   <div class="flex h-full justify-center gap-2">
     {#each data.collections as { id, name, image }}
-      <a href={`/shop/collections/${id}`}>
+      <a href={`/${page.params.country}/shop/collections/${id}`}>
         <div class="relative h-full w-[200px]">
           <img
             class="h-full object-cover object-center brightness-[30%] grayscale transition-all hover:scale-y-95 hover:brightness-100"

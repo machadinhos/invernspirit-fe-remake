@@ -3,6 +3,7 @@
   import { Button } from '$components';
   import { cart } from '$state';
   import { onMount } from 'svelte';
+  import { page } from '$app/state';
   import type { Product } from '$types';
   import ProductQuantitySelector from '../ProductQuantitySelector.svelte';
   import ProductStatusBanner from './ProductStatusBanner.svelte';
@@ -10,9 +11,10 @@
 
   interface Props {
     product: Product;
+    currencySymbol: string;
   }
 
-  let { product }: Props = $props();
+  let { product, currencySymbol }: Props = $props();
 
   let selectedQuantity = $state(1);
   let bucketStock: number | undefined = $state();
@@ -35,7 +37,7 @@
     <div class="pointer-events-none absolute left-2 top-2 select-none">
       <ProductStatusBanner {bucketStock} {inCartQuantity} />
     </div>
-    <a href="/shop/products/{product.id}">
+    <a href="/{page.params.country}/shop/products/{product.id}">
       <img alt={product.images[0].alt} src={product.images[0].url} />
     </a>
   </div>
@@ -45,7 +47,7 @@
       <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
     </div>
     <div class="flex items-center justify-between">
-      <span class="text-4xl">{formatPrice(product.priceInCents)}$</span>
+      <span class="text-4xl">{formatPrice(product.priceInCents)}{currencySymbol}</span>
       <Button disabled={bucketStock === undefined || availableStock <= 0} onclick={onAddToCartClick}
         >{shop.addToCartButtonLabel}</Button
       >

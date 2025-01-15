@@ -1,0 +1,11 @@
+import { beClient } from '$service-server';
+import type { Country } from '$types';
+import type { LayoutServerLoad } from './$types';
+
+export const load: LayoutServerLoad = async ({ params }) => {
+  return {
+    country: (await beClient.getCountries()).countries.find(
+      (country) => country.code === params.country.toUpperCase(),
+    ) as Country,
+  };
+};

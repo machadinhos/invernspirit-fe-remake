@@ -76,6 +76,14 @@ export class Client<T, K = void> {
       return data;
     }
 
+    if (response.headers.get('content-type') === 'application/json') {
+      const responseBody = await response.json();
+      const issues = responseBody?.error?.issues;
+      if (issues) {
+        throw new Error(`Client error: ${JSON.stringify({ issues }, null, 2)}`);
+      }
+      throw new Error(`Client error: ${JSON.stringify(responseBody, null, 2)}`);
+    }
     throw new Error(`Client error: ${await response.text()}`);
   }
 }

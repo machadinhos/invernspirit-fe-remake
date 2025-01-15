@@ -5,6 +5,7 @@ import {
   prepareGetAllProducts,
   prepareGetCart,
   prepareGetCollectionById,
+  prepareGetCountries,
   prepareGetProductById,
 } from '$lib/service/endpoints';
 import type { RequestHostContext } from '$lib/service/client/client';
@@ -25,6 +26,7 @@ export const beClient = {
   getAllProducts: prepareGetAllProducts(context),
   getCart: prepareGetCart(context),
   getCollectionById: prepareGetCollectionById(context),
+  getCountries: prepareGetCountries(context),
   getProductById: prepareGetProductById(context),
 };
 

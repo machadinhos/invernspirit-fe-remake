@@ -1,10 +1,7 @@
 <script lang="ts">
   import '../app.css';
-  import { config, loading } from '$state';
   import { GrainyFilter, LoadingScreen } from '$components';
-  import Footer from '$lib/components/layout/footer/Footer.svelte';
-  import Header from '$lib/components/layout/header/Header.svelte';
-  import { onMount } from 'svelte';
+  import { loading } from '$state';
   import { page } from '$app/state';
 
   interface Props {
@@ -12,10 +9,6 @@
   }
 
   let { children }: Props = $props();
-
-  onMount(() => {
-    config.init();
-  });
 </script>
 
 <svelte:head>
@@ -41,12 +34,4 @@
   </GrainyFilter>
 </div>
 
-<div class="fixed inset-0 z-10 flex flex-col">
-  <Header />
-
-  <main class="flex-1 overflow-auto">
-    {@render children()}
-  </main>
-
-  <Footer />
-</div>
+{@render children()}

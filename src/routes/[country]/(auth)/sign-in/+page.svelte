@@ -5,6 +5,7 @@
   import { auth } from '$content';
   import AuthSwitchMessage from '../AuthSwitchMessage.svelte';
   import OAuthSection from '../OAuthSection.svelte';
+  import { page } from '$app/state';
 
   let formFields: FormField[] = [
     new FormField({
@@ -61,7 +62,7 @@
 
   <div class="flex justify-between">
     <CheckBox label={auth.rememberMeLabel} bind:checked={rememberMeInput} />
-    <a class="text-primary underline" href="/sign-in">Forgot your password?</a>
+    <a class="text-primary underline" href="/{page.params.country}/sign-in">{auth.signIn.forgotPassword}</a>
   </div>
 
   <Button className="mt-5 w-full" type="submit">{auth.signIn.submitButton}</Button>
@@ -69,4 +70,8 @@
 
 <OAuthSection />
 
-<AuthSwitchMessage authPage={auth.signUp.title} href="/sign-up" question={auth.signIn.signUpMessage} />
+<AuthSwitchMessage
+  authPage={auth.signUp.title}
+  href="/{page.params.country}/sign-up"
+  question={auth.signIn.signUpMessage}
+/>

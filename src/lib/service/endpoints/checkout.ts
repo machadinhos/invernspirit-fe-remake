@@ -1,18 +1,21 @@
 import type { Checkout, ProductIdAndQuantity } from '$types';
 import { Client, type RequestHostContext } from '$lib/service/client';
-import type { countries } from '$constants';
 
-const ENDPOINT = '/checkout';
+const ENDPOINT = 'checkout';
 
 interface CheckoutRequestBody {
   products: ProductIdAndQuantity[];
-  countryCode: (typeof countries)[number];
+  countryCode: string;
 }
 
 export function prepareCheckout(context: RequestHostContext) {
   const method = 'POST';
-  return async (body: CheckoutRequestBody): Promise<{ checkout: Checkout }> => {
-    const client = new Client<Checkout, CheckoutRequestBody>({ ...context, endpoint: ENDPOINT, method });
+  return async (body: CheckoutRequestBody, countryCode: string): Promise<{ checkout: Checkout }> => {
+    const client = new Client<Checkout, CheckoutRequestBody>({
+      ...context,
+      endpoint: `/${countryCode}/${ENDPOINT}`,
+      method,
+    });
     return { checkout: await client.withBody(body).call() };
   };
 }

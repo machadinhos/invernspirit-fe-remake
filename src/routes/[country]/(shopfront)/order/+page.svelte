@@ -8,7 +8,7 @@
   onMount(() => {
     orderId = page.url.searchParams.get('id');
     if (!orderId) {
-      goto('/cart');
+      goto(`/${page.params.country}/cart`);
     }
   });
 </script>

@@ -3,6 +3,7 @@
   import { formatPrice, getStockFromBucket } from '$lib/utils/general';
   import { cart } from '$state';
   import { onMount } from 'svelte';
+  import { page } from '$app/state';
   import type { PageData } from './$types';
   import ProductQuantitySelector from '../../../ProductQuantitySelector.svelte';
   import ProductStatusBanner from '../../ProductStatusBanner.svelte';
@@ -41,13 +42,13 @@
   </div>
   <div class="w-1/2">
     <h1 class="text-8xl">{data.product.name}</h1>
-    <p class="text-6xl">{formatPrice(data.product.priceInCents)}$</p>
+    <p class="text-6xl">{formatPrice(data.product.priceInCents)}{data.country.currencies[0].symbol}</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p class="min-h-24">{data.product.description}</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p>
       {shop.products.id.belongsToCollectionStart}
-      <a class="text-primary" href="/shop/collections/{data.product.collectionId}"
+      <a class="text-primary" href="/{page.params.country}/shop/collections/{data.product.collectionId}"
         >{getCollectionName(data.product.collectionId)}</a
       >
       {shop.products.id.belongsToCollectionEnd}

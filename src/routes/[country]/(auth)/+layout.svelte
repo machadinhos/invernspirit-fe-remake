@@ -11,13 +11,13 @@
   let selected = $derived(page.url.pathname.slice(1));
 </script>
 
-{#snippet pageListItem(page: 'sign-in' | 'sign-up')}
+{#snippet pageListItem(href: 'sign-in' | 'sign-up')}
   <li style="font-size: 2.5rem" class="w-1/2 text-center">
     <a
-      class="block w-full pt-4 transition-opacity duration-500 {selected === page ? 'opacity-100' : 'opacity-50'}"
-      href={`/${page}`}
+      class="block w-full pt-4 transition-opacity duration-500 {selected === href ? 'opacity-100' : 'opacity-50'}"
+      href={`/${page.params.country}/${href}`}
     >
-      {#if page === 'sign-in'}
+      {#if href === 'sign-in'}
         {auth.signIn.title}
       {:else}
         {auth.signUp.title}

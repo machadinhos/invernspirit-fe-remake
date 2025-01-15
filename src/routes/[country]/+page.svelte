@@ -2,6 +2,7 @@
   import { Button, GrainyFilter } from '$components';
   import { home } from '$content';
   import { imageLinks } from '$constants';
+  import { page } from '$app/state';
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -13,6 +14,13 @@
 
   setInterval(rotateImages, 10000);
 </script>
+
+<!--links to prerender-->
+<div class="hidden">
+  <a href="/{page.params.country}/sign-in">sign-in</a>
+  <a href="/{page.params.country}/sign-up">sign-up</a>
+  <a href="/{page.params.country}/order">order</a>
+</div>
 
 <svelte:head><title>{home.headTitle}</title></svelte:head>
 
@@ -45,7 +53,7 @@
       </div>
       <h2 class="text-2xl md:text-3xl">{home.description}</h2>
     </div>
-    <a class="inline-flex" href="shop/products">
+    <a class="inline-flex" href="{page.params.country}/shop/products">
       <Button className="px-3">{home.button}</Button>
     </a>
   </div>
