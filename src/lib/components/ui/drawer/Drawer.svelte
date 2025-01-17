@@ -23,7 +23,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if isOpen}
-  <div class="fixed inset-0 z-40 h-full w-full bg-black bg-opacity-50" transition:fade={{ duration: 500 }}></div>
+  <div class="fixed inset-0 z-50 h-full w-full bg-black bg-opacity-50" transition:fade={{ duration: 500 }}></div>
   <div
     class="fixed top-0 z-50 h-full bg-background shadow-lg {fullWidth ? 'w-full' : 'w-auto'} {side === 'left'
       ? 'left-0'
@@ -37,11 +37,11 @@
   >
     <div class="h-full overflow-y-auto p-4">
       <button
-        class="absolute top-4 {side === 'left' ? 'right-4' : 'left-4'} text-gray-500 hover:text-gray-700"
+        class="absolute top-12 {side === 'left' ? 'right-8' : 'left-8'} text-gray-500 hover:text-gray-700"
         onclick={() => (isOpen = false)}
         type="button"
       >
-        <Icon src={FaSolidX} />
+        <Icon color="white" src={FaSolidX} />
       </button>
       {@render children()}
     </div>

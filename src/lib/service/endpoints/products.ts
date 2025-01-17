@@ -5,24 +5,24 @@ const ENDPOINT = 'products';
 
 export function prepareGetAllProducts(context: RequestHostContext) {
   const method = 'GET';
-  return async (countryCode: string): Promise<{ products: Product[] }> => {
+  return async function (countryCode: string): Promise<Product[]> {
     const client = new Client<Product[]>({ ...context, endpoint: `/${countryCode}/${ENDPOINT}`, method });
-    return { products: await client.call() };
+    return await client.call();
   };
 }
 
 export function prepareGetProductById(context: RequestHostContext) {
   const method = 'GET';
-  return async (id: string, countryCode: string): Promise<{ product: Product }> => {
+  return async function (id: string, countryCode: string): Promise<Product> {
     const client = new Client<Product>({ ...context, endpoint: `/${countryCode}/${ENDPOINT}`, method });
-    return { product: await client.withPathParams([id]).call() };
+    return await client.withPathParams([id]).call();
   };
 }
 
 export function prepareGetProductsBySearch(context: RequestHostContext) {
   const method = 'GET';
-  return async (search: string, countryCode: string): Promise<{ products: Product[] }> => {
+  return async function (search: string, countryCode: string): Promise<Product[]> {
     const client = new Client<Product[]>({ ...context, endpoint: `/${countryCode}/${ENDPOINT}`, method });
-    return { products: await client.withQueryParams({ search }).call() };
+    return await client.withQueryParams({ search }).call();
   };
 }

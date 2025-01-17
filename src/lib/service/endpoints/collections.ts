@@ -5,16 +5,16 @@ const ENDPOINT = 'collections';
 
 export function prepareGetAllCollections(context: RequestHostContext) {
   const method = 'GET';
-  return async (countryCode: string): Promise<{ collections: Collection[] }> => {
+  return async function (countryCode: string): Promise<Collection[]> {
     const client = new Client<Collection[]>({ ...context, endpoint: `/${countryCode}/${ENDPOINT}`, method });
-    return { collections: await client.call() };
+    return await client.call();
   };
 }
 
 export function prepareGetCollectionById(context: RequestHostContext) {
   const method = 'GET';
-  return async (id: string, countryCode: string): Promise<{ collection: CollectionDetails }> => {
+  return async function (id: string, countryCode: string): Promise<CollectionDetails> {
     const client = new Client<CollectionDetails>({ ...context, endpoint: `/${countryCode}/${ENDPOINT}`, method });
-    return { collection: await client.withPathParams([id]).call() };
+    return await client.withPathParams([id]).call();
   };
 }

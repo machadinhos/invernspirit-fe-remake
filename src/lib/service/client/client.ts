@@ -24,7 +24,7 @@ export class Client<T, K = void> {
     this.context = context;
   }
 
-  private buildUrl() {
+  private buildUrl = (): string => {
     const { host, endpoint, pathParams, queryParams } = this.context;
     const path = pathParams ? `/${pathParams.join('/')}` : '';
     const query = queryParams
@@ -33,29 +33,29 @@ export class Client<T, K = void> {
           .join('&')}`
       : '';
     return `${host}${endpoint}${path}${query}`;
-  }
+  };
 
-  withBody(body: K) {
+  withBody = (body: K) => {
     this.context.body = body;
     return this;
-  }
+  };
 
-  withHeaders(headers: RequestContext['headers']) {
+  withHeaders = (headers: RequestContext['headers']) => {
     this.context.headers = { ...this.context.headers, ...headers };
     return this;
-  }
+  };
 
-  withQueryParams(queryParams: RequestContext['queryParams']) {
+  withQueryParams = (queryParams: RequestContext['queryParams']) => {
     this.context.queryParams = queryParams;
     return this;
-  }
+  };
 
-  withPathParams(pathParams: RequestContext['pathParams']) {
+  withPathParams = (pathParams: RequestContext['pathParams']) => {
     this.context.pathParams = pathParams;
     return this;
-  }
+  };
 
-  async call(): Promise<T> {
+  call = async (): Promise<T> => {
     const headers = {
       ...this.context.headers,
       ...(getAccessToken() && { authorization: `Bearer ${getAccessToken()}` }),
@@ -85,5 +85,5 @@ export class Client<T, K = void> {
       throw new Error(`Client error: ${JSON.stringify(responseBody, null, 2)}`);
     }
     throw new Error(`Client error: ${await response.text()}`);
-  }
+  };
 }

@@ -18,7 +18,7 @@
   let { data }: Props = $props();
 
   let cartProducts: LineItem[] | undefined = $state();
-  let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.priceInCents * item.quantity, 0));
+  let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.grossPrice * item.quantity, 0));
 
   onMount(() => {
     config.afterInitialization(async () => {
@@ -26,7 +26,7 @@
         cartProducts = [];
         return;
       }
-      cartProducts = (await bffClient.getCart(cartState.getCartArray(), page.params.country)).cart.products;
+      cartProducts = (await bffClient.getCart(cartState.getCartArray(), page.params.country)).products;
     });
   });
 
@@ -36,11 +36,9 @@
 
   async function onCheckout() {
     loading.value = true;
-    const data = await bffClient.checkout(
-      { products: cartState.getCartArray(), countryCode: page.params.country },
-      page.params.country,
-    );
-    window.location.assign(data.checkout.url);
+    const checkout = await bffClient.checkout({ products: cartState.getCartArray() }, page.params.country);
+    loading.value = false;
+    window.location.assign(checkout.url);
   }
 </script>
 

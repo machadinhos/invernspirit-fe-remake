@@ -8,9 +8,9 @@ const cachedData: { [key: string]: { collections: Collection[] } } = {};
 export const load: LayoutServerLoad = async ({ params }) => {
   if (building) {
     if (!cachedData[params.country]) {
-      cachedData[params.country] = await beClient.getAllCollections(params.country);
+      cachedData[params.country] = { collections: await beClient.getAllCollections(params.country) };
     }
     return cachedData[params.country];
   }
-  return beClient.getAllCollections(params.country);
+  return { collections: await beClient.getAllCollections(params.country) };
 };

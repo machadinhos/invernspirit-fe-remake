@@ -1,5 +1,88 @@
 <script lang="ts">
-  import Navbar from './Navbar.svelte';
+  import { DropdownMenu, DropdownMenuItem, ShrinkOnClickWrapper } from '$components';
+  import { common } from '$content';
+  import { FaSolidChevronDown } from 'svelte-icons-pack/fa';
+  import { Icon } from 'svelte-icons-pack';
+  import NavbarItem from './NavbarItem.svelte';
+  import { page } from '$app/state';
+
+  let isOpen = $state(false);
+  let dropdownTriggerElement: HTMLElement | undefined = $state();
+
+  function toggleDropdown() {
+    if (dropdownTriggerElement) {
+      isOpen = !isOpen;
+    }
+  }
 </script>
 
-<Navbar />
+{#snippet headerLogo()}
+  <ShrinkOnClickWrapper>
+    <div class="flex h-16 w-16 items-center justify-center">
+      <a class="imageLink flex h-full w-full items-center justify-center" href="/{page.params.country}/">
+        <img class="logoImage h-12 w-12 object-contain" alt="logo" fetchpriority="high" src="/images/logo.webp" />
+      </a>
+    </div>
+  </ShrinkOnClickWrapper>
+{/snippet}
+
+<nav class="mt-5 flex justify-center">
+  <ul class="hidden h-full items-center gap-28 text-xl xl:flex">
+    <NavbarItem>
+      <button
+        bind:this={dropdownTriggerElement}
+        class="flex items-center gap-1.5"
+        onclick={toggleDropdown}
+        type="button"
+      >
+        {common.header.pages.shop.title}
+        <div class="transition-transform duration-300" class:rotate-180={isOpen}>
+          <Icon size={10} src={FaSolidChevronDown} />
+        </div>
+      </button>
+      <DropdownMenu isFullWidth triggerElement={dropdownTriggerElement} bind:isOpen>
+        <div class="flex flex-col items-center justify-center gap-4 py-4 text-2xl">
+          <DropdownMenuItem>
+            <a
+              class="hover:text-primary"
+              href="/{page.params.country}/shop/collections"
+              onclick={() => (isOpen = false)}>{common.header.pages.shop.byCollection}</a
+            >
+          </DropdownMenuItem>
+          <div class="h-0.5 w-10 bg-white"></div>
+          <DropdownMenuItem>
+            <a class="hover:text-primary" href="/{page.params.country}/shop/products" onclick={() => (isOpen = false)}
+              >{common.header.pages.shop.byProduct}</a
+            >
+          </DropdownMenuItem>
+        </div>
+      </DropdownMenu>
+    </NavbarItem>
+    <NavbarItem>
+      <a href="/{page.params.country}/about">{common.header.pages.about}</a>
+    </NavbarItem>
+    <li>
+      {@render headerLogo()}
+    </li>
+    <NavbarItem>
+      <a href="/{page.params.country}/contact">{common.header.pages.contact}</a>
+    </NavbarItem>
+    <NavbarItem>
+      <a class="h-full" href="/{page.params.country}/faq">{common.header.pages.faq}</a>
+    </NavbarItem>
+  </ul>
+
+  <div class="xl:hidden">
+    {@render headerLogo()}
+  </div>
+</nav>
+
+<style>
+  .logoImage {
+    transition: scale 300ms ease-in-out;
+  }
+
+  .imageLink:hover > .logoImage {
+    scale: 130%;
+  }
+</style>

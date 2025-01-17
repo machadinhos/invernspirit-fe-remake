@@ -9,4 +9,4 @@
   let { classNames, children }: Props = $props();
 </script>
 
-<FlyUpElement {classNames} duration={250}>{@render children()}</FlyUpElement>
+<FlyUpElement {classNames} duration={500}>{@render children()}</FlyUpElement>

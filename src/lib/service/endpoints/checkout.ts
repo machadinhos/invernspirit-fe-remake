@@ -5,17 +5,16 @@ const ENDPOINT = 'checkout';
 
 interface CheckoutRequestBody {
   products: ProductIdAndQuantity[];
-  countryCode: string;
 }
 
 export function prepareCheckout(context: RequestHostContext) {
   const method = 'POST';
-  return async (body: CheckoutRequestBody, countryCode: string): Promise<{ checkout: Checkout }> => {
+  return async function (body: CheckoutRequestBody, countryCode: string): Promise<Checkout> {
     const client = new Client<Checkout, CheckoutRequestBody>({
       ...context,
       endpoint: `/${countryCode}/${ENDPOINT}`,
       method,
     });
-    return { checkout: await client.withBody(body).call() };
+    return await client.withBody(body).call();
   };
 }

@@ -1,0 +1,22 @@
+{
+  "include": ["api/**/*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["esnext"],
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["@cloudflare/workers-types", "jest"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@types": ["libs/types/index.ts"],
+      "@utils": ["libs/utils/index.ts"]
+    }
+  }
+}

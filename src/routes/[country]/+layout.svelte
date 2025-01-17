@@ -4,12 +4,14 @@
   import Header from '$lib/components/layout/header/Header.svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
+  import type { PageData } from './$types';
 
   interface Props {
     children: import('svelte').Snippet;
+    data: PageData;
   }
 
-  let { children }: Props = $props();
+  let { children, data }: Props = $props();
 
   onMount(() => {
     config.init(page.params.country);
@@ -17,7 +19,7 @@
 </script>
 
 <div class="fixed inset-0 z-10 flex flex-col">
-  <Header />
+  <Header countries={data.countries} />
 
   <main class="flex-1 overflow-auto">
     {@render children()}

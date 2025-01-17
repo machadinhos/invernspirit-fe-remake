@@ -47,7 +47,7 @@
       <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
     </div>
     <div class="flex items-center justify-between">
-      <span class="text-4xl">{formatPrice(product.priceInCents)}{currencySymbol}</span>
+      <span class="text-4xl">{formatPrice(product.grossPrice)}{currencySymbol}</span>
       <Button disabled={bucketStock === undefined || availableStock <= 0} onclick={onAddToCartClick}
         >{shop.addToCartButtonLabel}</Button
       >

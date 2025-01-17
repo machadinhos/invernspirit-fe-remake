@@ -10,15 +10,24 @@
     ref?: HTMLButtonElement;
     badge?: string;
     'aria-label'?: HTMLButtonAttributes['aria-label'];
+    size?: number;
   }
 
-  let { src, onclick = () => {}, type = 'button', ref = $bindable(), badge, 'aria-label': ariaLabel }: Props = $props();
+  let {
+    src,
+    onclick = () => {},
+    type = 'button',
+    ref = $bindable(),
+    badge,
+    'aria-label': ariaLabel,
+    size = 20,
+  }: Props = $props();
 </script>
 
 {#snippet innerElements()}
   <div class="relative">
     <span class="flex items-center justify-center">
-      <Icon color="white" size="20" {src} />
+      <Icon color="white" {size} {src} />
     </span>
     {#if badge}
       <span class="absolute -right-2 -top-4 text-lg font-bold">

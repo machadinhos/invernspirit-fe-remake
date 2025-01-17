@@ -13,7 +13,8 @@
   let { images }: Props = $props();
 
   let emblaApi: EmblaCarouselType | undefined = $state();
-  let thumbsApi: EmblaCarouselType | undefined = $state();
+  let verticalThumbsApi: EmblaCarouselType | undefined = $state();
+  let horizontalThumbsApi: EmblaCarouselType | undefined = $state();
   let selectedSlide = $state(0);
 
   const options: EmblaOptionsType = { loop: true };
@@ -22,11 +23,12 @@
   let nextButton: HTMLElement;
 
   $effect(() => {
-    if (emblaApi !== undefined && thumbsApi !== undefined) {
+    if (emblaApi !== undefined && verticalThumbsApi !== undefined && horizontalThumbsApi !== undefined) {
       emblaApi.on('select', (eventApi) => {
         const selectedIndex = eventApi.selectedScrollSnap();
-        if (selectedIndex !== undefined && thumbsApi !== undefined) {
-          thumbsApi.scrollTo(selectedIndex);
+        if (selectedIndex !== undefined && verticalThumbsApi !== undefined && horizontalThumbsApi !== undefined) {
+          verticalThumbsApi.scrollTo(selectedIndex);
+          horizontalThumbsApi.scrollTo(selectedIndex);
           selectedSlide = selectedIndex;
         }
       });
@@ -50,12 +52,16 @@
   }
 </script>
 
-<div class="flex select-none">
-  <div class="h-[35vw] w-[8.75vw]">
-    <Thumbnails {emblaApi} {images} {selectedSlide} bind:thumbsApi />
+<div class="flex select-none flex-col-reverse lg:flex-row">
+  <div class="hidden h-[35vw] w-[8.75vw] lg:block">
+    <Thumbnails axis="y" {emblaApi} {images} {selectedSlide} bind:thumbsApi={verticalThumbsApi} />
   </div>
 
-  <div class="relative h-[35vw] w-[35vw]">
+  <div class="h-[21.25vw] w-[85vw] lg:hidden">
+    <Thumbnails axis="x" {emblaApi} {images} {selectedSlide} bind:thumbsApi={horizontalThumbsApi} />
+  </div>
+
+  <div class="relative h-[85vw] w-[85vw] lg:h-[35vw] lg:w-[35vw]">
     <button bind:this={prevButton} class="prev-button" aria-label="prev slide" type="button">
       <Icon size="25" src={BiSolidChevronLeftCircle} />
     </button>
@@ -64,7 +70,7 @@
       <div class="embla__container">
         {#each images as { url, alt }}
           <div class="embla__slide">
-            <img class="h-[35vw] object-cover" {alt} src={url} />
+            <img class="h-[85vw] object-cover lg:h-[35vw]" {alt} src={url} />
           </div>
         {/each}
       </div>
@@ -81,7 +87,7 @@
   .next-button {
     position: absolute;
     top: 45%;
-    z-index: 20;
+    z-index: 1;
     cursor: pointer;
     margin: 10px;
   }

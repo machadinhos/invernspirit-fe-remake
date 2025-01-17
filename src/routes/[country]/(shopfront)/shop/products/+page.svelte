@@ -10,6 +10,6 @@
   let { data }: Props = $props();
 </script>
 
-<h1 class="mb-9 text-center text-6xl">{shop.products.title}</h1>
+<h1 class="mb-9 text-center text-5xl">{shop.products.title}</h1>
 
 <ProductGrid currencySymbol={data.country.currencies[0].symbol} products={data.products} />

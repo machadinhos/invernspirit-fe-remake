@@ -36,13 +36,13 @@
   }
 </script>
 
-<div class="flex gap-5">
-  <div class="flex w-1/2 justify-center">
+<div class="margins flex flex-col gap-5 lg:flex-row">
+  <div class="flex justify-center lg:w-1/2">
     <ThumbnailCarousel images={data.product.images} />
   </div>
-  <div class="w-1/2">
-    <h1 class="text-8xl">{data.product.name}</h1>
-    <p class="text-6xl">{formatPrice(data.product.priceInCents)}{data.country.currencies[0].symbol}</p>
+  <div class="lg:w-1/2">
+    <h1 class="text-6xl lg:text-8xl">{data.product.name}</h1>
+    <p class="text-4xl lg:text-6xl">{formatPrice(data.product.grossPrice)}{data.country.currencies[0].symbol}</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p class="min-h-24">{data.product.description}</p>
     <div class="my-5 h-px w-full bg-white"></div>

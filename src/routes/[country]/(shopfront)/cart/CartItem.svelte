@@ -32,7 +32,7 @@
     </a>
     <div>
       <h3 class="text-3xl">{product.name}</h3>
-      <h4 class="text-lg">{cart.priceLabel}: {formatPrice(product.priceInCents)}$</h4>
+      <h4 class="text-lg">{cart.priceLabel}: {formatPrice(product.grossPrice)}$</h4>
       <div class="flex gap-1">
         <h4 class="text-lg">{cart.quantityLabel}:</h4>
         <ProductQuantitySelector stock={product.stock} bind:selectedQuantity />

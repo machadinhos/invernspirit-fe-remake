@@ -9,12 +9,12 @@ interface ConfigRequestBody {
 
 export function prepareConfig(context: RequestHostContext) {
   const method = 'POST';
-  return async (body: ConfigRequestBody, countryCode: string): Promise<{ config: never }> => {
+  return async function (body: ConfigRequestBody, countryCode: string): Promise<never> {
     const client = new Client<never, ConfigRequestBody>({
       ...context,
       endpoint: `/${countryCode}/${ENDPOINT}`,
       method,
     });
-    return { config: await client.withBody(body).call() };
+    return await client.withBody(body).call();
   };
 }

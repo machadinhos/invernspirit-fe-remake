@@ -24,6 +24,7 @@ export default ts.config(
       ],
       eqeqeq: 'error',
       camelcase: 'error',
+      'no-console': 'error',
       'no-unneeded-ternary': 'error',
       'no-var': 'error',
       'require-await': 'error',

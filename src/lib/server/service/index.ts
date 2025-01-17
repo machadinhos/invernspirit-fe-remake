@@ -1,1 +1,1 @@
-export { beClient, beClientProxy } from './be-client';
+export { beClient } from './be-client';

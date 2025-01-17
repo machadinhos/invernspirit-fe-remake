@@ -1,10 +1,82 @@
 <script lang="ts">
+  import { Drawer, DrawerItem } from '$components';
+  import { BiMenu } from 'svelte-icons-pack/bi';
+  import { capitalize } from '$lib/utils/general';
+  import { common } from '$content';
+  import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
   import MediaButtonsSection from './MediaButtonsSection.svelte';
   import Newsletter from './Newsletter.svelte';
+  import { page } from '$app/state';
+
+  let isOpen = $state(false);
+
+  function toggleDrawer() {
+    isOpen = !isOpen;
+  }
 </script>
 
-<div class="mt-8 flex gap-4">
+{#snippet icons()}
   <Newsletter />
   <div class="h-9 w-0.5 bg-white"></div>
   <MediaButtonsSection />
+{/snippet}
+
+{#snippet drawerItem(text: string, type: 'main' | 'secondary', href?: string)}
+  {#snippet drawerTextComponent(text: string, type: 'main' | 'secondary')}
+    {#if type === 'main'}
+      <h2 class="text-4xl">{capitalize(text)}</h2>
+    {:else}
+      <h3 class="pl-7 text-2xl">{capitalize(text)}</h3>
+    {/if}
+  {/snippet}
+
+  {#if href}
+    <a {href} onclick={toggleDrawer}>
+      {@render drawerTextComponent(text, type)}
+    </a>
+  {:else}
+    {@render drawerTextComponent(text, type)}
+  {/if}
+{/snippet}
+
+<div class="mt-8 w-20 xl:w-52">
+  <div class=" hidden gap-4 xl:flex">
+    {@render icons()}
+  </div>
+  <div class="xl:hidden">
+    <HeaderIcon onclick={toggleDrawer} size={25} src={BiMenu} type="button" />
+    <Drawer bind:isOpen>
+      <div class="mt-5 flex gap-4">
+        {@render icons()}
+      </div>
+      <div class="flex h-full w-full items-center justify-center">
+        <div class="flex flex-col gap-2">
+          <div>
+            <DrawerItem>{@render drawerItem(common.header.pages.shop.title, 'main')}</DrawerItem>
+            <DrawerItem
+              >{@render drawerItem(
+                common.header.pages.shop.byCollection,
+                'secondary',
+                `/${page.params.country}/shop/collections`,
+              )}</DrawerItem
+            >
+            <DrawerItem
+              >{@render drawerItem(
+                common.header.pages.shop.byProduct,
+                'secondary',
+                `/${page.params.country}/shop/products`,
+              )}</DrawerItem
+            >
+          </div>
+          <DrawerItem
+            >{@render drawerItem(common.header.pages.about, 'main', `/${page.params.country}/about`)}</DrawerItem
+          >
+          <DrawerItem
+            >{@render drawerItem(common.header.pages.contact, 'main', `/${page.params.country}/contact`)}</DrawerItem
+          >
+          <DrawerItem>{@render drawerItem(common.header.pages.faq, 'main', `/${page.params.country}/faq`)}</DrawerItem>
+        </div>
+      </div>
+    </Drawer>
+  </div>
 </div>

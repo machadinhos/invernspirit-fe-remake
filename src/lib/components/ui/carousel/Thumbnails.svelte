@@ -8,11 +8,12 @@
     emblaApi: EmblaCarouselType | undefined;
     thumbsApi: EmblaCarouselType | undefined;
     selectedSlide: number;
+    axis: EmblaOptionsType['axis'];
   }
 
-  let { images, emblaApi, thumbsApi = $bindable(), selectedSlide }: Props = $props();
+  let { images, emblaApi, thumbsApi = $bindable(), selectedSlide, axis }: Props = $props();
 
-  const options: EmblaOptionsType = { containScroll: 'keepSnaps', dragFree: true, axis: 'y' };
+  const options: EmblaOptionsType = { containScroll: 'keepSnaps', dragFree: true, axis };
 
   function onInit(event: CustomEvent) {
     thumbsApi = event.detail;
@@ -25,7 +26,7 @@
 
 <div class="embla select-none">
   <div class="embla__viewport" onemblaInit={onInit} use:emblaCarouselSvelte={{ plugins: [], options }}>
-    <div class="embla__container">
+    <div class="embla__container" class:axisX={axis === 'x'} class:axisY={axis === 'y'}>
       {#each images as { url, alt }, index}
         <button
           class="embla__slide transition-all"
@@ -51,9 +52,16 @@
     overflow: hidden;
   }
 
-  .embla__container {
+  .embla__container.axisX {
     display: flex;
     touch-action: pan-x pinch-zoom;
+    height: 21.25vw;
+    flex-direction: row;
+  }
+
+  .embla__container.axisY {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
     height: 35vw;
     flex-direction: column;
   }

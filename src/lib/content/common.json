@@ -11,14 +11,14 @@
         "newsletter": "newsletter menu"
       }
     },
-    "middleSection": {
+    "pages": {
       "shop": {
         "title": "shop",
         "byCollection": "by collection",
         "byProduct": "by product"
       },
       "about": "about",
-      "contactUs": "contact us",
+      "contact": "Contact",
       "faq": "faq"
     },
     "rightSection": {

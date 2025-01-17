@@ -6,7 +6,7 @@ export interface Product {
   description: string;
   stock: number;
   collectionId: string;
-  priceInCents: number;
+  grossPrice: number;
   images: Image[];
 }
 

@@ -1,13 +1,20 @@
 <script lang="ts">
+  import type { Country } from '$types';
   import HeaderLeftSection from './left-section/HeaderLeftSection.svelte';
   import HeaderMiddleSection from './middle-section/HeaderMiddleSection.svelte';
   import HeaderRightSection from './right-section/HeaderRightSection.svelte';
+
+  interface Props {
+    countries: Country[];
+  }
+
+  let { countries }: Props = $props();
 </script>
 
 <header>
-  <div class="z-10 mx-10 flex justify-between">
+  <div class="relative z-10 mx-5 flex justify-between lg:mx-10">
     <HeaderLeftSection />
     <HeaderMiddleSection />
-    <HeaderRightSection />
+    <HeaderRightSection {countries} />
   </div>
 </header>

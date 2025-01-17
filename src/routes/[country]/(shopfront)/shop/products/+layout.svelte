@@ -3,9 +3,9 @@
     children: import('svelte').Snippet;
   }
 
-  const { children }: Props = $props();
+  let { children }: Props = $props();
 </script>
 
-<div class="h-full min-h-fit w-full px-8 py-14">
+<div class="paddings">
   {@render children()}
 </div>

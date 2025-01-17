@@ -3,12 +3,18 @@
   import { DropdownMenu, DropdownMenuItem } from '$components';
   import { BiSolidCart } from 'svelte-icons-pack/bi';
   import { cart } from '$state';
-  import { countries } from '$constants';
+  import type { Country } from '$types';
   import { FaSolidUser } from 'svelte-icons-pack/fa';
   import { goto } from '$app/navigation';
   import HeaderIcon from '../HeaderIcon.svelte';
   import { page } from '$app/state';
   import { untrack } from 'svelte';
+
+  interface Props {
+    countries: Country[];
+  }
+
+  let { countries }: Props = $props();
 
   let selectedCountry = $state(page.params.country.toUpperCase());
   let isOpen = $state(false);
@@ -32,14 +38,14 @@
   }
 </script>
 
-<div class="mt-8 flex items-center justify-end gap-4">
+<div class="mt-8 flex w-20 items-center justify-end gap-4 xl:w-52">
   <select
-    class="h-fit bg-background"
+    class="hidden h-fit bg-background xl:block"
     aria-label={common.header.rightSection.areaLabels.countrySelect}
     bind:value={selectedCountry}
   >
-    {#each countries as country}
-      <option>{country}</option>
+    {#each countries as { code }}
+      <option>{code}</option>
     {/each}
   </select>
   <div>
