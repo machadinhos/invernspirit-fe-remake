@@ -19,6 +19,23 @@
 
   let cartProducts: LineItem[] | undefined = $state();
   let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.grossPrice * item.quantity, 0));
+  let subTotalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.netPrice * item.quantity, 0));
+  let taxesPrices = $derived(getTaxesPrices());
+
+  function getTaxesPrices(): { name: string; price: number | undefined }[] {
+    return data.country.taxes.reduce(
+      (taxList, tax) => {
+        const name = tax.name;
+        const price = cartProducts?.reduce(
+          (total, lineItem) => total + lineItem.netPrice * lineItem.quantity * tax.rate,
+          0,
+        );
+        taxList.push({ name, price });
+        return taxList;
+      },
+      [] as { name: string; price: number | undefined }[],
+    );
+  }
 
   onMount(() => {
     config.afterInitialization(async () => {
@@ -41,6 +58,19 @@
     window.location.assign(checkout.url);
   }
 </script>
+
+{#snippet priceLine(text: string, price: number | undefined, textSize: 'text-2xl' | 'text-4xl')}
+  <div class="flex place-content-between {textSize}">
+    <span>{text}:</span>
+    <span>
+      {#if price !== undefined}
+        {formatPrice(price)}
+      {:else}
+        --.--
+      {/if}{data.country.currency.symbol}
+    </span>
+  </div>
+{/snippet}
 
 <div class="flex h-full w-full justify-center">
   <div
@@ -73,19 +103,15 @@
           </div>
         {/if}
       </div>
-      <div class="mt-2 w-full">
+      <div class="mb-0.5 mt-2 h-0.5 bg-white"></div>
+      {@render priceLine(cart.subtotal, subTotalPrice, 'text-2xl')}
+      {#each taxesPrices as taxPrice}
+        {@render priceLine(taxPrice.name, taxPrice.price, 'text-2xl')}
+      {/each}
+      <div class="w-full">
         <div class="mb-3 flex flex-col gap-0.5">
           <div class="h-0.5 bg-white"></div>
-          <div class="flex place-content-between text-3xl">
-            <span>{cart.total}</span>
-            <span>
-              {#if totalPrice !== undefined}
-                {formatPrice(totalPrice)}
-              {:else}
-                --.--
-              {/if}{data.country.currency.symbol}
-            </span>
-          </div>
+          {@render priceLine(cart.total, totalPrice, 'text-4xl')}
           <div class="h-0.5 bg-white"></div>
         </div>
         <Button

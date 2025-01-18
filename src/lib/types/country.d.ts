@@ -6,10 +6,10 @@ export interface Country {
     name: string;
     symbol: string;
   };
-  taxes: [
-    {
-      name: string;
-      rate: number;
-    },
-  ];
+  taxes: Taxes[];
+}
+
+export interface Taxes {
+  name: string;
+  rate: number;
 }
