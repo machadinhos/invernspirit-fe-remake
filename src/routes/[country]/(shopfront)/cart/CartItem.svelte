@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="flex items-center justify-between">
+<div class="flex w-96 items-center justify-between">
   <div class="flex gap-4">
     <a href="shop/products/{product.id}">
       <img alt={product.images[0].alt} height="100" src={product.images[0].url} width="100" />

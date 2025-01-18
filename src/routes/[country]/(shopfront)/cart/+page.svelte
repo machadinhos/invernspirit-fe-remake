@@ -19,6 +19,20 @@
 
   let cartProducts: LineItem[] | undefined = $state();
   let totalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.grossPrice * item.quantity, 0));
+  let subTotalPrice = $derived(cartProducts?.reduce((sum, item) => sum + item.netPrice * item.quantity, 0));
+  let taxesPrices = $derived(getTaxesPrices());
+
+  function getTaxesPrices(): { name: string; price: number | undefined }[] {
+    return data.country.taxes.reduce(
+      (taxList, tax) => {
+        const name = tax.name;
+        const price = cartProducts?.reduce((total, lineItem) => total + lineItem.netPrice * tax.rate, 0);
+        taxList.push({ name, price });
+        return taxList;
+      },
+      [] as { name: string; price: number | undefined }[],
+    );
+  }
 
   onMount(() => {
     config.afterInitialization(async () => {
@@ -42,50 +56,68 @@
   }
 </script>
 
+{#snippet priceLine(text: string, price: number | undefined, textSize: 'text-2xl' | 'text-4xl')}
+  <div class="flex place-content-between {textSize}">
+    <span>{text}:</span>
+    <span>
+      {#if price !== undefined}
+        {formatPrice(price)}
+      {:else}
+        --.--
+      {/if}{data.country.currency.symbol}
+    </span>
+  </div>
+{/snippet}
+
 <div class="flex h-full w-full justify-center">
-  <div
-    class="mt-10 flex h-fit w-[95%] flex-col items-center bg-background shadow-2xl sm:w-[80%] md:w-[65%] lg:w-[50%] xl:w-[30%]"
-  >
+  <div class="ml-10 mr-8 mt-10 flex h-fit w-full flex-col items-center bg-background shadow-2xl">
     <div class="mt-4 flex w-full flex-col items-center">
       <h1 style="font-size: 2.5rem" class="text-center">
         {cart.title}
       </h1>
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
-    <div class="mb-10 mt-5 flex h-[60vh] w-[75%] flex-col place-content-between overflow-hidden">
-      <div class="flex h-full flex-col gap-3 overflow-y-auto">
-        {#if cartProducts !== undefined}
-          {#if cartProducts.length > 0}
+    <div class="mb-10 mt-5 flex h-[60vh] w-full flex-col place-content-between overflow-hidden">
+      {#if cartProducts !== undefined}
+        {#if cartProducts.length > 0}
+          <div
+            class="mx-4 grid grid-cols-[repeat(auto-fit,minmax(384px,1fr))] justify-center justify-items-center gap-12 overflow-y-auto"
+          >
             {#each cartProducts as product (product.id)}
               <div animate:flip={{ duration: 150 }}>
                 <CartItem {product} bind:cartProducts />
               </div>
             {/each}
-          {:else}
-            <p class="text-center">
-              {cart.emptyCartMessage}
-              <a class="text-primary underline" href="/{page.params.country}/shop/products">{cart.fillUpCTA}</a>
-            </p>
-          {/if}
-        {:else}
-          <div class="flex h-full w-full items-center justify-center">
-            <PulsatingLogo />
           </div>
+        {:else}
+          <p class="text-center">
+            {cart.emptyCartMessage}
+            <a class="text-primary underline" href="/{page.params.country}/shop/products">{cart.fillUpCTA}</a>
+          </p>
         {/if}
-      </div>
+      {:else}
+        <div class="flex h-full w-full items-center justify-center">
+          <PulsatingLogo />
+        </div>
+      {/if}
+    </div>
+  </div>
+  <div class="mr-10 mt-10 flex h-fit w-96 flex-shrink-0 flex-col items-center bg-background shadow-2xl">
+    <div class="mt-4 flex w-full flex-col items-center">
+      <h1 style="font-size: 2.5rem" class="text-center">
+        {cart.summary}
+      </h1>
+      <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
+    </div>
+    <div class="mb-10 mt-5 flex h-[60vh] w-[85%] flex-col justify-end overflow-hidden">
+      {@render priceLine(cart.subtotal, subTotalPrice, 'text-2xl')}
+      {#each taxesPrices as taxPrice}
+        {@render priceLine(taxPrice.name, taxPrice.price, 'text-2xl')}
+      {/each}
       <div class="mt-2 w-full">
         <div class="mb-3 flex flex-col gap-0.5">
           <div class="h-0.5 bg-white"></div>
-          <div class="flex place-content-between text-3xl">
-            <span>{cart.total}</span>
-            <span>
-              {#if totalPrice !== undefined}
-                {formatPrice(totalPrice)}
-              {:else}
-                --.--
-              {/if}{data.country.currency.symbol}
-            </span>
-          </div>
+          {@render priceLine(cart.total, totalPrice, 'text-4xl')}
           <div class="h-0.5 bg-white"></div>
         </div>
         <Button

@@ -1,4 +1,4 @@
-import type { Image } from '$types';
+import type { Image, Taxes } from '$types';
 
 export interface Product {
   id: string;
@@ -9,6 +9,7 @@ export interface Product {
   grossPrice: number;
   netPrice: number;
   images: Image[];
+  taxes: Taxes[];
 }
 
 export interface StockBucket {
