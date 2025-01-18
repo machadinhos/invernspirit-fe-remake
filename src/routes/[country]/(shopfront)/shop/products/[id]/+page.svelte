@@ -42,7 +42,7 @@
   </div>
   <div class="lg:w-1/2">
     <h1 class="text-6xl lg:text-8xl">{data.product.name}</h1>
-    <p class="text-4xl lg:text-6xl">{formatPrice(data.product.grossPrice)}{data.country.currencies[0].symbol}</p>
+    <p class="text-4xl lg:text-6xl">{formatPrice(data.product.grossPrice)}{data.country.currency.symbol}</p>
     <div class="my-5 h-px w-full bg-white"></div>
     <p class="min-h-24">{data.product.description}</p>
     <div class="my-5 h-px w-full bg-white"></div>

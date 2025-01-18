@@ -1,5 +1,6 @@
 export { default as Button } from './Button.svelte';
 export { default as CheckBox } from './CheckBox.svelte';
+export { default as CustomSelect } from './CustomSelect.svelte';
 export { default as GrainyFilter } from './GrainyFilter.svelte';
 export { default as Drawer } from './drawer/Drawer.svelte';
 export { default as DrawerItem } from './drawer/DrawerItem.svelte';

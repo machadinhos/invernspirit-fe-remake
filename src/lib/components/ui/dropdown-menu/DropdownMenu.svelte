@@ -1,7 +1,7 @@
 <script lang="ts">
   import { backIn, backOut } from 'svelte/easing';
   import type { HTMLAttributes } from 'svelte/elements';
-  import { onMount } from 'svelte';
+  import { onClickOutside } from '$components-actions';
   import { slide } from 'svelte/transition';
 
   interface Props {
@@ -36,36 +36,17 @@
         }
       : { top: 0, left: 0 },
   );
-
-  let dropdownElement: HTMLDivElement | undefined = $state();
-
-  function handleClickOutside(event: MouseEvent) {
-    if (!isOpen) return;
-
-    const target = event.target as Node;
-    const isClickInsideDropdown = dropdownElement?.contains(target);
-    const isClickOnTrigger = triggerElement?.contains(target);
-
-    if (!isClickInsideDropdown && !isClickOnTrigger) {
-      isOpen = false;
-    }
-  }
-
-  onMount(() => {
-    if (closeOnOutsideClick) {
-      document.addEventListener('click', handleClickOutside);
-      return () => {
-        document.removeEventListener('click', handleClickOutside);
-      };
-    }
-  });
 </script>
 
 {#if isOpen && triggerElement}
   <div
-    bind:this={dropdownElement}
     style={isFullWidth ? `top: ${position.top}px; left: ${position.left}px` : ''}
     class="fixed z-20 {isFullWidth ? 'left-0 w-full' : ''} bg-background shadow-2xl"
+    use:onClickOutside={{
+      callback: () => (isOpen = false),
+      enabled: closeOnOutsideClick && isOpen,
+      otherIncludedElements: [triggerElement],
+    }}
     transition:slide={{ duration: 800, easing: isOpen ? backOut : backIn }}
   >
     <div class={className}>

@@ -28,5 +28,5 @@
 </div>
 
 <div class="paddings">
-  <ProductGrid currencySymbol={data.country.currencies[0].symbol} products={data.collection.products} />
+  <ProductGrid currencySymbol={data.country.currency.symbol} products={data.collection.products} />
 </div>

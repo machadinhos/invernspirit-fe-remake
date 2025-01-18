@@ -13,7 +13,7 @@
 
 <header>
   <div class="relative z-10 mx-5 flex justify-between lg:mx-10">
-    <HeaderLeftSection />
+    <HeaderLeftSection {countries} />
     <HeaderMiddleSection />
     <HeaderRightSection {countries} />
   </div>

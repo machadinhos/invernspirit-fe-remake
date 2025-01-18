@@ -83,7 +83,7 @@
                 {formatPrice(totalPrice)}
               {:else}
                 --.--
-              {/if}{data.country.currencies[0].symbol}
+              {/if}{data.country.currency.symbol}
             </span>
           </div>
           <div class="h-0.5 bg-white"></div>

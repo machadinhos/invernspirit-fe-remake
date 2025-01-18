@@ -3,10 +3,18 @@
   import { BiMenu } from 'svelte-icons-pack/bi';
   import { capitalize } from '$lib/utils/general';
   import { common } from '$content';
+  import type { Country } from '$types';
+  import CountrySelector from '$lib/components/layout/header/CountrySelector.svelte';
   import HeaderIcon from '$lib/components/layout/header/HeaderIcon.svelte';
   import MediaButtonsSection from './MediaButtonsSection.svelte';
   import Newsletter from './Newsletter.svelte';
   import { page } from '$app/state';
+
+  interface Props {
+    countries: Country[];
+  }
+
+  let { countries }: Props = $props();
 
   let isOpen = $state(false);
 
@@ -44,7 +52,10 @@
     {@render icons()}
   </div>
   <div class="xl:hidden">
-    <HeaderIcon onclick={toggleDrawer} size={25} src={BiMenu} type="button" />
+    <div class="flex items-center gap-1">
+      <HeaderIcon onclick={toggleDrawer} size={25} src={BiMenu} type="button" />
+      <CountrySelector {countries} />
+    </div>
     <Drawer bind:isOpen>
       <div class="mt-5 flex gap-4">
         {@render icons()}
