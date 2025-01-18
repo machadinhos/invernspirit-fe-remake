@@ -5,8 +5,9 @@ export interface Product {
   name: string;
   description: string;
   stock: number;
-  collectionId: string;
+  collection: { id: string; name: string };
   grossPrice: number;
+  netPrice: number;
   images: Image[];
 }
 

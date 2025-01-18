@@ -24,11 +24,6 @@
     bucketStock = (await getStockFromBucket(data.product.id)).data;
   });
 
-  function getCollectionName(collectionId: string) {
-    const collection = data.collections.find((collection) => collection.id === collectionId);
-    return collection?.name;
-  }
-
   function onAddToCartClick() {
     cart.insertProduct(data.product, selectedQuantity);
     inCartQuantity += selectedQuantity;
@@ -48,8 +43,8 @@
     <div class="my-5 h-px w-full bg-white"></div>
     <p>
       {shop.products.id.belongsToCollectionStart}
-      <a class="text-primary" href="/{page.params.country}/shop/collections/{data.product.collectionId}"
-        >{getCollectionName(data.product.collectionId)}</a
+      <a class="text-primary underline" href="/{page.params.country}/shop/collections/{data.product.collection.id}"
+        >{data.product.collection.name}</a
       >
       {shop.products.id.belongsToCollectionEnd}
     </p>
