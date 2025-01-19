@@ -27,11 +27,13 @@
 
 <div class="flex items-center justify-between">
   <div class="flex gap-4">
-    <a href="shop/products/{product.id}">
-      <img alt={product.images[0].alt} height="100" src={product.images[0].url} width="100" />
-    </a>
+    <div class="h-[100px] w-[100px]">
+      <a href="shop/products/{product.id}">
+        <img alt={product.images[0].alt} height="100" src={product.images[0].url} width="100" />
+      </a>
+    </div>
     <div>
-      <h3 class="text-3xl">{product.name}</h3>
+      <h3 class="w-40 truncate text-2xl sm:w-auto sm:text-3xl">{product.name}</h3>
       <h4 class="text-lg">{cart.priceLabel}: {formatPrice(product.grossPrice)}$</h4>
       <div class="flex gap-1">
         <h4 class="text-lg">{cart.quantityLabel}:</h4>

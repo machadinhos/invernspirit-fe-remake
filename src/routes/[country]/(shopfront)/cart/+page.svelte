@@ -82,7 +82,7 @@
       </h1>
       <div class="pointer-events-none h-0.5 w-[35%] select-none bg-white"></div>
     </div>
-    <div class="mb-10 mt-5 flex h-[60vh] w-[75%] flex-col place-content-between overflow-hidden">
+    <div class="mb-10 mt-5 flex h-[60vh] w-[85%] flex-col place-content-between overflow-hidden">
       <div class="flex h-full flex-col gap-3 overflow-y-auto">
         {#if cartProducts !== undefined}
           {#if cartProducts.length > 0}
