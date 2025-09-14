@@ -13,12 +13,15 @@ class Loading {
     this.value = false;
   }
 
-  async withLoading(func: () => void | Promise<void>): Promise<void> {
+  async withLoading<T>(func: () => T | Promise<T>, stopLoadingOnSuccess = true): Promise<T> {
     this.startLoading();
+    let succeeded = false;
     try {
-      await func();
+      const result = await func();
+      succeeded = true;
+      return result;
     } finally {
-      this.stopLoading();
+      if (succeeded && stopLoadingOnSuccess) this.stopLoading();
     }
   }
 }

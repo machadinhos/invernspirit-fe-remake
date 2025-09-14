@@ -31,7 +31,7 @@
       const { url } = await bffClient.checkout.stages.payment.get(page.params.country);
       if (!url) return;
       window.location.assign(url);
-    });
+    }, false);
   };
 
   onMount(async () => {
