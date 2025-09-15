@@ -14,6 +14,11 @@
   --color-text-secondary: #b5b5b5;
 }
 
+:root {
+  background-color: color-mix(in srgb, var(--color-background-dark) 40%, #000 60%);
+  background-image: url('/grainy-bg-image.webp');
+}
+
 body {
   color: #fff;
   font-family: 'Playfair', serif;
