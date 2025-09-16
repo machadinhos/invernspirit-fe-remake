@@ -86,7 +86,7 @@
 <div
   bind:this={outerElement}
   class={[
-    'toast relative touch-pan-y pt-2 pr-2 pb-2 select-none',
+    'toast relative w-fit touch-pan-y pt-2 pr-2 pb-2 select-none',
     toast.type === 'normal' ? 'bg-background' : toast.type === 'error' ? 'bg-error' : 'bg-success',
   ]}
   aria-live={toast.type === 'error' ? 'assertive' : 'polite'}
