@@ -34,8 +34,8 @@
 {/snippet}
 
 <div class="flex size-full justify-center">
-  <div class="mt-10 flex h-fit w-[90%] max-w-[675px] flex-col items-center md:bg-background-dark md:shadow-2xl">
-    <div class="relative w-full pt-10">
+  <div class="mt-4 flex h-fit w-[90%] max-w-[675px] flex-col items-center md:mt-10 md:bg-background-dark md:shadow-2xl">
+    <div class="relative w-full md:pt-10">
       <ul class="flex w-full">
         {@render pageListItem('sign-in')}
         {@render pageListItem('sign-up')}

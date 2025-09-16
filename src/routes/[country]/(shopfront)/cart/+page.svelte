@@ -92,8 +92,8 @@
 
 <svelte:head><title>{cart.headTitle}</title></svelte:head>
 
-<div class="flex size-full flex-col items-center">
-  <h1 style="font-size: 2.5rem" class="lineunder mt-4 mb-10">
+<div class="mt-4 flex size-full flex-col items-center">
+  <h1 style="font-size: 2.5rem" class="lineunder mb-10">
     {cart.title}
   </h1>
   <div
