@@ -6,12 +6,11 @@
   --color-secondary-dark: #201f1d;
   --color-background: #3f3d3b;
   --color-background-dark: #323230;
-  --color-secondary-background: #7e7e78;
+  --color-secondary-foreground: #b5b5b5;
   --color-error: #eb1400;
   --color-error-light: #ff6f61;
   --color-warning: #c36a2d;
   --color-success: #43a047;
-  --color-text-secondary: #b5b5b5;
 }
 
 :root {

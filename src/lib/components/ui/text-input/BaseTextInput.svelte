@@ -60,7 +60,7 @@
     {#if label}
       <label
         class={[
-          `pointer-events-none absolute left-0 text-lg text-text-secondary transition-all select-none peer-focus:text-sm`,
+          `pointer-events-none absolute left-0 text-lg text-secondary-foreground transition-all select-none peer-focus:text-sm`,
           field.type === 'textarea'
             ? ['peer-focus:-top-3.5', field.value ? '-top-3.5 text-sm' : 'top-2 text-base']
             : ['peer-focus:-top-2', field.value ? '-top-2 text-sm' : 'top-2 text-base'],

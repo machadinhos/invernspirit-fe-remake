@@ -21,7 +21,7 @@
   ]}
 >
   <input {name} class="sr-only" {disabled} type="checkbox" bind:checked />
-  <div class="grid size-5 place-items-center border-2 border-text-secondary">
+  <div class="grid size-5 place-items-center border-2 border-secondary-foreground">
     <div class="size-full">
       {#if checked}
         <svg class={['bg-primary', disabled && 'brightness-[60%]']} viewBox="0 0 24 24" transition:scale>
