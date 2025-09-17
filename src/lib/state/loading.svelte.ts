@@ -13,7 +13,11 @@ class Loading {
     this.value = false;
   }
 
-  async withLoading<T>(func: () => T | Promise<T>, stopLoadingOnSuccess = true): Promise<T> {
+  async withLoading<T>(
+    func: () => T | Promise<T>,
+    stopLoadingOnSuccess = true,
+    stopLoadingOnFailure = true,
+  ): Promise<T> {
     this.startLoading();
     let succeeded = false;
     try {
@@ -22,6 +26,7 @@ class Loading {
       return result;
     } finally {
       if (succeeded && stopLoadingOnSuccess) this.stopLoading();
+      else if (!succeeded && stopLoadingOnFailure) this.stopLoading();
     }
   }
 }
