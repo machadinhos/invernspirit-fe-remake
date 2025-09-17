@@ -176,9 +176,9 @@ export class Client<ResponseBody, PayloadBody = void> {
     }
 
     if (response.ok) {
-      const { data, issues } = await response.json();
-      if (browser && data.accessToken) setAccessToken(data.accessToken);
-      if (issues && shouldPushIssuesToToasts) pushIssuesToToasts(issues);
+      const { data, issues, accessToken } = await response.json();
+      if (browser && accessToken) setAccessToken(accessToken);
+      if (shouldPushIssuesToToasts && issues) pushIssuesToToasts(issues);
 
       return data;
     }
