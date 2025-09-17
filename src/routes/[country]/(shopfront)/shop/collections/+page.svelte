@@ -23,7 +23,7 @@
         <a class="max-md:h-36" href={`/${page.params.country}/shop/collections/${id}`}>
           <div class="relative h-full md:w-[200px]">
             <img
-              class="size-full object-cover brightness-[30%] grayscale transition-all hover:scale-y-95 hover:brightness-100"
+              class="size-full object-cover brightness-[30%] transition-all not-hover:grayscale hover:scale-y-95 hover:brightness-100"
               alt={image.alt}
               src={image.url}
             />
