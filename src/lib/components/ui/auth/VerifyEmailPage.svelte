@@ -42,10 +42,10 @@
   };
 </script>
 
-<Form class="flex w-full flex-col items-center" {onsubmit} bind:processing>
+<Form class="flex flex-col items-center" {onsubmit} bind:processing>
   <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.codePage.title}</h1>
   <p class="text-center">{auth.forgotPassword.codePage.description}</p>
-  <div class="mb-2.5 flex w-full justify-center">
+  <div class="mb-2.5 flex justify-center">
     <p>
       {auth.signUp.verifyEmailPage.didntReceiveCode}
       <button class="text-primary" onclick={onSendAnotherCodeClick} type="button"

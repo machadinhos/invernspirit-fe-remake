@@ -1,15 +1,17 @@
 <script lang="ts">
   import { Button } from '$components';
   import { clamp } from '$lib/utils/general';
+  import type { ClassValue } from 'svelte/elements';
 
   type Props = {
     stock: number;
     selectedQuantity: number;
     disabled?: boolean;
     allowZero?: boolean;
+    class?: ClassValue;
   };
 
-  let { stock, selectedQuantity = $bindable(), disabled, allowZero }: Props = $props();
+  let { stock, selectedQuantity = $bindable(), disabled, allowZero, class: className }: Props = $props();
 
   let canIncrementSelectedQuantity = $derived(!disabled && selectedQuantity < stock);
   let canDecrementSelectedQuantity = $derived(!disabled && selectedQuantity > (allowZero ? 0 : 1));
@@ -48,7 +50,7 @@
   >
 {/snippet}
 
-<div class="flex">
+<div class={['flex', className]}>
   {@render quantityButton('decrement')}
   <input
     bind:this={inputElementRef}

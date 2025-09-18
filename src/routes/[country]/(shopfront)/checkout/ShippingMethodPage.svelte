@@ -69,7 +69,7 @@
           value={shippingMethod.id}
           bind:group={selectedShippingMethodId}
         />
-        <div class="mb-2 flex w-full justify-center">
+        <div class="mb-2 flex justify-center">
           <div
             class={[
               "grid size-4 place-items-center rounded-full bg-background-dark after:size-2 after:rounded-full after:bg-primary after:transition-opacity after:content-['']",

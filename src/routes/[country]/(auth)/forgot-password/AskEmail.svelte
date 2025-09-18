@@ -54,7 +54,7 @@
   });
 </script>
 
-<Form class="w-full" {onsubmit} bind:processing>
+<Form {onsubmit} bind:processing>
   <h1 class="text-center text-3xl">{auth.forgotPassword.emailPage.title}</h1>
   <TextInput field={formFields.email}>
     {#snippet label()}

@@ -87,7 +87,7 @@
       </p>
     </ReviewSection>
     <div>
-      <div class="mb-2 flex w-full justify-center">
+      <div class="mb-2 flex justify-center">
         <h3 style="font-size: 2rem" class="lineunder">{checkout.reviewPage.products}</h3>
       </div>
       <div class="flex flex-col items-center gap-5 xl:overflow-y-auto">

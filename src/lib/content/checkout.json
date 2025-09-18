@@ -19,8 +19,8 @@
         "invalidText": "Please enter your house number."
       },
       "apartment": {
-        "label": "Apartment",
-        "invalidText": "Please enter your apartment."
+        "label": "Apartment (optional)",
+        "invalidText": "Please enter a valid apartment."
       },
       "city": {
         "label": "City",

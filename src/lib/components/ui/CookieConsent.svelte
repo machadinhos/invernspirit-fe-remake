@@ -69,7 +69,7 @@
   };
 </script>
 
-<div class="fixed bottom-0 z-100 w-full bg-background p-4 text-justify">
+<div class="fixed bottom-0 z-100 bg-background p-4 text-justify">
   {#if !customizing}
     <div class="flex gap-4 max-md:flex-col md:justify-between">
       <div class="space-y-2">

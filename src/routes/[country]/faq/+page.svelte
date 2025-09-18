@@ -18,7 +18,7 @@
 
 <h1 class="mx-[5%] mb-9 text-center text-5xl">{faq.title}</h1>
 
-<div class="flex w-full justify-center">
+<div class="flex justify-center">
   <div class="w-[90%] max-w-[750px]">
     <Accordion items={test}>
       {#snippet accordionTrigger(trigger)}

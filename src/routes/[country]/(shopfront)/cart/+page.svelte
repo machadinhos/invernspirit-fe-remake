@@ -92,7 +92,7 @@
 
 <svelte:head><title>{cart.headTitle}</title></svelte:head>
 
-<div class="mt-4 flex size-full flex-col items-center">
+<div class="mt-4 flex h-[calc(100%-(var(--spacing)*4))] flex-col items-center">
   <h1 style="font-size: 2.5rem" class="lineunder mb-10">
     {cart.title}
   </h1>
@@ -102,7 +102,7 @@
     <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
       {#if config.isInitialized && cartLoaded}
         {#each cartState.value as product (product.id)}
-          <div class="flex w-full justify-center" animate:flip={{ duration: 150 }}>
+          <div animate:flip={{ duration: 150 }}>
             <LineItemCard country={data.country} editable {product} pushToastOnQuantityUpdate={false} />
           </div>
         {:else}
@@ -113,23 +113,23 @@
         {/each}
       {/if}
     </div>
-    <div class="sticky -bottom-px mt-4 w-full bg-secondary md:top-0 md:mt-0 md:w-1/3 md:max-w-[396px]">
-      <SummarySection
-        buttonDisabled={checkoutDisabled}
-        buttonText={cart.checkoutButtonLabel}
-        country={data.country}
-        onclick={onCheckout}
-      />
-      <div class="mx-[10%] mb-5 max-md:hidden">
+    <SummarySection
+      class="sticky bottom-0 mt-4 w-full md:top-0 md:mt-0 md:w-1/3 md:max-w-[396px]"
+      buttonDisabled={checkoutDisabled}
+      buttonText={cart.checkoutButtonLabel}
+      country={data.country}
+      onclick={onCheckout}
+    >
+      <div class="mx-[5%] mt-5 max-md:hidden">
         <div class="flex items-center gap-2">
           <div class="h-0.5 w-full bg-white"></div>
           {cart.or}
           <div class="h-0.5 w-full bg-white"></div>
         </div>
-        <div class="w-full text-center">
+        <div class="text-center">
           <Anchor href="/{page.params.country}/shop/products">{cart.continueShopping}</Anchor>
         </div>
       </div>
-    </div>
+    </SummarySection>
   </div>
 </div>

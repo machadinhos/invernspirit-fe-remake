@@ -32,7 +32,7 @@
   </li>
 {/snippet}
 
-<div class="flex size-full flex-col items-center">
+<div class="flex flex-col items-center">
   <h1 class="mb-9 text-center text-5xl">{profile.title}</h1>
   <div class="flex w-[90%] gap-5 max-md:flex-col md:max-w-[900px]">
     <ul class="space-y-2 md:w-44">

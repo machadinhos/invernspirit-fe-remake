@@ -52,17 +52,15 @@
       <DropdownMenuItem>
         <h2 class="text-lg">{common.header.leftSection.newsletterTitle}</h2>
       </DropdownMenuItem>
-      <DropdownMenuItem class="w-full">
-        <div class="mt-2 w-full">
-          <TextInput field={formFields.email}>
-            {#snippet label()}
-              <div class="flex items-center gap-0.5">
-                <Icon size="20" src={MailIcon} />
-                {common.header.leftSection.emailForm.label}
-              </div>
-            {/snippet}
-          </TextInput>
-        </div>
+      <DropdownMenuItem class="mt-2 w-full">
+        <TextInput field={formFields.email}>
+          {#snippet label()}
+            <div class="flex items-center gap-0.5">
+              <Icon size="20" src={MailIcon} />
+              {common.header.leftSection.emailForm.label}
+            </div>
+          {/snippet}
+        </TextInput>
       </DropdownMenuItem>
       <DropdownMenuItem class="w-full">
         <Button class="mt-2" fullWidth type="submit">{common.header.leftSection.subscribe}</Button>

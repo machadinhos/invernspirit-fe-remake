@@ -162,7 +162,7 @@
       <li
         id={`${id}-option-${options.indexOf(activeOptions[index])}`}
         style="height: {height}px;"
-        class={['autocomplete-option w-full flex-none', selected && 'bg-background']}
+        class={['autocomplete-option flex-none', selected && 'bg-background']}
         aria-selected={selected}
         onclick={generateButtonOnClick(option)}
         onfocus={generateOnMouseOver(index)}

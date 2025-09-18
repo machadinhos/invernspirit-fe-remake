@@ -7,11 +7,11 @@
 
 <svelte:head><title>{about.headTitle}</title></svelte:head>
 
-<div class="flex w-full justify-center">
+<div class="flex justify-center">
   <section class="mt-9 w-[90%] max-w-[1400px]">
     <h1 class="text-center text-6xl">{about.title1}</h1>
     <h2 class="text-center text-4xl">{about.title2}</h2>
-    <div class="my-4 h-px w-full bg-white"></div>
+    <div class="my-4 h-px bg-white"></div>
     <div class="space-y-4">
       <div class="flex h-[150px] items-center overflow-clip">
         <img class="w-full" alt="ceramic banner" src={imageLinks.about.banner} />
@@ -19,7 +19,7 @@
       <h3>{about.subtitle1}</h3>
       <p>{about.text1}</p>
       <p>{about.text2}</p>
-      <div class="flex w-full gap-4 max-lg:flex-col-reverse lg:gap-20">
+      <div class="flex gap-4 max-lg:flex-col-reverse lg:gap-20">
         <div class="space-y-4 lg:w-3/5">
           <p>{about.text3}</p>
           <p>{about.text4}</p>

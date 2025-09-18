@@ -22,21 +22,19 @@
 >
   <input {name} class="sr-only" {disabled} type="checkbox" bind:checked />
   <div class="grid size-5 place-items-center border-2 border-secondary-foreground">
-    <div class="size-full">
-      {#if checked}
-        <svg class={['bg-primary', disabled && 'brightness-[60%]']} viewBox="0 0 24 24" transition:scale>
-          <path
-            d="M4 12l5 5L20 7"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
-            in:draw
-          />
-        </svg>
-      {/if}
-    </div>
+    {#if checked}
+      <svg class={['bg-primary', disabled && 'brightness-[60%]']} viewBox="0 0 24 24" transition:scale>
+        <path
+          d="M4 12l5 5L20 7"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="3"
+          in:draw
+        />
+      </svg>
+    {/if}
   </div>
   <span class="select-none">{label}</span>
 </label>

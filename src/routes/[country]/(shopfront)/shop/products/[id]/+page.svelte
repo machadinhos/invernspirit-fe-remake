@@ -99,9 +99,9 @@
         <Icon size="25" src={ShareIcon} />
       </button>
     </div>
-    <div class="my-5 h-px w-full bg-white"></div>
+    <div class="my-5 h-px bg-white"></div>
     <p class="min-h-24 text-justify">{data.product.description}</p>
-    <div class="my-5 h-px w-full bg-white"></div>
+    <div class="my-5 h-px bg-white"></div>
     <p>
       {shop.products.id.belongsToCollectionStart}
       <Anchor href="/{page.params.country}/shop/collections/{data.product.collection.id}"

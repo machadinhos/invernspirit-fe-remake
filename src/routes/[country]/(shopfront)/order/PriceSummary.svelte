@@ -20,19 +20,17 @@
   </div>
 {/snippet}
 
-<div class="flex w-full justify-center bg-secondary p-5">
-  <div class="flex w-full flex-col justify-end">
-    {@render priceLine(orderContent.subtotal, order.payment.netAmount, 'text-2xl')}
-    {@render priceLine(orderContent.shipping, order.shippingMethod.rate.priceInCents, 'text-2xl')}
-    {#each order.taxes as tax (tax.name)}
-      {@render priceLine(`${tax.name} (${tax.rate * 100}%)`, tax.amount, 'text-2xl')}
-    {/each}
-    <div class="mt-2 w-full">
-      <div class="mb-3 space-y-0.5">
-        <div class="h-0.5 bg-white"></div>
-        {@render priceLine(orderContent.total, order.payment.grossAmount, 'text-4xl')}
-        <div class="h-0.5 bg-white"></div>
-      </div>
+<div class="bg-secondary p-5">
+  {@render priceLine(orderContent.subtotal, order.payment.netAmount, 'text-2xl')}
+  {@render priceLine(orderContent.shipping, order.shippingMethod.rate.priceInCents, 'text-2xl')}
+  {#each order.taxes as tax (tax.name)}
+    {@render priceLine(`${tax.name} (${tax.rate * 100}%)`, tax.amount, 'text-2xl')}
+  {/each}
+  <div class="mt-2">
+    <div class="mb-3 space-y-0.5">
+      <div class="h-0.5 bg-white"></div>
+      {@render priceLine(orderContent.total, order.payment.grossAmount, 'text-4xl')}
+      <div class="h-0.5 bg-white"></div>
     </div>
   </div>
 </div>

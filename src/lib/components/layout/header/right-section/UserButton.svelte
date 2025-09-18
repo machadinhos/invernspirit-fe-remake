@@ -27,42 +27,38 @@
   };
 </script>
 
-<div>
-  <DropdownMenu class="p-5" position="right" bind:isOpen>
-    {#snippet triggerElement()}
-      {#if !user.value}
-        <HeaderIcon
-          aria-label={common.header.rightSection.ariaLabels.user}
-          href="/{page.params.country}/sign-in"
-          src={UserIcon}
-          type="anchor"
-        />
-      {:else}
-        <HeaderIcon
-          aria-label={common.header.rightSection.ariaLabels.user}
-          onclick={handleUserButtonClick}
-          src={UserIcon}
-          type="button"
-        />
-      {/if}
-    {/snippet}
-    <div class="text-nowrap">
-      <DropdownMenuItem>
-        <p class="text-2xl">{user.value?.firstName} {user.value?.lastName}</p>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <p>{user.value?.email}</p>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <Anchor href="/{page.params.country}/profile/user-details" onclick={closeDropdown}
-          >{common.header.rightSection.profile}</Anchor
-        >
-      </DropdownMenuItem>
-      <DropdownMenuItem class="mt-2 w-full">
-        <div class="flex justify-end">
-          <Button onclick={handleSignOut}><Icon class="mr-1.5" src={LogoutIcon} />{auth.signOut}</Button>
-        </div>
-      </DropdownMenuItem>
-    </div>
-  </DropdownMenu>
-</div>
+<DropdownMenu class="p-5" position="right" bind:isOpen>
+  {#snippet triggerElement()}
+    {#if !user.value}
+      <HeaderIcon
+        aria-label={common.header.rightSection.ariaLabels.user}
+        href="/{page.params.country}/sign-in"
+        src={UserIcon}
+        type="anchor"
+      />
+    {:else}
+      <HeaderIcon
+        aria-label={common.header.rightSection.ariaLabels.user}
+        onclick={handleUserButtonClick}
+        src={UserIcon}
+        type="button"
+      />
+    {/if}
+  {/snippet}
+  <div class="text-nowrap">
+    <DropdownMenuItem>
+      <p class="text-2xl">{user.value?.firstName} {user.value?.lastName}</p>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <p>{user.value?.email}</p>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Anchor href="/{page.params.country}/profile/user-details" onclick={closeDropdown}
+        >{common.header.rightSection.profile}</Anchor
+      >
+    </DropdownMenuItem>
+    <DropdownMenuItem class="mt-2 flex w-full justify-end">
+      <Button onclick={handleSignOut}><Icon class="mr-1.5" src={LogoutIcon} />{auth.signOut}</Button>
+    </DropdownMenuItem>
+  </div>
+</DropdownMenu>

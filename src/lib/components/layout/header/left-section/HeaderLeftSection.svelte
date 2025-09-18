@@ -60,7 +60,7 @@
       <div class="mt-5 flex gap-4">
         {@render icons()}
       </div>
-      <div class="grid h-[90%] w-full place-items-center">
+      <div class="grid h-[90%] place-items-center">
         <div class="space-y-2">
           <div>
             <DrawerItem>{@render drawerItem(common.header.pages.shop.title, 'main')}</DrawerItem>

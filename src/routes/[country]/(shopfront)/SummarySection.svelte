@@ -11,25 +11,30 @@
   import { ChevronDownIcon, Icon } from '$components-svg-icons';
   import { Button } from '$components';
   import { cart } from '$content';
+  import type { ClassValue } from 'svelte/elements';
   import type { Country } from '$types';
   import { formatPrice } from '$lib/utils/currency-formatting';
 
   type Props = {
+    children?: import('svelte').Snippet;
     country: Country;
     onclick?: () => void;
     buttonText: string;
     buttonType?: HTMLButtonElement['type'];
     buttonDisabled?: boolean;
     additionalCharges?: { name: string; price: number }[];
+    class?: ClassValue;
   };
 
   let {
+    children,
     country,
     onclick,
     buttonText,
     buttonType = 'button',
     buttonDisabled = false,
     additionalCharges = [],
+    class: className,
   }: Props = $props();
 
   let totalPrice = $derived(
@@ -97,48 +102,47 @@
   </div>
 {/snippet}
 
-<div class="flex w-full justify-center bg-secondary p-5 max-md:pt-0">
-  <div class="flex w-full flex-col justify-end">
-    <div
-      bind:this={expandElement}
-      class={[
-        'grid touch-pan-x [grid-template-rows:auto_0fr] transition-all duration-300',
-        isExpanded && '[grid-template-rows:auto_1fr]',
-      ]}
-      onpointercancel={onpointercancelOrPointerup}
-      {onpointerdown}
-      {onpointermove}
-      onpointerup={onpointercancelOrPointerup}
-    >
-      <div class="w-full md:hidden">
-        <button class={['grid h-6 w-full place-items-center']} onclick={toggleIsExpanded} type="button">
-          <Icon class={['transition-[rotate] duration-300', !isExpanded && 'rotate-180']} src={ChevronDownIcon} />
-        </button>
-      </div>
-      <div class="overflow-hidden">
-        {@render priceLine(cart.subtotal, subTotalPrice, 'text-2xl')}
-        {#each additionalCharges as { price, name } (name)}
-          {@render priceLine(name, price, 'text-2xl')}
-        {/each}
-        {#each taxesPrices as taxPrice (taxPrice.name)}
-          {@render priceLine(`${taxPrice.name} (${taxPrice.rate * 100}%)`, taxPrice.value, 'text-2xl')}
-        {/each}
-      </div>
+<div class={['bg-secondary p-5 max-md:pt-0', className]}>
+  <div
+    bind:this={expandElement}
+    class={[
+      'grid touch-pan-x [grid-template-rows:auto_0fr] transition-all duration-300',
+      isExpanded && '[grid-template-rows:auto_1fr]',
+    ]}
+    onpointercancel={onpointercancelOrPointerup}
+    {onpointerdown}
+    {onpointermove}
+    onpointerup={onpointercancelOrPointerup}
+  >
+    <div class="md:hidden">
+      <button class={['grid h-6 w-full place-items-center']} onclick={toggleIsExpanded} type="button">
+        <Icon class={['transition-[rotate] duration-300', !isExpanded && 'rotate-180']} src={ChevronDownIcon} />
+      </button>
     </div>
-    <div class="mt-2 w-full">
-      <div class="mb-3 space-y-0.5">
-        <div class="h-0.5 bg-white"></div>
-        {@render priceLine(cart.total, totalPrice, 'text-4xl')}
-        <div class="h-0.5 bg-white"></div>
-      </div>
-      <Button
-        class="font-bold"
-        disabled={config.isInitialized ? cartState.size < 1 || !cartState.isCheckoutPossible || buttonDisabled : true}
-        fullWidth
-        {onclick}
-        reverseColors
-        type={buttonType}>{buttonText}</Button
-      >
+    <div class="overflow-hidden">
+      {@render priceLine(cart.subtotal, subTotalPrice, 'text-2xl')}
+      {#each additionalCharges as { price, name } (name)}
+        {@render priceLine(name, price, 'text-2xl')}
+      {/each}
+      {#each taxesPrices as taxPrice (taxPrice.name)}
+        {@render priceLine(`${taxPrice.name} (${taxPrice.rate * 100}%)`, taxPrice.value, 'text-2xl')}
+      {/each}
     </div>
   </div>
+  <div class="mt-2">
+    <div class="mb-3 space-y-0.5">
+      <div class="h-0.5 bg-white"></div>
+      {@render priceLine(cart.total, totalPrice, 'text-4xl')}
+      <div class="h-0.5 bg-white"></div>
+    </div>
+    <Button
+      class="font-bold"
+      disabled={config.isInitialized ? cartState.size < 1 || !cartState.isCheckoutPossible || buttonDisabled : true}
+      fullWidth
+      {onclick}
+      reverseColors
+      type={buttonType}>{buttonText}</Button
+    >
+  </div>
+  {@render children?.()}
 </div>

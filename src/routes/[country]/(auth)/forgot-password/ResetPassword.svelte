@@ -79,7 +79,7 @@
 </script>
 
 {#if validated === true}
-  <Form class="w-full" {onsubmit} bind:processing>
+  <Form {onsubmit} bind:processing>
     <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.resetPasswordPage.title}</h1>
     <TextInput field={formFields.newPassword}>
       {#snippet label()}

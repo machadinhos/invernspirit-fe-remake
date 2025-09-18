@@ -29,7 +29,7 @@
   };
 </script>
 
-<Form class="w-full" {onsubmit} bind:processing>
+<Form {onsubmit} bind:processing>
   <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.codePage.title}</h1>
   <p class="text-center">{auth.forgotPassword.codePage.description}</p>
   <div class="flex w-full justify-center">

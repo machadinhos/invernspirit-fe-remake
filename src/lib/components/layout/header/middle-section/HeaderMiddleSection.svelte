@@ -18,7 +18,7 @@
 {#snippet headerLogo()}
   <ShrinkOnClickWrapper>
     <div class="grid size-16 place-items-center">
-      <a class="group grid size-full place-items-center" href="/{page.params.country}/">
+      <a class="group grid place-items-center" href="/{page.params.country}/">
         <img
           class="size-12 object-contain transition-[scale] duration-300 group-hover:scale-130"
           alt="logo"
@@ -76,7 +76,6 @@
 
 <style>
   li:not(.logo) {
-    display: inline;
     position: relative;
 
     &::after {
@@ -94,7 +93,7 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
-      &:hover::after {
+      &:has(:hover)::after {
         transform: translateX(-50%) scaleX(1);
       }
     }

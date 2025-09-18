@@ -30,7 +30,7 @@
 </script>
 
 {#if isOpen}
-  <div class="fixed inset-0 z-50 size-full bg-black/50" transition:fade={{ duration: 500 }}></div>
+  <div class="fixed inset-0 z-50 bg-black/50" transition:fade={{ duration: 500 }}></div>
   <div
     class={[
       'fixed top-0 z-50 h-full bg-background shadow-lg',

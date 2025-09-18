@@ -106,30 +106,26 @@
   };
 </script>
 
-<Form class="w-full gap-6 pt-10" onsubmit={submitSignUp} bind:processing>
-  <div class="flex w-full gap-4">
+<Form class="pt-10" onsubmit={submitSignUp} bind:processing>
+  <div class="flex gap-4">
     {#each [formFields.firstName, formFields.lastName] as field (field.id)}
-      <div class="w-1/2">
-        <TextInput {field}>
-          {#snippet label()}
-            {field.label}
-          {/snippet}
-        </TextInput>
-      </div>
-    {/each}
-  </div>
-
-  {#each [formFields.email, formFields.password, formFields.confirmPassword] as field (field.id)}
-    <div class="w-full">
-      <TextInput {field}>
+      <TextInput {field} wrapperClass="w-1/2">
         {#snippet label()}
           {field.label}
         {/snippet}
       </TextInput>
-      {#if field.label === 'Password'}
-        <PasswordChecks password={formFields.password.value} />
-      {/if}
-    </div>
+    {/each}
+  </div>
+
+  {#each [formFields.email, formFields.password, formFields.confirmPassword] as field (field.id)}
+    <TextInput {field}>
+      {#snippet label()}
+        {field.label}
+      {/snippet}
+    </TextInput>
+    {#if field.label === 'Password'}
+      <PasswordChecks password={formFields.password.value} />
+    {/if}
   {/each}
 
   <CheckBox name="remember-me" class="mb-4" label={auth.rememberMeLabel} bind:checked={rememberMeInput} />

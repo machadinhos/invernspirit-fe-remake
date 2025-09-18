@@ -11,7 +11,7 @@
   let { children, hasEditButton, onEditButtonClick, title }: Props = $props();
 </script>
 
-<div class="relative w-full md:bg-background md:p-5 md:shadow-2xl">
+<div class="relative md:bg-background md:p-5 md:shadow-2xl">
   {#if hasEditButton}
     <button
       class="absolute top-5 right-5 grid size-10 place-items-center text-primary"
@@ -21,7 +21,7 @@
       <Icon size="20" src={PencilIcon} />
     </button>
   {/if}
-  <div class="mb-2 flex w-full justify-center">
+  <div class="mb-2 flex justify-center">
     <h4 style="font-size: 1.5rem" class="lineunder">{title}</h4>
   </div>
   {@render children()}

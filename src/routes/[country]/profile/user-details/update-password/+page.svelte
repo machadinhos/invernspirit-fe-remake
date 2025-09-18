@@ -65,7 +65,7 @@
   };
 </script>
 
-<Form class="w-full" {onsubmit} bind:processing>
+<Form {onsubmit} bind:processing>
   {#each Object.values(formFields) as field (field.id)}
     <TextInput {field}>
       {#snippet label()}

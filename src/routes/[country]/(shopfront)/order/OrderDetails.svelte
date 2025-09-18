@@ -49,7 +49,7 @@
   };
 </script>
 
-<div class="flex w-full flex-1 items-center max-md:flex-col md:items-start md:justify-center md:gap-10">
+<div class="flex w-full items-center max-md:flex-col md:items-start md:justify-center md:gap-10">
   <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
     <div class="flex gap-1">
       {orderContent.orderId}:
@@ -121,7 +121,7 @@
       </p>
     </OrderInfoCard>
     <div>
-      <div class="mb-2 flex w-full justify-center">
+      <div class="mb-2 flex justify-center">
         <h3 style="font-size: 2rem" class="lineunder">{checkout.reviewPage.products}</h3>
       </div>
       <div class="flex flex-col items-center gap-5 xl:overflow-y-auto">

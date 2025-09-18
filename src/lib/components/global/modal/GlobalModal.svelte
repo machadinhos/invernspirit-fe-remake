@@ -31,12 +31,9 @@
       background: #0000004d;
       backdrop-filter: blur(8px);
       transition: opacity 0.3s ease-in-out;
-    }
-  }
-
-  @starting-style {
-    dialog::backdrop {
-      opacity: 0;
+      @starting-style {
+        opacity: 0;
+      }
     }
   }
 </style>

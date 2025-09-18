@@ -96,15 +96,13 @@
   </button>
 {/snippet}
 
-<div class="w-full">
-  <div class="mt-8 mb-4 flex items-center gap-2">
-    <div class="h-0.5 w-full bg-white"></div>
-    {auth.orOAuth}
-    <div class="h-0.5 w-full bg-white"></div>
-  </div>
-  <div class="w-full space-y-3">
-    {@render oAuthButton(GoogleLogoIcon, auth.googleAriaLabel, auth.googleName, onContinueWithGoogleClick)}
-  </div>
+<div class="mt-8 mb-4 flex items-center gap-2">
+  <div class="h-0.5 w-full bg-white"></div>
+  {auth.orOAuth}
+  <div class="h-0.5 w-full bg-white"></div>
+</div>
+<div class="space-y-3">
+  {@render oAuthButton(GoogleLogoIcon, auth.googleAriaLabel, auth.googleName, onContinueWithGoogleClick)}
 </div>
 
 <style>

@@ -91,7 +91,7 @@
     pendingRemoval && 'brightness-75',
   ]}
 >
-  <div class="relative flex w-full gap-4">
+  <div class="relative flex gap-4">
     <a class="block size-[100px] shrink-0" href="/{page.params.country}/shop/products/{product.id}">
       <img alt={product.images[0].alt} height="100" src={product.images[0].url} width="100" />
     </a>
@@ -106,9 +106,13 @@
       </h4>
     </div>
     {#if editable}
-      <div class="absolute top-1/2 right-3 -translate-y-1/2">
-        <ProductQuantitySelector allowZero disabled={pendingRemoval} stock={product.stock} bind:selectedQuantity />
-      </div>
+      <ProductQuantitySelector
+        class="absolute top-1/2 right-3 -translate-y-1/2"
+        allowZero
+        disabled={pendingRemoval}
+        stock={product.stock}
+        bind:selectedQuantity
+      />
       <button
         class="absolute right-3 bottom-2 flex items-center justify-center text-primary"
         aria-label="remove-from-cart"

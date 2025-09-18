@@ -85,7 +85,7 @@
 
 <svelte:head><title>{checkout.headTitle}</title></svelte:head>
 
-<div class="flex size-full flex-col items-center">
+<div class="flex h-full flex-col items-center">
   {#if stages && selectedStageName && enabledStages}
     <div class="my-4 flex flex-col items-center">
       <div class="ml-2 flex gap-3">
@@ -114,7 +114,7 @@
       </h1>
     </div>
     <Form
-      class="flex w-full flex-1 items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
+      class="flex h-full w-full items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
       onsubmit={finalOnStageSubmit}
       bind:processing
     >
@@ -129,17 +129,16 @@
           <ReviewPage country={data.country} bind:onStageSubmit bind:shippingCost />
         {/if}
       </div>
-      <div class="sticky -bottom-px w-full md:top-0 md:w-1/3 md:max-w-[396px]">
-        <SummarySection
-          additionalCharges={page.url.searchParams.get('stage') === 'review' && shippingCost
-            ? [{ name: checkout.shippingCost, price: shippingCost }]
-            : undefined}
-          buttonDisabled={processing}
-          buttonText={isLastStage(selectedStageName) ? checkout.continueToPaymentButton : checkout.continueButton}
-          buttonType="submit"
-          country={data.country}
-        />
-      </div>
+      <SummarySection
+        class="sticky bottom-0 w-full md:top-0 md:w-1/3 md:max-w-[396px]"
+        additionalCharges={page.url.searchParams.get('stage') === 'review' && shippingCost
+          ? [{ name: checkout.shippingCost, price: shippingCost }]
+          : undefined}
+        buttonDisabled={processing}
+        buttonText={isLastStage(selectedStageName) ? checkout.continueToPaymentButton : checkout.continueButton}
+        buttonType="submit"
+        country={data.country}
+      />
     </Form>
   {/if}
 </div>

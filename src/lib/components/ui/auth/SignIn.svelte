@@ -85,15 +85,13 @@
   };
 </script>
 
-<Form class="w-full gap-6 pt-10" onsubmit={submitSignIn} bind:processing>
+<Form class="pt-10" onsubmit={submitSignIn} bind:processing>
   {#each Object.values(formFields) as field (field.id)}
-    <div class="w-full">
-      <TextInput {field}>
-        {#snippet label()}
-          {field.label}
-        {/snippet}
-      </TextInput>
-    </div>
+    <TextInput {field}>
+      {#snippet label()}
+        {field.label}
+      {/snippet}
+    </TextInput>
   {/each}
 
   <div class="mb-4 flex justify-between">

@@ -16,7 +16,7 @@
   const productLength = order.products.reduce((total, product) => total + product.quantity, 0);
 </script>
 
-<div class="w-full bg-background-dark">
+<div class="bg-background-dark">
   <div class="bg-background pb-2 shadow-2xl">
     <LineItemCard
       background={false}
@@ -33,7 +33,7 @@
       {formatPrice(country.locale, country.currency.code, order.payment.grossAmount)}
     </h3>
   </div>
-  <div class="mb-2 flex w-full justify-center">
+  <div class="mb-2 flex justify-center">
     <Anchor class="text-xl md:text-2xl" href="/{page.params.country}/order?id={order.id}"
       >{profile.orders.viewOrder}</Anchor
     >

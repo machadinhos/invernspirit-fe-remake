@@ -78,7 +78,7 @@
 <div class="space-y-4">
   {#each Object.values(formFields) as field (field.id)}
     {#if field.name !== 'province' || (field.name === 'province' && page.params.country === 'es')}
-      <TextInput class="w-full" {field}>
+      <TextInput {field}>
         {#snippet label()}
           {field.label}
         {/snippet}

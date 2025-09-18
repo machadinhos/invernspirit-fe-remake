@@ -19,9 +19,9 @@
 </script>
 
 {#snippet pageListItem(href: 'sign-in' | 'sign-up')}
-  <li style="font-size: 2.5rem" class="w-1/2 text-center">
+  <li class="w-1/2">
     <a
-      class={['block w-full pt-4 transition-opacity duration-500', selected === href ? 'opacity-100' : 'opacity-50']}
+      class={['block pt-4 transition-all duration-500', selected !== href && 'brightness-50']}
       href={`/${page.params.country}/${href}`}
     >
       {#if href === 'sign-in'}
@@ -33,10 +33,10 @@
   </li>
 {/snippet}
 
-<div class="flex size-full justify-center">
+<div class="flex justify-center">
   <div class="mt-4 flex h-fit w-[90%] max-w-[675px] flex-col items-center md:mt-10 md:bg-background-dark md:shadow-2xl">
     <div class="relative w-full md:pt-10">
-      <ul class="flex w-full">
+      <ul style="font-size: 2.5rem" class="flex text-center">
         {@render pageListItem('sign-in')}
         {@render pageListItem('sign-up')}
       </ul>
@@ -45,7 +45,7 @@
         class="pointer-events-none absolute bottom-0.5 h-0.5 w-[25%] bg-white transition-[left] duration-500 select-none"
       ></div>
     </div>
-    <div class="mt-5 mb-10 w-full md:w-[75%]">
+    <div class="mt-5 mb-10 md:w-[75%]">
       {@render children()}
     </div>
   </div>

@@ -9,6 +9,7 @@
     label?: Snippet;
     trailingIcon?: Snippet;
     class?: ClassValue;
+    wrapperClass?: ClassValue;
   };
 
   let props: Props = $props();
