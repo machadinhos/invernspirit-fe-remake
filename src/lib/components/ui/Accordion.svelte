@@ -6,78 +6,68 @@
     accordionTrigger: Snippet<[Item['trigger']]>;
     accordionContent: Snippet<[Item['content']]>;
     items: Item[];
+    exclusive?: boolean;
   };
 
-  let { accordionTrigger, accordionContent, items }: Props = $props();
+  let { accordionTrigger, accordionContent, items, exclusive }: Props = $props();
   const id = $props.id();
 </script>
 
 <div class="out-container space-y-1">
   {#each items as item, index (index)}
-    {@const elementId = `accordion-${id}-${index}`}
-    <div>
-      <input id={elementId} type="checkbox" />
-      <label class="flex cursor-pointer items-center justify-between gap-2" for={elementId}>
-        <div>{@render accordionTrigger(item.trigger)}</div>
+    <details name={exclusive ? id : undefined}>
+      <summary>
+        {@render accordionTrigger(item.trigger)}
         <Icon src={ChevronDownIcon} />
-      </label>
-      <div>
-        <div>
-          {@render accordionContent(item.content)}
-        </div>
-      </div>
-    </div>
+      </summary>
+      {@render accordionContent(item.content)}
+    </details>
   {/each}
 </div>
 
 <style>
-  .out-container {
-    & > div {
+  details {
+    background: var(--color-background);
+
+    &::details-content {
       padding-inline: 0.5rem;
-      background: var(--color-background);
-      & > input {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
-        border-width: 0;
-        &:focus-visible {
-          & + label {
-            outline: 2px solid white;
-          }
-        }
-        &:checked {
-          & + label > :global(svg) {
-            rotate: 180deg;
-          }
-          & ~ div {
-            grid-template-rows: 1fr;
-            & > div {
-              padding-top: 0.875rem;
-              padding-bottom: 0.5rem;
-            }
-          }
-        }
+      display: block;
+      overflow: clip;
+      block-size: 0;
+      transition-property: block-size, content-visibility;
+      transition-duration: 0.2s;
+      transition-behavior: allow-discrete;
+    }
+
+    & > :global(*):last-child {
+      padding-bottom: 0.5rem;
+    }
+
+    & > summary {
+      padding-block: 0.25rem;
+      padding-inline: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      list-style: none;
+      cursor: pointer;
+
+      & ~ :global(*) {
+        padding-top: 0.5rem;
       }
-      & > label {
-        padding-block: 0.25rem;
+      & > :global(svg) {
+        transition: rotate 0.2s linear;
+        rotate: 0;
       }
-      & > div {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: all 0.2s ease-in-out;
-        & > div {
-          overflow: hidden;
-          padding-left: 0.5rem;
-          transition: padding 0.2s ease-in-out;
-        }
+    }
+
+    &[open] {
+      &::details-content {
+        block-size: auto;
+        block-size: auto;
       }
-      & > label > :global(svg) {
-        transition: rotate 0.2s ease-in-out;
+      & > summary > :global(svg) {
+        rotate: 180deg;
       }
     }
   }

@@ -11,6 +11,18 @@
       trigger: 'Trigger 2',
       content: 'Content 2',
     },
+    {
+      trigger: 'Trigger 3',
+      content: 'Content 3',
+    },
+    {
+      trigger: 'Trigger 4',
+      content: 'Content 4',
+    },
+    {
+      trigger: 'Trigger 5',
+      content: 'Content 5',
+    },
   ];
 </script>
 
@@ -20,7 +32,7 @@
 
 <div class="flex justify-center">
   <div class="w-[90%] max-w-[750px]">
-    <Accordion items={test}>
+    <Accordion exclusive items={test}>
       {#snippet accordionTrigger(trigger)}
         <h2 class="text-2xl">{trigger}</h2>
       {/snippet}

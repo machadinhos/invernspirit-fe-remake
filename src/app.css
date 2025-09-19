@@ -16,6 +16,7 @@
 :root {
   background-color: color-mix(in srgb, var(--color-background-dark) 40%, #000 60%);
   background-image: url('/grainy-bg-image.webp');
+  interpolate-size: allow-keywords;
 }
 
 body {
