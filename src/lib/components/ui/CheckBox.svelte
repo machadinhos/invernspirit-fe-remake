@@ -15,8 +15,7 @@
 
 <label
   class={[
-    'inline-flex w-max items-center gap-2 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-white',
-    disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+    'inline-flex w-max cursor-pointer items-center gap-2 has-disabled:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-white',
     className,
   ]}
 >

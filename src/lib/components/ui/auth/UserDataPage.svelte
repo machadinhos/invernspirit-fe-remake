@@ -109,20 +109,12 @@
 <Form class="pt-10" onsubmit={submitSignUp} bind:processing>
   <div class="flex gap-4">
     {#each [formFields.firstName, formFields.lastName] as field (field.id)}
-      <TextInput {field} wrapperClass="w-1/2">
-        {#snippet label()}
-          {field.label}
-        {/snippet}
-      </TextInput>
+      <TextInput {field} wrapperClass="w-1/2" />
     {/each}
   </div>
 
   {#each [formFields.email, formFields.password, formFields.confirmPassword] as field (field.id)}
-    <TextInput {field}>
-      {#snippet label()}
-        {field.label}
-      {/snippet}
-    </TextInput>
+    <TextInput {field} />
     {#if field.label === 'Password'}
       <PasswordChecks password={formFields.password.value} />
     {/if}

@@ -5,7 +5,7 @@
     class?: ClassValue;
     children: import('svelte').Snippet;
     onsubmit: (event: SubmitEvent) => Promise<void>;
-    processing: boolean;
+    processing?: boolean;
   };
 
   let { class: className, children, onsubmit, processing = $bindable() }: Props = $props();
@@ -24,5 +24,7 @@
 </script>
 
 <form class={className} onsubmit={finalOnSubmit}>
-  {@render children()}
+  <fieldset class="contents" disabled={processing}>
+    {@render children()}
+  </fieldset>
 </form>

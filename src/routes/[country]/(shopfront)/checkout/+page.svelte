@@ -25,7 +25,6 @@
 
   let stages: CheckoutStage[] | undefined = $state();
   let selectedStageName: StageName | undefined = $state();
-  let processing = $state(false);
   let enabledStages: StageName[] | undefined = $derived(
     stages?.filter((stage) => stage.isEnabled).map((stage) => stage.name),
   );
@@ -116,7 +115,6 @@
     <Form
       class="flex h-full w-full items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
       onsubmit={finalOnStageSubmit}
-      bind:processing
     >
       <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
         {#if selectedStageName === 'personal-details'}
@@ -134,7 +132,6 @@
         additionalCharges={page.url.searchParams.get('stage') === 'review' && shippingCost
           ? [{ name: checkout.shippingCost, price: shippingCost }]
           : undefined}
-        buttonDisabled={processing}
         buttonText={isLastStage(selectedStageName) ? checkout.continueToPaymentButton : checkout.continueButton}
         buttonType="submit"
         country={data.country}

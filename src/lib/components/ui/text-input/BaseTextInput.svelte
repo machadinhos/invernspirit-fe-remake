@@ -14,7 +14,7 @@
   let { field, type, label, trailingIcon, class: className, wrapperClass }: Props = $props();
 </script>
 
-<div class={['relative', label && 'pt-2.5', !field.isValid && 'caret-error-light', wrapperClass]}>
+<div class={['relative', (field.label || label) && 'pt-2.5', !field.isValid && 'caret-error-light', wrapperClass]}>
   {#if field.type !== 'textarea'}
     <input
       {...field.additionalElementAttributes}
@@ -57,7 +57,7 @@
       {@render trailingIcon()}
     </div>
   {/if}
-  {#if label}
+  {#if field.label}
     <label
       class={[
         `pointer-events-none absolute left-0 text-lg text-secondary-foreground transition-all select-none peer-focus:text-sm`,
@@ -67,7 +67,11 @@
       ]}
       for={field.id}
     >
-      {@render label()}
+      {#if label}
+        {@render label()}
+      {:else}
+        {field.label}
+      {/if}
     </label>
   {/if}
   <p class={['pointer-events-none text-sm text-error-light select-none', field.isValid ? 'opacity-0' : 'opacity-100']}>

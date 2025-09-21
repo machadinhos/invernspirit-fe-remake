@@ -14,7 +14,6 @@
   let { actionAfterAuthentication, email }: Props = $props();
 
   let code = $state('');
-  let processing = $state(false);
 
   const onSendAnotherCodeClick = async (): Promise<void> => {
     await bffClient.user.signUp.resendEmail(page.params.country, email);
@@ -42,7 +41,7 @@
   };
 </script>
 
-<Form class="grid justify-items-center" {onsubmit} bind:processing>
+<Form class="grid justify-items-center" {onsubmit}>
   <h1 class="mb-2.5 text-3xl">{auth.forgotPassword.codePage.title}</h1>
   <p>{auth.forgotPassword.codePage.description}</p>
   <p class="mb-2.5">
@@ -54,5 +53,5 @@
 
   <VerificationCodeInput length={8} type="numeric" bind:value={code} />
 
-  <Button class="mt-5" disabled={processing} fullWidth type="submit">{auth.signUp.submitButton}</Button>
+  <Button class="mt-5" fullWidth type="submit">{auth.signUp.submitButton}</Button>
 </Form>

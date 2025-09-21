@@ -9,7 +9,6 @@
   import { page } from '$app/state';
   import { validateEmail } from '$lib/utils/input-validation';
 
-  let processing = $state(false);
   let resetToken: (() => void) | undefined = $state();
 
   let captchaToken: string | undefined;
@@ -54,17 +53,11 @@
   });
 </script>
 
-<Form {onsubmit} bind:processing>
+<Form {onsubmit}>
   <h1 class="text-center text-3xl">{auth.forgotPassword.emailPage.title}</h1>
-  <TextInput field={formFields.email}>
-    {#snippet label()}
-      {formFields.email.label}
-    {/snippet}
-  </TextInput>
+  <TextInput field={formFields.email} />
 
   <CaptchaElement action="ask-email-forgot-password" callback={captchaCallback} bind:resetToken />
 
-  <Button class="mt-2.5" disabled={processing} fullWidth type="submit"
-    >{auth.forgotPassword.emailPage.submitButton}</Button
-  >
+  <Button class="mt-2.5" fullWidth type="submit">{auth.forgotPassword.emailPage.submitButton}</Button>
 </Form>

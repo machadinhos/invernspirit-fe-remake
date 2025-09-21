@@ -8,7 +8,6 @@
   import { validateRequiredInput } from '$lib/utils/input-validation';
 
   let code: string = $state('');
-  let processing = $state(false);
 
   const validateCode = (value: string): boolean => {
     return value.length === 8 && /^[0-9]+$/.test(value) && validateRequiredInput(value);
@@ -22,12 +21,10 @@
   };
 </script>
 
-<Form class="grid place-items-center" onsubmit={submitCode} bind:processing>
+<Form class="grid place-items-center" onsubmit={submitCode}>
   <h1 class="mb-2.5 text-3xl">{profile.userDetails.updateEmail.title}</h1>
   <p>{profile.userDetails.updateEmail.description}</p>
   <VerificationCodeInput length={8} type="numeric" bind:value={code} />
 
-  <Button class="mt-5" disabled={processing} fullWidth type="submit"
-    >{profile.userDetails.updateEmail.submitButton}</Button
-  >
+  <Button class="mt-5" fullWidth type="submit">{profile.userDetails.updateEmail.submitButton}</Button>
 </Form>

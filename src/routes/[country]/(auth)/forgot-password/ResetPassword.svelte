@@ -21,7 +21,6 @@
   let { email, code, pageState = $bindable() }: Props = $props();
 
   let validated: boolean | undefined = $state();
-  let processing = $state(false);
 
   const formFields = {
     newPassword: new FormField({
@@ -79,28 +78,19 @@
 </script>
 
 {#if validated === true}
-  <Form {onsubmit} bind:processing>
+  <Form {onsubmit}>
     <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.resetPasswordPage.title}</h1>
-    <TextInput field={formFields.newPassword}>
-      {#snippet label()}
-        {formFields.newPassword.label}
-      {/snippet}
-    </TextInput>
+    <TextInput field={formFields.newPassword} />
     <PasswordChecks password={formFields.newPassword.value} />
-    <TextInput field={formFields.confirmPassword}>
-      {#snippet label()}
-        {formFields.confirmPassword.label}
-      {/snippet}
-    </TextInput>
-    <Button class="mt-2.5" disabled={processing} fullWidth type="submit"
-      >{auth.forgotPassword.resetPasswordPage.submitButton}</Button
-    >
+    <TextInput field={formFields.confirmPassword} />
+
+    <Button class="mt-2.5" fullWidth type="submit">{auth.forgotPassword.resetPasswordPage.submitButton}</Button>
   </Form>
 {:else if validated === false}
   <div class="text-center">
     <p>{auth.forgotPassword.resetPasswordPage.invalidCode}</p>
-    <Anchor href="/{page.params.country}/forgot-password?autofill-email={email}"
-      >{auth.forgotPassword.resetPasswordPage.tryAgain}</Anchor
-    >
+    <Anchor href="/{page.params.country}/forgot-password?autofill-email={email}">
+      {auth.forgotPassword.resetPasswordPage.tryAgain}
+    </Anchor>
   </div>
 {/if}

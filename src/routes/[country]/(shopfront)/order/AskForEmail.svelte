@@ -57,11 +57,7 @@
 </script>
 
 <form class="w-96 max-w-[90%]" onsubmit={onFormSubmit}>
-  <TextInput field={formFields.email}>
-    {#snippet label()}
-      {formFields.email.label}
-    {/snippet}
-  </TextInput>
+  <TextInput field={formFields.email} />
 
   <Button class="mt-5" fullWidth type="submit">Submit</Button>
 </form>

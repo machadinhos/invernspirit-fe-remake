@@ -123,17 +123,9 @@
 <div class="grid gap-4 lg:grid-cols-2">
   {#each Object.values(formFields) as field (field.id)}
     {#if field.name === 'province' && page.params.country === 'es'}
-      <TextInputWithAutocomplete {field} options={provinces}>
-        {#snippet label()}
-          {field.label}
-        {/snippet}
-      </TextInputWithAutocomplete>
+      <TextInputWithAutocomplete {field} options={provinces} />
     {:else if field.name !== 'province'}
-      <TextInput {field}>
-        {#snippet label()}
-          {field.label}
-        {/snippet}
-      </TextInput>
+      <TextInput {field} />
     {/if}
   {/each}
 </div>

@@ -103,7 +103,7 @@
 
   <CaptchaElement action="log-in" callback={captchaCallback} bind:resetToken />
 
-  <Button class="mt-5" disabled={processing} fullWidth type="submit">{auth.signIn.submitButton}</Button>
+  <Button class="mt-5" fullWidth type="submit">{auth.signIn.submitButton}</Button>
 </Form>
 
 <OAuthSection {actionAfterAuthentication} bind:processing />

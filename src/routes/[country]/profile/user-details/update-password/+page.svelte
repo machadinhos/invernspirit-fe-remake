@@ -9,8 +9,6 @@
   import { profile } from '$content';
   import { validatePassword } from '$lib/utils/input-validation';
 
-  let processing = $state(false);
-
   const formFields = {
     currentPassword: new FormField({
       id: 'update-password-current-password',
@@ -65,19 +63,13 @@
   };
 </script>
 
-<Form {onsubmit} bind:processing>
+<Form {onsubmit}>
   {#each Object.values(formFields) as field (field.id)}
-    <TextInput {field}>
-      {#snippet label()}
-        {field.label}
-      {/snippet}
-    </TextInput>
+    <TextInput {field} />
   {/each}
 
   <div class="mt-5 flex gap-5">
-    <Button class="flex-1" disabled={processing} onclick={onCancel}>{profile.userDetails.cancelChanges}</Button>
-    <Button class="flex-1" disabled={processing} fullWidth type="submit"
-      >{profile.userDetails.updatePassword.submitButton}</Button
-    >
+    <Button class="flex-1" onclick={onCancel}>{profile.userDetails.cancelChanges}</Button>
+    <Button class="flex-1" fullWidth type="submit">{profile.userDetails.updatePassword.submitButton}</Button>
   </div>
 </Form>

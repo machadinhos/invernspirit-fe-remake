@@ -64,11 +64,7 @@
   <div class="w-full md:mt-5 md:w-[75%]">
     <form onsubmit={submitMessage}>
       {#each Object.values(formFields) as field (field.id)}
-        <TextInput {field}>
-          {#snippet label()}
-            {field.label}
-          {/snippet}
-        </TextInput>
+        <TextInput {field} />
       {/each}
       <Button class="mt-5" fullWidth type="submit">{contactUs.submitButton}</Button>
     </form>

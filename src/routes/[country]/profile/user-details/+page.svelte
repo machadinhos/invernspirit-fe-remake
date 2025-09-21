@@ -5,7 +5,7 @@
   import { validateEmail, validateRequiredInput } from '$lib/utils/input-validation';
   import { bffClient } from '$service';
   import { config } from '$state';
-  import type { GenericFormField } from '$lib/utils/form-fields.svelte';
+  import { Form } from '$components-utils';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
@@ -13,7 +13,6 @@
 
   let user: UserDetails | undefined = $state();
   let editing = $state(false);
-  let processing = $state(false);
 
   const formFields = {
     firstName: new FormField({
@@ -61,25 +60,18 @@
   };
 
   const onSaveChanges = async (): Promise<void> => {
-    if (processing) return;
-    processing = true;
-
-    try {
-      if (!validateFormFields(formFields)) return;
-      const payload = mapFormFieldsToValues(formFields);
-      if (Object.keys(payload).length > 0) {
-        user = await bffClient.user.update.personalInformation(page.params.country, payload);
-      }
-
-      if (formFields.email.filterFunction(formFields.email.value)) {
-        await bffClient.user.update.email.submitEmail(page.params.country, formFields.email.value);
-        goto(`/${page.params.country}/profile/user-details/update-email`);
-      }
-
-      editing = false;
-    } finally {
-      processing = false;
+    if (!validateFormFields(formFields)) return;
+    const payload = mapFormFieldsToValues(formFields);
+    if (Object.keys(payload).length > 0) {
+      user = await bffClient.user.update.personalInformation(page.params.country, payload);
     }
+
+    if (formFields.email.filterFunction(formFields.email.value)) {
+      await bffClient.user.update.email.submitEmail(page.params.country, formFields.email.value);
+      goto(`/${page.params.country}/profile/user-details/update-email`);
+    }
+
+    editing = false;
   };
 
   const onCancelChanges = (): void => {
@@ -97,40 +89,39 @@
   });
 </script>
 
-{#snippet detailLine(label: string, value: string, formField: GenericFormField)}
+{#snippet detailLine(label: string, value: string)}
   <tr>
     <td>
       {label}:
     </td>
     <td>
-      {#if editing}
-        <TextInput field={formField} />
-      {:else}
-        {value}
-      {/if}
+      {value}
     </td>
   </tr>
 {/snippet}
 
 {#if user}
-  <div class="flex flex-col">
+  {#if !editing}
     <table class="border-separate border-spacing-x-2">
-      {@render detailLine(profile.userDetails.email, user.email, formFields.email)}
-      {@render detailLine(profile.userDetails.firstName, user.firstName, formFields.firstName)}
-      {@render detailLine(profile.userDetails.lastName, user.lastName, formFields.lastName)}
+      {@render detailLine(profile.userDetails.email, user.email)}
+      {@render detailLine(profile.userDetails.firstName, user.firstName)}
+      {@render detailLine(profile.userDetails.lastName, user.lastName)}
     </table>
-    {#if !editing}
-      <Button class="my-3 w-16" onclick={onEditClick} type="button">{profile.userDetails.edit}</Button>
+    <div class="mt-4 flex gap-5">
+      <Button class="px-4!" onclick={onEditClick} type="button">{profile.userDetails.edit}</Button>
       {#if user.isValidated}
-        <Button class="w-fit" onclick={onChangePasswordClick}>{profile.userDetails.changePassword}</Button>
+        <Button onclick={onChangePasswordClick}>{profile.userDetails.changePassword}</Button>
       {/if}
-    {:else}
+    </div>
+  {:else}
+    <Form onsubmit={onSaveChanges}>
+      <TextInput field={formFields.email} />
+      <TextInput field={formFields.firstName} />
+      <TextInput field={formFields.lastName} />
       <div class="flex gap-5">
-        <Button disabled={processing} onclick={onCancelChanges} type="button"
-          >{profile.userDetails.cancelChanges}</Button
-        >
-        <Button disabled={processing} onclick={onSaveChanges} type="button">{profile.userDetails.saveChanges}</Button>
+        <Button type="submit">{profile.userDetails.saveChanges}</Button>
+        <Button onclick={onCancelChanges}>{profile.userDetails.cancelChanges}</Button>
       </div>
-    {/if}
-  </div>
+    </Form>
+  {/if}
 {/if}
