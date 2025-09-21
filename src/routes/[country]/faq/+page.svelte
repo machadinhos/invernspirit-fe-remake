@@ -30,16 +30,14 @@
 
 <h1 class="mx-[5%] mb-9 text-center text-5xl">{faq.title}</h1>
 
-<div class="flex justify-center">
-  <div class="w-[90%] max-w-[750px]">
-    <Accordion exclusive items={test}>
-      {#snippet accordionTrigger(trigger)}
-        <h2 class="text-2xl">{trigger}</h2>
-      {/snippet}
+<div class="mx-auto w-[90%] max-w-[750px]">
+  <Accordion exclusive items={test}>
+    {#snippet accordionTrigger(trigger)}
+      <h2 class="text-2xl">{trigger}</h2>
+    {/snippet}
 
-      {#snippet accordionContent(content)}
-        <p>{content}</p>
-      {/snippet}
-    </Accordion>
-  </div>
+    {#snippet accordionContent(content)}
+      <p>{content}</p>
+    {/snippet}
+  </Accordion>
 </div>

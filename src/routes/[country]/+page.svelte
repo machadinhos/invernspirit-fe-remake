@@ -51,7 +51,7 @@
       <div>
         <div class="flex gap-4 font-thin">
           <h1 class="text-6xl md:text-8xl">{home.title}</h1>
-          <div class="flex flex-col justify-center">
+          <div class="my-auto">
             <h2>{home.subTitle.firstLine}</h2>
             <h2>{home.subTitle.secondLine}</h2>
           </div>

@@ -114,11 +114,9 @@
         />
         <p>{common.cookieConsent.customizationSection.analyticsCookies.description}</p>
       </div>
-      <div class="flex flex-[1.5] items-center justify-center">
-        <div class="flex w-full gap-4">
-          <Button fullWidth onclick={onCustomizeSave}>{common.cookieConsent.customizationSection.save}</Button>
-          <Button fullWidth onclick={onCustomizeBack}>{common.cookieConsent.customizationSection.back}</Button>
-        </div>
+      <div class="my-auto flex h-min w-full flex-[1.5] gap-4">
+        <Button fullWidth onclick={onCustomizeSave}>{common.cookieConsent.customizationSection.save}</Button>
+        <Button fullWidth onclick={onCustomizeBack}>{common.cookieConsent.customizationSection.back}</Button>
       </div>
     </div>
   {/if}

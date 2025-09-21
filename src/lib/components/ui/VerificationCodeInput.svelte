@@ -1,11 +1,14 @@
 <script lang="ts">
+  import type { ClassValue } from 'svelte/elements';
+
   type Props = {
     value: string;
     type: 'numeric' | 'alphanumeric';
     length: number;
+    class?: ClassValue;
   };
 
-  let { value = $bindable(), type, length }: Props = $props();
+  let { value = $bindable(), type, length, class: className }: Props = $props();
   const id = $props.id();
 
   const getIndexFromId = (id: string): number => Number(id.split('-')[2]);
@@ -99,7 +102,7 @@
   };
 </script>
 
-<div class="flex gap-2">
+<div class={['flex gap-2', className]}>
   {#each Array.from({ length }, (_, i) => i) as index (index)}
     <input
       id="{id}-input-{index}"

@@ -21,7 +21,7 @@
   };
 </script>
 
-<div class="flex w-96 max-w-[90%] flex-col items-center">
+<div class="grid w-96 max-w-[90%] justify-items-center">
   <p>{orderContent.wrongUser.message}</p>
   <Button {onclick}>{orderContent.wrongUser.button}</Button>
 </div>

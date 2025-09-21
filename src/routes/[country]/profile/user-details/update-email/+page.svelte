@@ -22,12 +22,10 @@
   };
 </script>
 
-<Form onsubmit={submitCode} bind:processing>
-  <h1 class="mb-2.5 text-center text-3xl">{profile.userDetails.updateEmail.title}</h1>
-  <p class="text-center">{profile.userDetails.updateEmail.description}</p>
-  <div class="flex justify-center">
-    <VerificationCodeInput length={8} type="numeric" bind:value={code} />
-  </div>
+<Form class="grid place-items-center" onsubmit={submitCode} bind:processing>
+  <h1 class="mb-2.5 text-3xl">{profile.userDetails.updateEmail.title}</h1>
+  <p>{profile.userDetails.updateEmail.description}</p>
+  <VerificationCodeInput length={8} type="numeric" bind:value={code} />
 
   <Button class="mt-5" disabled={processing} fullWidth type="submit"
     >{profile.userDetails.updateEmail.submitButton}</Button

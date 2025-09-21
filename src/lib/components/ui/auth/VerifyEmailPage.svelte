@@ -42,17 +42,15 @@
   };
 </script>
 
-<Form class="flex flex-col items-center" {onsubmit} bind:processing>
-  <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.codePage.title}</h1>
-  <p class="text-center">{auth.forgotPassword.codePage.description}</p>
-  <div class="mb-2.5 flex justify-center">
-    <p>
-      {auth.signUp.verifyEmailPage.didntReceiveCode}
-      <button class="text-primary" onclick={onSendAnotherCodeClick} type="button"
-        >{auth.signUp.verifyEmailPage.resendEmailButton}</button
-      >
-    </p>
-  </div>
+<Form class="grid justify-items-center" {onsubmit} bind:processing>
+  <h1 class="mb-2.5 text-3xl">{auth.forgotPassword.codePage.title}</h1>
+  <p>{auth.forgotPassword.codePage.description}</p>
+  <p class="mb-2.5">
+    {auth.signUp.verifyEmailPage.didntReceiveCode}
+    <button class="text-primary" onclick={onSendAnotherCodeClick} type="button"
+      >{auth.signUp.verifyEmailPage.resendEmailButton}</button
+    >
+  </p>
 
   <VerificationCodeInput length={8} type="numeric" bind:value={code} />
 

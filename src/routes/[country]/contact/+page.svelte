@@ -55,24 +55,22 @@
 
 <svelte:head><title>{contactUs.headTitle}</title></svelte:head>
 
-<div class="flex justify-center">
-  <div
-    class="mt-4 flex h-fit w-[90%] max-w-[675px] flex-col items-center md:mt-10 md:bg-background-dark md:py-14 md:shadow-2xl"
-  >
-    <h1 style="font-size: 2.5rem" class="lineunder">
-      {contactUs.title}
-    </h1>
-    <div class="w-full md:mt-5 md:w-[75%]">
-      <form onsubmit={submitMessage}>
-        {#each Object.values(formFields) as field (field.id)}
-          <TextInput {field}>
-            {#snippet label()}
-              {field.label}
-            {/snippet}
-          </TextInput>
-        {/each}
-        <Button class="mt-5" fullWidth type="submit">{contactUs.submitButton}</Button>
-      </form>
-    </div>
+<div
+  class="mx-auto mt-4 grid h-fit w-[90%] max-w-[675px] justify-items-center md:mt-10 md:bg-background-dark md:py-14 md:shadow-2xl"
+>
+  <h1 style="font-size: 2.5rem" class="lineunder">
+    {contactUs.title}
+  </h1>
+  <div class="w-full md:mt-5 md:w-[75%]">
+    <form onsubmit={submitMessage}>
+      {#each Object.values(formFields) as field (field.id)}
+        <TextInput {field}>
+          {#snippet label()}
+            {field.label}
+          {/snippet}
+        </TextInput>
+      {/each}
+      <Button class="mt-5" fullWidth type="submit">{contactUs.submitButton}</Button>
+    </form>
   </div>
 </div>

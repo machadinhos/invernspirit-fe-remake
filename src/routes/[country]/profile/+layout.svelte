@@ -25,21 +25,21 @@
 
 {#snippet listItem(subPage: string, text: string, icon: IconSrcType)}
   <li class={subPage === selected ? 'bg-background' : 'opacity-50'}>
-    <a class="flex w-full items-center gap-2 px-3 py-1" href="/{page.params.country}/profile/{subPage}">
+    <a class="flex w-full gap-2 px-3 py-1" href="/{page.params.country}/profile/{subPage}">
       <Icon src={icon} />
-      {text}</a
-    >
+      {text}
+    </a>
   </li>
 {/snippet}
 
-<div class="flex flex-col items-center">
+<div class="mx-auto w-[90%] md:max-w-[900px]">
   <h1 class="mb-9 text-center text-5xl">{profile.title}</h1>
-  <div class="flex w-[90%] gap-5 max-md:flex-col md:max-w-[900px]">
+  <div class="flex gap-5 max-md:flex-col">
     <ul class="space-y-2 md:w-44">
       {@render listItem('user-details', profile.links.userDetails, PersonalInformationIcon)}
       {@render listItem('orders', profile.links.orders, ReceiptIcon)}
     </ul>
-    <div class="w-full">
+    <div>
       {@render children()}
     </div>
   </div>

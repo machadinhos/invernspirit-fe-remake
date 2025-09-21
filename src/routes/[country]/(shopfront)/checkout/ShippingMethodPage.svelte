@@ -69,14 +69,12 @@
           value={shippingMethod.id}
           bind:group={selectedShippingMethodId}
         />
-        <div class="mb-2 flex justify-center">
-          <div
-            class={[
-              "grid size-4 place-items-center rounded-full bg-background-dark after:size-2 after:rounded-full after:bg-primary after:transition-opacity after:content-['']",
-              shippingMethod.id === selectedShippingMethodId ? 'after:opacity-100' : 'after:opacity-0',
-            ]}
-          ></div>
-        </div>
+        <div
+          class={[
+            "mx-auto mb-2 grid size-4 place-items-center rounded-full bg-background-dark after:size-2 after:rounded-full after:bg-primary after:transition-opacity after:content-['']",
+            shippingMethod.id === selectedShippingMethodId ? 'after:opacity-100' : 'after:opacity-0',
+          ]}
+        ></div>
         <h2 class="truncate text-2xl">{shippingMethod.name}</h2>
         <p>{checkout.shippingMethodPage.deliveryTime}: {shippingMethod.rate.deliveryTime} days</p>
         <p>

@@ -85,42 +85,40 @@
 
 <svelte:head><title>{`${shop.products.id.headTitle}${data.product.name}`}</title></svelte:head>
 
-<div class="my-4 flex justify-center">
-  <div class="flex w-[90%] gap-5 max-lg:flex-col">
-    <div class="flex justify-center lg:w-1/2">
-      <ThumbnailCarousel images={data.product.images} />
-    </div>
-    <div class="lg:w-1/2">
-      <h1 class="text-6xl lg:text-8xl">{data.product.name}</h1>
-      <div class="flex items-center justify-between">
-        <p class="price text-4xl lg:text-6xl">
-          {formatPrice(data.country.locale, data.country.currency.code, data.product.grossPrice)}
-        </p>
-        <button aria-label="share" onclick={onShareClick} type="button">
-          <Icon size="25" src={ShareIcon} />
-        </button>
-      </div>
-      <div class="my-5 h-px bg-white"></div>
-      <p class="min-h-24 text-justify">{data.product.description}</p>
-      <div class="my-5 h-px bg-white"></div>
-      <p>
-        {shop.products.id.belongsToCollectionStart}
-        <Anchor href="/{page.params.country}/shop/collections/{data.product.collection.id}"
-          >{data.product.collection.name}</Anchor
-        >
-        {shop.products.id.belongsToCollectionEnd}
+<div class="mx-auto my-4 flex w-[90%] gap-5 max-lg:flex-col">
+  <div class="mx-auto lg:w-1/2">
+    <ThumbnailCarousel images={data.product.images} />
+  </div>
+  <div class="lg:w-1/2">
+    <h1 class="text-6xl lg:text-8xl">{data.product.name}</h1>
+    <div class="flex items-center justify-between">
+      <p class="price text-4xl lg:text-6xl">
+        {formatPrice(data.country.locale, data.country.currency.code, data.product.grossPrice)}
       </p>
-      <div class="my-4 flex gap-3">
-        <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
-        <p>{shop.products.id.stock}: {bucketStock}</p>
-        <ProductStatusBanner {bucketStock} {inCartQuantity} />
-      </div>
-      <Button
-        class="font-bold"
-        disabled={bucketStock === undefined || availableStock === undefined || availableStock <= 0}
-        fullWidth
-        onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button
-      >
+      <button aria-label="share" onclick={onShareClick} type="button">
+        <Icon size="25" src={ShareIcon} />
+      </button>
     </div>
+    <div class="my-5 h-px bg-white"></div>
+    <p class="min-h-24 text-justify">{data.product.description}</p>
+    <div class="my-5 h-px bg-white"></div>
+    <p>
+      {shop.products.id.belongsToCollectionStart}
+      <Anchor href="/{page.params.country}/shop/collections/{data.product.collection.id}"
+        >{data.product.collection.name}</Anchor
+      >
+      {shop.products.id.belongsToCollectionEnd}
+    </p>
+    <div class="my-4 flex gap-3">
+      <ProductQuantitySelector disabled={bucketStock === undefined} stock={availableStock} bind:selectedQuantity />
+      <p>{shop.products.id.stock}: {bucketStock}</p>
+      <ProductStatusBanner {bucketStock} {inCartQuantity} />
+    </div>
+    <Button
+      class="font-bold"
+      disabled={bucketStock === undefined || availableStock === undefined || availableStock <= 0}
+      fullWidth
+      onclick={onAddToCartClick}>{shop.addToCartButtonLabel}</Button
+    >
   </div>
 </div>

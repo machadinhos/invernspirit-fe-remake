@@ -29,12 +29,10 @@
   };
 </script>
 
-<Form {onsubmit} bind:processing>
-  <h1 class="mb-2.5 text-center text-3xl">{auth.forgotPassword.codePage.title}</h1>
-  <p class="text-center">{auth.forgotPassword.codePage.description}</p>
-  <div class="flex w-full justify-center">
-    <VerificationCodeInput length={8} type="numeric" bind:value={code} />
-  </div>
+<Form class="grid place-items-center" {onsubmit} bind:processing>
+  <h1 class="mb-2.5 text-3xl">{auth.forgotPassword.codePage.title}</h1>
+  <p>{auth.forgotPassword.codePage.description}</p>
+  <VerificationCodeInput length={8} type="numeric" bind:value={code} />
 
   <Button class="mt-5" disabled={processing} fullWidth type="submit">{auth.forgotPassword.codePage.submitButton}</Button
   >

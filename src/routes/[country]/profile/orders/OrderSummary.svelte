@@ -33,7 +33,7 @@
       {formatPrice(country.locale, country.currency.code, order.payment.grossAmount)}
     </h3>
   </div>
-  <div class="mb-2 flex justify-center">
+  <div class="mb-2 text-center">
     <Anchor class="text-xl md:text-2xl" href="/{page.params.country}/order?id={order.id}"
       >{profile.orders.viewOrder}</Anchor
     >

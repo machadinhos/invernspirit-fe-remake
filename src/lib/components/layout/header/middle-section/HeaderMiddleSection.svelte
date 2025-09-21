@@ -30,49 +30,47 @@
   </ShrinkOnClickWrapper>
 {/snippet}
 
-<nav class="mt-5 flex justify-center">
-  <ul class="hidden h-full items-center gap-28 text-xl xl:flex">
-    <li>
-      <DropdownMenu isFullWidth bind:isOpen>
-        {#snippet triggerElement()}
-          <button class="flex items-center gap-1.5" onclick={toggleDropdown} type="button">
-            {common.header.pages.shop.title}
-            <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} src={ChevronDownIcon} />
-          </button>
-        {/snippet}
-        <div class="grid place-items-center gap-4 py-4 text-2xl">
-          <DropdownMenuItem>
-            <a class="hover:text-primary" href="/{page.params.country}/shop/collections" onclick={closeDropdown}
-              >{common.header.pages.shop.byCollection}</a
-            >
-          </DropdownMenuItem>
-          <div class="h-0.5 w-10 bg-white"></div>
-          <DropdownMenuItem>
-            <a class="hover:text-primary" href="/{page.params.country}/shop/products" onclick={closeDropdown}
-              >{common.header.pages.shop.byProduct}</a
-            >
-          </DropdownMenuItem>
-        </div>
-      </DropdownMenu>
-    </li>
-    <li>
-      <a href="/{page.params.country}/about">{common.header.pages.about}</a>
-    </li>
-    <li class="logo">
-      {@render headerLogo()}
-    </li>
-    <li>
-      <a href="/{page.params.country}/contact">{common.header.pages.contact}</a>
-    </li>
-    <li>
-      <a class="h-full" href="/{page.params.country}/faq">{common.header.pages.faq}</a>
-    </li>
-  </ul>
-
-  <div class="xl:hidden">
+<ul class="mt-5 hidden h-full items-center gap-28 text-xl xl:flex">
+  <li>
+    <DropdownMenu isFullWidth bind:isOpen>
+      {#snippet triggerElement()}
+        <button class="flex items-center gap-1.5" onclick={toggleDropdown} type="button">
+          {common.header.pages.shop.title}
+          <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} src={ChevronDownIcon} />
+        </button>
+      {/snippet}
+      <div class="grid place-items-center gap-4 py-4 text-2xl">
+        <DropdownMenuItem>
+          <a class="hover:text-primary" href="/{page.params.country}/shop/collections" onclick={closeDropdown}
+            >{common.header.pages.shop.byCollection}</a
+          >
+        </DropdownMenuItem>
+        <div class="h-0.5 w-10 bg-white"></div>
+        <DropdownMenuItem>
+          <a class="hover:text-primary" href="/{page.params.country}/shop/products" onclick={closeDropdown}
+            >{common.header.pages.shop.byProduct}</a
+          >
+        </DropdownMenuItem>
+      </div>
+    </DropdownMenu>
+  </li>
+  <li>
+    <a href="/{page.params.country}/about">{common.header.pages.about}</a>
+  </li>
+  <li class="logo">
     {@render headerLogo()}
-  </div>
-</nav>
+  </li>
+  <li>
+    <a href="/{page.params.country}/contact">{common.header.pages.contact}</a>
+  </li>
+  <li>
+    <a class="h-full" href="/{page.params.country}/faq">{common.header.pages.faq}</a>
+  </li>
+</ul>
+
+<div class="mt-5 xl:hidden">
+  {@render headerLogo()}
+</div>
 
 <style>
   li:not(.logo) {

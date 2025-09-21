@@ -24,8 +24,8 @@
 
 {#if pageState}
   <div class="grid h-full place-items-center">
-    <div class="flex w-[90%] max-w-[700px] justify-center py-6 md:bg-background-dark">
-      <div class="w-[85%]">
+    <div class="w-[90%] max-w-[700px] py-6 md:bg-background-dark">
+      <div class="mx-auto w-[85%]">
         {#if pageState === 'ask-email'}
           <AskEmail />
         {:else if pageState === 'ask-code' && email}
