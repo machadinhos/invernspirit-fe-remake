@@ -62,7 +62,7 @@
     <h1 style="font-size: 2.5rem" class="lineunder">
       {contactUs.title}
     </h1>
-    <div class="md:mt-5 md:w-[75%]">
+    <div class="w-full md:mt-5 md:w-[75%]">
       <form onsubmit={submitMessage}>
         {#each Object.values(formFields) as field (field.id)}
           <TextInput {field}>

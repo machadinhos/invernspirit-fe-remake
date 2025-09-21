@@ -33,7 +33,7 @@
   </li>
 {/snippet}
 
-<div class="flex justify-center">
+<div class="flex w-full justify-center">
   <div class="mt-4 flex h-fit w-[90%] max-w-[675px] flex-col items-center md:mt-10 md:bg-background-dark md:shadow-2xl">
     <div class="relative w-full md:pt-10">
       <ul style="font-size: 2.5rem" class="flex text-center">
@@ -45,7 +45,7 @@
         class="pointer-events-none absolute bottom-0.5 h-0.5 w-[25%] bg-white transition-[left] duration-500 select-none"
       ></div>
     </div>
-    <div class="mt-5 mb-10 md:w-[75%]">
+    <div class="mt-5 mb-10 w-full md:w-[75%]">
       {@render children()}
     </div>
   </div>
