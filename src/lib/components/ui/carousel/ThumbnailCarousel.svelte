@@ -83,12 +83,12 @@
 <style>
   .prev-button,
   .next-button {
-    color: #ffffff7f;
     position: absolute;
     top: 45%;
     z-index: 1;
     cursor: pointer;
     margin: 10px;
+    color: #ffffff7f;
   }
 
   .next-button {

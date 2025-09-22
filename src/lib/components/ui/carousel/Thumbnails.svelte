@@ -56,20 +56,20 @@
   }
 
   .embla__container.axisX {
-    height: 21.25vw;
     flex-direction: row;
+    height: 21.25vw;
   }
 
   .embla__container.axisY {
-    height: 35vw;
     flex-direction: column;
+    height: 35vw;
   }
 
   .embla__slide {
-    transform: translate3d(0, 0, 0);
     flex: 0 0 var(--slide-size);
-    min-height: 0;
+    transform: translate3d(0, 0, 0);
     aspect-ratio: 1;
+    min-height: 0;
     touch-action: manipulation;
   }
 </style>

@@ -14,8 +14,8 @@
 }
 
 :root {
-  background-color: color-mix(in srgb, var(--color-background-dark) 40%, #000 60%);
   background-image: url('/grainy-bg-image.webp');
+  background-color: color-mix(in srgb, var(--color-background-dark) 40%, #000 60%);
   interpolate-size: allow-keywords;
 }
 
@@ -59,16 +59,16 @@ input[type='search']::-webkit-search-cancel-button {
   position: relative;
 
   &::after {
-    content: '';
-    pointer-events: none;
-    background: #fff;
     position: absolute;
-    left: 50%;
     bottom: 0;
-    width: 75%;
-    height: 2px;
+    left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
+    background: #fff;
+    width: 75%;
+    height: 2px;
+    pointer-events: none;
+    content: '';
   }
 }
 

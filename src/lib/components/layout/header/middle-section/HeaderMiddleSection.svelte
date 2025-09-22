@@ -77,17 +77,17 @@
     position: relative;
 
     &::after {
-      pointer-events: none;
-      content: '';
       position: absolute;
-      left: 50%;
       bottom: -0.25rem;
-      width: 100%;
-      height: 2px;
-      background: #fff;
+      left: 50%;
       transform: translateX(-50%) scaleX(0);
       transform-origin: center;
       transition: transform 300ms ease-in-out;
+      background: #fff;
+      width: 100%;
+      height: 2px;
+      pointer-events: none;
+      content: '';
     }
 
     @media (hover: hover) and (pointer: fine) {

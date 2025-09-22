@@ -23,13 +23,13 @@
 
 <style>
   .background {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #0000004d;
     display: grid;
+    position: fixed;
     place-items: center;
     z-index: 45;
+    inset: 0;
+    background: #0000004d;
+    width: 100vw;
+    height: 100vh;
   }
 </style>

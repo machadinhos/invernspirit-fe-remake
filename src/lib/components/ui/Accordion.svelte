@@ -30,13 +30,13 @@
     background: var(--color-background);
 
     &::details-content {
-      padding-inline: 0.5rem;
       display: block;
-      overflow: clip;
-      block-size: 0;
-      transition-property: block-size, content-visibility;
-      transition-duration: 0.2s;
       transition-behavior: allow-discrete;
+      transition-duration: 0.2s;
+      transition-property: block-size, content-visibility;
+      padding-inline: 0.5rem;
+      block-size: 0;
+      overflow: clip;
     }
 
     & > :global(*):last-child {
@@ -44,20 +44,20 @@
     }
 
     & > summary {
-      padding-block: 0.25rem;
-      padding-inline: 0.5rem;
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      list-style: none;
       cursor: pointer;
+      padding-inline: 0.5rem;
+      padding-block: 0.25rem;
+      list-style: none;
 
       & ~ :global(*) {
         padding-top: 0.5rem;
       }
       & > :global(svg) {
-        transition: rotate 0.2s linear;
         rotate: 0;
+        transition: rotate 0.2s linear;
       }
     }
 

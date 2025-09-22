@@ -71,8 +71,8 @@
   button,
   a {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 0.5rem;
     @media (hover: hover) and (pointer: fine) {
       &:not(:disabled):hover {

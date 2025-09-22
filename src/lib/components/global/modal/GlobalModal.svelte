@@ -28,9 +28,9 @@
     max-width: none;
 
     &::backdrop {
-      background: #0000004d;
       backdrop-filter: blur(8px);
       transition: opacity 0.3s ease-in-out;
+      background: #0000004d;
       @starting-style {
         opacity: 0;
       }

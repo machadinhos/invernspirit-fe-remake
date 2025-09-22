@@ -1,10 +1,10 @@
 <script lang="ts">
   import '../app.css';
   import { GlobalModal, ToastGroup } from '$components-global';
-  import { GrainyFilter, LoadingScreen } from '$components';
   import { PUBLIC_FE_HOST, PUBLIC_GOOGLE_ANALYTICS_ID } from '$env/static/public';
   import { home } from '$content';
   import { loading } from '$state';
+  import { LoadingScreen } from '$components';
   import { page } from '$app/state';
   import { truncateWithEllipsis } from '$lib/utils/general';
 

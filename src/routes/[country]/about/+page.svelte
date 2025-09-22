@@ -37,8 +37,8 @@
 
 <style>
   p {
-    text-align: justify;
     font-size: large;
+    text-align: justify;
   }
 
   h3 {
