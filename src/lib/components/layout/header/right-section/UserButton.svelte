@@ -53,9 +53,9 @@
       <p>{user.value?.email}</p>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Anchor href="/{page.params.country}/profile/user-details" onclick={closeDropdown}
-        >{common.header.rightSection.profile}</Anchor
-      >
+      <Anchor href="/{page.params.country}/profile/user-details" onclick={closeDropdown}>
+        {common.header.rightSection.profile}
+      </Anchor>
     </DropdownMenuItem>
     <DropdownMenuItem class="mt-2 flex w-full justify-end">
       <Button onclick={handleSignOut}><Icon class="mr-1.5" src={LogoutIcon} />{auth.signOut}</Button>

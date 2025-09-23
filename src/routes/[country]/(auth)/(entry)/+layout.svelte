@@ -34,7 +34,7 @@
 {/snippet}
 
 <div
-  class="mx-auto mt-4 grid h-fit w-[90%] max-w-[675px] justify-items-center md:mt-10 md:bg-background-dark md:shadow-2xl"
+  class="mx-auto my-4 grid h-fit w-[90%] max-w-[675px] justify-items-center md:mt-10 md:bg-background-dark md:shadow-2xl"
 >
   <div class="relative w-full md:pt-10">
     <ul style="font-size: 2.5rem" class="flex text-center">
@@ -46,7 +46,7 @@
       class="pointer-events-none absolute bottom-0.5 h-0.5 w-[25%] bg-white transition-[left] duration-500 select-none"
     ></div>
   </div>
-  <div class="mt-5 mb-10 w-full md:w-[75%]">
+  <div class="mb-6 w-full md:w-[75%]">
     {@render children()}
   </div>
 </div>

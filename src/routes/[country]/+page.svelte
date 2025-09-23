@@ -60,19 +60,19 @@
       </div>
       <h3 class="text-2xl md:text-3xl">{home.description}</h3>
     </div>
-    <a class="pulsating inline-flex" href="{page.params.country}/shop/products">
-      <Button class="px-3 text-2xl">{home.button}</Button>
-    </a>
+    <div class="pulsating">
+      <Button class="w-fit text-2xl" as="anchor" href="{page.params.country}/shop/products">{home.button}</Button>
+    </div>
   </div>
 </div>
 
 <style>
   @keyframes pulsate {
     from {
-      filter: drop-shadow(0 0 10px #ffffff80);
+      filter: drop-shadow(0 0 15px #ffffffa6);
     }
     to {
-      filter: drop-shadow(0 0 10px #ffffff00);
+      filter: drop-shadow(0 0 15px #ffffff26);
     }
   }
 

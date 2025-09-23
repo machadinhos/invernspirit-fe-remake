@@ -10,7 +10,7 @@
   let { question, href, authPage }: Props = $props();
 </script>
 
-<div class="mt-10">
+<div class="mt-6">
   <p class="text-center">
     {question}
     <Anchor {href}>{authPage}</Anchor>
