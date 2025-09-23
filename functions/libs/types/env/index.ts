@@ -6,5 +6,4 @@ export type Env = {
   BE_SECRET_VALUE: string;
   CF_CAPTCHA_SECRET_KEY: string;
   ENV: string;
-  FE_HOST: string;
 };
