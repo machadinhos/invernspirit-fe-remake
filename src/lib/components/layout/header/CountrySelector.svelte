@@ -14,7 +14,6 @@
   const countriesCodes = countries.map((country) => country.code);
 
   let selectedCountry = $state(countriesCodes.indexOf((page.params.country ?? '').toUpperCase()));
-  let focused = $state(countriesCodes.indexOf((page.params.country ?? '').toUpperCase()));
   let isOpen = $state(false);
 
   $effect(() => {
@@ -30,30 +29,27 @@
   });
 </script>
 
-<CustomSelect options={countriesCodes} bind:focused bind:selected={selectedCountry} bind:isOpen>
+<CustomSelect
+  optionClass="flex w-15 items-center justify-center gap-1"
+  options={countriesCodes}
+  triggerClass="flex w-15 items-center justify-center bg-background"
+  bind:selected={selectedCountry}
+  bind:isOpen
+>
   {#snippet triggerElement()}
-    <div class="flex w-15 items-center justify-center">
-      <div class="flex items-center gap-1">
-        {countriesCodes[selectedCountry]}
-        <img
-          alt="{countriesCodes[selectedCountry]} flag"
-          height="13"
-          src="/flags/{countriesCodes[selectedCountry].toLowerCase()}.svg"
-          width="13"
-        />
-      </div>
-      <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} size={15} src={ChevronDownIcon} />
+    <div class="flex items-center gap-1">
+      {countriesCodes[selectedCountry]}
+      <img
+        alt="{countriesCodes[selectedCountry]} flag"
+        height="13"
+        src="/flags/{countriesCodes[selectedCountry].toLowerCase()}.svg"
+        width="13"
+      />
     </div>
+    <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} size={15} src={ChevronDownIcon} />
   {/snippet}
-  {#snippet optionSnippet(text: string, index: number)}
-    <div
-      class={[
-        'flex w-15 items-center justify-center gap-1 bg-background hover:bg-primary',
-        index === focused && 'bg-primary',
-      ]}
-    >
-      <span>{text}</span>
-      <img alt="{text} flag" height="3" src="/flags/{text.toLowerCase()}.svg" width="13" />
-    </div>
+  {#snippet optionSnippet(text: string)}
+    <span>{text}</span>
+    <img alt="{text} flag" height="3" src="/flags/{text.toLowerCase()}.svg" width="13" />
   {/snippet}
 </CustomSelect>

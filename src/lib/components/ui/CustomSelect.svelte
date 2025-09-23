@@ -1,4 +1,5 @@
 <script generics="Option" lang="ts">
+  import type { ClassValue } from 'svelte/elements';
   import { onClickOutside } from '$components-attachments';
   import type { Snippet } from 'svelte';
 
@@ -7,8 +8,12 @@
     optionSnippet: Snippet<[Option, number]>;
     options: Option[];
     selected: number;
-    focused: number;
+    focused?: number;
     isOpen: boolean;
+    optionBackground?: string;
+    selectedOptionBackground?: string;
+    triggerClass?: ClassValue;
+    optionClass?: ClassValue;
   };
 
   let {
@@ -16,8 +21,12 @@
     optionSnippet,
     options,
     selected = $bindable(),
-    focused = $bindable(),
+    focused = $bindable(selected),
     isOpen = $bindable(),
+    optionBackground = '--color-background',
+    selectedOptionBackground = '--color-primary',
+    triggerClass,
+    optionClass,
   }: Props = $props();
   const id = $props.id();
 
@@ -83,7 +92,7 @@
 <div class="relative" {@attach onClickOutside({ callback: closeSelect, isEnabled: isOpen })}>
   <button
     bind:this={triggerElementRef}
-    class={['flex cursor-pointer items-center gap-1 bg-background', isOpen && 'open']}
+    class={triggerClass}
     aria-controls={`${id}-listbox`}
     aria-expanded={isOpen}
     aria-haspopup="listbox"
@@ -93,10 +102,17 @@
     {@render triggerElement()}
   </button>
   {#if isOpen}
-    <ul id={`${id}-listbox`} class="absolute top-full cursor-pointer" role="listbox" tabindex="-1">
+    <ul
+      id={`${id}-listbox`}
+      style="--color-selected: var({selectedOptionBackground}); --color-option: var({optionBackground})"
+      class="absolute top-full cursor-pointer"
+      role="listbox"
+      tabindex="-1"
+    >
       {#each options as option, index (index)}
         <li
           id={`${id}-option-${index}`}
+          class={optionClass}
           aria-selected={selected === index}
           onclick={getSelectOptionCallback(index)}
           onkeydown={handleKeyDown}
@@ -109,3 +125,13 @@
     </ul>
   {/if}
 </div>
+
+<style>
+  li {
+    background-color: var(--color-option);
+  }
+
+  li[aria-selected='true'] {
+    background-color: var(--color-selected);
+  }
+</style>
