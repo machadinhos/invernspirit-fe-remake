@@ -83,7 +83,7 @@
 {#snippet oAuthButton(icon: IconSrcType, label: string, name: string, onclick: () => void)}
   <button
     class={[
-      'oauth-button flex h-[35px] w-full items-center justify-center gap-2 rounded-2xl border transition-[scale] hover:scale-110',
+      'flex h-[35px] w-full items-center justify-center gap-2 rounded-2xl border transition-[scale] hover:scale-110',
       processing && 'brightness-50',
     ]}
     aria-label={label}
@@ -101,16 +101,4 @@
   {auth.orOAuth}
   <div class="h-0.5 w-full bg-white"></div>
 </div>
-<div class="space-y-3">
-  {@render oAuthButton(GoogleLogoIcon, auth.googleAriaLabel, auth.googleName, onContinueWithGoogleClick)}
-</div>
-
-<style>
-  .oauth-button :global(path) {
-    transition: fill 250ms ease-in-out;
-  }
-
-  .oauth-button:not(:hover) :global(path) {
-    fill: white !important;
-  }
-</style>
+{@render oAuthButton(GoogleLogoIcon, auth.googleAriaLabel, auth.googleName, onContinueWithGoogleClick)}
