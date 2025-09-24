@@ -1,3 +1,5 @@
+import { on } from 'svelte/events';
+
 class Loading {
   private value = $state(false);
 
@@ -26,7 +28,14 @@ class Loading {
       return result;
     } finally {
       if (succeeded && stopLoadingOnSuccess) this.stopLoading();
-      else if (!succeeded && stopLoadingOnFailure) this.stopLoading();
+      if (succeeded && !stopLoadingOnSuccess) {
+        const pageShowCleanup = on(window, 'pageshow', (event) => {
+          if (event.persisted) {
+            this.stopLoading();
+          }
+          pageShowCleanup();
+        });
+      } else if (!succeeded && stopLoadingOnFailure) this.stopLoading();
     }
   }
 }
