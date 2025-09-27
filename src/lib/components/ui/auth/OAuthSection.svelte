@@ -96,7 +96,7 @@
   </button>
 {/snippet}
 
-<div class="mt-8 mb-4 flex items-center gap-2">
+<div class="mt-6 mb-4 flex items-center gap-2">
   <div class="h-0.5 w-full bg-white"></div>
   {auth.orOAuth}
   <div class="h-0.5 w-full bg-white"></div>
