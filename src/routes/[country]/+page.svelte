@@ -30,18 +30,16 @@
 
 <svelte:head><title>{home.headTitle}</title></svelte:head>
 
-<div class="pointer-events-none fixed inset-0 -z-10 overflow-clip grayscale filter select-none">
+<div class="pointer-events-none fixed inset-0 -z-10 overflow-clip select-none">
   <GrainyFilter />
   {#each imageLinks.home.bgImages as image, index (index)}
-    <div>
-      <div
-        style="background-image: url({image})"
-        class={[
-          'absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-[2s]',
-          index === currentImageIndex ? 'opacity-60' : 'opacity-0',
-        ]}
-      ></div>
-    </div>
+    <div
+      style="background-image: url({image})"
+      class={[
+        'absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-[2s]',
+        index === currentImageIndex ? 'opacity-60' : 'opacity-0',
+      ]}
+    ></div>
   {/each}
 </div>
 
