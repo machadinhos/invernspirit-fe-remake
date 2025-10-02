@@ -89,6 +89,7 @@
     <div class="my-4 grid justify-items-center">
       <div class="ml-2 flex gap-3">
         <button
+          aria-label={checkout.goBackButtonLabel}
           onclick={prevStage(selectedStageName, enabledStages) !== selectedStageName ? goToPrevStage : goToCart}
           type="button"
         >
