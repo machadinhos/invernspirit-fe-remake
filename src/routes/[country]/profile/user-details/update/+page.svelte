@@ -89,8 +89,8 @@
     <TextInput field={formFields.firstName} />
     <TextInput field={formFields.lastName} />
     <div class="flex gap-5">
-      <Button class="flex-1" type="submit">{profile.userDetails.saveChanges}</Button>
       <Button class="flex-1" onclick={onCancelChanges}>{profile.userDetails.cancelChanges}</Button>
+      <Button class="flex-1" type="submit">{profile.userDetails.saveChanges}</Button>
     </div>
   </Form>
 {/if}
