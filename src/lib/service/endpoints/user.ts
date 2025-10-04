@@ -48,7 +48,7 @@ export const prepareUpdateLoggedInUserEmailSubmitEmail: Endpoint<never, [string]
   };
 };
 
-export const prepareUpdateLoggedInUserEmailValidateCode: Endpoint<never, [string]> = (context) => {
+export const prepareUpdateLoggedInUserEmailValidateCode: Endpoint<UserDetails, [string]> = (context) => {
   return (countryCode, code) => {
     return Client.create<never, { code: string }>()
       .withHostContext(context)

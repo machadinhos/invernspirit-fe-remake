@@ -5,6 +5,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
   import { profile } from '$content';
+  import { user } from '$state';
   import { validateRequiredInput } from '$lib/utils/input-validation';
 
   let code: string = $state('');
@@ -16,7 +17,7 @@
   const submitCode = async (): Promise<void> => {
     if (!validateCode(code)) return;
 
-    await bffClient.user.update.email.validateCode(page.params.country, code);
+    user.value = await bffClient.user.update.email.validateCode(page.params.country, code);
     goto(`/${page.params.country}/profile/user-details`);
   };
 </script>

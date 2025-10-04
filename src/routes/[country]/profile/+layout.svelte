@@ -39,7 +39,7 @@
       {@render listItem('user-details', profile.links.userDetails, PersonalInformationIcon)}
       {@render listItem('orders', profile.links.orders, ReceiptIcon)}
     </ul>
-    <div>
+    <div class="w-full">
       {@render children()}
     </div>
   </div>
