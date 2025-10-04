@@ -59,33 +59,8 @@
     );
   });
 
-  let dragging = false;
-  let startY: number | undefined;
-  let expandElement: HTMLDivElement;
-
   const toggleIsExpanded = (): void => {
     isExpanded = !isExpanded;
-  };
-
-  const onpointerdown = (e: PointerEvent): void => {
-    if (dragging || e.pointerType !== 'touch') return;
-    startY = e.clientY;
-    dragging = true;
-    expandElement.setPointerCapture(e.pointerId);
-  };
-
-  const onpointermove = (e: PointerEvent): void => {
-    if (!dragging || startY === undefined) return;
-    if (Math.abs(e.clientY - startY) > 10) {
-      if (e.clientY < startY) isExpanded = true;
-      else if (e.clientY > startY) isExpanded = false;
-      if (expandElement.hasPointerCapture(e.pointerId)) expandElement.releasePointerCapture(e.pointerId);
-      dragging = false;
-    }
-  };
-
-  const onpointercancelOrPointerup = (): void => {
-    dragging = false;
   };
 </script>
 
@@ -104,15 +79,10 @@
 
 <div class={['bg-secondary p-5 max-md:pt-0', className]}>
   <div
-    bind:this={expandElement}
     class={[
       'grid touch-pan-x [grid-template-rows:auto_0fr] transition-all duration-300',
       isExpanded && '[grid-template-rows:auto_1fr]',
     ]}
-    onpointercancel={onpointercancelOrPointerup}
-    {onpointerdown}
-    {onpointermove}
-    onpointerup={onpointercancelOrPointerup}
   >
     <div class="md:hidden">
       <button class={['grid h-6 w-full place-items-center']} onclick={toggleIsExpanded} type="button">
