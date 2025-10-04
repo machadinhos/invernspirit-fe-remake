@@ -7,6 +7,7 @@
   "total": "Total",
   "subtotal": "Subtotal",
   "itemAddedToCart": "Item added to cart!",
+  "summarySectionToggleAriaLabel": "toggle summary section",
   "viewCart": "View cart",
   "remove": "Remove",
   "or": "or",

@@ -85,7 +85,12 @@
     ]}
   >
     <div class="md:hidden">
-      <button class={['grid h-6 w-full place-items-center']} onclick={toggleIsExpanded} type="button">
+      <button
+        class={['grid h-6 w-full place-items-center']}
+        aria-label={cart.summarySectionToggleAriaLabel}
+        onclick={toggleIsExpanded}
+        type="button"
+      >
         <Icon class={['transition-[rotate] duration-300', !isExpanded && 'rotate-180']} src={ChevronDownIcon} />
       </button>
     </div>
