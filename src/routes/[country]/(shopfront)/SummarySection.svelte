@@ -80,7 +80,7 @@
 <div class={['bg-secondary p-5 max-md:pt-0', className]}>
   <div
     class={[
-      'grid touch-pan-x [grid-template-rows:auto_0fr] transition-all duration-300',
+      'grid [grid-template-rows:auto_0fr] transition-all duration-300',
       isExpanded && '[grid-template-rows:auto_1fr]',
     ]}
   >
