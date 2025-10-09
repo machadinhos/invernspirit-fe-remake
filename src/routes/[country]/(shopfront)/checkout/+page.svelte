@@ -3,7 +3,7 @@
   import type { CheckoutStage, StageName } from '$types';
   import { config, loading } from '$state';
   import { expand as expandSummary, default as SummarySection } from '../SummarySection.svelte';
-  import { nextStage, prevStage, stagesTitles } from './stages';
+  import { getNextStage, getPrevStage, stagesTitles } from './stages';
   import AddressPage from './AddressPage.svelte';
   import { bffClient } from '$service';
   import { BreadCrumbs } from '$components';
@@ -45,8 +45,8 @@
     goto(`/${page.params.country}/checkout?stage=${newStage}`);
   };
 
-  const goToNextStage = (): void => goToStage(nextStage);
-  const goToPrevStage = (): void => goToStage(prevStage);
+  const goToNextStage = (): void => goToStage(getNextStage);
+  const goToPrevStage = (): void => goToStage(getPrevStage);
 
   const goToCart = (): Promise<void> => goto(`/${page.params.country}/cart`);
 
@@ -90,7 +90,7 @@
       <div class="ml-2 flex gap-3">
         <button
           aria-label={checkout.goBackButtonLabel}
-          onclick={prevStage(selectedStageName, enabledStages) !== selectedStageName ? goToPrevStage : goToCart}
+          onclick={getPrevStage(selectedStageName, enabledStages) !== selectedStageName ? goToPrevStage : goToCart}
           type="button"
         >
           <Icon size="20" src={ArrowLeftIcon} />

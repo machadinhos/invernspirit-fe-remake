@@ -1,13 +1,13 @@
-import type { StageName } from '$types';
+import type { StageName, User } from '$types';
 
-export const prevStage = (stage: StageName, stages: StageName[]): StageName => {
+export const getPrevStage = (stage: StageName, stages: StageName[]): StageName => {
   const index = stages.indexOf(stage);
   if (index === -1) throw new Error(`stage ${stage} not found`);
   if (index === 0) return stage;
   return stages[index - 1];
 };
 
-export const nextStage = (stage: StageName, stages: StageName[]): StageName => {
+export const getNextStage = (stage: StageName, stages: StageName[]): StageName => {
   const index = stages.indexOf(stage);
   if (index === -1) throw new Error(`stage ${stage} not found`);
   if (index === stages.length - 1) return stage;
