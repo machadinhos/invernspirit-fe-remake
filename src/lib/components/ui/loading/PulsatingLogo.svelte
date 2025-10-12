@@ -11,11 +11,11 @@
       opacity: 0;
     }
     80% {
-      transform: scale(1.2);
+      scale: 1.2;
       opacity: 1;
     }
     100% {
-      transform: scale(1.2);
+      scale: 1.2;
       opacity: 0;
     }
   }

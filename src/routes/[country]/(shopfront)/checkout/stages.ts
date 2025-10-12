@@ -1,4 +1,4 @@
-import type { StageName, User } from '$types';
+import type { StageName } from '$types';
 
 export const getPrevStage = (stage: StageName, stages: StageName[]): StageName => {
   const index = stages.indexOf(stage);

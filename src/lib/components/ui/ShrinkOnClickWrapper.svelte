@@ -19,10 +19,10 @@
   }
 
   div > :global(*) {
-    transition: transform 150ms ease-in-out;
+    transition: scale 150ms ease-in-out;
 
     &:not(:disabled):active {
-      transform: scaleX(var(--scale-x-value)) scaleY(var(--scale-y-value));
+      scale: var(--scale-x-value) var(--scale-y-value);
     }
   }
 </style>

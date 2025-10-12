@@ -40,9 +40,7 @@
   const onpointermove = (e: PointerEvent): void => {
     if (!dragging || startX === undefined) return;
     currentX = e.clientX - startX;
-    if (Math.abs(currentX) < 130) {
-      outerElement.style.transform = `translateX(${currentX}px)`;
-    }
+    if (Math.abs(currentX) < 130) outerElement.style.translate = `${currentX}px`;
   };
 
   const onpointerup = (e: PointerEvent): void => {
@@ -57,7 +55,7 @@
           target.dispatchEvent(new PointerEvent('click', e));
         }
       }
-      outerElement.style.transform = '';
+      outerElement.style.translate = '';
       if (e.pointerType === 'touch' && Math.abs(currentX) > 1) {
         toast.startTimer();
       }
@@ -68,7 +66,7 @@
   const onpointercancel = (e: PointerEvent): void => {
     dragging = false;
     outerElement.style.transition = '';
-    outerElement.style.transform = '';
+    outerElement.style.translate = '';
     if (e.pointerType === 'touch') toast.startTimer();
   };
 
@@ -121,7 +119,7 @@
 
 <style>
   .toast {
-    transition: transform 150ms ease-in-out;
+    transition: translate 150ms ease-in-out;
     box-shadow: 0 0 10px #0000007f;
   }
 </style>

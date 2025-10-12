@@ -67,7 +67,6 @@
 
   .embla__slide {
     flex: 0 0 var(--slide-size);
-    transform: translate3d(0, 0, 0);
     aspect-ratio: 1;
     min-height: 0;
     touch-action: manipulation;

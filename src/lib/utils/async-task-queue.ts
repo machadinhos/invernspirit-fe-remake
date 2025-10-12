@@ -24,8 +24,8 @@ export class AsyncTaskQueue {
   private async triggerQueueProcessing(): Promise<void> {
     if (this.isProcessing) return;
     this.isProcessing = true;
-    let resolve: (() => void) | undefined;
-    this.idle = new Promise((res) => (resolve = res));
+    const { promise, resolve } = Promise.withResolvers<never>();
+    this.idle = promise;
 
     try {
       while (this.queue.length > 0) {

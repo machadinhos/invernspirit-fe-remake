@@ -36,7 +36,7 @@
       {#snippet triggerElement()}
         <button class="flex items-center gap-1.5" onclick={toggleDropdown} type="button">
           {common.header.pages.shop.title}
-          <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} src={ChevronDownIcon} />
+          <Icon class={['duration-300', isOpen && 'rotate-180']} src={ChevronDownIcon} />
         </button>
       {/snippet}
       <div class="grid place-items-center gap-4 py-4 text-2xl">
@@ -80,9 +80,9 @@
       position: absolute;
       bottom: -0.25rem;
       left: 50%;
-      transform: translateX(-50%) scaleX(0);
-      transform-origin: center;
-      transition: transform 300ms ease-in-out;
+      translate: -50% 0;
+      scale: 0;
+      transition: scale 300ms ease-in-out;
       background: #fff;
       width: 100%;
       height: 2px;
@@ -92,7 +92,8 @@
 
     @media (hover: hover) and (pointer: fine) {
       &:has(:hover)::after {
-        transform: translateX(-50%) scaleX(1);
+        translate: -50% 0;
+        scale: 1;
       }
     }
   }

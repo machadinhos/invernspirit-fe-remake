@@ -46,7 +46,7 @@
         width="13"
       />
     </div>
-    <Icon class={['transition-transform duration-300', isOpen && 'rotate-180']} size={15} src={ChevronDownIcon} />
+    <Icon class={['duration-300', isOpen && 'rotate-180']} size={15} src={ChevronDownIcon} />
   {/snippet}
   {#snippet optionSnippet(text: string)}
     <span>{text}</span>

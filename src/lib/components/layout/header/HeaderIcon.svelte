@@ -77,8 +77,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     .outer-element:hover > div {
-      transform: scale(1.75);
-      transform-origin: center;
+      scale: 1.75;
     }
   }
 </style>
