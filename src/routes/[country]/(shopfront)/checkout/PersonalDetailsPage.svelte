@@ -11,15 +11,17 @@
   import type { CheckoutStage } from '$types';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
+  import type { PersonalDetailsStageData } from './stages';
   import { TextInput } from '$components';
 
   type Props = {
     stages: CheckoutStage[];
-    goToNextStage: () => void;
+    goToNextStage: () => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
+    stageData: PersonalDetailsStageData;
   };
 
-  let { stages = $bindable(), goToNextStage, onStageSubmit = $bindable() }: Props = $props();
+  let { stages = $bindable(), goToNextStage, onStageSubmit = $bindable(), stageData }: Props = $props();
 
   const formFields = {
     email: new FormField({
@@ -64,12 +66,11 @@
       payload,
     );
     stages = availableCheckoutStages;
-    goToNextStage();
+    await goToNextStage();
   };
 
-  onMount(async () => {
-    const { personalDetails } = await bffClient.checkout.stages.personalDetails.get(page.params.country);
-    if (personalDetails) populateFormFields(formFields, personalDetails);
+  onMount(() => {
+    if (stageData) populateFormFields(formFields, stageData);
 
     onStageSubmit = onFormSubmit;
   });

@@ -84,7 +84,7 @@ export const prepareSetAddress: Endpoint<BaseCheckoutResponse, [AddressPayload]>
 
 type ShippingMethodsResponse = {
   shippingMethods: ShippingMethod[];
-  selectedShippingMethod: ShippingMethod;
+  selectedShippingMethod?: ShippingMethod;
 } & BaseCheckoutResponse;
 
 export const prepareGetShippingMethods: Endpoint<ShippingMethodsResponse> = (context) => {

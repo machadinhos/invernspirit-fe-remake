@@ -8,6 +8,7 @@
     validateFormFields,
   } from '$lib/utils/form-fields.svelte';
   import { validateNotRequiredInput, validateRequiredInput } from '$lib/utils/input-validation';
+  import type { AddressStageData } from './stages';
   import { bffClient } from '$service';
   import { checkout } from '$content';
   import { onMount } from 'svelte';
@@ -17,12 +18,13 @@
 
   type Props = {
     stages: CheckoutStage[];
-    goToNextStage: () => void;
+    goToNextStage: () => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
     country: Country;
+    stageData: AddressStageData;
   };
 
-  let { stages = $bindable(), goToNextStage, onStageSubmit = $bindable(), country }: Props = $props();
+  let { stages = $bindable(), goToNextStage, onStageSubmit = $bindable(), country, stageData }: Props = $props();
 
   let saveAddress = $state(false);
 
@@ -102,15 +104,14 @@
     };
     const { availableCheckoutStages } = await bffClient.checkout.stages.address.set(page.params.country, payload);
     stages = availableCheckoutStages;
-    goToNextStage();
+    await goToNextStage();
   };
 
-  onMount(async () => {
-    const { address } = await bffClient.checkout.stages.address.get(page.params.country);
-    if (address && address.country === country.code) {
-      saveAddress = address.saveAddress ?? false;
-      delete address.saveAddress;
-      populateFormFields(formFields, address as Omit<ExtendedAddress, 'saveAddress'>);
+  onMount(() => {
+    if (stageData && stageData.country === country.code) {
+      saveAddress = stageData.saveAddress ?? false;
+      delete stageData.saveAddress;
+      populateFormFields(formFields, stageData as Omit<ExtendedAddress, 'saveAddress'>);
     }
 
     onStageSubmit = onFormSubmit;

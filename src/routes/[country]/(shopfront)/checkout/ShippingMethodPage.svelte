@@ -5,15 +5,17 @@
   import { formatPrice } from '$lib/utils/currency-formatting';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
+  import type { ShippingStageData } from './stages';
 
   type Props = {
     country: Country;
     stages: CheckoutStage[];
-    goToNextStage: () => void;
+    goToNextStage: () => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
+    stageData: ShippingStageData;
   };
 
-  let { country, stages = $bindable(), goToNextStage, onStageSubmit = $bindable() }: Props = $props();
+  let { country, stages = $bindable(), goToNextStage, onStageSubmit = $bindable(), stageData }: Props = $props();
 
   let selectedShippingMethodId: string | undefined = $state();
   let shippingMethods: ShippingMethod[] | undefined = $state();
@@ -25,7 +27,7 @@
       selectedShippingMethodId,
     );
     stages = availableCheckoutStages;
-    goToNextStage();
+    await goToNextStage();
   };
 
   const onkeydown = (e: KeyboardEvent): void => {
@@ -47,11 +49,9 @@
     }
   };
 
-  onMount(async () => {
-    const { shippingMethods: givenShippingMethods, selectedShippingMethod } =
-      await bffClient.checkout.stages.shipping.get(page.params.country);
-    shippingMethods = givenShippingMethods;
-    if (selectedShippingMethod) selectedShippingMethodId = selectedShippingMethod.id;
+  onMount(() => {
+    shippingMethods = stageData.shippingMethods;
+    if (stageData.selectedShippingMethod) selectedShippingMethodId = stageData.selectedShippingMethod.id;
 
     onStageSubmit = onFormSubmit;
   });
