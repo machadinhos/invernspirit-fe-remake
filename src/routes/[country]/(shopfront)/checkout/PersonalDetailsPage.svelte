@@ -5,18 +5,18 @@
     populateFormFields,
     validateFormFields,
   } from '$lib/utils/form-fields.svelte';
+  import type { PersonalDetailsStageData, SelectedStage } from './stages';
   import { validateEmail, validateRequiredInput } from '$lib/utils/input-validation';
   import { bffClient } from '$service';
   import { checkout } from '$content';
   import type { CheckoutStage } from '$types';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
-  import type { PersonalDetailsStageData } from './stages';
   import { TextInput } from '$components';
 
   type Props = {
     stages: CheckoutStage[];
-    goToNextStage: () => Promise<void>;
+    goToNextStage: (stageData?: SelectedStage['data']) => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
     stageData: PersonalDetailsStageData;
   };
@@ -61,12 +61,12 @@
     const payload = {
       personalDetails: mapFormFieldsToValues(formFields),
     };
-    const { availableCheckoutStages } = await bffClient.checkout.stages.personalDetails.set(
+    const { availableCheckoutStages, address } = await bffClient.checkout.stages.personalDetails.set(
       page.params.country,
       payload,
     );
     stages = availableCheckoutStages;
-    await goToNextStage();
+    await goToNextStage(address);
   };
 
   onMount(() => {

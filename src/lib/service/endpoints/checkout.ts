@@ -10,7 +10,7 @@ type BaseCheckoutResponse = {
 
 type CheckoutStagesResponse = {
   isCheckoutPossible?: boolean;
-} & BaseCheckoutResponse;
+} & (PersonalDetailsResponse | AddressResponse);
 
 export const prepareGetStages: Endpoint<CheckoutStagesResponse> = (context) => {
   return (countryCode) => {
@@ -41,9 +41,9 @@ type PersonalDetailsPayload = {
   savePersonalDetails?: boolean;
 };
 
-export const prepareSetPersonalDetails: Endpoint<BaseCheckoutResponse, [PersonalDetailsPayload]> = (context) => {
+export const prepareSetPersonalDetails: Endpoint<AddressResponse, [PersonalDetailsPayload]> = (context) => {
   return (countryCode, personalDetails) => {
-    return Client.create<BaseCheckoutResponse, PersonalDetailsPayload>()
+    return Client.create<AddressResponse, PersonalDetailsPayload>()
       .withHostContext(context)
       .withEndpoint(`/${countryCode}/${PATH}/personal-details`)
       .withMethod('POST')
@@ -71,9 +71,13 @@ type AddressPayload = {
   saveAddress?: boolean;
 };
 
-export const prepareSetAddress: Endpoint<BaseCheckoutResponse, [AddressPayload]> = (context) => {
+type SetAddressResponse = Pick<ShippingMethodsResponse, 'selectedShippingMethod'> &
+  Partial<Pick<ShippingMethodsResponse, 'shippingMethods'>> &
+  BaseCheckoutResponse;
+
+export const prepareSetAddress: Endpoint<SetAddressResponse, [AddressPayload]> = (context) => {
   return (countryCode, address) => {
-    return Client.create<BaseCheckoutResponse, AddressPayload>()
+    return Client.create<SetAddressResponse, AddressPayload>()
       .withHostContext(context)
       .withEndpoint(`/${countryCode}/${PATH}/address`)
       .withMethod('POST')
@@ -97,7 +101,7 @@ export const prepareGetShippingMethods: Endpoint<ShippingMethodsResponse> = (con
   };
 };
 
-export const prepareSetShippingMethod: Endpoint<BaseCheckoutResponse, [string]> = (context) => {
+export const prepareSetShippingMethod: Endpoint<BaseCheckoutResponse & { review?: Review }, [string]> = (context) => {
   return (countryCode, id) => {
     return Client.create<BaseCheckoutResponse, { id: string }>()
       .withHostContext(context)

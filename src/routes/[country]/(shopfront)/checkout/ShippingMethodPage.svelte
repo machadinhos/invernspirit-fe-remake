@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { CheckoutStage, Country, ShippingMethod } from '$types';
+  import type { SelectedStage, ShippingStageData } from './stages';
   import { bffClient } from '$service';
   import { checkout } from '$content';
   import { formatPrice } from '$lib/utils/currency-formatting';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
-  import type { ShippingStageData } from './stages';
 
   type Props = {
     country: Country;
     stages: CheckoutStage[];
-    goToNextStage: () => Promise<void>;
+    goToNextStage: (stageData?: SelectedStage['data']) => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
     stageData: ShippingStageData;
   };
@@ -22,12 +22,12 @@
 
   const onFormSubmit = async (): Promise<void> => {
     if (!selectedShippingMethodId) return;
-    const { availableCheckoutStages } = await bffClient.checkout.stages.shipping.set(
+    const { availableCheckoutStages, review } = await bffClient.checkout.stages.shipping.set(
       page.params.country,
       selectedShippingMethodId,
     );
     stages = availableCheckoutStages;
-    await goToNextStage();
+    await goToNextStage(review);
   };
 
   const onkeydown = (e: KeyboardEvent): void => {

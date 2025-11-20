@@ -68,16 +68,25 @@
 
   const getStageFromUrl = (): StageName | undefined => (page.url.searchParams.get('stage') as StageName) ?? undefined;
 
-  const goToStage = async (getStageFunc: (stage: StageName, stages: StageName[]) => StageName): Promise<void> => {
+  const goToStage = async (
+    getStageFunc: (stage: StageName, stages: StageName[]) => StageName,
+    stageData?: SelectedStage['data'],
+  ): Promise<void> => {
     if (!selectedStage || !enabledStages) return;
     const newStage = getStageFunc(selectedStage.name, enabledStages);
     if (selectedStage.name === newStage) return;
-    await prepareStageData[newStage]();
+    if (!stageData) await prepareStageData[newStage]();
+    else {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      selectedStage = { name: newStage, data: stageData } as any;
+    }
     goto(`/${page.params.country}/checkout?stage=${newStage}`);
   };
 
-  const goToNextStage = (): Promise<void> => goToStage(getNextStage);
-  const goToPrevStage = (): Promise<void> => goToStage(getPrevStage);
+  const goToNextStage = (nextStageData?: SelectedStage['data']): Promise<void> =>
+    goToStage(getNextStage, nextStageData);
+  const goToPrevStage = (prevStageData?: SelectedStage['data']): Promise<void> =>
+    goToStage(getPrevStage, prevStageData);
 
   const goToCart = (): Promise<void> => goto(`/${page.params.country}/cart`);
 
@@ -87,7 +96,10 @@
 
   $effect(() => {
     const newStage = getStageFromUrl();
-    if (newStage !== untrack(() => selectedStage?.name) && enabledStages?.includes(newStage as StageName)) {
+    if (
+      newStage !== untrack(() => selectedStage)?.name &&
+      untrack(() => enabledStages)?.includes(newStage as StageName)
+    ) {
       prepareStageData[newStage as StageName]();
     }
   });
@@ -110,6 +122,8 @@
       if (lastEnabledStage !== getStageFromUrl()) {
         await prepareStageData[lastEnabledStage as StageName]();
         goto(`/${page.params.country}/checkout?stage=${lastEnabledStage}`, { replaceState: true });
+      } else {
+        await prepareStageData[lastEnabledStage as StageName]();
       }
     });
   });
@@ -123,7 +137,9 @@
       <div class="ml-2 flex gap-3">
         <button
           aria-label={checkout.goBackButtonLabel}
-          onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name ? goToPrevStage : goToCart}
+          onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name
+            ? (): Promise<void> => goToPrevStage()
+            : goToCart}
           type="button"
         >
           <Icon size="20" src={ArrowLeftIcon} />
@@ -134,8 +150,9 @@
             {#if stage.isEnabled}
               <a
                 class={['text-primary', stage.isEnabled && stage.name === selectedStage?.name && 'underline']}
-                href="/{page.params.country}/checkout?stage={stage.name}">{stage.title}</a
-              >
+                href="/{page.params.country}/checkout?stage={stage.name}"
+                >{stage.title}
+              </a>
             {:else}
               <span>{stage.title}</span>
             {/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { AddressStageData, SelectedStage } from './stages';
   import { CheckBox, TextInput, TextInputWithAutocomplete } from '$components';
   import type { CheckoutStage, Country, ExtendedAddress } from '$types';
   import {
@@ -8,7 +9,6 @@
     validateFormFields,
   } from '$lib/utils/form-fields.svelte';
   import { validateNotRequiredInput, validateRequiredInput } from '$lib/utils/input-validation';
-  import type { AddressStageData } from './stages';
   import { bffClient } from '$service';
   import { checkout } from '$content';
   import { onMount } from 'svelte';
@@ -18,7 +18,7 @@
 
   type Props = {
     stages: CheckoutStage[];
-    goToNextStage: () => Promise<void>;
+    goToNextStage: (stageData?: SelectedStage['data']) => Promise<void>;
     onStageSubmit: ((e: SubmitEvent) => void) | undefined;
     country: Country;
     stageData: AddressStageData;
@@ -102,9 +102,17 @@
       address: mapFormFieldsToValues(formFields),
       ...(user.isLoggedIn && { saveAddress }),
     };
-    const { availableCheckoutStages } = await bffClient.checkout.stages.address.set(page.params.country, payload);
+    const { availableCheckoutStages, selectedShippingMethod, shippingMethods } =
+      await bffClient.checkout.stages.address.set(page.params.country, payload);
     stages = availableCheckoutStages;
-    await goToNextStage();
+    if (shippingMethods) {
+      await goToNextStage({
+        selectedShippingMethod,
+        shippingMethods,
+      });
+    } else {
+      await goToNextStage();
+    }
   };
 
   onMount(() => {
