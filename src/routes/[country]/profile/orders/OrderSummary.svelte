@@ -12,8 +12,6 @@
   };
 
   let { order, country }: Props = $props();
-
-  const productLength = order.products.reduce((total, product) => total + product.quantity, 0);
 </script>
 
 <div class="bg-background-dark">
@@ -24,7 +22,10 @@
       product={order.products[0]}
     />
     {#if order.products.length > 1}
-      <p class="ml-2 text-2xl">+{productLength - order.products[0].quantity} {profile.orders.moreProducts}</p>
+      <p class="ml-2 text-2xl">
+        +{order.products.reduce((total, product) => total + product.quantity, 0) - order.products[0].quantity}
+        {profile.orders.moreProducts}
+      </p>
     {/if}
   </div>
   <div class="flex justify-between p-2 text-3xl">

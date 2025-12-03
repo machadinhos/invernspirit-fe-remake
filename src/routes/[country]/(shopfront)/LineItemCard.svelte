@@ -26,6 +26,7 @@
   let { product, country, editable = false, background = true, ...rest }: Props = $props();
   const pushToastOnQuantityUpdate = rest.pushToastOnQuantityUpdate ?? true;
 
+  // svelte-ignore state_referenced_locally
   let selectedQuantity = $state(product.quantity);
   let pendingRemoval = $state(false);
 

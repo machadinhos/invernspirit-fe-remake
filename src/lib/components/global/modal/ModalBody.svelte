@@ -10,6 +10,7 @@
 
   let { modal }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const Element = modal.element as Component<any, Record<never, never>>;
 

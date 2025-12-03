@@ -10,6 +10,7 @@
 
   let { actionAfterAuthentication, showAuthSwitchMessage = true, email: initialEmail }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   let email: string | undefined = $state(initialEmail);
 </script>
 

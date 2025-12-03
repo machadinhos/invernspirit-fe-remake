@@ -27,10 +27,14 @@
     return (document.getElementById(field.id) as HTMLInputElement) ?? undefined;
   };
 
+  // svelte-ignore state_referenced_locally
   const originalOnfocus = field.additionalElementAttributes.onfocus;
+  // svelte-ignore state_referenced_locally
   const originalOnblur = field.onblur;
+  // svelte-ignore state_referenced_locally
   const originalOninput = field.oninput;
 
+  // svelte-ignore state_referenced_locally
   field.additionalElementAttributes.onfocus = (event: Parameters<FocusEventHandler<HTMLInputElement>>[0]): void => {
     if (ignoreFocus) {
       ignoreFocus = false;
@@ -41,6 +45,7 @@
     originalOnfocus?.(event);
   };
 
+  // svelte-ignore state_referenced_locally
   field.onblur = (event: FocusEvent): void => {
     isOpen = false;
     const eventTarget = event.relatedTarget as HTMLElement | null;
@@ -52,13 +57,16 @@
     originalOnblur(event);
   };
 
+  // svelte-ignore state_referenced_locally
   field.oninput = (event: Event): void => {
     isOpen = true;
     originalOninput?.(event);
   };
 
+  // svelte-ignore state_referenced_locally
   const existingAdditionalElementAttributes = field.additionalElementAttributes;
 
+  // svelte-ignore state_referenced_locally
   field.additionalElementAttributes = {
     ...existingAdditionalElementAttributes,
     onclick: (): void => {
@@ -77,6 +85,7 @@
     return true;
   };
 
+  // svelte-ignore state_referenced_locally
   field.additionalElementAttributes.onkeydown = (event: KeyboardEvent): void => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();

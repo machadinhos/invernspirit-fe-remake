@@ -11,6 +11,7 @@
 
   let { countries }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   const countriesCodes = countries.map((country) => country.code);
 
   let selectedCountry = $state(countriesCodes.indexOf((page.params.country ?? '').toUpperCase()));

@@ -11,6 +11,7 @@
 
   let { toast }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   const Element = toast.element as Component<ToastParams & { toast: Toast<ToastParams> }, Record<never, never>>;
   let outerElement: HTMLDivElement;
   let dragging = false;

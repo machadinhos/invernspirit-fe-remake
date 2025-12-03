@@ -45,13 +45,11 @@
     }
   };
 
-  onMount(() => {
+  onMount(async () => {
     config.afterInitialization(() => {
       inCartQuantity = cart.getProductQuantity(product.id);
     });
-    (async (): Promise<void> => {
-      bucketStock = (await getStockFromBucket(product.id)).data;
-    })();
+    bucketStock = (await getStockFromBucket(product.id)).data;
   });
 </script>
 

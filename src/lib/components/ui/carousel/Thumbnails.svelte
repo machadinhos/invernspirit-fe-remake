@@ -13,6 +13,7 @@
 
   let { images, emblaApi, thumbsApi = $bindable(), selectedSlide, axis }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   const options: EmblaOptionsType = { containScroll: 'keepSnaps', dragFree: true, axis };
 
   const onInit = (event: CustomEvent): void => {

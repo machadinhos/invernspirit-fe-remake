@@ -6,6 +6,7 @@
 
   let { children, scaleConfig = { scaleXY: 90 } }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   if ('scaleXY' in scaleConfig) scaleConfig = { scaleX: scaleConfig.scaleXY, scaleY: scaleConfig.scaleXY };
 </script>
 
