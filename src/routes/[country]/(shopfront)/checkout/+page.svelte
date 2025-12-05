@@ -138,7 +138,7 @@
         <button
           aria-label={checkout.goBackButtonLabel}
           onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name
-            ? (): Promise<void> => goToPrevStage()
+            ? (): Promise => goToPrevStage()
             : goToCart}
           type="button"
         >
@@ -164,7 +164,7 @@
       </h1>
     </div>
     <Form
-      class="flex h-full w-full items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
+      class="flex size-full min-h-fit items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
       onsubmit={finalOnStageSubmit}
     >
       <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
