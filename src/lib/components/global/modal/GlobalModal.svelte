@@ -2,7 +2,6 @@
   import type { Attachment } from 'svelte/attachments';
   import { modal } from '$state';
   import ModalBody from './ModalBody.svelte';
-  import { onClickOutside } from '$components-attachments';
   import { scale } from 'svelte/transition';
 
   const dialogAttachment: Attachment<HTMLDialogElement> = (node: HTMLDialogElement) => {
@@ -15,10 +14,8 @@
 </script>
 
 {#if modal.value}
-  <dialog class="w-fit" {@attach dialogAttachment} {onclose} in:scale|global>
-    <div {@attach onClickOutside({ callback: onclose })}>
-      <ModalBody modal={modal.value} />
-    </div>
+  <dialog class="w-fit" {@attach dialogAttachment} closedby="any" {onclose} in:scale|global>
+    <ModalBody modal={modal.value} />
   </dialog>
 {/if}
 

@@ -77,7 +77,7 @@
     if (selectedStage.name === newStage) return;
     if (!stageData) await prepareStageData[newStage]();
     else {
-      /* eslint-disable @typescript-eslint/no-explicit-any */
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       selectedStage = { name: newStage, data: stageData } as any;
     }
     goto(`/${page.params.country}/checkout?stage=${newStage}`);
@@ -138,7 +138,8 @@
         <button
           aria-label={checkout.goBackButtonLabel}
           onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name
-            ? (): Promise => goToPrevStage()
+            ? /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+              (goToPrevStage as any)
             : goToCart}
           type="button"
         >

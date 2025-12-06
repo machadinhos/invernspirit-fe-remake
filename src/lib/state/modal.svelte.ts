@@ -38,20 +38,11 @@ class ModalInstance<Params extends Record<string, unknown> | undefined = undefin
 class Modal {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   value: ModalInstance<any> | undefined = $state();
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  private queue: ModalInstance<any>[] = [];
-
-  private setValueFromQueue(): void {
-    this.value ??= this.queue.shift();
-  }
 
   generateCloseFunction(id: symbol): () => void {
     return (): void => {
       if (this.value?.id === id) {
         this.value = undefined;
-        this.setValueFromQueue();
-      } else {
-        this.queue = this.queue.filter((modal) => modal.id !== id);
       }
     };
   }
@@ -67,11 +58,7 @@ class Modal {
   ): ModalInstance<Params | undefined> {
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const modalInstance = new ModalInstance(element, options as any);
-    if (this.value) {
-      this.queue.push(modalInstance);
-    } else {
-      this.value = modalInstance;
-    }
+    this.value = modalInstance;
     return modalInstance as ModalInstance<Params> | ModalInstance;
   }
 }
