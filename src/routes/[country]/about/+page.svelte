@@ -7,7 +7,7 @@
 
 <svelte:head><title>{about.headTitle}</title></svelte:head>
 
-<section class="mx-auto mt-9 w-[90%] max-w-[1400px]">
+<section class="mx-auto mt-9 mb-4 w-[90%] max-w-350">
   <h1 class="text-center text-6xl">{about.title1}</h1>
   <h2 class="text-center text-4xl">{about.title2}</h2>
   <div class="my-4 h-px bg-white"></div>
@@ -26,7 +26,7 @@
         <p>{about.text6}</p>
         <h3>{about.subtitle4}</h3>
         <p>{about.text7}</p>
-        <p>{about.contactText} <Anchor href="/{page.params.country}/about">{about.contactLink}</Anchor>.</p>
+        <p>{about.contactText} <Anchor href="/{page.params.country}/contact">{about.contactLink}</Anchor>.</p>
       </div>
       <div class="my-5 lg:my-0 lg:w-2/5">
         <img class="object-cover" alt="mafalda" src={imageLinks.about.mafalda} />
