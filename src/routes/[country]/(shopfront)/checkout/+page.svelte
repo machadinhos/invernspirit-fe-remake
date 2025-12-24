@@ -138,8 +138,7 @@
         <button
           aria-label={checkout.goBackButtonLabel}
           onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name
-            ? /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-              (goToPrevStage as any)
+            ? (): Promise<void> => goToPrevStage()
             : goToCart}
           type="button"
         >
