@@ -30,6 +30,7 @@
   );
   let shippingCost = $state(0);
   let onStageSubmit: ((e: SubmitEvent) => Promise<void>) | undefined = $state();
+  let isFetchingData = $state(true);
 
   const prepareStageData: Record<StageName, () => Promise<void>> = {
     'personal-details': async () => {
@@ -75,8 +76,11 @@
     if (!selectedStage || !enabledStages) return;
     const newStage = getStageFunc(selectedStage.name, enabledStages);
     if (selectedStage.name === newStage) return;
-    if (!stageData) await prepareStageData[newStage]();
-    else {
+    if (!stageData) {
+      isFetchingData = true;
+      await prepareStageData[newStage]();
+      isFetchingData = false;
+    } else {
       /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       selectedStage = { name: newStage, data: stageData } as any;
     }
@@ -100,7 +104,10 @@
       newStage !== untrack(() => selectedStage)?.name &&
       untrack(() => enabledStages)?.includes(newStage as StageName)
     ) {
-      prepareStageData[newStage as StageName]();
+      isFetchingData = true;
+      prepareStageData[newStage as StageName]().finally(() => {
+        isFetchingData = false;
+      });
     }
   });
 
@@ -119,12 +126,14 @@
       }
       stages = availableCheckoutStages;
       const lastEnabledStage = enabledStages?.at(-1);
+      isFetchingData = true;
       if (lastEnabledStage !== getStageFromUrl()) {
         await prepareStageData[lastEnabledStage as StageName]();
         goto(`/${page.params.country}/checkout?stage=${lastEnabledStage}`, { replaceState: true });
       } else {
         await prepareStageData[lastEnabledStage as StageName]();
       }
+      isFetchingData = false;
     });
   });
 </script>
@@ -137,6 +146,7 @@
       <div class="ml-2 flex gap-3">
         <button
           aria-label={checkout.goBackButtonLabel}
+          disabled={isFetchingData}
           onclick={getPrevStage(selectedStage.name, enabledStages) !== selectedStage.name
             ? (): Promise<void> => goToPrevStage()
             : goToCart}
@@ -150,7 +160,7 @@
             {#if stage.isEnabled}
               <a
                 class={['text-primary', stage.isEnabled && stage.name === selectedStage?.name && 'underline']}
-                href="/{page.params.country}/checkout?stage={stage.name}"
+                href={isFetchingData ? undefined : `/${page.params.country}/checkout?stage=${stage.name}`}
                 >{stage.title}
               </a>
             {:else}
@@ -166,6 +176,7 @@
     <Form
       class="flex size-full min-h-fit items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
       onsubmit={finalOnStageSubmit}
+      bind:processing={isFetchingData}
     >
       <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
         {#if selectedStage.name === 'personal-details'}
