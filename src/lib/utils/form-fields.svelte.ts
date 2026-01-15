@@ -21,9 +21,9 @@ type BaseFormFieldConfig<Value, MappingFunction, IncludeInMapping, FilterFunctio
   oninput?: (event: Event) => void;
 } & (Type extends 'number' ? { min?: number; max?: number } : { minlength?: number; maxlength?: number });
 
-type AdditionalElementAttributes<Value, MappingFunction, IncludeInMapping, FilterFunction, Type> = Omit<
+type AdditionalElementAttributes = Pick<
   HTMLInputAttributes,
-  keyof BaseFormFieldConfig<Value, MappingFunction, IncludeInMapping, FilterFunction, Type>
+  'onkeydown' | 'onclick' | 'role' | 'aria-autocomplete' | 'aria-haspopup' | 'aria-expanded' | 'aria-owns' | 'onfocus'
 >;
 
 export type FormFieldConfig<Value, MappingFunction, IncludeInMapping, FilterFunction, Type> = BaseFormFieldConfig<
@@ -33,13 +33,7 @@ export type FormFieldConfig<Value, MappingFunction, IncludeInMapping, FilterFunc
   FilterFunction,
   Type
 > & {
-  additionalElementAttributes?: AdditionalElementAttributes<
-    Value,
-    MappingFunction,
-    IncludeInMapping,
-    FilterFunction,
-    Type
-  >;
+  additionalElementAttributes?: BaseFormFieldConfig<Value, MappingFunction, IncludeInMapping, FilterFunction, Type>;
 };
 
 export class FormField<
@@ -65,14 +59,8 @@ export class FormField<
   declare readonly min?: number;
   declare readonly max?: number;
 
-  additionalElementAttributes: AdditionalElementAttributes<
-    Value,
-    MappingFunction,
-    IncludeInMapping,
-    FilterFunction,
-    Type
-    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  > = {} as any;
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  additionalElementAttributes: AdditionalElementAttributes = {} as any;
 
   readonly includeInMapping: IncludeInMapping = true as IncludeInMapping;
   readonly mappingFunction: MappingFunction = ((value) => value) as MappingFunction;
