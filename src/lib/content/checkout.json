@@ -7,7 +7,7 @@
   "addressPage": {
     "title": "Delivery Address",
     "selectedCountry": "Selected country",
-    "countryDisclaimer": "Make sure to select the correct country from the country selector at the top of the page.",
+    "countryDisclaimer": "Please select the correct destination country using the selector at the top of the page. We use this to calculate accurate shipping fees, taxes, and delivery options for your order. Note: we currently ship only to the countries shown in the selector.",
     "submitButton": "Confirm",
     "saveAddress": "Save address",
     "formFields": {

@@ -2,6 +2,7 @@
   import type { AddressStageData, SelectedStage } from './stages';
   import { CheckBox, TextInput, TextInputWithAutocomplete } from '$components';
   import type { CheckoutStage, Country, ExtendedAddress } from '$types';
+  import { CircularWaringIcon, Icon } from '$components-svg-icons';
   import {
     FormField,
     mapFormFieldsToValues,
@@ -127,7 +128,15 @@
 </script>
 
 <p class="text-xl">{checkout.addressPage.selectedCountry}: {country.name}</p>
-<p>{checkout.addressPage.countryDisclaimer}</p>
+<p
+  class="flex min-h-10 items-center gap-2 pr-2 pl-1 text-justify wrap-break-word hyphens-auto outline outline-yellow-300"
+  role="alert"
+>
+  <span>
+    <Icon color="yellow" src={CircularWaringIcon} />
+  </span>
+  {checkout.addressPage.countryDisclaimer}
+</p>
 
 <div class="grid gap-4 lg:grid-cols-2">
   {#each Object.values(formFields) as field (field.id)}
