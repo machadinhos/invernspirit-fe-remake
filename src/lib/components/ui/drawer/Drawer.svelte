@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import { Icon, XMarkIcon } from '$components-svg-icons';
+  import { afterNavigate } from '$app/navigation';
   import type { ClassValue } from 'svelte/elements';
   import { on } from 'svelte/events';
   import { quintOut } from 'svelte/easing';
@@ -11,13 +12,25 @@
     class?: ClassValue;
     side?: 'left' | 'right';
     fullWidth?: boolean;
+    closeOnNavigate?: boolean;
   };
 
-  let { isOpen = $bindable(), children, side = 'left', fullWidth = true, class: className }: Props = $props();
+  let {
+    isOpen = $bindable(),
+    children,
+    side = 'left',
+    fullWidth = true,
+    class: className,
+    closeOnNavigate = true,
+  }: Props = $props();
 
   const closeDrawer = (): void => {
     isOpen = false;
   };
+
+  afterNavigate(() => {
+    if (closeOnNavigate) isOpen = false;
+  });
 
   $effect(() => {
     if (!isOpen) return;
