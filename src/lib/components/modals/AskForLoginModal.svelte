@@ -64,22 +64,10 @@
 
 <div
   class={[
-    'relative flex max-h-[80vh] min-h-[35vh] w-[90vw] max-w-[500px] flex-col items-center overflow-y-auto bg-background-dark p-4 pb-8 lg:px-8',
+    'relative flex max-h-[80vh] min-h-[35vh] w-[90vw] max-w-125 flex-col items-center overflow-y-auto bg-background-dark p-4 pb-8 lg:px-8',
     state === 'choosing' && 'justify-center',
   ]}
 >
-  <button
-    class={['absolute top-4 left-4', state === 'choosing' && 'brightness-50']}
-    aria-label="go back"
-    disabled={state === 'choosing'}
-    onclick={gotoChoicesState}
-    type="button"
-  >
-    <Icon size="20" src={ArrowLeftIcon} />
-  </button>
-  <button class="absolute top-4 right-4" aria-label="close" onclick={modal.close} type="button">
-    <Icon size="20" src={XMarkIcon} />
-  </button>
   <div class="w-full">
     {#if state === 'choosing'}
       <div class="space-y-4 pt-8">
@@ -100,4 +88,16 @@
       <SignUp actionAfterAuthentication={getFinalAction(modal, action)} showAuthSwitchMessage={false} />
     {/if}
   </div>
+  <button
+    class={['absolute top-4 left-4', state === 'choosing' && 'brightness-50']}
+    aria-label="go back"
+    disabled={state === 'choosing'}
+    onclick={gotoChoicesState}
+    type="button"
+  >
+    <Icon size="20" src={ArrowLeftIcon} />
+  </button>
+  <button class="absolute top-4 right-4" aria-label="close" onclick={modal.close} type="button">
+    <Icon size="20" src={XMarkIcon} />
+  </button>
 </div>
