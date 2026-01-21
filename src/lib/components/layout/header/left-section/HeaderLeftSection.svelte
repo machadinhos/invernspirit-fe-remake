@@ -39,7 +39,7 @@
   {/snippet}
 
   {#if href}
-    <a {href} onclick={toggleDrawer}>
+    <a {href}>
       {@render drawerTextComponent(text, type)}
     </a>
   {:else}
