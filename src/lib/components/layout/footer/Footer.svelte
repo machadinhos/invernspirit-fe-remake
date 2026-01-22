@@ -30,6 +30,7 @@
         name="searchString"
         class="w-full bg-background"
         aria-label={common.footer.searchBarPlaceholder}
+        autocapitalize="none"
         autocomplete="off"
         placeholder={common.footer.searchBarPlaceholder}
         type="search"
