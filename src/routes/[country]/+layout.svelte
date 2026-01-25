@@ -28,7 +28,7 @@
   });
 </script>
 
-<div class="fixed inset-0 z-10 flex h-[100dvh] flex-col">
+<div class="fixed inset-0 z-10 flex h-dvh flex-col">
   <Header countries={data.countries} />
 
   <main bind:this={mainComponent} class="flex-1 overflow-auto">

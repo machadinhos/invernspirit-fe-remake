@@ -1,5 +1,6 @@
 <script lang="ts">
   import { backIn, backOut } from 'svelte/easing';
+  import { afterNavigate } from '$app/navigation';
   import type { ClassValue } from 'svelte/elements';
   import { on } from 'svelte/events';
   import { onClickOutside } from '$components-attachments';
@@ -15,6 +16,7 @@
     triggerElement: Snippet;
     closeOnOutsideClick?: boolean;
     children: Snippet;
+    closeOnNavigate?: boolean;
   };
 
   let {
@@ -23,6 +25,7 @@
     onClose,
     triggerElement,
     closeOnOutsideClick = true,
+    closeOnNavigate = true,
     children,
     ...restProps
   }: Props = $props();
@@ -46,6 +49,10 @@
   const onClickOutsideCallback = (): void => {
     isOpen = false;
   };
+
+  afterNavigate(() => {
+    if (closeOnNavigate) isOpen = false;
+  });
 
   $effect(() => {
     if (!isOpen) onClose?.();

@@ -9,10 +9,6 @@
   const toggleDropdown = (): void => {
     isOpen = !isOpen;
   };
-
-  const closeDropdown = (): void => {
-    isOpen = false;
-  };
 </script>
 
 {#snippet headerLogo()}
@@ -41,13 +37,13 @@
       {/snippet}
       <div class="grid place-items-center gap-4 py-4 text-2xl">
         <DropdownMenuItem>
-          <a class="hover:text-primary" href="/{page.params.country}/shop/collections" onclick={closeDropdown}
+          <a class="hover:text-primary" href="/{page.params.country}/shop/collections"
             >{common.header.pages.shop.byCollection}</a
           >
         </DropdownMenuItem>
         <div class="h-0.5 w-10 bg-white"></div>
         <DropdownMenuItem>
-          <a class="hover:text-primary" href="/{page.params.country}/shop/products" onclick={closeDropdown}
+          <a class="hover:text-primary" href="/{page.params.country}/shop/products"
             >{common.header.pages.shop.byProduct}</a
           >
         </DropdownMenuItem>

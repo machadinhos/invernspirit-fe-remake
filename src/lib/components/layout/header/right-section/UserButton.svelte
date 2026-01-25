@@ -21,10 +21,6 @@
     cart.setCart(newCart);
     goto(`/${page.params.country}`);
   };
-
-  const closeDropdown = (): void => {
-    isOpen = false;
-  };
 </script>
 
 <DropdownMenu class="p-5" position="right" bind:isOpen>
@@ -53,7 +49,7 @@
       <p>{user.value?.email}</p>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Anchor href="/{page.params.country}/profile/user-details" onclick={closeDropdown}>
+      <Anchor href="/{page.params.country}/profile/user-details">
         {common.header.rightSection.profile}
       </Anchor>
     </DropdownMenuItem>
