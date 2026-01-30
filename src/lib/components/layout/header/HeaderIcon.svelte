@@ -6,14 +6,18 @@
   type ElementType =
     | {
         type: 'div';
+        onclick?: never;
+        href?: never;
       }
     | {
         type: 'button';
         onclick?: MouseEventHandler<HTMLButtonElement>;
+        href?: never;
       }
     | {
         type: 'anchor';
         href: HTMLAnchorElement['href'];
+        onclick?: never;
       };
 
   type Props = ElementType & {
@@ -31,10 +35,9 @@
     badge,
     'aria-label': ariaLabel,
     size = 24,
-    ...restProps
+    onclick,
+    href,
   }: Props = $props();
-  const onclick = 'onclick' in restProps ? restProps.onclick : undefined;
-  const href = 'href' in restProps ? restProps.href : '';
 </script>
 
 {#snippet innerElements()}

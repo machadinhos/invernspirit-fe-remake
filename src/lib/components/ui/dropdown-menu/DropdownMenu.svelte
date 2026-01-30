@@ -7,7 +7,9 @@
   import { slide } from 'svelte/transition';
   import type { Snippet } from 'svelte';
 
-  type PositionOrFullWidthType = { position: 'left' | 'right' } | { isFullWidth: boolean };
+  type PositionOrFullWidthType =
+    | { position: 'left' | 'right'; isFullWidth?: never }
+    | { isFullWidth: boolean; position?: never };
 
   type Props = PositionOrFullWidthType & {
     class?: ClassValue;
@@ -27,13 +29,11 @@
     closeOnOutsideClick = true,
     closeOnNavigate = true,
     children,
-    ...restProps
+    isFullWidth,
+    position,
   }: Props = $props();
 
   let triggerElementRef: HTMLElement | undefined = $state();
-
-  const isFullWidth = 'isFullWidth' in restProps ? restProps.isFullWidth : undefined;
-  const position = 'position' in restProps ? restProps.position : undefined;
 
   let menuPositionStyle = $derived.by((): string => {
     if (isFullWidth) {

@@ -23,8 +23,7 @@
     background?: boolean;
   };
 
-  let { product, country, editable = false, background = true, ...rest }: Props = $props();
-  const pushToastOnQuantityUpdate = rest.pushToastOnQuantityUpdate ?? true;
+  let { product, country, editable = false, background = true, pushToastOnQuantityUpdate = true }: Props = $props();
 
   // svelte-ignore state_referenced_locally
   let selectedQuantity = $state(product.quantity);
@@ -93,7 +92,7 @@
   ]}
 >
   <div class="relative flex gap-4">
-    <a class="block size-[100px] shrink-0" href="/{page.params.country}/shop/products/{product.id}">
+    <a class="block size-25 shrink-0" href="/{page.params.country}/shop/products/{product.id}">
       <img alt={product.images[0].alt} height="100" src={product.images[0].url} width="100" />
     </a>
     <div class="min-w-0">

@@ -5,12 +5,21 @@
   // there is a long standing typescript bug that cause the types not to be inferred correctly
   // https://github.com/microsoft/TypeScript/issues/20863?utm_source=chatgpt.com
   type ConditionalTypes =
-    | { as?: 'button'; type?: HTMLButtonElement['type']; ref?: HTMLButtonElement; disabled?: boolean }
+    | {
+        as?: 'button';
+        type?: HTMLButtonElement['type'];
+        ref?: HTMLButtonElement;
+        disabled?: boolean;
+        href?: never;
+        draggable?: never;
+      }
     | {
         as: 'anchor';
+        type?: never;
         href: HTMLAnchorElement['href'];
         ref?: HTMLAnchorElement;
         draggable?: HTMLAnchorElement['draggable'];
+        disabled?: never;
       };
 
   type Props = {
@@ -31,7 +40,10 @@
     reverseColors = false,
     ref = $bindable(),
     fullWidth,
-    ...rest
+    href,
+    type = 'button',
+    disabled,
+    draggable,
   }: Props = $props();
 </script>
 
@@ -40,9 +52,9 @@
     <button
       bind:this={ref}
       class={[fullWidth && 'full-width', reverseColors && 'reverse-colors', className]}
-      disabled={'disabled' in rest ? rest.disabled : false}
+      {disabled}
       {onclick}
-      type={'type' in rest ? rest.type : 'button'}
+      type={type ?? 'button'}
     >
       {@render children()}
     </button>
@@ -50,8 +62,8 @@
     <a
       bind:this={ref}
       class={[fullWidth && 'full-width', reverseColors && 'reverse-colors', className]}
-      draggable={'draggable' in rest ? rest.draggable : undefined}
-      href={'href' in rest ? rest.href : undefined}
+      {draggable}
+      {href}
       {onclick}
     >
       {@render children()}

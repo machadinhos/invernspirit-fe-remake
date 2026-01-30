@@ -24,11 +24,11 @@ class ModalInstance<Params extends Record<string, unknown> | undefined = undefin
 
   constructor(
     element: Params extends Record<string, unknown> ? Element<Params> : NoExtraParamsElement,
-    { closeOnNavigate = true, ...rest }: Params extends never ? BaseModalOptions : ModalOptions<Params>,
+    { closeOnNavigate = true, extraParams }: Params extends never ? BaseModalOptions : ModalOptions<Params>,
   ) {
     this.id = Symbol();
     this.element = element;
-    this.extraParams = ('extraParams' in rest ? rest.extraParams : undefined) as Params;
+    this.extraParams = extraParams as Params;
     this.closeOnNavigate = closeOnNavigate;
 
     this.close = modal.generateCloseFunction(this.id);

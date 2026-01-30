@@ -47,10 +47,10 @@ class Toast<Params extends Record<string, unknown> | undefined = undefined> {
       duration = 4000,
       type = 'normal',
       tag,
-      ...rest
+      extraParams,
     }: Params extends never ? BaseToastOptions : ToastOptions<Params>,
   ) {
-    this.extraParams = ('extraParams' in rest ? rest.extraParams : undefined) as Params;
+    this.extraParams = extraParams as Params;
     this.remainingTime = duration;
     this.pauseTimeOnHover = pauseTimeOnHover;
     this.hasRemainingTimeLine = hasRemainingTimeLine;

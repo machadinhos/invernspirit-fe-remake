@@ -113,7 +113,7 @@
   </div>
   {#if toast.hasRemainingTimeLine && toast.duration !== null}
     <div class="mx-2 mt-2.5 h-1">
-      <div style="width: {toast.progress}%" class="h-full bg-white transition-[width] duration-[50ms]"></div>
+      <div style="width: {toast.progress}%" class="h-full bg-white transition-[width] duration-50"></div>
     </div>
   {/if}
 </div>
