@@ -37,7 +37,7 @@
     <div
       style="background-image: url({image})"
       class={[
-        'absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[65%] transition-opacity duration-[2s]',
+        'absolute inset-0 bg-cover bg-center bg-no-repeat brightness-65 transition-opacity duration-[2s]',
         index === currentImageIndex ? 'opacity-60' : 'opacity-0',
       ]}
     ></div>

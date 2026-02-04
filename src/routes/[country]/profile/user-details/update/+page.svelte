@@ -84,7 +84,7 @@
 </script>
 
 {#if ready}
-  <Form class="max-w-[450px]" onsubmit={onSaveChanges}>
+  <Form class="max-w-md" onsubmit={onSaveChanges}>
     <TextInput field={formFields.email} />
     <TextInput field={formFields.firstName} />
     <TextInput field={formFields.lastName} />

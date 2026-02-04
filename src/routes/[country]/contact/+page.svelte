@@ -56,7 +56,7 @@
 <svelte:head><title>{contactUs.headTitle}</title></svelte:head>
 
 <div
-  class="mx-auto mt-4 grid h-fit w-[90%] max-w-[675px] justify-items-center md:mt-10 md:bg-background-dark md:py-14 md:shadow-2xl"
+  class="mx-auto mt-4 grid h-fit w-[90%] max-w-2xl justify-items-center md:mt-10 md:bg-background-dark md:py-14 md:shadow-2xl"
 >
   <h1 style="font-size: 2.5rem" class="lineunder">
     {contactUs.title}

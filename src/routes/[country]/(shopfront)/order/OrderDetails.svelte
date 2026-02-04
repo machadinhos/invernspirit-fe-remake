@@ -50,7 +50,7 @@
 </script>
 
 <div class="flex w-full items-center max-md:flex-col md:items-start md:justify-center md:gap-10">
-  <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
+  <div class="flex w-[90%] max-w-2xl flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
     <div class="flex gap-1">
       <span class="text-nowrap">{orderContent.orderId}</span>:
       <button class="flex items-center gap-1 text-left" onclick={onOrderIdClick} type="button">
@@ -67,7 +67,7 @@
             {@const paymentLogo = paymentLogos[order.payment.paymentMethod.brand]}
             {#if paymentLogo}
               <img
-                class="h-[22px] w-[34px]"
+                class="h-5.5 w-8.5"
                 alt="{order.payment.paymentMethod.brand} logo"
                 src="/payment-logos/{paymentLogo}"
               />
@@ -78,7 +78,7 @@
             {orderContent.card}
           {/if}
         {:else if order.payment.paymentMethod.type === 'paypal'}
-          <img class="h-[22px] w-[34px]" alt="paypal logo" src="/payment-logos/{paymentLogos.paypal}" />
+          <img class="h-5.5 w-8.5" alt="paypal logo" src="/payment-logos/{paymentLogos.paypal}" />
         {:else}
           {order.payment.paymentMethod.type}
         {/if}
@@ -131,7 +131,7 @@
       </div>
     </div>
   </div>
-  <div class="mt-3 w-full md:sticky md:top-0 md:mt-0 md:w-1/3 md:max-w-[396px]">
+  <div class="mt-3 w-full md:sticky md:top-0 md:mt-0 md:w-1/3 md:max-w-99">
     <PriceSummary country={{ locale: country.locale, currency: { code: order.currency.code } }} {order} />
   </div>
 </div>

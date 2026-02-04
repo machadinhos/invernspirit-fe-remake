@@ -45,9 +45,9 @@
   });
 </script>
 
-<div class="relative h-[73px]">
+<div class="relative h-18.25">
   <div
     bind:this={turnstileContainer}
-    class="absolute left-1/2 min-h-[73px] -translate-x-1/2 sm:static sm:-translate-x-0"
+    class="absolute left-1/2 min-h-18.25 -translate-x-1/2 sm:static sm:translate-x-0"
   ></div>
 </div>

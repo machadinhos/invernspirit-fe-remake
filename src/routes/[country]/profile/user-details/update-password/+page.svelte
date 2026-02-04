@@ -63,7 +63,7 @@
   };
 </script>
 
-<Form class="max-w-[450px]" {onsubmit}>
+<Form class="max-w-md" {onsubmit}>
   {#each Object.values(formFields) as field (field.id)}
     <TextInput {field} />
   {/each}

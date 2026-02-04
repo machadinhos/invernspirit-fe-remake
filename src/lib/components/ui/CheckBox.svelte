@@ -15,14 +15,14 @@
 
 <label
   class={[
-    'inline-flex w-max cursor-pointer items-center gap-2 has-disabled:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-white',
+    'inline-flex w-max cursor-pointer items-center gap-2 has-focus-visible:outline-2 has-focus-visible:outline-white has-disabled:cursor-not-allowed',
     className,
   ]}
 >
   <input {name} class="sr-only" {disabled} type="checkbox" bind:checked />
   <div class="grid size-5 place-items-center border-2 border-secondary-foreground">
     {#if checked}
-      <svg class={['bg-primary', disabled && 'brightness-[60%]']} viewBox="0 0 24 24" transition:scale>
+      <svg class={['bg-primary', disabled && 'brightness-60']} viewBox="0 0 24 24" transition:scale>
         <path
           d="M4 12l5 5L20 7"
           fill="none"

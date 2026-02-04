@@ -99,7 +99,7 @@
   <div
     class="flex size-full min-h-fit items-center max-md:flex-col md:items-start md:justify-center md:gap-5 lg:gap-10"
   >
-    <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
+    <div class="flex w-[90%] max-w-2xl flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
       {#if config.isInitialized && cartLoaded}
         {#each cartState.value as product (product.id)}
           <div animate:flip={{ duration: 150 }}>
@@ -114,7 +114,7 @@
       {/if}
     </div>
     <SummarySection
-      class="sticky bottom-0 mt-4 w-full md:top-0 md:mt-0 md:w-1/3 md:max-w-[396px]"
+      class="sticky bottom-0 mt-4 w-full md:top-0 md:mt-0 md:w-1/3 md:max-w-99"
       buttonDisabled={checkoutDisabled}
       buttonText={cart.checkoutButtonLabel}
       country={data.country}

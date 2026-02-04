@@ -24,7 +24,7 @@
 
 {#if pageState}
   <div class="grid h-full place-items-center">
-    <div class="w-[90%] max-w-[700px] py-6 md:bg-background-dark">
+    <div class="w-[90%] max-w-175 py-6 md:bg-background-dark">
       <div class="mx-auto w-[85%]">
         {#if pageState === 'ask-email'}
           <AskEmail />

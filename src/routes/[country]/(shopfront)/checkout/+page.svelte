@@ -178,7 +178,7 @@
       onsubmit={finalOnStageSubmit}
       bind:processing={isFetchingData}
     >
-      <div class="flex w-[90%] max-w-[675px] flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
+      <div class="flex w-[90%] max-w-2xl flex-1 flex-col gap-4 md:mb-5 md:w-2/3">
         {#if selectedStage.name === 'personal-details'}
           <PersonalDetailsPage {goToNextStage} stageData={selectedStage.data} bind:onStageSubmit bind:stages />
         {:else if selectedStage.name === 'address'}
@@ -208,7 +208,7 @@
         {/if}
       </div>
       <SummarySection
-        class="sticky bottom-0 w-full md:top-0 md:w-1/3 md:max-w-[396px]"
+        class="sticky bottom-0 w-full md:top-0 md:w-1/3 md:max-w-99"
         additionalCharges={selectedStage.name === 'review' && shippingCost
           ? [{ name: checkout.shippingCost, price: shippingCost }]
           : undefined}

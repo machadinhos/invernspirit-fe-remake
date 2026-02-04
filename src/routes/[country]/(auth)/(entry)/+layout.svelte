@@ -34,7 +34,7 @@
 {/snippet}
 
 <div
-  class="mx-auto my-4 grid h-fit w-[90%] max-w-[675px] justify-items-center md:mt-10 md:bg-background-dark md:shadow-2xl"
+  class="mx-auto my-4 grid h-fit w-[90%] max-w-2xl justify-items-center md:mt-10 md:bg-background-dark md:shadow-2xl"
 >
   <div class="relative w-full md:pt-10">
     <ul style="font-size: 2.5rem" class="flex text-center">
