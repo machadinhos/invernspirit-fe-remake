@@ -2,7 +2,8 @@
   import { Button, GrainyFilter } from '$components';
   import { home } from '$content';
   import { imageLinks } from '$constants';
-  import { page } from '$app/state';
+
+  let { params } = $props();
 
   let currentImageIndex = $state(0);
   let nextImageIndex = 1;
@@ -17,16 +18,16 @@
 
 <!--links to prerender-->
 <div class="hidden">
-  <a href="/{page.params.country}/sign-in">sign-in</a>
-  <a href="/{page.params.country}/sign-up">sign-up</a>
-  <a href="/{page.params.country}/sign-up/verify-email">verify email</a>
-  <a href="/{page.params.country}/profile/user-details">profile</a>
-  <a href="/{page.params.country}/profile/user-details/verify-new-email">profile</a>
-  <a href="/{page.params.country}/profile/user-details/update-password">profile</a>
-  <a href="/{page.params.country}/profile/user-details/update">profile</a>
-  <a href="/{page.params.country}/checkout">checkout</a>
-  <a href="/{page.params.country}/order">order</a>
-  <a href="/{page.params.country}/shop/search">search</a>
+  <a href="/{params.country}/sign-in">sign-in</a>
+  <a href="/{params.country}/sign-up">sign-up</a>
+  <a href="/{params.country}/sign-up/verify-email">verify email</a>
+  <a href="/{params.country}/profile/user-details">profile</a>
+  <a href="/{params.country}/profile/user-details/verify-new-email">profile</a>
+  <a href="/{params.country}/profile/user-details/update-password">profile</a>
+  <a href="/{params.country}/profile/user-details/update">profile</a>
+  <a href="/{params.country}/checkout">checkout</a>
+  <a href="/{params.country}/order">order</a>
+  <a href="/{params.country}/shop/search">search</a>
 </div>
 
 <svelte:head><title>{home.headTitle}</title></svelte:head>
@@ -60,7 +61,7 @@
       <h3 class="text-2xl md:text-3xl">{home.description}</h3>
     </div>
     <div class="pulsating">
-      <Button class="w-fit text-2xl" as="anchor" href="{page.params.country}/shop/products">{home.button}</Button>
+      <Button class="w-fit text-2xl" as="anchor" href="{params.country}/shop/products">{home.button}</Button>
     </div>
   </div>
 </div>

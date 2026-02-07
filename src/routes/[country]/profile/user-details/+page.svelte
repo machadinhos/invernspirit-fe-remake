@@ -5,12 +5,14 @@
   import { profile } from '$content';
   import { user as userState } from '$state';
 
+  let { params } = $props();
+
   const onEditClick = (): void => {
-    goto(`/${page.params.country}/profile/user-details/update`);
+    goto(`/${params.country}/profile/user-details/update`);
   };
 
   const onChangePasswordClick = (): void => {
-    goto(`/${page.params.country}/profile/user-details/update-password`);
+    goto(`/${params.country}/profile/user-details/update-password`);
   };
 </script>
 

@@ -3,30 +3,25 @@
   import { goto } from '$app/navigation';
   import { loading } from '$state';
   import { page } from '$app/state';
-  import type { PageData } from './$types';
   import type { Product } from '$types';
   import ProductGrid from '../ProductGrid.svelte';
   import { shop } from '$content';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let products: Product[] | undefined = $state();
 
   $effect(() => {
     const search = page.url.searchParams.get('q');
     if (search === null) {
-      goto(`/${page.params.country}`, { replaceState: true });
+      goto(`/${params.country}`, { replaceState: true });
       return;
     } else if (search === '') {
       products = [];
     }
 
     loading.withLoading(async () => {
-      products = await bffClient.products.getBySearch(page.params.country, search);
+      products = await bffClient.products.getBySearch(params.country, search);
     });
   });
 </script>

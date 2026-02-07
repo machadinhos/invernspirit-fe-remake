@@ -7,16 +7,11 @@
   import { getStockFromBucket } from '$service';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
-  import type { PageData } from './$types';
   import ProductQuantitySelector from '../../../ProductQuantitySelector.svelte';
   import ProductStatusBanner from '../../ProductStatusBanner.svelte';
   import { shop } from '$content';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let selectedQuantity = $state(1);
   let bucketStock: number | undefined = $state();
@@ -104,7 +99,7 @@
     <div class="my-5 h-px bg-white"></div>
     <p>
       {shop.products.id.belongsToCollectionStart}
-      <Anchor href="/{page.params.country}/shop/collections/{data.product.collection.id}"
+      <Anchor href="/{params.country}/shop/collections/{data.product.collection.id}"
         >{data.product.collection.name}</Anchor
       >
       {shop.products.id.belongsToCollectionEnd}

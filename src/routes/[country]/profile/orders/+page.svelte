@@ -4,20 +4,15 @@
   import { onMount } from 'svelte';
   import type { Order } from '$types';
   import OrderSummary from './OrderSummary.svelte';
-  import { page } from '$app/state';
   import { profile } from '$content';
 
-  type Props = {
-    data: import('./$types').PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let orders: Order[] | undefined = $state();
 
   onMount(() => {
     config.afterInitialization(async () => {
-      orders = (await bffClient.order.getAll(page.params.country)).orders;
+      orders = (await bffClient.order.getAll(params.country)).orders;
     });
   });
 </script>

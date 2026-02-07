@@ -2,7 +2,8 @@
   import { about } from '$content';
   import { Anchor } from '$components';
   import { imageLinks } from '$constants';
-  import { page } from '$app/state';
+
+  let { params } = $props();
 </script>
 
 <svelte:head><title>{about.headTitle}</title></svelte:head>
@@ -26,7 +27,7 @@
         <p>{about.text6}</p>
         <h3>{about.subtitle4}</h3>
         <p>{about.text7}</p>
-        <p>{about.contactText} <Anchor href="/{page.params.country}/contact">{about.contactLink}</Anchor>.</p>
+        <p>{about.contactText} <Anchor href="/{params.country}/contact">{about.contactLink}</Anchor>.</p>
       </div>
       <div class="my-5 lg:my-0 lg:w-2/5">
         <img class="object-cover" alt="mafalda" src={imageLinks.about.mafalda} />

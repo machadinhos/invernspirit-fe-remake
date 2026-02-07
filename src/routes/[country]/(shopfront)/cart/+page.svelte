@@ -9,22 +9,16 @@
   import { goto } from '$app/navigation';
   import LineItemCard from '../LineItemCard.svelte';
   import { onMount } from 'svelte';
-  import { page } from '$app/state';
-  import type { PageData } from './$types';
   import SummarySection from '../SummarySection.svelte';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let cartLoaded = $state(false);
   let checkoutDisabled = $state(false);
 
   const onCheckout = async (): Promise<void> => {
     const goToCheckout = async (): Promise<void> => {
-      await goto(`/${page.params.country}/checkout`);
+      await goto(`/${params.country}/checkout`);
 
       gtag('event', 'begin_checkout', {
         currency: data.country.currency.code,
@@ -62,7 +56,7 @@
     loading.withLoading(async () => {
       await config.afterInitialization(async () => {
         await cartState.idle;
-        const newCart = await bffClient.cart.get(page.params.country);
+        const newCart = await bffClient.cart.get(params.country);
         cartState.setCart(newCart);
 
         cartLoaded = true;
@@ -108,7 +102,7 @@
         {:else}
           <div class="mt-24 text-center text-2xl md:flex md:gap-1.5 md:justify-center">
             <span>{cart.emptyCartMessage}</span>
-            <Anchor class="block" href="/{page.params.country}/shop/products">{cart.fillUpCTA}</Anchor>
+            <Anchor class="block" href="/{params.country}/shop/products">{cart.fillUpCTA}</Anchor>
           </div>
         {/each}
       {/if}
@@ -127,7 +121,7 @@
           <div class="h-0.5 w-full bg-white"></div>
         </div>
         <div class="text-center">
-          <Anchor href="/{page.params.country}/shop/products">{cart.continueShopping}</Anchor>
+          <Anchor href="/{params.country}/shop/products">{cart.continueShopping}</Anchor>
         </div>
       </div>
     </SummarySection>

@@ -6,14 +6,8 @@
   import Header from '$lib/components/layout/header/Header.svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
-  import type { PageData } from './$types';
 
-  type Props = {
-    children: import('svelte').Snippet;
-    data: PageData;
-  };
-
-  let { children, data }: Props = $props();
+  let { children, data } = $props();
 
   let showConsent = $state(false);
   let mainComponent: HTMLElement;

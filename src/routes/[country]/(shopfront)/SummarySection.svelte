@@ -78,12 +78,7 @@
 {/snippet}
 
 <div class={['bg-secondary p-5 max-md:pt-0', className]}>
-  <div
-    class={[
-      'grid [grid-template-rows:auto_0fr] transition-all duration-300',
-      isExpanded && '[grid-template-rows:auto_1fr]',
-    ]}
-  >
+  <div class={['grid grid-rows-[auto_0fr] transition-all duration-300', isExpanded && 'grid-rows-[auto_1fr]']}>
     <div class="md:hidden">
       <button
         class={['grid h-6 w-full place-items-center']}

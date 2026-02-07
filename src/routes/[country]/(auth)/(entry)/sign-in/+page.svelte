@@ -1,11 +1,12 @@
 <script lang="ts">
   import { auth } from '$content';
   import { goto } from '$app/navigation';
-  import { page } from '$app/state';
   import SignIn from '$lib/components/ui/auth/SignIn.svelte';
 
+  let { params } = $props();
+
   const actionAfterAuthentication = (): void => {
-    goto(`/${page.params.country}`);
+    goto(`/${params.country}`);
   };
 </script>
 

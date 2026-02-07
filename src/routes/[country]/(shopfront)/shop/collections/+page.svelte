@@ -1,13 +1,7 @@
 <script lang="ts">
-  import { page } from '$app/state';
-  import type { PageData } from './$types';
   import { shop } from '$content';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 </script>
 
 <svelte:head><title>{shop.collections.headTitle}</title></svelte:head>
@@ -20,7 +14,7 @@
 
     <div class="flex gap-4 max-md:flex-col md:h-full md:justify-center md:gap-2">
       {#each data.collections as { id, name, image } (id)}
-        <a class="max-md:h-36" href={`/${page.params.country}/shop/collections/${id}`}>
+        <a class="max-md:h-36" href={`/${params.country}/shop/collections/${id}`}>
           <div class="relative h-full md:w-50">
             <img
               class="size-full object-cover brightness-30 transition-all not-hover:grayscale hover:scale-y-95 hover:brightness-100"

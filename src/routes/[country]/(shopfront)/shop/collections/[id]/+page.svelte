@@ -1,15 +1,9 @@
 <script lang="ts">
   import { ArrowReturnLeftIcon, Icon } from '$components-svg-icons';
-  import { page } from '$app/state';
-  import type { PageData } from './$types';
   import ProductGrid from '../../ProductGrid.svelte';
   import { shop } from '$content';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 </script>
 
 <svelte:head><title>{shop.collections.headTitle}</title></svelte:head>
@@ -18,7 +12,7 @@
   <div class="flex flex-row-reverse justify-end lg:w-1/2 lg:flex-col lg:pl-40">
     <h1 class="ml-3 text-5xl">{data.collection.name}</h1>
     <div class="mt-5 w-fit">
-      <a aria-label="back" href="/{page.params.country}/shop/collections">
+      <a aria-label="back" href="/{params.country}/shop/collections">
         <Icon size="30" src={ArrowReturnLeftIcon} />
       </a>
     </div>

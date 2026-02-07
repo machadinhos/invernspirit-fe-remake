@@ -5,16 +5,12 @@
   import { page } from '$app/state';
   import { user } from '$state';
 
-  type Props = {
-    children: import('svelte').Snippet;
-  };
-
-  let { children }: Props = $props();
+  let { children, params } = $props();
 
   let selected = $derived(page.url.pathname.split('/')[2]);
 
   onMount(() => {
-    if (user.isLoggedIn) goto(`/${page.params.country}`);
+    if (user.isLoggedIn) goto(`/${params.country}`);
   });
 </script>
 
@@ -22,7 +18,7 @@
   <li class="w-1/2">
     <a
       class={['block pt-4 transition-all duration-500', selected !== href && 'brightness-50']}
-      href={`/${page.params.country}/${href}`}
+      href={`/${params.country}/${href}`}
     >
       {#if href === 'sign-in'}
         {auth.signIn.title}

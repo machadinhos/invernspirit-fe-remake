@@ -6,17 +6,13 @@
   import { page } from '$app/state';
   import { profile } from '$content';
 
-  type Props = {
-    children: import('svelte').Snippet;
-  };
-
-  let { children }: Props = $props();
+  let { children, params } = $props();
 
   let selected = $derived(page.url.pathname.split('/')[3]);
 
   onMount(() => {
     config.afterInitialization(() => {
-      if (!user.isLoggedIn) goto(`/${page.params.country}`);
+      if (!user.isLoggedIn) goto(`/${params.country}`);
     });
   });
 </script>
@@ -25,7 +21,7 @@
 
 {#snippet listItem(subPage: string, text: string, icon: IconSrcType)}
   <li class={subPage === selected ? 'bg-background' : 'opacity-50'}>
-    <a class="flex w-full gap-2 px-3 py-1" href="/{page.params.country}/profile/{subPage}">
+    <a class="flex w-full gap-2 px-3 py-1" href="/{params.country}/profile/{subPage}">
       <Icon src={icon} />
       {text}
     </a>

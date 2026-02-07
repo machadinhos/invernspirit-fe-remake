@@ -83,7 +83,7 @@
 {#snippet oAuthButton(icon: IconSrcType, label: string, name: string, onclick: () => void)}
   <button
     class={[
-      'flex h-[35px] w-full items-center justify-center gap-2 rounded-2xl border transition-[scale] hover:scale-110',
+      'flex h-8.75 w-full items-center justify-center gap-2 rounded-2xl border transition-[scale] hover:scale-110',
       processing && 'brightness-50',
     ]}
     aria-label={label}

@@ -9,15 +9,10 @@
   import { order as orderContent } from '$content';
   import OrderDetails from './OrderDetails.svelte';
   import { page } from '$app/state';
-  import type { PageData } from './$types';
   import type { RetriesConfig } from '$lib/service/client';
   import WrongUser from './WrongUser.svelte';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let order: Order | null | undefined = $state();
   let orderId: string | undefined = $state();
@@ -29,7 +24,7 @@
       if (orderId === undefined) {
         /* eslint-disable-next-line no-console */
         console.error('No order id found');
-        goto(`/${page.params.country}`);
+        goto(`/${params.country}`);
         return;
       }
       const isAfterCheckout = page.url.searchParams.get('after-checkout') === 'true';
@@ -52,7 +47,7 @@
         order = (
           await config.afterInitialization(
             async () =>
-              await bffClient.order.getById(page.params.country, orderId ?? '', {
+              await bffClient.order.getById(params.country, orderId ?? '', {
                 retriesConfig,
                 shouldPushIssuesToToasts: false,
               }),

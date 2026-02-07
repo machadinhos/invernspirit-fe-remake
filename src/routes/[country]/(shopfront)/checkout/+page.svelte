@@ -12,16 +12,11 @@
   import { Form } from '$components-utils';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
-  import type { PageData } from './$types';
   import PersonalDetailsPage from './PersonalDetailsPage.svelte';
   import ReviewPage from './ReviewPage.svelte';
   import ShippingMethodPage from './ShippingMethodPage.svelte';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data, params } = $props();
 
   let stages: CheckoutStage[] | undefined = $state();
   let selectedStage: SelectedStage | undefined = $state();
@@ -36,19 +31,17 @@
     'personal-details': async () => {
       selectedStage = {
         name: 'personal-details',
-        data: (await bffClient.checkout.stages.personalDetails.get(page.params.country)).personalDetails,
+        data: (await bffClient.checkout.stages.personalDetails.get(params.country)).personalDetails,
       };
     },
     address: async () => {
       selectedStage = {
         name: 'address',
-        data: (await bffClient.checkout.stages.address.get(page.params.country)).address,
+        data: (await bffClient.checkout.stages.address.get(params.country)).address,
       };
     },
     shipping: async () => {
-      const { shippingMethods, selectedShippingMethod } = await bffClient.checkout.stages.shipping.get(
-        page.params.country,
-      );
+      const { shippingMethods, selectedShippingMethod } = await bffClient.checkout.stages.shipping.get(params.country);
       selectedStage = {
         name: 'shipping',
         data: { shippingMethods, selectedShippingMethod },
@@ -57,7 +50,7 @@
     review: async () => {
       selectedStage = {
         name: 'review',
-        data: await bffClient.checkout.stages.review.get(page.params.country),
+        data: await bffClient.checkout.stages.review.get(params.country),
       };
     },
   };
@@ -84,7 +77,7 @@
       /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       selectedStage = { name: newStage, data: stageData } as any;
     }
-    goto(`/${page.params.country}/checkout?stage=${newStage}`);
+    goto(`/${params.country}/checkout?stage=${newStage}`);
   };
 
   const goToNextStage = (nextStageData?: SelectedStage['data']): Promise<void> =>
@@ -92,7 +85,7 @@
   const goToPrevStage = (prevStageData?: SelectedStage['data']): Promise<void> =>
     goToStage(getPrevStage, prevStageData);
 
-  const goToCart = (): Promise<void> => goto(`/${page.params.country}/cart`);
+  const goToCart = (): Promise<void> => goto(`/${params.country}/cart`);
 
   const isLastStage = (stageName: StageName): boolean => {
     return stages !== undefined && stages.findIndex((stage) => stage.name === stageName) === stages.length - 1;
@@ -118,10 +111,10 @@
   onMount(() => {
     loading.withLoading(async () => {
       const { availableCheckoutStages, isCheckoutPossible } = await config.afterInitialization(() =>
-        bffClient.checkout.stages.get(page.params.country),
+        bffClient.checkout.stages.get(params.country),
       );
       if (isCheckoutPossible === false) {
-        goto(`/${page.params.country}/cart`, { replaceState: true });
+        goto(`/${params.country}/cart`, { replaceState: true });
         return;
       }
       stages = availableCheckoutStages;
@@ -129,7 +122,7 @@
       isFetchingData = true;
       if (lastEnabledStage !== getStageFromUrl()) {
         await prepareStageData[lastEnabledStage as StageName]();
-        goto(`/${page.params.country}/checkout?stage=${lastEnabledStage}`, { replaceState: true });
+        goto(`/${params.country}/checkout?stage=${lastEnabledStage}`, { replaceState: true });
       } else {
         await prepareStageData[lastEnabledStage as StageName]();
       }
@@ -160,7 +153,7 @@
             {#if stage.isEnabled}
               <a
                 class={['text-primary', stage.isEnabled && stage.name === selectedStage?.name && 'underline']}
-                href={isFetchingData ? undefined : `/${page.params.country}/checkout?stage=${stage.name}`}
+                href={isFetchingData ? undefined : `/${params.country}/checkout?stage=${stage.name}`}
                 >{stage.title}
               </a>
             {:else}

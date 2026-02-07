@@ -8,11 +8,7 @@
   import { page } from '$app/state';
   import { truncateWithEllipsis } from '$lib/utils/general';
 
-  type Props = {
-    children: import('svelte').Snippet;
-  };
-
-  let { children }: Props = $props();
+  let { children } = $props();
 </script>
 
 <svelte:head>

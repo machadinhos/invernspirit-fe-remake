@@ -5,9 +5,10 @@
   import { bffClient } from '$service';
   import { Form } from '$components-utils';
   import { goto } from '$app/navigation';
-  import { page } from '$app/state';
   import { profile } from '$content';
   import { validatePassword } from '$lib/utils/input-validation';
+
+  let { params } = $props();
 
   const formFields = {
     currentPassword: new FormField({
@@ -53,13 +54,13 @@
     if (!validateFormFields(formFields)) return;
 
     const payload = mapFormFieldsToValues(formFields);
-    await bffClient.user.update.password(page.params.country, payload);
+    await bffClient.user.update.password(params.country, payload);
 
-    goto(`/${page.params.country}/profile/user-details`);
+    goto(`/${params.country}/profile/user-details`);
   };
 
   const onCancel = (): void => {
-    goto(`/${page.params.country}/profile/user-details`);
+    goto(`/${params.country}/profile/user-details`);
   };
 </script>
 

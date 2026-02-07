@@ -8,7 +8,8 @@
   import { Form } from '$components-utils';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { page } from '$app/state';
+
+  let { params } = $props();
 
   let ready = $state(false);
 
@@ -53,22 +54,22 @@
     if (!validateFormFields(formFields)) return;
     const payload = mapFormFieldsToValues(formFields);
     if (Object.keys(payload).length > 0) {
-      user.value = await bffClient.user.update.personalInformation(page.params.country, payload);
+      user.value = await bffClient.user.update.personalInformation(params.country, payload);
     }
 
     if (formFields.email.filterFunction(formFields.email.value)) {
-      await bffClient.user.update.email.submitEmail(page.params.country, formFields.email.value);
-      goto(`/${page.params.country}/profile/user-details/verify-new-email?new-email=${formFields.email.value}`, {
+      await bffClient.user.update.email.submitEmail(params.country, formFields.email.value);
+      goto(`/${params.country}/profile/user-details/verify-new-email?new-email=${formFields.email.value}`, {
         replaceState: true,
       });
       return;
     }
 
-    goto(`/${page.params.country}/profile/user-details`, { replaceState: true });
+    goto(`/${params.country}/profile/user-details`, { replaceState: true });
   };
 
   const onCancelChanges = (): void => {
-    goto(`/${page.params.country}/profile/user-details`, { replaceState: true });
+    goto(`/${params.country}/profile/user-details`, { replaceState: true });
   };
 
   onMount(() => {

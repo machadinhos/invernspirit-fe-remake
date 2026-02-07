@@ -1,13 +1,8 @@
 <script lang="ts">
-  import type { PageData } from './$types';
   import ProductGrid from '../ProductGrid.svelte';
   import { shop } from '$content';
 
-  type Props = {
-    data: PageData;
-  };
-
-  let { data }: Props = $props();
+  let { data } = $props();
 </script>
 
 <svelte:head><title>{shop.products.headTitle}</title></svelte:head>

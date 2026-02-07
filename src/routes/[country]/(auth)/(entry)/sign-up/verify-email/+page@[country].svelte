@@ -6,6 +6,8 @@
   import { onMount } from 'svelte';
   import { page } from '$app/state';
 
+  let { params } = $props();
+
   onMount(() => {
     loading.withLoading(async () => {
       try {
@@ -13,7 +15,7 @@
         const code = page.url.searchParams.get('code');
 
         if (!email || !code) {
-          goto(`/${page.params.country}`, { replaceState: true });
+          goto(`/${params.country}`, { replaceState: true });
           return;
         }
 
@@ -23,13 +25,13 @@
         };
 
         const { user: signedUpUser, cart: signedUpCart } = await config.afterInitialization(async () => {
-          return await bffClient.user.signUp.verifyEmail(page.params.country, payload);
+          return await bffClient.user.signUp.verifyEmail(params.country, payload);
         });
 
         user.value = signedUpUser;
         cart.setCart(signedUpCart);
       } finally {
-        goto(`/${page.params.country}`, { replaceState: true });
+        goto(`/${params.country}`, { replaceState: true });
       }
     });
   });
