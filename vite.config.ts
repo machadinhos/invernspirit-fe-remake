@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [tailwindcss(), sveltekit(), devtoolsJson()],
 
   server: {
+    open: '/pt',
     allowedHosts: ['.invernspirit.com'],
     proxy: {
       '/api': {
