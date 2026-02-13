@@ -30,7 +30,7 @@
   gtag('js', new Date());-->
   <!-- prettier-ignore-->
   <script>
-function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],cookieStore.get("cookie_consent").then(a=>{let e=a?.value,t=e&&("all"===e||e.includes("analytics")),n=t?"granted":"denied";gtag("consent","default",{ad_storage:n,analytics_storage:n})}),gtag("js",new Date);
+    function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],cookieStore.get("cookie_consent").then(a=>{let e=a?.value,t=e&&("all"===e||e.includes("analytics")),n=t?"granted":"denied";gtag("consent","default",{ad_storage:n,analytics_storage:n})}),gtag("js",new Date);
   </script>
   <!-- prettier-ignore-end-->
 
