@@ -15,19 +15,9 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.strict,
   ...ts.configs.stylistic,
-  ...svelte.configs['flat/recommended'],
+  ...svelte.configs.recommended,
   prettier,
-  ...svelte.configs['flat/prettier'],
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        turnstile: 'readonly',
-        gtag: 'readonly',
-      },
-    },
-  },
+  ...svelte.configs.prettier,
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     languageOptions: {
@@ -40,6 +30,14 @@ export default ts.config(
     },
   },
   {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        turnstile: 'readonly',
+        gtag: 'readonly',
+      },
+    },
     plugins: {
       import: imports,
     },
@@ -52,6 +50,7 @@ export default ts.config(
           ignoreCase: true,
         },
       ],
+      'no-undef': 'off',
       eqeqeq: 'error',
       camelcase: 'error',
       'no-console': 'error',
