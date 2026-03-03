@@ -1,4 +1,15 @@
+import type { defaultPatterns as defaultPatternsType, WebHaptics } from 'web-haptics';
+import { browser } from '$app/environment';
 import type { Component } from 'svelte';
+
+let haptics: WebHaptics | undefined;
+let defaultHaptics: typeof defaultPatternsType | undefined;
+if (browser) {
+  import('web-haptics').then(({ defaultPatterns, WebHaptics }) => {
+    haptics = new WebHaptics();
+    defaultHaptics = defaultPatterns;
+  });
+}
 
 type BaseToastOptions = {
   duration?: number;
@@ -91,6 +102,9 @@ class Toast<Params extends Record<string, unknown> | undefined = undefined> {
     if (this.timeoutId !== undefined) clearTimeout(this.timeoutId);
     this.remainingTime = this.duration;
     this.startTimer();
+    haptics?.trigger(
+      this.type === 'normal' || this.type === 'success' ? defaultHaptics?.success : defaultHaptics?.error,
+    );
   }
 }
 
@@ -110,6 +124,11 @@ class Toasts {
           for (let i = 0; i < toastsToAdd; i++) {
             const newToast = this.restOfToasts.pop();
             if (!newToast) return;
+            haptics?.trigger(
+              newToast.type === 'normal' || newToast.type === 'success'
+                ? defaultHaptics?.success
+                : defaultHaptics?.error,
+            );
             this.value.unshift(newToast);
           }
         }, 550);
@@ -136,6 +155,9 @@ class Toasts {
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const newToast = new Toast<any>(element as Element<any>, options);
     if (this.value.length < this.maxToasts) {
+      haptics?.trigger(
+        newToast.type === 'normal' || newToast.type === 'success' ? defaultHaptics?.success : defaultHaptics?.error,
+      );
       /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       this.value.unshift(newToast as Toast<any>);
     } else {
