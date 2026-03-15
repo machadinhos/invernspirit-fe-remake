@@ -2,7 +2,7 @@
   import type { AddressStageData, SelectedStage } from './stages';
   import { CheckBox, TextInput, TextInputWithAutocomplete } from '$components';
   import type { CheckoutStage, Country, ExtendedAddress } from '$types';
-  import { CircularWaringIcon, Icon } from '$components-svg-icons';
+  import { CircularWarningIcon, Icon } from '$components-svg-icons';
   import {
     FormField,
     mapFormFieldsToValues,
@@ -133,7 +133,7 @@
   role="alert"
 >
   <span>
-    <Icon color="yellow" src={CircularWaringIcon} />
+    <Icon color="yellow" src={CircularWarningIcon} />
   </span>
   {checkout.addressPage.countryDisclaimer}
 </p>
